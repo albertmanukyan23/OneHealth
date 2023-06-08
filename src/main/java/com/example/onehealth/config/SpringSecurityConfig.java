@@ -29,6 +29,7 @@ public class SpringSecurityConfig {
                 .requestMatchers("/js/**").permitAll()
                 .requestMatchers("/fonts/**").permitAll()
                 .requestMatchers("/patient/register").permitAll()
+                .requestMatchers("/patient/update","/patient/remove").hasAnyAuthority("ADMIN","PATIENT")
                 .requestMatchers("/doctor/**").hasAuthority("ADMIN")
                 .requestMatchers("/user/admin").hasAuthority("ADMIN")
                 .requestMatchers("/user/doctor").hasAuthority("DOCTOR")
