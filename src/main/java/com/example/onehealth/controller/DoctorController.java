@@ -8,10 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/doctor")
@@ -25,13 +24,10 @@ public class DoctorController {
         modelMap.addAttribute("doctors", doctors);
         return "doctors";
     }
-
-
     @GetMapping("/add")
     public String addDoctor() {
         return "addDoctor";
     }
-
     @PostMapping("/add")
     public String addDoctor(@ModelAttribute Doctor doctor) {
         doctor.setRegisDate(new Date());
@@ -39,9 +35,8 @@ public class DoctorController {
         userService.registerUser(doctor);
         return "redirect:/doctor";
     }
-
     @GetMapping("/remove")
-    public String removeUser(@RequestParam("id") int id) {
+    public String removeUser(@RequestParam("id") int id) throws IOException {
         userService.deleteUser(id);
         return "redirect:/doctor";
     }
