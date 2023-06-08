@@ -1,6 +1,4 @@
 package com.example.onehealth.controller;
-
-
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.security.CurrentUser;
 import org.apache.commons.io.IOUtils;
@@ -18,8 +16,10 @@ import java.io.IOException;
 
 @Controller
 public class MainController {
-    @Value("${hospital.doctor.upload.image.path}")
+
+    @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
+
     @GetMapping("/")
     public String indexPage() {
         return "index";
