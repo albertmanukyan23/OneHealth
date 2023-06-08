@@ -3,20 +3,19 @@ package com.example.onehealth.service.impl;
 import com.example.onehealth.entity.User;
 import com.example.onehealth.repository.UserRepository;
 import com.example.onehealth.service.UserService;
-import com.example.onehealth.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
+
+
     private final UserRepository userRepository;
-    private final UserUtil userUtil;
 
     @Override
     public void registerUser(User user) {
@@ -28,8 +27,11 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
         }
     }
+
     @Override
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
+
+
 }

@@ -1,4 +1,26 @@
-﻿<!doctype html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Update Doctor</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/doctor/update" method="post" enctype="multipart/form-data">-->
+<!--    <input type="hidden" name="id" th:value="${doctor.getId()}"><br>-->
+<!--    Name: <input type="text" name="name" th:placeholder="${doctor.name}"><br>-->
+<!--    Surname: <input type="text" name="surname" th:placeholder="${doctor.surname}"><br>-->
+<!--    Email: <input type="text" name="email" th:placeholder="${doctor.email}"/><br>-->
+<!--    Password: <input type="text" name="password" ><br>-->
+<!--    Birth date: <input type="date" name="birthDate" th:placeholder="${doctor.birthDate}"><br>-->
+<!--    Speciality: <input type="text" name="speciality" th:placeholder="${doctor.speciality}"><br>-->
+<!--    Phone numb: <input type="text" name="phoneNumber" th:placeholder="${doctor.phoneNumber}"><br>-->
+<!--    Picture: <input type="file" name="image"><br>-->
+
+<!--    <input type="submit" value="update">-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!doctype html>
 <html class="no-js" lang="zxx">
 <head>
 
@@ -85,103 +107,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-5 col-12">
-
-                    <ul class="top-link">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Doctors</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-
                 </div>
                 <div class="col-lg-6 col-md-7 col-12">
-
-                    <ul class="top-contact">
-                        <li><i class="fa fa-phone"></i>+880 1234 56789</li>
-                        <li><i class="fa fa-envelope"></i><a
-                                href="/cdn-cgi/l/email-protection#5d2e282d2d322f291d2432282f303c3431733e3230"><span
-                                class="__cf_email__" data-cfemail="03707673736c7177437a6c76716e626a6f2d606c6e">[email&#160;protected]</span></a>
-                        </li>
-                    </ul>
-
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="header-inner">
-        <div class="container">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-12">
-
-                        <div class="logo">
-                            <a href="index.html"><img src="/img/logo.png" alt="#"></a>
-                        </div>
-
-
-                        <div class="mobile-nav"></div>
-
-                    </div>
-                    <div class="col-lg-7 col-md-9 col-12">
-
-                        <div class="main-menu">
-                            <nav class="navigation">
-                                <ul class="nav menu">
-                                    <li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home Page 1</a></li>
-                                            <li><a href="index2.html">Home Page 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Doctos <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="doctors.html">Doctor</a></li>
-                                            <li><a href="doctor-details.html">Doctor Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="service-details.html">Service Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="appointment.html">Appointment</a></li>
-                                            <li><a href="time-table.html">Time Table</a></li>
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                            <li><a href="pricing.html">Our Pricing</a></li>
-                                            <li><a href="register.html">Sign Up</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="mail-success.html">Mail Success</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-single.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-2 col-12">
-                        <div class="get-quote">
-                            <a href="appointment.html" class="btn">Appointment</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </header>
 
@@ -191,11 +123,11 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Register</h2>
+                    <h2>Update Doctor</h2>
                     <ul class="bread-list">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Register</li>
+                        <li class="active">Update Doctor</li>
                     </ul>
                 </div>
             </div>
@@ -214,61 +146,62 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="register-form">
-                        <h2>Register Here</h2>
-                        <p>Already have an account ? <a href="login.html">Login Here</a></p>
-
-                        <form class="form" method="post" action="/patient/register" enctype="multipart/form-data">
+                        <h2>Update Doctor</h2>
+                        <p>Already have an account ? <a href="/customLogin">Login Here</a></p>
+                        <form action="/doctor/update" method="post" enctype="multipart/form-data">
                             <div class="row">
+                                <input type="hidden" name="id" th:value="${doctor.getId()}"><br>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="First Name" required="">
+                                        <input type="text" name="name" th:placeholder="${doctor.name}" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="surname" placeholder="Last Name" required="">
+                                        <input type="text" name="surname"th:placeholder="${doctor.surname}" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="email" placeholder="Email" required="">
+                                        <input type="text" name="email" th:placeholder="${doctor.email}" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="password" name="password" placeholder="Password" required="">
+                                        <input type="password" name="password" placeholder=" New Password" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="date" name="birthDate" placeholder="Birthday" required="">
+                                        <input type="date" name="birthDate" th:placeholder="${doctor.birthDate}" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="region" placeholder="Region" required="">
+                                        <input type="text" name="speciality" th:placeholder="${doctor.speciality}" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="address" placeholder="address" required="">
+                                        <input type="text" name="phoneNumber" th:placeholder="${doctor.phoneNumber}" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="nation" placeholder="nation" required="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="file" name="image" placeholder="image" required="">
+                                        <input type="file" name="image" placeholder="Select new Image" required="">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Login</button>
+                                        <button class="btn" type="submit">Update Doctor</button>
                                     </div>
+                                    <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news" id="2"
+                                                                                      type="checkbox">Yes, I agree with
+                                            all</label>
+                                    </div>
+                                    <a href="#" class="terms">Terms & Conditions</a>
                                 </div>
                             </div>
                         </form>
