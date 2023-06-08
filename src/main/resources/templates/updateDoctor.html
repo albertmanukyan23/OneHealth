@@ -2,36 +2,22 @@
 <!--<html lang="en">-->
 <!--<head>-->
 <!--    <meta charset="UTF-8">-->
-<!--    <title>ALL Doctors</title>-->
+<!--    <title>Update Doctor</title>-->
 <!--</head>-->
 <!--<body>-->
+<!--<form action="/doctor/update" method="post" enctype="multipart/form-data">-->
+<!--    <input type="hidden" name="id" th:value="${doctor.getId()}"><br>-->
+<!--    Name: <input type="text" name="name" th:placeholder="${doctor.name}"><br>-->
+<!--    Surname: <input type="text" name="surname" th:placeholder="${doctor.surname}"><br>-->
+<!--    Email: <input type="text" name="email" th:placeholder="${doctor.email}"/><br>-->
+<!--    Password: <input type="text" name="password" ><br>-->
+<!--    Birth date: <input type="date" name="birthDate" th:placeholder="${doctor.birthDate}"><br>-->
+<!--    Speciality: <input type="text" name="speciality" th:placeholder="${doctor.speciality}"><br>-->
+<!--    Phone numb: <input type="text" name="phoneNumber" th:placeholder="${doctor.phoneNumber}"><br>-->
+<!--    Picture: <input type="file" name="image"><br>-->
 
-<!--<table border="1px">-->
-<!--<tr>-->
-<!--    <th>picture</th>-->
-<!--    <th>id</th>-->
-<!--    <th>name</th>-->
-<!--    <th>surname</th>-->
-<!--    <th>speciality</th>-->
-<!--    <th>email</th>-->
-<!--    <th>action</th>-->
-<!--</tr>-->
-
-<!--    <tr th:each="doctor: ${doctors}">-->
-<!--        <td>-->
-<!--<img th:if="${doctor.picName != null}" th:src="@{/getImage(imageName=${doctor.getPicName()})}" width="100"/>-->
-<!--<img th:if="${doctor.picName == null or doctor.picName.equalsIgnoreCase('null')}" th:src="@{/img.png}"-->
-<!--     width="100">-->
-<!--        </td>-->
-<!--        <td th:text="${doctor.id}"></td>-->
-<!--        <td th:text="${doctor.name}"></td>-->
-<!--        <td th:text="${doctor.surname}"></td>-->
-<!--        <td th:text="${doctor.speciality}"></td>-->
-<!--        <td th:text="${doctor.email}"></td>-->
-<!--        <td><a th:href="@{/doctor/remove(id = ${doctor.id})}">Remove</a>/<a th:href="@{/doctor/update(id = ${doctor.id})}">Update</a></td>-->
-<!--    </tr>-->
-<!--</table>-->
-<!--<a th:href="@{/doctor/add}">Register</a>-->
+<!--    <input type="submit" value="update">-->
+<!--</form>-->
 <!--</body>-->
 <!--</html>-->
 <!doctype html>
@@ -49,6 +35,7 @@
 
     <link rel="icon" href="/img/favicon.png">
 
+    <link href="/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap">
     <link href="/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
           rel="stylesheet">
 
@@ -114,92 +101,21 @@
 </div>
 
 
-<!--<header class="header">-->
+<header class="header">
 
-<!--    <div class="topbar">-->
-<!--        <div class="container">-->
-<!--            <div class="row">-->
-<!--                <div class="col-lg-6 col-md-7 col-12">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-<!--    <div class="header-inner">-->
-<!--        <div class="container">-->
-<!--            <div class="inner">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-3 col-md-3 col-12">-->
-
-<!--                        <div class="logo">-->
-<!--                            <a href="index.html"><img src="img/logo.png" alt="#"></a>-->
-<!--                        </div>-->
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-5 col-12">
+                </div>
+                <div class="col-lg-6 col-md-7 col-12">
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<!--                        <div class="mobile-nav"></div>-->
-
-<!--                    </div>-->
-<!--                    <div class="col-lg-7 col-md-9 col-12">-->
-
-<!--                        <div class="main-menu">-->
-<!--                            <nav class="navigation">-->
-<!--                                <ul class="nav menu">-->
-<!--                                    <li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="index.html">Home Page 1</a></li>-->
-<!--                                            <li><a href="index2.html">Home Page 2</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Doctos <i class="icofont-rounded-down"></i></a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="doctors.html">Doctor</a></li>-->
-<!--                                            <li><a href="doctor-details.html">Doctor Details</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Services <i class="icofont-rounded-down"></i></a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="service.html">Service</a></li>-->
-<!--                                            <li><a href="service-details.html">Service Details</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="about.html">About Us</a></li>-->
-<!--                                            <li><a href="appointment.html">Appointment</a></li>-->
-<!--                                            <li><a href="time-table.html">Time Table</a></li>-->
-<!--                                            <li><a href="testimonials.html">Testimonials</a></li>-->
-<!--                                            <li><a href="pricing.html">Our Pricing</a></li>-->
-<!--                                            <li><a href="register.html">Sign Up</a></li>-->
-<!--                                            <li><a href="login.html">Login</a></li>-->
-<!--                                            <li><a href="faq.html">Faq</a></li>-->
-<!--                                            <li><a href="mail-success.html">Mail Success</a></li>-->
-<!--                                            <li><a href="404.html">404 Error</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="blog-grid.html">Blog Grid</a></li>-->
-<!--                                            <li><a href="blog-single.html">Blog Details</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="contact.html">Contact Us</a></li>-->
-<!--                                </ul>-->
-<!--                            </nav>-->
-<!--                        </div>-->
-
-<!--                    </div>-->
-<!--                    <div class="col-lg-2 col-12">-->
-<!--                        <div class="get-quote">-->
-<!--                            <a href="appointment.html" class="btn">Appointment</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--</header>-->
+</header>
 
 
 <div class="breadcrumbs overlay">
@@ -207,10 +123,11 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Doctors</h2>
+                    <h2>Update Doctor</h2>
                     <ul class="bread-list">
+                        <li><a href="/">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Doctors</li>
+                        <li class="active">Update Doctor</li>
                     </ul>
                 </div>
             </div>
@@ -219,95 +136,78 @@
 </div>
 
 
-<section class="doctor-calendar-area section">
+<section class="register section">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Our Doctors</h2>
-                    <img src="/img/section-img.png" alt="#">
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+        <div class="inner">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="register-left">
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="doctor-calendar-table table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>picture</th>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>surname</th>
-                            <th>speciality</th>
-                            <th>email</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="doctor: ${doctors}">
-                            <td>
-                                <img th:if="${doctor.picName != null}"
-                                     th:src="@{/getImage(imageName=${doctor.getPicName()})}" width="100"/>
-                                <img th:if="${doctor.picName == null or doctor.picName.equalsIgnoreCase('null')}"
-                                     th:src="@{/img.png}"
-                                     width="100">
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.id}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.name}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.surname}"></h3>
+                <div class="col-lg-6">
+                    <div class="register-form">
+                        <h2>Update Doctor</h2>
+                        <p>Already have an account ? <a href="/customLogin">Login Here</a></p>
+                        <form action="/doctor/update" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <input type="hidden" name="id" th:value="${doctor.getId()}"><br>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" th:placeholder="${doctor.name}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="surname"th:placeholder="${doctor.surname}" required="">
+                                    </div>
+                                </div>
 
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.speciality}"></h3>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="email" th:placeholder="${doctor.email}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" placeholder=" New Password" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="date" name="birthDate" th:placeholder="${doctor.birthDate}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="speciality" th:placeholder="${doctor.speciality}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="phoneNumber" th:placeholder="${doctor.phoneNumber}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="file" name="image" placeholder="Select new Image" required="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group login-btn">
+                                        <button class="btn" type="submit">Update Doctor</button>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news" id="2"
+                                                                                      type="checkbox">Yes, I agree with
+                                            all</label>
+                                    </div>
+                                    <a href="#" class="terms">Terms & Conditions</a>
+                                </div>
+                            </div>
+                        </form>
 
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.email}"></h3>
-
-                            </td>
-                            <td>
-                                <a th:href="@{/doctor/update(id = ${doctor.id})}"><h3>Update</h3></a>
-
-                            </td>
-                            <td>
-                                <a th:href="@{/doctor/remove(id = ${doctor.id})}"><h3>Remove</h3></a>
-
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="newsletter section">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-6  col-12">
-
-                <div class="subscribe-text ">
-                    <h6>Sign up for newsletter</h6>
-                    <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>
-                </div>
-
-            </div>
-            <div class="col-lg-6  col-12">
-
-                <div class="subscribe-form ">
-                        <a th:href="@{/doctor/add}" class="btn">Register Doctor</a>
-                </div>
-
             </div>
         </div>
     </div>
@@ -454,7 +354,7 @@
 <script src="/js/main.js"></script>
 <script defer="" src="/js/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
         integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7d055780f9e43362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
+        data-cf-beacon='{"rayId":"7d05578d1d983362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
         crossorigin="anonymous"></script>
 </body>
 </html>

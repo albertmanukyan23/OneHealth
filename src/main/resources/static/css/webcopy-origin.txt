@@ -1,0 +1,512 @@
+Uri: https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\ajax\libs\waypoints\2.0.3\waypoints.min.js
+Content Type: application/javascript
+
+Uri: https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\css
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLBT5Z1xlEA.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiByp8kv8JHgFVrLBT5Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDD4Z1xlEA.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiByp8kv8JHgFVrLDD4Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLm111VF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLm111VF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLm21lVF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLm21lVF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLm81xVF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLm81xVF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLmg1hVF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLmg1hVF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLmr19VF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLmr19VF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLmv1pVF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLmv1pVF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLmy15VF9eL.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiDyp8kv8JHgFVrJJLmy15VF9eL.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfedw.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiEyp8kv8JHgFVrJJfedw.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiGyp8kv8JHgFVrJJLucHtF.ttf
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\s\poppins\v20\pxiGyp8kv8JHgFVrJJLucHtF.ttf
+Content Type: font/ttf
+
+Uri: https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\bootstrap\4.5.2\css\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\beacon.min.js\v52afc6f149f6479b8c77fa569edb01181681764108816
+Content Type: text/javascript
+
+Uri: https://wpthemesgrid.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js
+Content Type: application/javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/404.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\404.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/about.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\about.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/appointment.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\appointment.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/blog-grid.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\blog-grid.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/blog-single.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\blog-single.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/contact.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\contact.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/animate.min.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\animate.min.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/bootstrap.min.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/color/color1.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\color\color1.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/datepicker.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\datepicker.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/font-awesome.min.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\font-awesome.min.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/icofont.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\icofont.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/magnific-popup.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\magnific-popup.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/nice-select.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\nice-select.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/normalize.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\normalize.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/owl-carousel.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\owl-carousel.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/responsive.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\responsive.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/css/slicknav.min.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\css\slicknav.min.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/doctor-details.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\doctor-details.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/doctors.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\doctors.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/faq.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\faq.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/fontawesome-webfont.eot?
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\fontawesome-webfont-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/fontawesome-webfont.eot?v=4.7.0
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\fontawesome-webfont.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/fontawesome-webfont.svg?v=4.7.0
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\fontawesome-webfont.svg
+Content Type: image/svg+xml
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/fontawesome-webfont.ttf?v=4.7.0
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\fontawesome-webfont.ttf
+Content Type: application/x-font-ttf
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/fontawesome-webfont.woff2?v=4.7.0
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\fontawesome-webfont.woff2
+Content Type: application/font-woff2
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/fontawesome-webfont.woff?v=4.7.0
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\fontawesome-webfont.woff
+Content Type: application/font-woff
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/icofont.woff
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\icofont.woff
+Content Type: application/font-woff
+
+Uri: https://wpthemesgrid.com/themes/medikit/fonts/icofont.woff2
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\fonts\icofont.woff2
+Content Type: application/font-woff2
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/about-img.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\about-img.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/author1.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\author1.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/author2.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\author2.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/author3.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\author3.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blockqoute-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blockqoute-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blog-sidebar1.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blog-sidebar1.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blog-sidebar2.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blog-sidebar2.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blog-sidebar3.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blog-sidebar3.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blog1.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blog1.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blog2.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blog2.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/blog3.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\blog3.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/bread-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\bread-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/call-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\call-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/client-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\client-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/client1.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\client1.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/client2.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\client2.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/client3.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\client3.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/client4.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\client4.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/client5.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\client5.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/contact-img.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\contact-img.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/department.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\department.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/doctor-detail.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\doctor-detail.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/favicon.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\favicon.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/fun-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\fun-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/logo.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\logo.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/mission-img.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\mission-img.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/pf1.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\pf1.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/pf2.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\pf2.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/pf3.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\pf3.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/pf4.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\pf4.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/section-img.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\section-img.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/section-img2.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\section-img2.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/service-details-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\service-details-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/signup-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\signup-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/slider.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\slider.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/slider2.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\slider2.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/slider3.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\slider3.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/team1.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\team1.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/team2.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\team2.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/team3.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\team3.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/team4.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\team4.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/testi-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\testi-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/testi1.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\testi1.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/testi2.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\testi2.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/testi3.png
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\testi3.png
+Content Type: image/png
+
+Uri: https://wpthemesgrid.com/themes/medikit/img/video-bg.jpg
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\img\video-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://wpthemesgrid.com/themes/medikit/index.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\index.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/index2.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\index2.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/bootstrap-datepicker.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\bootstrap-datepicker.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/bootstrap.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\bootstrap.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/colors.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\colors.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/easing.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\easing.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/gmaps.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\gmaps.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery-migrate-3.0.0.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery-migrate-3.0.0.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery-ui.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery-ui.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery.counterup.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery.counterup.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery.magnific-popup.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery.magnific-popup.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery.nav.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery.nav.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/jquery.scrollUp.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\jquery.scrollUp.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/main.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\main.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/map-active.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\map-active.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/niceselect.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\niceselect.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/owl-carousel.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\owl-carousel.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/popper.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\popper.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/slicknav.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\slicknav.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/steller.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\steller.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/tilt.jquery.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\tilt.jquery.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/js/wow.min.js
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\js\wow.min.js
+Content Type: application/x-javascript
+
+Uri: https://wpthemesgrid.com/themes/medikit/login.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\login.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/mail-success.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\mail-success.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/portfolio-details.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\portfolio-details.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/pricing.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\pricing.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/register.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\register.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/service-details.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\service-details.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/service.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\service.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/style.css
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\style.css
+Content Type: text/css
+
+Uri: https://wpthemesgrid.com/themes/medikit/testimonials.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\testimonials.html
+Content Type: text/html
+
+Uri: https://wpthemesgrid.com/themes/medikit/time-table.html
+File Name: C:\Users\Albert\Desktop\projectTemplate\wpthemesgrid.com\themes\medikit\time-table.html
+Content Type: text/html
+

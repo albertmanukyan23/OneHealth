@@ -18,7 +18,7 @@ import java.io.IOException;
 
 @Controller
 public class MainController {
-    @Value("${hospital.doctor.upload.image.path}")
+    @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
     @GetMapping("/")
     public String indexPage() {

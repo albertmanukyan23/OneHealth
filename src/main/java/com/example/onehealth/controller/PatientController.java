@@ -2,6 +2,7 @@ package com.example.onehealth.controller;
 
 import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.User;
+import com.example.onehealth.entity.UserType;
 import com.example.onehealth.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class PatientController {
     @PostMapping("/register")
     public String register(@ModelAttribute Patient patient) {
         patient.setRegisDate(new Date());
+        patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);
         return "redirect:/";
     }
