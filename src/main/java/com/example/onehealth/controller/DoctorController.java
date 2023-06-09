@@ -1,14 +1,15 @@
 package com.example.onehealth.controller;
 
 import com.example.onehealth.entity.Doctor;
-import com.example.onehealth.entity.User;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.service.DoctorService;
 import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.UserUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,15 +34,17 @@ public class DoctorController {
         return "doctors";
     }
 
-
     @GetMapping("/add")
-    public String addDoctor() {
+    public String addDoctor(@ModelAttribute("doctor") Doctor doctor) {
         return "addDoctor";
     }
 
     @PostMapping("/add")
-    public String addDoctor(@ModelAttribute Doctor doctor,
+    public String addDoctor(@ModelAttribute("doctor") @Valid Doctor doctor, BindingResult bindingResult,
                             @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return "addDoctor";
+        }
         userUtil.saveProfilePicture(multipartFile, doctor);
         doctor.setRegisDate(new Date());
         doctor.setUserType(UserType.DOCTOR);
@@ -50,15 +53,18 @@ public class DoctorController {
     }
 
     @GetMapping("/update")
-    public String updateDoctor(@RequestParam("id") int id, ModelMap modelMap) {
-        Optional<Doctor> doctorById = doctorService.findDoctorById(id);
-        doctorById.ifPresent(doctor -> modelMap.addAttribute("doctor", doctor));
+    public String updateDoctor( @ModelAttribute("doctor") Doctor doctor,ModelMap modelMap) {
+        Optional<Doctor> doctorById = doctorService.findDoctorById(doctor.getId());
+        doctorById.ifPresent(doctorFromDb-> modelMap.addAttribute("doctor", doctorFromDb));
         return "updateDoctor";
     }
 
     @PostMapping("/update")
-    public String updateDoctor(@ModelAttribute Doctor doctor,
+    public String updateDoctor(@ModelAttribute("doctor") @Valid Doctor doctor, BindingResult bindingResult,
                                @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return "updateDoctor";
+        }
         userUtil.saveProfilePicture(multipartFile, doctor);
         doctorService.update(doctor);
         return "redirect:/doctor";
