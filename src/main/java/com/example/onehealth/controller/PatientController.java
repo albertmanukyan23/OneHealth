@@ -1,14 +1,18 @@
 package com.example.onehealth.controller;
+
 import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.UserUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -27,14 +31,17 @@ public class PatientController {
         return "patients";
     }
     @GetMapping("/register")
-    public String registerPage() {
+    public String registerPage(@ModelAttribute("patient") Patient patient) {
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute Patient patient,
+    public String register(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
                            @RequestParam("image") MultipartFile multipartFile,
                            UserUtil userUtil) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
         patient.setRegisDate(new Date());
         userUtil.saveProfilePicture(multipartFile, patient);
         patient.setUserType(UserType.PATIENT);
@@ -44,21 +51,24 @@ public class PatientController {
 
     @GetMapping("/update")
     public String updatePatient(ModelMap modelMap,
-                                @RequestParam("id") int id) {
-        Optional<Patient> patientById = patientService.findPatientById(id);
-        patientById.ifPresent(patient -> modelMap.addAttribute("patient", patient));
+                                @ModelAttribute("patient") Patient patient) {
+        Optional<Patient> patientById = patientService.findPatientById(patient.getId());
+        patientById.ifPresent(patientFromDb -> modelMap.addAttribute("patient", patientFromDb));
         return "updatePatient";
     }
     @PostMapping("/update")
-    public String updatePatient(@ModelAttribute Patient patient,
+    public String updatePatient(@ModelAttribute("patient") @Valid Patient patient,BindingResult bindingResult,
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return "updatePatient";
+        }
         patient.setRegisDate(new Date());
         userUtil.saveProfilePicture(multipartFile, patient);
         patientService.update(patient);
         return "redirect:/patient";
     }
     @GetMapping("/delete")
-    public String removeUser(@RequestParam("id") int id) throws IOException {
+    public String removeUser(@RequestParam("id") int id)  {
         userService.deleteUser(id);
         return "redirect:/patient";
     }

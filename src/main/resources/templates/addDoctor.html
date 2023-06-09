@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <meta charset="utf-8">
@@ -126,38 +126,48 @@
                     <div class="register-form">
                         <h2>Add Doctor</h2>
                         <p>Already have an account ? <a href="/customLogin">Login Here</a></p>
-
-                        <form action="/doctor/add" method="post" enctype="multipart/form-data">
+                        <form action="/doctor/add" method="post" enctype="multipart/form-data" th:object="${doctor}">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <input type="text" name="name" placeholder="First Name" required="">
+                                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                           style="color: red;"></p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <input type="text" name="surname" placeholder="Last Name" required="">
+                                        <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red;"></p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <input type="text" name="email" placeholder="Email" required="">
+                                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></p>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <input type="password" name="password" placeholder="Password" required="">
+                                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red;"></p>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <input type="date" name="birthDate" placeholder="Birthday" required="">
+                                        <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" style="color: red;"></p>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <input type="text" name="speciality" placeholder="Speciality" required="">
+                                        <p th:if="${#fields.hasErrors('speciality')}" th:errors="*{speciality}" style="color: red;"></p>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

@@ -76,70 +76,79 @@
 <section class="register section">
     <div class="container">
         <div class="inner">
-               <img th:src="@{/getImage(imageName=${patient.getPicName()})}" width="100"/>
-                        <form class="form" method="post" action="/patient/update" enctype="multipart/form-data">
-                            <input name="id" type="hidden" th:value="${patient.id}">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="First Name" required="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="surname" placeholder="Last Name" required="">
-                                    </div>
-                                </div>
+            <img th:src="@{/getImage(imageName=${patient.getPicName()})}" width="100"/>
+            <form class="form" method="post" action="/patient/update" enctype="multipart/form-data"
+                  th:object="${patient}">
+                <input name="id" type="hidden" th:value="${patient.id}">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="First Name" required="">
+                            <p style="color: red;" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="surname" placeholder="Last Name" required="">
+                            <p style="color: red;" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+                        </div>
+                    </div>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="email" placeholder="Email" required="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="password" name="password" placeholder="Password" required="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="date" name="birthDate" placeholder="Birthday" required="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="region" placeholder="Region" required="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="address" placeholder="address" required="">
-                                    </div>
-                                </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="email" placeholder="Email" required="">
+                            <p style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="nation" placeholder="nation" required="">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Password" required="">
+                            <p style="color: red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="file" name="image" placeholder="image" required="">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="date" name="birthDate" placeholder="Birthday" required="">
+                            <p style="color: red;" th:if="${#fields.hasErrors('birthDate')}"
+                               th:errors="*{birthDate}"></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="region" placeholder="Region" required="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="address" placeholder="address" required="">
+                        </div>
+                    </div>
 
-                                <div class="col-12">
-                                    <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Login</button>
-                                    </div>
-                            </div>
-                            </div>
-                        </form>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="nation" placeholder="nation" required="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="file" name="image" placeholder="image">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group login-btn">
+                            <button class="btn" type="submit">Login</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 </section>
 <footer id="footer" class="footer ">
