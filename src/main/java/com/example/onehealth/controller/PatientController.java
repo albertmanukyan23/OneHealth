@@ -49,7 +49,6 @@ public class PatientController {
         patientById.ifPresent(patient -> modelMap.addAttribute("patient", patient));
         return "updatePatient";
     }
-
     @PostMapping("/update")
     public String updatePatient(@ModelAttribute Patient patient,
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
@@ -58,7 +57,6 @@ public class PatientController {
         patientService.update(patient);
         return "redirect:/patient";
     }
-
     @GetMapping("/delete")
     public String removeUser(@RequestParam("id") int id) throws IOException {
         userService.deleteUser(id);
