@@ -1,7 +1,6 @@
 package com.example.onehealth.service.impl;
 
 import com.example.onehealth.entity.User;
-import com.example.onehealth.exception.DuplicateEmailException;
 import com.example.onehealth.repository.UserRepository;
 import com.example.onehealth.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -19,15 +18,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User registerUser(User user) {
+    public void registerUser(User user) {
         Optional<User> userFromDB = userRepository.findByEmail(user.getEmail());
         if (userFromDB.isEmpty()) {
             String password = user.getPassword();
             String encodedPassword = passwordEncoder.encode(password);
             user.setPassword(encodedPassword);
-            return userRepository.save(user);
+            userRepository.save(user);
         }
-        throw new DuplicateEmailException();
     }
 
     @Override

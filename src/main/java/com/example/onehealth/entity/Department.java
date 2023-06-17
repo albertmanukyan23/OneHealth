@@ -14,19 +14,10 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Appointment {
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String description;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime startTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime endTime;
-    @ManyToOne
-    private  Doctor doctor;
-    @ManyToOne
-    private Patient patient;
-    @ManyToOne
-    private Department department;
+    private String departments;
+
 }
