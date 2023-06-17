@@ -2,7 +2,7 @@ package com.example.onehealth.service;
 
 
 import com.example.onehealth.entity.Appointment;
-import com.example.onehealth.entity.Patient;
+import com.example.onehealth.entity.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,9 +17,5 @@ public interface AppointmentService {
 
     List<Appointment> findByStartTimeAndEndTime(LocalDateTime startTime,LocalDateTime endTime);
 
-
-    List<Appointment> getDoctorAppointments(int id);
-
-    Optional<Appointment> getByAppointmentId(int id);
 
 }

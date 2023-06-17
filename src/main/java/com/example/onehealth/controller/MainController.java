@@ -39,7 +39,7 @@ public class MainController {
             } else if (currentUser.getUser().getUserType() == UserType.ADMIN) {
                 return "redirect:user/admin";
             } else {
-                return "redirect:/doctor/singlePage";
+                return "redirect:/customLogin";
             }
         }
         return "/customLogin";
