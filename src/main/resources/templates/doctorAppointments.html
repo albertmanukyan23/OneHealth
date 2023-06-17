@@ -82,10 +82,9 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Doctors</h2>
+                    <h2>Your Appointments</h2>
                     <ul class="bread-list">
                         <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Doctors</li>
                     </ul>
                 </div>
             </div>
@@ -99,7 +98,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Our Doctors</h2>
+                    <h2>Your Appointments</h2>
                     <img src="/img/section-img.png" alt="#">
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                 </div>
@@ -111,50 +110,35 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>picture</th>
                             <th>id</th>
-                            <th>name</th>
-                            <th>surname</th>
-                            <th>speciality</th>
-                            <th>email</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th>Patient Name</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Description from Patient</th>
+                            <th>Click for Cancel</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="doctor: ${doctors}">
+                        <tr th:each="appointment: ${appointments}">
                             <td>
-                                <img th:if="${doctor.picName != null}"
-                                     th:src="@{/getImage(imageName=${doctor.getPicName()})}" width="100"/>
-                                <img th:if="${doctor.picName == null or doctor.picName.equalsIgnoreCase('null')}"
-                                     th:src="@{/img.png}"
-                                     width="100">
+                                <h3 th:text="${appointment.id}"></h3>
                             </td>
                             <td>
-                                <h3 th:text="${doctor.id}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.name}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${doctor.surname}"></h3>
+                                <h3 th:text="${appointment.patient.name}"></h3>
 
                             </td>
                             <td>
-                                <h3 th:text="${doctor.speciality}"></h3>
+                                <h3 th:text="${appointment.startTime}"></h3>
 
                             </td>
                             <td>
-                                <h3 th:text="${doctor.email}"></h3>
-
+                                <h3 th:text="${appointment.endTime}"></h3>
                             </td>
                             <td>
-                                <a th:href="@{/doctor/update(id = ${doctor.id})}"><h3>Update</h3></a>
-
+                                <h3 th:text="${appointment.description}"></h3>
                             </td>
                             <td>
-                                <a th:href="@{/doctor/remove(id = ${doctor.id})}"><h3>Remove</h3></a>
-
+                                <a th:href="@{/appointments/cancell(id = ${appointment.id})}"><h3>Reject</h3></a>
                             </td>
                         </tr>
                         </tbody>
@@ -180,7 +164,7 @@
             <div class="col-lg-6  col-12">
 
                 <div class="subscribe-form ">
-                        <a th:href="@{/doctor/add}" class="btn">Register Doctor</a>
+                    <a th:href="@{/doctor/add}" class="btn">Register Doctor</a>
                 </div>
 
             </div>

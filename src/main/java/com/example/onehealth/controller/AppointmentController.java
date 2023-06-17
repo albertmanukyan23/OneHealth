@@ -1,18 +1,23 @@
 package com.example.onehealth.controller;
+
 import com.example.onehealth.entity.Appointment;
 import com.example.onehealth.entity.Doctor;
 import com.example.onehealth.entity.Patient;
+import com.example.onehealth.event.AppointmentCancelledEvent;
 import com.example.onehealth.service.AppointmentService;
 import com.example.onehealth.service.DoctorService;
 import com.example.onehealth.service.PatientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/appointments")
@@ -20,6 +25,9 @@ public class AppointmentController {
     private final PatientService patientService;
     private final DoctorService doctorService;
     private final AppointmentService appointmentService;
+    private final ApplicationEventPublisher eventPublisher;
+
+
 
     @GetMapping()
     public String appointmentPage(ModelMap modelMap) {
@@ -50,5 +58,15 @@ public class AppointmentController {
     public String deleteAppointment(@RequestParam("id") int id) {
         appointmentService.delete(id);
         return "redirect:/appointments";
+    }
+    @Transactional
+    @GetMapping("/cancell")
+    public String rejectAppointment(@RequestParam("id") int id) {
+        Optional<Appointment> byAppointmentId = appointmentService.getByAppointmentId(id);
+        Appointment appointment = byAppointmentId.get();
+        AppointmentCancelledEvent event = new AppointmentCancelledEvent(this,appointment.getPatient().getEmail());
+        eventPublisher.publishEvent(event);
+        appointmentService.delete(id);
+        return "redirect:/doctor/appointments";
     }
 }

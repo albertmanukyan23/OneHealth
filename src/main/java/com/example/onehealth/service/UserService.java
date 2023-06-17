@@ -5,7 +5,7 @@ import com.example.onehealth.entity.User;
 
 public interface UserService {
 
-    void registerUser(User user);
+    User registerUser(User user);
     void deleteUser(int id);
 
 }
