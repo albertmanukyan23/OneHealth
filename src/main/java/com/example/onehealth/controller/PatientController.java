@@ -4,7 +4,7 @@ import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
-import com.example.onehealth.util.ImageDownloader;
+import com.example.onehealth.util.UserUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ import java.util.Optional;
 public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
-    private final ImageDownloader imageDownloader;
+    private final UserUtil userUtil;
     @GetMapping()
     public String getPatient(ModelMap modelMap) {
         List<Patient> patientList = patientService.getPatient();
@@ -37,12 +37,13 @@ public class PatientController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
-                           @RequestParam("image") MultipartFile multipartFile) throws IOException {
+                           @RequestParam("image") MultipartFile multipartFile,
+                           UserUtil userUtil) throws IOException {
         if (bindingResult.hasErrors()) {
             return "register";
         }
         patient.setRegisDate(new Date());
-        imageDownloader.saveProfilePicture(multipartFile, patient);
+        userUtil.saveProfilePicture(multipartFile, patient);
         patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);
         return "redirect:/";
@@ -62,7 +63,7 @@ public class PatientController {
             return "updatePatient";
         }
         patient.setRegisDate(new Date());
-        imageDownloader.saveProfilePicture(multipartFile, patient);
+        userUtil.saveProfilePicture(multipartFile, patient);
         patientService.update(patient);
         return "redirect:/patient";
     }

@@ -17,5 +17,5 @@ public interface AppointmentService {
 
     List<Appointment> findByStartTimeAndEndTime(LocalDateTime startTime,LocalDateTime endTime);
 
-    List<Appointment> getDoctorAppointments(int id);
+
 }

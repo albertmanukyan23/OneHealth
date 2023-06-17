@@ -35,9 +35,4 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.
                 findAllByStartTimeGreaterThanEqualAndEndTimeLessThanEqual(startTime, endTime);
     }
-
-    @Override
-    public List<Appointment> getDoctorAppointments(int id) {
-        return null;
-    }
 }
