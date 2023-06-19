@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements AppointmentService {
@@ -34,5 +36,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     public List<Appointment> findByStartTimeAndEndTime(LocalDateTime startTime, LocalDateTime endTime) {
         return appointmentRepository.
                 findAllByStartTimeGreaterThanEqualAndEndTimeLessThanEqual(startTime, endTime);
+    }
+    @Override
+    public List<Appointment> getDoctorAppointments(int id) {
+        return appointmentRepository.findAllByDoctorId(id);
+    }
+
+    @Override
+    public Optional<Appointment> getByAppointmentId(int id) {
+        return appointmentRepository.findById(id);
     }
 }
