@@ -9,6 +9,7 @@ import com.example.onehealth.service.DepartmentService;
 import com.example.onehealth.service.DoctorService;
 import com.example.onehealth.service.PatientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,8 @@ public class AppointmentController {
     private final DoctorService doctorService;
     private final AppointmentService appointmentService;
     private final DepartmentService departmentService;
+    private final ApplicationEventPublisher eventPublisher;
+
 
     @GetMapping()
     public String appointmentPage(ModelMap modelMap) {
