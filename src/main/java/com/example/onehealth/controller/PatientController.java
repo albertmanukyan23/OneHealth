@@ -4,7 +4,7 @@ import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
-import com.example.onehealth.util.UserUtil;
+import com.example.onehealth.util.ImageDownloader;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ import java.util.Optional;
 public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
-    private final UserUtil userUtil;
+    private final ImageDownloader userUtil;
     @GetMapping()
     public String getPatient(ModelMap modelMap) {
         List<Patient> patientList = patientService.getPatient();
@@ -38,7 +38,7 @@ public class PatientController {
     @PostMapping("/register")
     public String register(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
                            @RequestParam("image") MultipartFile multipartFile,
-                           UserUtil userUtil) throws IOException {
+                           ImageDownloader userUtil) throws IOException {
         if (bindingResult.hasErrors()) {
             return "register";
         }
