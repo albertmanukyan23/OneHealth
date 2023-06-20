@@ -225,34 +225,22 @@
                                         th:text="${doctor.name}" th:value="${doctor.id}"></option>
                             </select>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                Patient: <select name="patient.id">
-                                <option th:each="patient: ${patients}"
-                                        th:text="${patient.name}" th:value="${patient.id}"></option>
-                            </select>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                Department: <select name="department.id">
-                                <option th:each="department: ${departments}"
-                                        th:text="${department.getDepartments()}" th:value="${department.id}"></option>
-                            </select>
-                            </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <input name="description" type="text" placeholder="Description">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="button">
-                                                <button type="submit" class="btn">Book An Appointment</button>
-                                            </div>
-                                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="button">
+                                        <button type="submit" class="btn">Book An Appointment</button>
                                     </div>
-                                </div>d
-                            </div>d
+                                </div>
+                            </div>
+                        </div>d
+                        </div>d
                         </div>
                     </form>
                 </div>

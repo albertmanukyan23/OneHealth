@@ -42,6 +42,18 @@
 
 
     <link rel="stylesheet" href="#" id="colors">
+    <style>
+        .active {
+            color: red;
+            font-size: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -94,7 +106,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="patient:${patients}">
+                        <tr th:each="patient:${patients.content}">
                             <td><img th:if="${patient.picName != null}"
                                      th:src="@{/getImage(imageName=${patient.getPicName()})}" width="100"/>
                                 <img th:if="${patient.picName == null or patient.picName.equalsIgnoreCase('null')}"
@@ -115,10 +127,19 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="pagination">
+                        <div th:if="${patients.totalPages> 0}"
+                             th:each="pageNumber : ${pageNumbers}">
+                            <a th:href="@{/patient(size=${patients.size}, page=${pageNumber})}"
+                               th:text="${pageNumber}"
+                               th:class="${pageNumber==patients.number + 1} ? active"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </section>
 <script data-cfasync="false" src="/../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="/js/jquery.min.js"></script>

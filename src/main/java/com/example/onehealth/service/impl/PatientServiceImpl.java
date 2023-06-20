@@ -5,6 +5,8 @@ import com.example.onehealth.repository.PatientRepository;
 import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -19,6 +21,12 @@ public class PatientServiceImpl implements PatientService {
     public List<Patient> getPatient() {
         return patientRepository.findAll();
     }
+
+    @Override
+    public Page<Patient> getPatientPag(Pageable pageable) {
+        return patientRepository.findAll(pageable);
+    }
+
     @Override
     public Optional<User> findByEmail(String email) {
         return Optional.empty();

@@ -3,6 +3,8 @@ import com.example.onehealth.entity.Department;
 import com.example.onehealth.repository.DepartmentRepository;
 import com.example.onehealth.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +13,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
+
     @Override
-    public List<Department> getDepartment() {
+    public Page<Department> getDepartment(Pageable pageable) {
+        return departmentRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Department> getDepartmentList() {
         return departmentRepository.findAll();
     }
 

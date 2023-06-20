@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -131,45 +130,46 @@
                         <div class="main-menu">
                             <nav class="navigation">
                                 <ul class="nav menu">
-                                    <li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
+                                    <li class="active"><a href="#" th:text="#{index.home.page}"> <i
+                                            class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Home Page 1</a></li>
                                             <li><a href="index2.html">Home Page 2</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Doctos <i class="icofont-rounded-down"></i></a>
+                                    <li><a href="#"><i class="icofont-rounded-down" th:text="#{index.doctor.page }"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="doctors.html">Doctor</a></li>
-                                            <li><a href="doctor-details.html">Doctor Details</a></li>
+                                            <li><a href="doctors.html" th:text="#{index.doctor.page }"> </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
+                                    <li><a href="#"> <i class="icofont-rounded-down"
+                                                        th:text="#{index.service }"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="service-details.html">Service Details</a></li>
+                                            <li><a href="service.html" th:text="#{index.service }"></a></li>
+                                            <li><a href="service-details.html" th:text="#{index.service.details }"></a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="appointment.html">Appointment</a></li>
-                                            <li><a href="time-table.html">Time Table</a></li>
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                            <li><a href="/medicalServices">Our Pricing</a></li>
-                                            <li><a href="/patient/register">Sign Up</a></li>
-                                            <li><a href="/customLogin">Login</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="mail-success.html">Mail Success</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
+                                            <li><a href="about.html" th:text="#{index.about.us }"></a></li>
+                                            <li><a href="appointment.html" th:text="#{index.appointment}"></a></li>
+                                            <li><a href="time-table.html" th:text="#{index.time-table}"></a></li>
+                                            <li><a href="testimonials.html" th:text="#{index.testimonials }">Testimonials</a>
+                                            </li>
+                                            <li><a href="/medicalServices" th:text="#{index.doctor.page }">Our
+                                                Pricing</a></li>
+                                            <li><a href="/patient/register" th:text="#{index.register.page}"></a></li>
+                                            <li><a href="/customLogin" th:text="#{index.login.page}"></a></li>
+                                            <li><a href="mail-success.html" th:text="#{index.mail.success}"></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
+                                    <li><a href="#"> <i class="icofont-rounded-down" th:text="#{index.blog}"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-single.html">Blog Details</a></li>
+                                            <li><a href="blog-grid.html" th:text="#{index.blog.grid}"></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="contact.html" th:text="#{index.contact.us}"></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -177,7 +177,7 @@
                     </div>
                     <div class="col-lg-2 col-12">
                         <div class="get-quote">
-                            <a href="appointment.html" class="btn">Appointment</a>
+                            <a href="appointment.html" class="btn" th:text="#{index.appointment.page}"></a>
                         </div>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
 <section class="slider">
     <div class="hero-slider">
 
-        <div class="single-slider" style="background-image:url('img/slider2.jpg')">
+        <div class="single-slider" style="background-image:url('/img/slider2.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
@@ -210,7 +210,7 @@
         </div>
 
 
-        <div class="single-slider" style="background-image:url('img/slider.jpg')">
+        <div class="single-slider" style="background-image:url('/img/slider.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
@@ -227,9 +227,7 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="single-slider" style="background-image:url('img/slider3.jpg')">
+        <div class="single-slider" style="background-image:url('/img/slider3.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
@@ -1152,8 +1150,6 @@
         </div>
     </div>
 </section>
-
-
 
 
 <section class="appointment">
