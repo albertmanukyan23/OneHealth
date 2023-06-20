@@ -22,4 +22,6 @@ public interface AppointmentService {
     Optional<Appointment> getByAppointmentId(int id);
 
 
+    List<Appointment> getPatientAppointments(int id);
+
 }

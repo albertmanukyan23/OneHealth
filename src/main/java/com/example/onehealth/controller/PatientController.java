@@ -1,12 +1,17 @@
 package com.example.onehealth.controller;
 
+import com.example.onehealth.entity.Appointment;
 import com.example.onehealth.entity.Patient;
+import com.example.onehealth.entity.User;
 import com.example.onehealth.entity.UserType;
+import com.example.onehealth.security.CurrentUser;
+import com.example.onehealth.service.AppointmentService;
 import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.ImageDownloader;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,11 +29,16 @@ public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
     private final ImageDownloader userUtil;
+    private final AppointmentService appointmentService;
     @GetMapping()
     public String getPatient(ModelMap modelMap) {
         List<Patient> patientList = patientService.getPatient();
         modelMap.addAttribute("patients", patientList);
         return "patients";
+    }
+    @GetMapping("/singlePage")
+    public String singlePage() {
+        return "patientSinglePage";
     }
     @GetMapping("/register")
     public String registerPage(@ModelAttribute("patient") Patient patient) {
@@ -56,6 +66,15 @@ public class PatientController {
         patientById.ifPresent(patientFromDb -> modelMap.addAttribute("patient", patientFromDb));
         return "updatePatient";
     }
+    @GetMapping("/appointments")
+    public String getDoctorPersonalAppointments(@AuthenticationPrincipal CurrentUser currentUser,
+                                                ModelMap modelMap) {
+        User user = currentUser.getUser();
+        List<Appointment> patientAppointments = appointmentService.getPatientAppointments(user.getId());
+        modelMap.addAttribute("appointments",patientAppointments);
+        return "patientAppointments";
+    }
+
     @PostMapping("/update")
     public String updatePatient(@ModelAttribute("patient") @Valid Patient patient,BindingResult bindingResult,
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {

@@ -1,16 +1,12 @@
 package com.example.onehealth.controller;
-import com.example.onehealth.entity.Appointment;
-import com.example.onehealth.entity.Department;
-import com.example.onehealth.entity.Doctor;
-import com.example.onehealth.entity.Patient;
+
+import com.example.onehealth.entity.*;
 import com.example.onehealth.event.AppointmentCancelledEvent;
-import com.example.onehealth.service.AppointmentService;
-import com.example.onehealth.service.DepartmentService;
-import com.example.onehealth.service.DoctorService;
-import com.example.onehealth.service.PatientService;
+import com.example.onehealth.security.CurrentUser;
+import com.example.onehealth.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -50,27 +46,41 @@ public class AppointmentController {
     }
 
     @PostMapping("/add")
-    public String addAppointment(@ModelAttribute Appointment appointment) {
-        LocalDateTime startDateTime = appointment.getStartTime().minusMinutes(30);
-        LocalDateTime endDateTime = appointment.getStartTime().plusMinutes(30);
-        appointment.setEndTime(endDateTime);
-        appointmentService.addAppointment(appointment,startDateTime);
-         return "redirect:/patient";
+    public String addAppointment(@ModelAttribute Appointment appointment,
+                                 @AuthenticationPrincipal CurrentUser currentUser) {
+        if (appointment.getStartTime().getHour() >= 18) {
+            return "redirect:/appointments/add";
+        }
+        Optional<Patient> patientById = patientService.findPatientById(currentUser.getUser().getId());
+        if (patientById.isPresent()) {
+            appointment.setPatient(patientById.get());
+            LocalDateTime startDateTime = appointment.getStartTime().minusMinutes(30);
+            LocalDateTime endDateTime = appointment.getStartTime().plusMinutes(30);
+            appointment.setEndTime(endDateTime);
+            appointmentService.addAppointment(appointment, startDateTime);
+        }
+        return "redirect:/patient/singlePage";
     }
 
-    @GetMapping("/remove")
-    public String deleteAppointment(@RequestParam("id") int id) {
-        appointmentService.delete(id);
-        return "redirect:/patient";
-    }
-    @Transactional
     @GetMapping("/cancell")
-    public String rejectAppointment(@RequestParam("id") int id) {
+    @Transactional
+    public String cancelAppointment(@RequestParam("id") int id,
+                                    @AuthenticationPrincipal CurrentUser currentUser) {
         Optional<Appointment> byAppointmentId = appointmentService.getByAppointmentId(id);
-        Appointment appointment = byAppointmentId.get();
-        AppointmentCancelledEvent event = new AppointmentCancelledEvent(this,appointment.getPatient().getEmail());
-        eventPublisher.publishEvent(event);
-        appointmentService.delete(id);
-        return "redirect:/doctor/appointments";
+        if (byAppointmentId.isPresent()) {
+            User user = currentUser.getUser();
+            appointmentService.delete(id);
+            if (user.getUserType() == UserType.DOCTOR) {
+                Appointment appointment = byAppointmentId.get();
+                AppointmentCancelledEvent event = new AppointmentCancelledEvent(this, appointment.getPatient().getEmail());
+                eventPublisher.publishEvent(event);
+                return "redirect:/doctor/appointments";
+            } else if (user.getUserType() == UserType.PATIENT) {
+                return "redirect:/patient/appointments";
+            } else {
+                return "redirect:/admin";
+            }
+        }
+        return "redirect:/customLogin";
     }
 }

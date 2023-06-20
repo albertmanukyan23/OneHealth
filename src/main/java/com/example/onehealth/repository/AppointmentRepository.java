@@ -7,4 +7,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 
     List<Appointment>findAllByStartTimeGreaterThanEqualAndEndTimeLessThanEqual(LocalDateTime startTime, LocalDateTime endTime);
     List<Appointment> findAllByDoctorId(int id);
+    List<Appointment> findAllByPatientId(int id);
+
 }

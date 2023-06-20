@@ -35,9 +35,9 @@ public class MainController {
     public String customSuccessLogIn(@AuthenticationPrincipal CurrentUser currentUser) {
         if (currentUser != null) {
             if (currentUser.getUser().getUserType() == UserType.PATIENT) {
-                return "redirect:/";
+                return "redirect:/patient/singlePage";
             } else if (currentUser.getUser().getUserType() == UserType.ADMIN) {
-                return "redirect:user/admin";
+                return "redirect:/admin";
             } else {
                 return "redirect:/doctor/singlePage";
             }
