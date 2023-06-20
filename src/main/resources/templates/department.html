@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,9 +39,17 @@
     <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/color/color1.css">
-
-
     <link rel="stylesheet" href="#" id="colors">
+    <style>
+        .active{
+            color: red;
+            font-size: 20px;
+        }
+        .pagination{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
 </head>
 <body>
 
@@ -165,7 +173,6 @@
 
 <!--</header>-->
 
-
 <div class="breadcrumbs overlay">
     <div class="container">
         <div class="bread-inner">
@@ -205,12 +212,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="department: ${departments}">
+                        <tr th:each="department: ${departments.content}">
                             <td>
                                 <h3 th:text="${department.id}"></h3>
                             </td>
                             <td>
-                                <h3 th:text="${department.getDepartments()}"></h3>
+                                <h3 th:text="${department.departments}"></h3>
                             </td>
 
                             <td>
@@ -224,6 +231,14 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="pagination">
+                        <div th:if="${departments.totalPages> 0}"
+                             th:each="pageNumber : ${pageNumbers}">
+                            <a th:href="@{/department/open-page(size=${departments.size}, page=${pageNumber})}"
+                               th:text="${pageNumber}"
+                               th:class="${pageNumber==departments.number + 1} ? active"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

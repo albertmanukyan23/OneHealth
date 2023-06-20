@@ -180,6 +180,13 @@
                                         <input type="file" name="image" placeholder="Select Image" required="">
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    Department: <select name="department.id">
+                                    <option th:each="department: ${departments}"
+                                            th:text="${departments.getDepartments()}" th:value="${departments.id}"></option>
+                                </select>
+                                </div>
+                                </div>
                                 <div class="col-12">
                                     <div class="form-group login-btn">
                                         <button class="btn" type="submit">Register Doctor</button>
@@ -191,7 +198,6 @@
                                     </div>
                                     <a href="#" class="terms">Terms & Conditions</a>
                                 </div>
-                            </div>
                         </form>
 
                     </div>

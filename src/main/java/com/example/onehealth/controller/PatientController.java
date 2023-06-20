@@ -1,5 +1,6 @@
 package com.example.onehealth.controller;
 
+import com.example.onehealth.entity.Doctor;
 import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.service.PatientService;
@@ -7,6 +8,9 @@ import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.UserUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,9 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/patient")
@@ -25,9 +32,22 @@ public class PatientController {
     private final PatientService patientService;
     private final UserUtil userUtil;
     @GetMapping()
-    public String getPatient(ModelMap modelMap) {
-        List<Patient> patientList = patientService.getPatient();
-        modelMap.addAttribute("patients", patientList);
+    public String getPatient(ModelMap modelMap,
+                             @RequestParam("page") Optional<Integer> page,
+                             @RequestParam("size") Optional<Integer> size
+                             ) {
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
+        Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        Page<Patient> result= patientService.getPatientPag(pageable);
+        int totalPages = result.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            modelMap.addAttribute("pageNumbers", pageNumbers);
+        }
+        modelMap.addAttribute("patients", result);
         return "patients";
     }
     @GetMapping("/register")

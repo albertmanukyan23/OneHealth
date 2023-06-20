@@ -4,6 +4,8 @@ import com.example.onehealth.entity.Doctor;
 import com.example.onehealth.repository.DoctorRepository;
 import com.example.onehealth.service.DoctorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,4 +47,13 @@ public class DoctorServiceImpl implements DoctorService {
             }
         }
     }
+
+    @Override
+    public Page<Doctor> getDoctorPage(Pageable pageable) {
+        return doctorRepository.findAll(pageable);
+    }
+
+
+
+
 }
