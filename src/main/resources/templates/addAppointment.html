@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <meta charset="utf-8">
@@ -35,7 +35,8 @@
     <link rel="stylesheet" href="/css/magnific-popup.css">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
+
     <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/color/color1.css">
@@ -116,7 +117,7 @@
                     <div class="col-lg-3 col-md-3 col-12">
 
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo.png" alt="#"></a>
+                            <a href="index.html"><img src="/img/logo.png" alt="#"></a>
                         </div>
 
 
@@ -210,64 +211,26 @@
                 <div class="appointment-inner">
                     <div class="title">
                         <h3>Book your appointment</h3>
-                        <p>We will confirm your appointment within 2 hours</p>
                     </div>
-                    <form class="form" action="#">
+                    <form  action="/appointments/add" method="post">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="name" type="text" placeholder="Name">
+                                    <input name="startTime" type="datetime-local" placeholder="Description">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group">
-                                    <input name="email" type="email" placeholder="Email">
-                                </div>
+                                Doctor: <select name="doctor.id">
+                                <option th:each="doctor: ${doctors}"
+                                        th:text="${doctor.name}" th:value="${doctor.id}"></option>
+                            </select>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group">
-                                    <input name="phone" type="text" placeholder="Phone">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group">
-                                    <div class="nice-select form-control wide" tabindex="0"><span class="current">Department</span>
-                                        <ul class="list">
-                                            <li data-value="1" class="option selected ">Department</li>
-                                            <li data-value="2" class="option">Cardiac Clinic</li>
-                                            <li data-value="3" class="option">Neurology</li>
-                                            <li data-value="4" class="option">Dentistry</li>
-                                            <li data-value="5" class="option">Gastroenterology</li>
-                                        </ul>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <input name="description" type="text" placeholder="Description">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group">
-                                    <div class="nice-select form-control wide" tabindex="0"><span
-                                            class="current">Doctor</span>
-                                        <ul class="list">
-                                            <li data-value="1" class="option selected ">Doctor</li>
-                                            <li data-value="2" class="option">Dr. Akther Hossain</li>
-                                            <li data-value="3" class="option">Dr. Dery Alex</li>
-                                            <li data-value="4" class="option">Dr. Jovis Karon</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Date" id="datepicker">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-12">
-                                <div class="form-group">
-                                    <textarea name="message" placeholder="Write Your Message Here....."></textarea>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
@@ -276,6 +239,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>d
+                        </div>d
                         </div>
                     </form>
                 </div>
@@ -299,8 +264,6 @@
         </div>
     </div>
 </section>
-
-
 <footer id="footer" class="footer ">
     <div class="footer-top">
         <div class="container">

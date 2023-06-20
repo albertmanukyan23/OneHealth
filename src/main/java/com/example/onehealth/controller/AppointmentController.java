@@ -35,13 +35,12 @@ public class AppointmentController {
     public String addAppointmentPage(ModelMap modelMap) {
         List<Doctor> doctorList = doctorService.getDoctors();
         List<Patient> patientList = patientService.getPatient();
-        List<Department> department = departmentService.getDepartment();
+        List<Department> department = departmentService.getDepartmentList();
         modelMap.addAttribute("doctors", doctorList);
         modelMap.addAttribute("departments", department);
         modelMap.addAttribute("patients", patientList);
         return "addAppointment";
     }
-
     @PostMapping("/add")
     public String addAppointment(@ModelAttribute Appointment appointment) {
         LocalDateTime startDateTime = appointment.getStartTime().minusMinutes(30);

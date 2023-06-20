@@ -10,6 +10,9 @@ import com.example.onehealth.service.impl.DepartmentServiceImpl;
 import com.example.onehealth.util.UserUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -20,6 +23,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -32,16 +37,31 @@ public class DoctorController {
     private final UserUtil userUtil;
 
     @GetMapping
-    public String getDoctors(ModelMap modelMap,@ModelAttribute Department department) {
-        List<Doctor> doctors = doctorService.getDoctors();
-        modelMap.addAttribute("doctors", doctors);
-        modelMap.addAttribute("departments", department);
+    public String getDoctors(ModelMap modelMap,
+                             @RequestParam("page") Optional<Integer> page,
+                             @RequestParam("size") Optional<Integer> size
+    ) {
+        List<Department> departmentList = departmentService.getDepartmentList();
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
+        Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        Page<Doctor> result= doctorService.getDoctorPage(pageable);
+        int totalPages = result.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            modelMap.addAttribute("pageNumbers", pageNumbers);
+        }
+        modelMap.addAttribute("doctors", result);
+        modelMap.addAttribute("departments", departmentList);
         return "doctors";
     }
 
     @GetMapping("/add")
     public String addDoctor(@ModelAttribute("doctor") Doctor doctor, ModelMap modelMap,
-                            Department department) {
+                            Department department
+                            ) {
         modelMap.addAttribute("departments",department);
         return "addDoctor";
     }
@@ -61,7 +81,9 @@ public class DoctorController {
 
     @GetMapping("/update")
     public String updateDoctor( @ModelAttribute("doctor") Doctor doctor,ModelMap modelMap) {
+        List<Department> departmentList = departmentService.getDepartmentList();
         Optional<Doctor> doctorById = doctorService.findDoctorById(doctor.getId());
+        modelMap.addAttribute("departments",departmentList);
         doctorById.ifPresent(doctorFromDb-> modelMap.addAttribute("doctor", doctorFromDb));
         return "updateDoctor";
     }
