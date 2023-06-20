@@ -1,16 +1,17 @@
 package com.example.onehealth.controller;
 
-import com.example.onehealth.entity.Doctor;
-import com.example.onehealth.entity.Patient;
-import com.example.onehealth.entity.UserType;
-import com.example.onehealth.service.PatientService;
+import com.example.onehealth.entity.*;
+import com.example.onehealth.security.CurrentUser;
+import com.example.onehealth.service.AppointmentService;
 import com.example.onehealth.service.UserService;
-import com.example.onehealth.util.UserUtil;
+import com.example.onehealth.util.ImageDownloader;
 import jakarta.validation.Valid;
+import com.example.onehealth.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -30,7 +31,8 @@ import java.util.stream.IntStream;
 public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
-    private final UserUtil userUtil;
+    private final ImageDownloader imageDownloader;
+    private final AppointmentService appointmentService;
     @GetMapping()
     public String getPatient(ModelMap modelMap,
                              @RequestParam("page") Optional<Integer> page,
@@ -50,6 +52,10 @@ public class PatientController {
         modelMap.addAttribute("patients", result);
         return "patients";
     }
+    @GetMapping("/singlePage")
+    public String singlePage() {
+        return "patientSinglePage";
+    }
     @GetMapping("/register")
     public String registerPage(@ModelAttribute("patient") Patient patient) {
         return "register";
@@ -58,12 +64,12 @@ public class PatientController {
     @PostMapping("/register")
     public String register(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
                            @RequestParam("image") MultipartFile multipartFile,
-                           UserUtil userUtil) throws IOException {
+                           ImageDownloader userUtil) throws IOException {
         if (bindingResult.hasErrors()) {
             return "register";
         }
         patient.setRegisDate(new Date());
-        userUtil.saveProfilePicture(multipartFile, patient);
+        imageDownloader.saveProfilePicture(multipartFile, patient);
         patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);
         return "redirect:/";
@@ -76,6 +82,15 @@ public class PatientController {
         patientById.ifPresent(patientFromDb -> modelMap.addAttribute("patient", patientFromDb));
         return "updatePatient";
     }
+    @GetMapping("/appointments")
+    public String getDoctorPersonalAppointments(@AuthenticationPrincipal CurrentUser currentUser,
+                                                ModelMap modelMap) {
+        User user = currentUser.getUser();
+        List<Appointment> patientAppointments = appointmentService.getPatientAppointments(user.getId());
+        modelMap.addAttribute("appointments",patientAppointments);
+        return "patientAppointments";
+    }
+
     @PostMapping("/update")
     public String updatePatient(@ModelAttribute("patient") @Valid Patient patient,BindingResult bindingResult,
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
@@ -83,7 +98,7 @@ public class PatientController {
             return "updatePatient";
         }
         patient.setRegisDate(new Date());
-        userUtil.saveProfilePicture(multipartFile, patient);
+        imageDownloader.saveProfilePicture(multipartFile, patient);
         patientService.update(patient);
         return "redirect:/patient";
     }

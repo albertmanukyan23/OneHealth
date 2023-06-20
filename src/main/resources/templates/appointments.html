@@ -22,7 +22,7 @@
         <td th:text="${appointment.getEndTime()}"></td>
         <td th:text="${appointment.getPatient().getName()}"></td>
         <td th:text="${appointment.getDoctor().getName()}"></td>
-        <td><a th:href="@{/appointments/remove(id=${appointment.getId()})}">Remove</a></td>
+        <td><a th:href="@{/appointments/cancell(id=${appointment.getId()})}">Remove</a></td>
     </tr>
 </table>
 </body>

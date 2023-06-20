@@ -110,21 +110,17 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>id</th>
-                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Description from Patient</th>
-                            <th>Click for Cancel</th>
+                            <th>Click for Cancell</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="appointment: ${appointments}">
+
                             <td>
-                                <h3 th:text="${appointment.id}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${appointment.patient.name}"></h3>
+                                <h3 th:text="${appointment.doctor.name}"></h3>
 
                             </td>
                             <td>
@@ -133,9 +129,6 @@
                             </td>
                             <td>
                                 <h3 th:text="${appointment.endTime}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${appointment.description}"></h3>
                             </td>
                             <td>
                                 <a th:href="@{/appointments/cancell(id = ${appointment.id})}"><h3>Cancell</h3></a>
@@ -164,7 +157,7 @@
             <div class="col-lg-6  col-12">
 
                 <div class="subscribe-form ">
-                    <a th:href="@{/doctor/add}" class="btn">Register Doctor</a>
+                    <a th:href="@{/appointments/add}" class="btn">Create Appointment</a>
                 </div>
 
             </div>

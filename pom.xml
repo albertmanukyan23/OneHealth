@@ -85,6 +85,10 @@
             <artifactId>spring-web</artifactId>
             <version>6.0.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
 
     </dependencies>
 
