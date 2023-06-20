@@ -1,15 +1,12 @@
 package com.example.onehealth.controller;
 
-import com.example.onehealth.entity.Doctor;
-import com.example.onehealth.entity.Patient;
-import com.example.onehealth.entity.User;
-import com.example.onehealth.entity.UserType;
+import com.example.onehealth.entity.*;
 import com.example.onehealth.security.CurrentUser;
 import com.example.onehealth.service.AppointmentService;
-import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.ImageDownloader;
 import jakarta.validation.Valid;
+import com.example.onehealth.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

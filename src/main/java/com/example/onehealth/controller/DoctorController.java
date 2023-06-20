@@ -1,9 +1,6 @@
 package com.example.onehealth.controller;
 
-import com.example.onehealth.entity.Appointment;
-import com.example.onehealth.entity.Doctor;
-import com.example.onehealth.entity.User;
-import com.example.onehealth.entity.UserType;
+import com.example.onehealth.entity.*;
 import com.example.onehealth.event.DoctorRegistrationEvent;
 import com.example.onehealth.security.CurrentUser;
 import com.example.onehealth.service.AppointmentService;
@@ -38,7 +35,7 @@ import java.util.stream.IntStream;
 @RequestMapping("/doctor")
 public class DoctorController {
     private final UserService userService;
-    private final DoctorService doctorService;
+    private  final DoctorService doctorService;
     private final ImageDownloader imageDownloader;
     private final AppointmentService appointmentService;
     private final ApplicationEventPublisher eventPublisher;
