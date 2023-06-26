@@ -42,6 +42,7 @@ public class SpringSecurityConfig {
                 .loginPage("/customLogin").permitAll()
                 .defaultSuccessUrl("/customSuccessLogIn")
                 .loginProcessingUrl("/login").permitAll()
+                .failureUrl("/customLogin?error=true")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")

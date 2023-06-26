@@ -79,111 +79,6 @@
 </div>
 
 
-<header class="header">
-
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-5 col-12">
-
-                    <ul class="top-link">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Doctors</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-
-                </div>
-                <div class="col-lg-6 col-md-7 col-12">
-
-                    <ul class="top-contact">
-                        <li><i class="fa fa-phone"></i>+880 1234 56789</li>
-                        <li><i class="fa fa-envelope"></i><a
-                                href="/cdn-cgi/l/email-protection#b5c6c0c5c5dac7c1f5ccdac0c7d8d4dcd99bd6dad8"><span
-                                class="__cf_email__" data-cfemail="3b484e4b4b54494f7b42544e49565a525715585456">[email&#160;protected]</span></a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="header-inner">
-        <div class="container">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-12">
-
-                        <div class="logo">
-                            <a href="index.html"><img src="/img/logo.png" alt="#"></a>
-                        </div>
-
-
-                        <div class="mobile-nav"></div>
-
-                    </div>
-                    <div class="col-lg-7 col-md-9 col-12">
-
-                        <div class="main-menu">
-                            <nav class="navigation">
-                                <ul class="nav menu">
-                                    <li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Default Homepage</a></li>
-                                            <li><a href="index2.html">Animation Homepage</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Doctos <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="doctors.html">Doctor</a></li>
-                                            <li><a href="doctor-details.html">Doctor Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="service-details.html">Service Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="appointment.html">Appointment</a></li>
-                                            <li><a href="time-table.html">Time Table</a></li>
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                            <li><a href="pricing.html">Our Pricing</a></li>
-                                            <li><a href="register.html">Sign Up</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="mail-success.html">Mail Success</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-single.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-2 col-12">
-                        <div class="get-quote">
-                            <a href="appointment.html" class="btn">Appointment</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</header>
 
 
 <div class="breadcrumbs overlay">
@@ -216,31 +111,34 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
+                                    <p style="margin-bottom: 0">Date for Appointment</p>
                                     <input name="startTime" type="datetime-local" placeholder="Description">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
-                                Doctor: <select name="doctor.id">
+                                <p style="margin-bottom: 0">Choose Doctor</p>
+                                <select name="doctor.id">
                                 <option th:each="doctor: ${doctors}"
                                         th:text="${doctor.name}" th:value="${doctor.id}"></option>
                             </select>
                             </div>
-                            <div class="row">
+                            <div style="margin-left: 2px" class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
+                                        <p style="margin-bottom: 0">Write about your complaint</p>
                                         <input name="description" type="text" placeholder="Description">
                                     </div>
                                 </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <div class="button">
+                                    <div style="margin-top: 30px; margin-right: 100px" class="button">
                                         <button type="submit" class="btn">Book An Appointment</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>d
-                        </div>d
+                        </div>
+                        </div>
                         </div>
                     </form>
                 </div>
@@ -249,15 +147,12 @@
                 <div class="work-hour">
                     <h3>Working Hours</h3>
                     <ul class="time-sidual">
-                        <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-                        <li class="day">Saturday <span>9.00-18.30</span></li>
-                        <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
-                        <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-                        <li class="day">Saturday <span>9.00-18.30</span></li>
-                        <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
-                        <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-                        <li class="day">Saturday <span>9.00-18.30</span></li>
-                        <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+                        <li class="day">Monday <span>8.00-18.00</span></li>
+                        <li class="day">Tuesday <span>8.00-18.00</span></li>
+                        <li class="day">Wednesday <span>8.00-18.00</span></li>
+                        <li class="day">Thursday <span>8.00-18.00</span></li>
+                        <li class="day">Friday <span>8.00-18.00</span></li>
+                        <li class="day">Saturday <span>8.00-18.00</span></li>
                     </ul>
                 </div>
             </div>

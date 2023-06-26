@@ -19,6 +19,7 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 @RequestMapping("/department")
 public class DepartmentController {
+
     private final DepartmentService departmentService;
 
     @GetMapping("/open-page")

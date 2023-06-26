@@ -83,4 +83,34 @@
     </sql>
 
 </changeSet>
+<changeSet id="modifyAppointment" author="almanukyan">
+    <sql>
+    alter table appointment
+    drop foreign key appointment_doctor_user_id_fk;
+
+    alter table appointment
+    add constraint appointment_doctor_user_id_fk
+    foreign key (doctor_id) references doctor (id)
+    on delete cascade;
+
+    alter table appointment
+    drop foreign key appointment_patient_user_id_fk;
+
+    alter table appointment
+    add constraint appointment_patient_user_id_fk
+    foreign key (patient_id) references patient (id)
+    on delete cascade;
+    </sql>
+</changeSet>
+    <changeSet id="modifyDepartment" author="almanukyan">
+        <sql>
+             alter table doctor
+             drop foreign key FK75x47tyyeco3xj4cmlhj8v6ta;
+
+             alter table doctor
+                 add constraint FK75x47tyyeco3xj4cmlhj8v6ta
+                     foreign key (department_id) references department (id)
+                         on delete cascade;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

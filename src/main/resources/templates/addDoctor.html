@@ -158,6 +158,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <p style="margin-bottom: 0">Birthday</p>
                                         <input type="date" name="birthDate" placeholder="Birthday" required="">
                                         <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" style="color: red;"></p>
 
@@ -181,9 +182,10 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12">
-                                    Department: <select name="department.id">
+                                    <p style="margin-bottom: 0">Departments</p>
+                                   <select name="department.id">
                                     <option th:each="department: ${departments}"
-                                            th:text="${departments.getDepartments()}" th:value="${departments.id}"></option>
+                                            th:text="${department.getDepartments()}" th:value="${department.id}"></option>
                                 </select>
                                 </div>
                                 </div>
