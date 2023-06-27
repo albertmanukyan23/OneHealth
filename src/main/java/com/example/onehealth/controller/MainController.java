@@ -17,11 +17,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import static org.apache.commons.io.IOUtils.close;
+
 @Controller
 public class MainController {
 
     @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
+
     @GetMapping("/")
     public String indexPage() {
         return "index";
@@ -50,16 +53,19 @@ public class MainController {
         return "/customLogin";
 
     }
+
     @GetMapping(value = "/getImage",
             produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getImage(@RequestParam("imageName") String imageName) throws IOException {
         File file = new File(imageUploadPath + imageName);
         if (file.exists()) {
-            FileInputStream fis = new FileInputStream(file);
-            return IOUtils.toByteArray(fis);
+            try (FileInputStream fis = new FileInputStream(file)) {
+                return IOUtils.toByteArray(fis);
+            }
         }
         return null;
     }
+
     @GetMapping("/admin")
     public String showAdminPage() {
         return "admin";

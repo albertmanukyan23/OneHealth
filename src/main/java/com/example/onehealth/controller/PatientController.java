@@ -107,7 +107,7 @@ public class PatientController {
         return "redirect:/patient";
     }
     @GetMapping("/delete")
-    public String removeUser(@RequestParam("id") int id)  {
+    public String removeUser(@RequestParam("id") int id) throws IOException {
         userService.deleteUser(id);
         return "redirect:/patient";
     }

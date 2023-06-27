@@ -114,7 +114,7 @@ public class DoctorController {
     }
 
     @GetMapping("/remove")
-    public String removeDoctor(@RequestParam("id") int id) {
+    public String removeDoctor(@RequestParam("id") int id) throws IOException {
         userService.deleteUser(id);
         return "redirect:/doctor";
     }
