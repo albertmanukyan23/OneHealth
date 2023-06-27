@@ -33,14 +33,14 @@ public class AppointmentController {
         return "appointments";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/make")
     public String addAppointmentPage(ModelMap modelMap) {
         modelMap.addAttribute("doctors", doctorService.getDoctors());
         modelMap.addAttribute("departments", departmentService.getDepartmentList());
         return "addAppointment";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/make")
     public String addAppointment(@ModelAttribute Appointment appointment,
                                  @AuthenticationPrincipal CurrentUser currentUser) {
         if (appointmentService.createAppointment(patientService.findPatientById(currentUser.getUser().getId()), appointment)) {

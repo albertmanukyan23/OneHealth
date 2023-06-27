@@ -56,7 +56,8 @@ public class PatientController {
         return "patients";
     }
     @GetMapping("/singlePage")
-    public String singlePage() {
+    public String singlePage(@AuthenticationPrincipal CurrentUser currentUser,ModelMap modelMap) {
+        modelMap.addAttribute("patient",currentUser.getUser());
         return "patientSinglePage";
     }
     @GetMapping("/register")
