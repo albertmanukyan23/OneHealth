@@ -19,6 +19,7 @@ import java.io.IOException;
 
 @Controller
 public class MainController {
+
     @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
     @GetMapping("/")
