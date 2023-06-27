@@ -19,5 +19,6 @@ public class ImageDownloader {
             multipartFile.transferTo(file);
             user.setPicName(fileName);
         }
+
     }
 }

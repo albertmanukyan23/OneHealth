@@ -1,29 +1,27 @@
 package com.example.onehealth.controller;
 
-import com.example.onehealth.entity.*;
-import com.example.onehealth.event.DoctorRegistrationEvent;
+import com.example.onehealth.entity.Appointment;
+import com.example.onehealth.entity.Department;
+import com.example.onehealth.entity.Doctor;
+import com.example.onehealth.entity.User;
 import com.example.onehealth.security.CurrentUser;
 import com.example.onehealth.service.AppointmentService;
 import com.example.onehealth.service.DepartmentService;
 import com.example.onehealth.service.DoctorService;
 import com.example.onehealth.service.UserService;
-import com.example.onehealth.util.ImageDownloader;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,11 +32,10 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 @RequestMapping("/doctor")
 public class DoctorController {
+
     private final UserService userService;
     private  final DoctorService doctorService;
-    private final ImageDownloader imageDownloader;
     private final AppointmentService appointmentService;
-    private final ApplicationEventPublisher eventPublisher;
     private final DepartmentService departmentService;
 
 
@@ -79,26 +76,20 @@ public class DoctorController {
     }
 
     @GetMapping("/add")
-    public String addDoctor(@ModelAttribute("doctor") Doctor doctor, ModelMap modelMap,
-                            Department department
+    public String addDoctor(@ModelAttribute("doctor") Doctor doctor, ModelMap modelMap
                             ) {
-        modelMap.addAttribute("departments",department);
+        List<Department> departmentList = departmentService.getDepartmentList();
+        modelMap.addAttribute("departments",departmentList);
         return "addDoctor";
     }
 
     @PostMapping("/add")
-    @Transactional
     public String addDoctor(@ModelAttribute("doctor") @Valid Doctor doctor, BindingResult bindingResult,
                             @RequestParam("image") MultipartFile multipartFile) throws IOException {
         if (bindingResult.hasErrors()) {
             return "addDoctor";
         }
-        doctor.setRegisDate(new Date());
-        DoctorRegistrationEvent event = new DoctorRegistrationEvent(this,doctor.getEmail(),doctor.getPassword());
-        eventPublisher.publishEvent(event);
-        userService.registerUser(doctor);
-        doctor.setUserType(UserType.DOCTOR);
-        imageDownloader.saveProfilePicture(multipartFile, doctor);
+        doctorService.registerDoctor(doctor,multipartFile);
         return "redirect:/doctor";
     }
 
@@ -112,14 +103,12 @@ public class DoctorController {
     }
 
     @PostMapping("/update")
-    @Transactional
     public String updateDoctor(@ModelAttribute("doctor") @Valid Doctor doctor, BindingResult bindingResult,
                                @RequestParam("image") MultipartFile multipartFile) throws IOException {
         if (bindingResult.hasErrors()) {
             return "updateDoctor";
         }
-        imageDownloader.saveProfilePicture(multipartFile, doctor);
-        doctorService.update(doctor);
+        doctorService.update(doctor,multipartFile);
         return "redirect:/doctor";
     }
 

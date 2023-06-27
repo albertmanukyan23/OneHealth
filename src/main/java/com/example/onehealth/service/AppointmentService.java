@@ -2,20 +2,17 @@ package com.example.onehealth.service;
 
 
 import com.example.onehealth.entity.Appointment;
-import com.example.onehealth.entity.User;
+import com.example.onehealth.entity.Patient;
+import com.example.onehealth.security.CurrentUser;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface AppointmentService {
     List<Appointment> getAppointment();
 
-    void addAppointment(Appointment appointment,LocalDateTime start);
-
     void delete(int id);
 
-    List<Appointment> findByStartTimeAndEndTime(LocalDateTime startTime,LocalDateTime endTime);
 
     List<Appointment> getDoctorAppointments(int id);
 
@@ -24,4 +21,10 @@ public interface AppointmentService {
 
     List<Appointment> getPatientAppointments(int id);
 
+    boolean isDoctorAvailableForAppointment(Appointment appointment);
+
+    boolean createAppointment(Optional<Patient> patientById, Appointment appointment);
+
+
+    void cancellAppointmentById(int id, CurrentUser currentUser);
 }

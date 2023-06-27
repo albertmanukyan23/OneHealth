@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/medicalServices")
 public class MedServController {
     private final MedServService medServService;
-    @GetMapping()
+    @GetMapping
     public String getPriceList(ModelMap modelMap, @AuthenticationPrincipal CurrentUser currentUser) {
         List<MedServ> priceList = medServService.getPriceList();
         modelMap.addAttribute("priceList", priceList);
