@@ -34,7 +34,7 @@ import java.util.stream.IntStream;
 public class DoctorController {
 
     private final UserService userService;
-    private  final DoctorService doctorService;
+    private final DoctorService doctorService;
     private final AppointmentService appointmentService;
     private final DepartmentService departmentService;
 
@@ -45,25 +45,17 @@ public class DoctorController {
                              @RequestParam("size") Optional<Integer> size
     ) {
         List<Department> departmentList = departmentService.getDepartmentList();
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(5);
-        Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
-        Page<Doctor> result= doctorService.getDoctorPage(pageable);
-        int totalPages = result.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            modelMap.addAttribute("pageNumbers", pageNumbers);
-        }
+        Page<Doctor> result = doctorService.getDoctorPageData(page, size);
+        List<Integer> pageNumbers = doctorService.getNumbersPage(result.getTotalPages());
+        modelMap.addAttribute("pageNumbers", pageNumbers);
         modelMap.addAttribute("doctors", result);
         modelMap.addAttribute("departments", departmentList);
         return "doctors";
     }
 
     @GetMapping("/singlePage")
-    public String singlePage(@AuthenticationPrincipal CurrentUser currentUser,ModelMap modelMap) {
-        modelMap.addAttribute("doctor",currentUser.getUser());
+    public String singlePage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
+        modelMap.addAttribute("doctor", currentUser.getUser());
         return "doctorSinglePage";
     }
 
@@ -72,15 +64,15 @@ public class DoctorController {
                                                 ModelMap modelMap) {
         User user = currentUser.getUser();
         List<Appointment> doctorAppointments = appointmentService.getDoctorAppointments(user.getId());
-        modelMap.addAttribute("appointments",doctorAppointments);
+        modelMap.addAttribute("appointments", doctorAppointments);
         return "doctorAppointments";
     }
 
     @GetMapping("/add")
     public String addDoctor(@ModelAttribute("doctor") Doctor doctor, ModelMap modelMap
-                            ) {
+    ) {
         List<Department> departmentList = departmentService.getDepartmentList();
-        modelMap.addAttribute("departments",departmentList);
+        modelMap.addAttribute("departments", departmentList);
         return "addDoctor";
     }
 
@@ -90,16 +82,16 @@ public class DoctorController {
         if (bindingResult.hasErrors()) {
             return "addDoctor";
         }
-        doctorService.registerDoctor(doctor,multipartFile);
+        doctorService.registerDoctor(doctor, multipartFile);
         return "redirect:/doctor";
     }
 
     @GetMapping("/update")
-    public String updateDoctor( @ModelAttribute("doctor") Doctor doctor,ModelMap modelMap) {
+    public String updateDoctor(@ModelAttribute("doctor") Doctor doctor, ModelMap modelMap) {
         List<Department> departmentList = departmentService.getDepartmentList();
         Optional<Doctor> doctorById = doctorService.findDoctorById(doctor.getId());
-        modelMap.addAttribute("departments",departmentList);
-        doctorById.ifPresent(doctorFromDb-> modelMap.addAttribute("doctor", doctorFromDb));
+        modelMap.addAttribute("departments", departmentList);
+        doctorById.ifPresent(doctorFromDb -> modelMap.addAttribute("doctor", doctorFromDb));
         return "updateDoctor";
     }
 
@@ -109,7 +101,7 @@ public class DoctorController {
         if (bindingResult.hasErrors()) {
             return "updateDoctor";
         }
-        doctorService.update(doctor,multipartFile);
+        doctorService.update(doctor, multipartFile);
         return "redirect:/doctor";
     }
 

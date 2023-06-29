@@ -9,6 +9,7 @@ import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.ImageDownloader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +21,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +47,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public void update(Doctor doctor,MultipartFile multipartFile) throws IOException {
+    public void update(Doctor doctor, MultipartFile multipartFile) throws IOException {
         Optional<Doctor> byId = doctorRepository.findById(doctor.getId());
         if (byId.isPresent()) {
             Doctor doctorFromDb = byId.get();
@@ -78,13 +81,32 @@ public class DoctorServiceImpl implements DoctorService {
         userService.registerUser(doctor);
         sendDoctorRegistrationMessage(doctor.getId());
     }
+
+    @Override
+    public Page<Doctor> getDoctorPageData(Optional<Integer> page, Optional<Integer> size) {
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
+        Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        return doctorRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Integer> getNumbersPage(int totalPages) {
+        if (totalPages > 0) {
+            return IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+        }
+        return null;
+    }
+
     @Async
     public void sendDoctorRegistrationMessage(int id) {
         Optional<Doctor> doctorFromDb = doctorRepository.findById(id);
         if (doctorFromDb.isPresent()) {
             Doctor doctor = doctorFromDb.get();
             emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",
-                    "password: " + doctor.getPassword() +"\n Please don't lose it.");
+                    "password: " + doctor.getPassword() + "\n Please don't lose it.");
         }
     }
 }
