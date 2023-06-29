@@ -27,17 +27,9 @@ public class DepartmentController {
                                  @RequestParam("page") Optional<Integer> page,
                                  @RequestParam("size") Optional<Integer> size
     ) {
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(5);
-        Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
-        Page<Department> result = departmentService.getDepartment(pageable);
-        int totalPages = result.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            modelMap.addAttribute("pageNumbers", pageNumbers);
-        }
+        Page<Department> result = departmentService.getDepartmentPageData(page, size);
+        List<Integer> pageNumbers = departmentService.getPageNumbers(result.getTotalPages());
+        modelMap.addAttribute("pageNumbers", pageNumbers);
         modelMap.addAttribute("departments", result);
         return "department";
     }

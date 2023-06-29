@@ -1,10 +1,8 @@
 package com.example.onehealth.util;
-
 import com.example.onehealth.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,6 +24,9 @@ public class ImageDownloader {
     }
 
     public  void deleteProfilePicture(String filename) throws IOException {
+        if (filename == null || filename.equalsIgnoreCase("null")){
+            return;
+        }
         Path path = Paths.get(imageUploadPath + filename);
         Files.delete(path);
     }
