@@ -100,7 +100,6 @@ public class DoctorServiceImpl implements DoctorService {
         return null;
     }
 
-    @Async
     public void sendDoctorRegistrationMessage(int id) {
         Optional<Doctor> doctorFromDb = doctorRepository.findById(id);
         if (doctorFromDb.isPresent()) {

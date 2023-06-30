@@ -74,6 +74,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    @Transactional
     public boolean createAppointment(Optional<Patient> patientById, Appointment appointment) {
        //TODO handle null pointer exception;
         boolean isAppointmentCreated = false;
@@ -102,7 +103,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
-    @Async
+
     public void sendAppointmentCancellMessageToPatient(int id) {
         Optional<Patient> patientFromDb = patientRepository.findById(id);
         if (patientFromDb.isPresent()) {

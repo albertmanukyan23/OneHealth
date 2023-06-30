@@ -214,7 +214,7 @@
                 <div class="col-lg-6">
                     <div class="login-form">
                         <h2>Login Here</h2>
-                        <p>Didn't you account yet ? <a href="register.html">Register Here</a></p>
+                        <p>Didn't you account yet ? <a href="/patient/register">Register Here</a></p>
 
                         <form class="form" method="post" action="/login">
                             <p th:if="${errorMessage != null}" th:text="${errorMessage}" style="color: red; margin-bottom: 0"></p>
@@ -234,7 +234,6 @@
                                     <div class="form-group login-btn">
                                         <button class="btn" type="submit">Login</button>
                                     </div>
-                                    <a href="/patient/register">Register</a>
                                 </div>
                             </div>
                         </form>

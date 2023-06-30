@@ -10,7 +10,6 @@ import com.example.onehealth.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,7 +54,6 @@ public class AppointmentController {
     }
 
     @GetMapping("/cancell")
-    @Transactional
     public String cancelAppointment(@RequestParam("id") int id,
                                     @AuthenticationPrincipal CurrentUser currentUser) {
         appointmentService.cancellAppointmentById(id, currentUser);
