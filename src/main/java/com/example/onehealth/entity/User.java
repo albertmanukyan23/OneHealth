@@ -10,6 +10,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.UUID;
 
 
 @Entity
@@ -37,5 +38,8 @@ public class User {
     private String picName;
     @Enumerated(value = EnumType.STRING)
     private UserType userType;
+    private boolean enabled;
+    private String token;
+
 
 }

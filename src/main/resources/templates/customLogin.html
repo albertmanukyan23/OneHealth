@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx"  xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <meta charset="utf-8">
@@ -214,10 +214,13 @@
                 <div class="col-lg-6">
                     <div class="login-form">
                         <h2>Login Here</h2>
-                        <p>Didn't you account yet ? <a href="register.html">Register Here</a></p>
-
+                        <div>
+                            <a href="/patient/confirmation-page">Forgot Patient password/ </a>
+                            <a href="/doctor/confirmation-page">Forgot Doctor password?</a>
+                        </div>
                         <form class="form" method="post" action="/login">
-                            <p th:if="${errorMessage != null}" th:text="${errorMessage}" style="color: red; margin-bottom: 0"></p>
+                            <p th:if="${errorMessage != null}" th:text="${errorMessage}"
+                               style="color: red; margin-bottom: 0"></p>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">

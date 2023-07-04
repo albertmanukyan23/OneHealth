@@ -121,6 +121,8 @@
                             <th>surname</th>
                             <th>speciality</th>
                             <th>email</th>
+                            <th>zoom_ID</th>
+                            <th>zoom_Password</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -150,6 +152,14 @@
                             </td>
                             <td>
                                 <h3 th:text="${doctor.email}"></h3>
+
+                            </td>
+                            <td>
+                                <h3 th:text="${doctor.zoomId}"></h3>
+
+                            </td>
+                            <td>
+                                <h3 th:text="${doctor.zoomPassword}"></h3>
 
                             </td>
                             <td>

@@ -1,6 +1,7 @@
 package com.example.onehealth.controller;
 
 
+import com.example.onehealth.entity.User;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.security.CurrentUser;
 import org.apache.commons.io.IOUtils;
@@ -53,6 +54,7 @@ public class MainController {
         return "/customLogin";
 
     }
+
 
     @GetMapping(value = "/getImage",
             produces = MediaType.IMAGE_JPEG_VALUE)

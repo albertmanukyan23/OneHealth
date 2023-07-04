@@ -22,9 +22,11 @@ public class Appointment {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endTime;
     @ManyToOne
-    private  Doctor doctor;
+    private Doctor doctor;
     @ManyToOne
     private Patient patient;
     @ManyToOne
     private Department department;
+    @Enumerated(EnumType.STRING)
+    private RegisterType registerType;
 }
