@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/patient")
@@ -60,7 +61,7 @@ public class PatientController {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        patientService.save(multipartFile,patient);
+        patientService.save(multipartFile, patient);
         return "redirect:/";
     }
 
@@ -87,7 +88,7 @@ public class PatientController {
         if (bindingResult.hasErrors()) {
             return "updatePatient";
         }
-        patientService.update(patient,multipartFile);
+        patientService.update(patient, multipartFile);
         return "redirect:/patient";
     }
 
@@ -96,4 +97,51 @@ public class PatientController {
         userService.deleteUser(id);
         return "redirect:/patient";
     }
+
+    @GetMapping("/verify")
+    public String verifyPatient(@RequestParam("email") String email,
+                                @RequestParam("token") String token) {
+        Optional<Patient> byEmail = patientService.findByEmail(email);
+        if (byEmail.isEmpty()) {
+            return "redirect:/";
+        }
+        if (byEmail.get().isEnabled()) {
+            return "redirect:/";
+        }
+        patientService.verifyAccount(email, token);
+        return "redirect:/customLogin";
+    }
+
+    @GetMapping("/confirmation-page")
+    public String confirmationPage() {
+        return "confirmEmail";
+    }
+
+
+    @GetMapping("/change-password-page")
+    public String changePasswordPage(ModelMap modelMap, @RequestParam("token") String token,
+                                     @RequestParam("email") String email) {
+        patientService.changePassword(email, token);
+        modelMap.addAttribute("token", email);
+        modelMap.addAttribute("email", token);
+        return "changePasswordPage";
+    }
+
+    @GetMapping("/confirmation-email")
+    public String confirmationEmail(@RequestParam("email") String email) {
+        patientService.confirmationMessage(email);
+        return "redirect:/customLogin";
+    }
+
+    @PostMapping("/changePassword")
+    public String changePasswordPage(@RequestParam("password") String password,
+                                     @RequestParam("passwordRepeat") String passwordRepeat,
+                                     @RequestParam("email") String email,
+                                     @RequestParam("token") String token
+                                     )
+    {
+       patientService.updatePassword(email,token,password,passwordRepeat);
+        return "redirect:/customLogin";
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.onehealth.service;
 
 
 import com.example.onehealth.entity.Appointment;
+import com.example.onehealth.entity.Doctor;
 import com.example.onehealth.entity.Patient;
 import com.example.onehealth.security.CurrentUser;
 
@@ -27,4 +28,5 @@ public interface AppointmentService {
 
 
     void cancellAppointmentById(int id, CurrentUser currentUser);
+     void applicationByLetterToDoDoctorZoomData(Patient patient,Doctor doctor);
 }

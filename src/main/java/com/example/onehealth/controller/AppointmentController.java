@@ -34,9 +34,10 @@ public class AppointmentController {
     }
 
     @GetMapping("/make")
-    public String addAppointmentPage(ModelMap modelMap) {
+    public String addAppointmentPage(ModelMap modelMap,Appointment appointment) {
         modelMap.addAttribute("doctors", doctorService.getDoctors());
         modelMap.addAttribute("departments", departmentService.getDepartmentList());
+        modelMap.addAttribute("appointment",appointment);
         return "addAppointment";
     }
 

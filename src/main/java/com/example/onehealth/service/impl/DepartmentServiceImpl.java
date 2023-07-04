@@ -1,5 +1,4 @@
 package com.example.onehealth.service.impl;
-
 import com.example.onehealth.entity.Department;
 import com.example.onehealth.repository.DepartmentRepository;
 import com.example.onehealth.service.DepartmentService;
@@ -8,12 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
 @Service
 @RequiredArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
