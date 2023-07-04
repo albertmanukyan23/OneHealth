@@ -78,8 +78,8 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setRegisDate(new Date());
         doctor.setUserType(UserType.DOCTOR);
         imageDownloader.saveProfilePicture(multipartFile, doctor);
+        sendDoctorRegistrationMessage(doctor);
         userService.registerUser(doctor);
-        sendDoctorRegistrationMessage(doctor.getId());
     }
 
     @Override
@@ -100,12 +100,21 @@ public class DoctorServiceImpl implements DoctorService {
         return null;
     }
 
-    public void sendDoctorRegistrationMessage(int id) {
-        Optional<Doctor> doctorFromDb = doctorRepository.findById(id);
-        if (doctorFromDb.isPresent()) {
-            Doctor doctor = doctorFromDb.get();
-            emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",
-                    "password: " + doctor.getPassword() + "\n Please don't lose it.");
+    @Override
+    public List<Doctor> searchDoctorsByKey(String searchText) {
+        List<Doctor> doctors;
+        if (searchText.equals("") || searchText.equalsIgnoreCase("null")) {
+            doctors = doctorRepository.findAll();
+        } else {
+            doctors = doctorRepository.findBySurnameContaining(searchText);
         }
+        return doctors;
     }
+
+    public void sendDoctorRegistrationMessage(Doctor doctor) {
+        emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",
+                "password: " + doctor.getPassword() + "\n Please don't lose it.");
+
+    }
+    
 }

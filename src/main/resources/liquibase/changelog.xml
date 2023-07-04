@@ -113,4 +113,25 @@
                          on delete cascade;
         </sql>
     </changeSet>
+    <changeSet id="addCommentTable" author="almanukyan">
+        <createTable tableName="comment">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false" foreignKeyName="fk_comment_user" references="user(id)"/>
+            </column>
+            <column name="doctor_id" type="int" >
+                <constraints nullable="false" foreignKeyName="fk_comment_doctor" references="doctor(id)"/>
+            </column>
+            <column name="opinion" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="addDateToCommentTable" author="almanukyan">
+        <addColumn tableName="comment">
+            <column name="date" type="datetime(6)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

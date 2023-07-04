@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/medicalServices")
 public class MedServController {
+
     private final MedServService medServService;
     @GetMapping
     public String getPriceList(ModelMap modelMap, @AuthenticationPrincipal CurrentUser currentUser) {

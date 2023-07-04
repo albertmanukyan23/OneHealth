@@ -25,4 +25,6 @@ public interface DoctorService {
     Page<Doctor> getDoctorPageData(Optional<Integer> page, Optional<Integer> size);
 
     List<Integer> getNumbersPage(int totalPages);
+
+    List<Doctor> searchDoctorsByKey(String searchText);
 }
