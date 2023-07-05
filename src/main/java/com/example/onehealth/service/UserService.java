@@ -3,6 +3,7 @@ package com.example.onehealth.service;
 import com.example.onehealth.entity.User;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
@@ -20,4 +21,7 @@ public interface UserService {
 
     void passwordChangePage(String email, String token);
 
+    Optional<User> findById(int id);
+
+    List<User> findAll();
 }

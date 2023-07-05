@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -68,6 +69,17 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+    @Override
+    public Optional<User> findById(int id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
     public void verifyAccount(String email, String token) {
         Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent()) {
@@ -76,16 +88,14 @@ public class UserServiceImpl implements UserService {
                 user.setEnabled(true);
                 user.setToken(null);
                 userRepository.save(user);
-            }
-        }
+            }}
     }
     @Override
     public void confirmationMessage(String email) {
         Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent()) {
             User user = byEmail.get();
-            UUID token = UUID.randomUUID();
-            user.setToken(token.toString());
+            UUID token = UUID.randomUUID();user.setToken(token.toString());
             userRepository.save(user);
             verifyAccountMessageEmail(user.getId());
         }
@@ -95,12 +105,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(String email, String token, String password, String passwordRepeat) {
-        Optional<Patient> byEmail = patientRepository.findByEmail(email);
+        Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent() && byEmail.get().isEnabled()) {
             if (password.equals(passwordRepeat) && byEmail.get().getToken() == null) {
-                Patient patient = byEmail.get();
-                patient.setPassword(passwordEncoder.encode(password));
-                patientRepository.save(patient);
+                User user = byEmail.get();
+                user.setPassword(passwordEncoder.encode(password));
+                userRepository.save(user);
             }
         }
     }

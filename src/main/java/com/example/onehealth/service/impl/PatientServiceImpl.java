@@ -11,18 +11,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
 @Service
 @RequiredArgsConstructor
 public class PatientServiceImpl implements PatientService {
@@ -97,11 +97,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setRegisDate(new Date());
         imageDownloader.saveProfilePicture(multipartFile, patient);
         patient.setUserType(UserType.PATIENT);
-        UUID token = UUID.randomUUID();
-        patient.setToken(token.toString());
-        patient.setEnabled(false);
         userService.registerUser(patient);
-        verifyAccountWithEmail(patient.getId());
     }
 
     @Override
@@ -110,72 +106,5 @@ public class PatientServiceImpl implements PatientService {
     }
 
 
-    @Override
-    public void verifyAccount(String email, String token) {
-        Optional<Patient> byEmail = patientRepository.findByEmail(email);
-        if (byEmail.get().getToken().equals(token)) {
-            Patient patientData = byEmail.get();
-            patientData.setEnabled(true);
-            patientData.setToken(null);
-            patientRepository.save(patientData);
-        }
-    }
 
-    @Override
-    public void confirmationMessage(String email) {
-        Optional<Patient> byEmail = patientRepository.findByEmail(email);
-        if (byEmail.isPresent()) {
-            Patient patient = byEmail.get();
-            UUID token = UUID.randomUUID();
-            patient.setToken(token.toString());
-            patientRepository.save(patient);
-            verifyAccountMessageEmail(patient.getId());
-        }
-
-    }
-
-    @Override
-    public void changePassword(String email, String token) {
-        Optional<Patient> byEmail = patientRepository.findByEmail(email);
-        if (byEmail.get().getToken().equals(token)) {
-            Patient patient = byEmail.get();
-            patient.setToken(null);
-            patientRepository.save(patient);
-        }
-    }
-
-    @Override
-    public void updatePassword(String email, String token, String password, String passwordRepeat) {
-        Optional<Patient> byEmail = patientRepository.findByEmail(email);
-        if (byEmail.isPresent() && byEmail.get().isEnabled()) {
-            if (password.equals(passwordRepeat) && byEmail.get().getToken() == null) {
-                Patient patient = byEmail.get();
-                patient.setPassword(passwordEncoder.encode(password));
-                patientRepository.save(patient);
-            }
-        }
-    }
-
-    @Async
-    public void verifyAccountMessageEmail(int id) {
-        Optional<Patient> byId = patientRepository.findById(id);
-        if (byId.isPresent()) {
-            Patient patient = byId.get();
-            emailSenderService.sendSimpleEmail(patient.getEmail(),
-                    "Welcome", "Hi" + patient.getName() +
-                            "\n" + "Confirm to rest password " +
-                            siteUrl + "/patient/change-password-page?email=" + patient.getEmail() + "&token=" + patient.getToken());
-        }
-    }
-    @Async
-    public void verifyAccountWithEmail(int id) {
-        Optional<Patient> byId = patientRepository.findById(id);
-        if (byId.isPresent()) {
-            Patient patient = byId.get();
-            emailSenderService.sendSimpleEmail(patient.getEmail(),
-                    "Welcome", "Hi" + patient.getName() +
-                            "\n" + "Please verify your email by clicking on this url " +
-                            siteUrl + "/patient/verify?email=" + patient.getEmail() + "&token=" + patient.getToken());
-        }
-    }
 }

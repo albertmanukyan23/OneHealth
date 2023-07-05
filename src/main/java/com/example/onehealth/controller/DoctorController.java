@@ -105,45 +105,4 @@ public class DoctorController {
         userService.deleteUser(id);
         return "redirect:/doctor";
     }
-    @GetMapping("/verify")
-    public String verifyPatient( @RequestParam("email") String email,
-                                @RequestParam("token") String token) {
-        Optional<Doctor> byEmail = doctorService.findByEmail(email);
-        if (byEmail.isEmpty()) {
-            return "redirect:/";
-        }
-        if (byEmail.get().isEnabled()) {
-            return "redirect:/";
-        }
-        doctorService.verifyAccount( email, token);
-        return "redirect:/";
-    }
-    @GetMapping("/change-password-page")
-    public String changePasswordPage(ModelMap modelMap, @RequestParam("token") String token,
-                                     @RequestParam("email") String email) {
-        doctorService.changePassword(email, token);
-        modelMap.addAttribute("token", email);
-        modelMap.addAttribute("email", token);
-        return "changePasswordDoctorPage";
-    }
-    @GetMapping("/confirmation-page")
-    public String confirmationPage() {
-        return "confirmEmailDoctor";
-    }
-    @GetMapping("/confirmation-email")
-    public String confirmationEmail(@RequestParam("email") String email) {
-        doctorService.confirmationMessage(email);
-        return "redirect:/customLogin";
-    }
-
-    @PostMapping("/changePassword")
-    public String changePasswordPage(@RequestParam("password") String password,
-                                     @RequestParam("passwordRepeat") String passwordRepeat,
-                                     @RequestParam("email") String email,
-                                     @RequestParam("token") String token
-    )
-    {
-        doctorService.updatePassword(email,token,password,passwordRepeat);
-        return "redirect:/customLogin";
-    }
 }

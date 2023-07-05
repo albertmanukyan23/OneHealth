@@ -1,14 +1,16 @@
 package com.example.onehealth.controller;
 
+import com.example.onehealth.entity.Doctor;
+import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.User;
 import com.example.onehealth.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -45,17 +47,23 @@ public class UserController {
                                      @RequestParam("email") String email) {
         userService.passwordChangePage(email, token);
         modelMap.addAttribute("email", email);
+        modelMap.addAttribute("token", token);
         return "passwordChangePage";
     }
-
-//    @PostMapping("/changePassword")
-//    public String changePasswordPage(@RequestParam("password") String password,
-//                                     @RequestParam("passwordRepeat") String passwordRepeat,
-//                                     @RequestParam("email") String email,
-//                                     @RequestParam("token") String token
-//                                     )
-//    {
-//       patientService.updatePassword(email,token,password,passwordRepeat);
-//        return "redirect:/customLogin";
-//    }
+    @PostMapping("/update-password")
+    public String changePasswordPage(@RequestParam("password") String password,
+                                     @RequestParam("passwordRepeat") String passwordRepeat,
+                                     @RequestParam("email") String email,
+                                     @RequestParam("token") String token
+                                     )
+    {
+       userService.updatePassword(email,token,password,passwordRepeat);
+        return "redirect:/customLogin";
+    }
+    @GetMapping("/activate-deactivate-page")
+    public String userActivateDeactivatePage(ModelMap modelMap,User user){
+        List<User> userList = userService.findAll();
+        modelMap.addAttribute("users",userList);
+        return "activateDeactivateUser";
+    }
 }

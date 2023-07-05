@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx"  xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx">
 <head>
 
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
     <link rel="icon" href="/img/favicon.png">
 
-    <link href="../../css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+    <link href="/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -27,22 +27,16 @@
     <link rel="stylesheet" href="/css/slicknav.min.css">
 
     <link rel="stylesheet" href="/css/owl-carousel.css">
-
     <link rel="stylesheet" href="/css/datepicker.css">
-
     <link rel="stylesheet" href="/css/animate.min.css">
-
     <link rel="stylesheet" href="/css/magnific-popup.css">
-
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
-
     <link rel="stylesheet" href="/css/color/color1.css">
-
-
     <link rel="stylesheet" href="#" id="colors">
-</head>
+
+
 <body>
 
 <div class="preloader">
@@ -81,11 +75,10 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Confirm Email</h2>
+                    <h2>Admin</h2>
                     <ul class="bread-list">
-                        <li><a href="index.html">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Confirm Email</li>
+                        <li class="active">Admin</li>
                     </ul>
                 </div>
             </div>
@@ -94,44 +87,94 @@
 </div>
 
 
-<section class="login section">
+<section class="doctor-calendar-area section">
     <div class="container">
-        <div class="inner">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="login-left">
-                    </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Our Users</h2>
+                    <img src="/img/section-img.png" alt="#">
+                    <p>Activate Deactivate Users</p>
                 </div>
-                <div class="col-lg-6">
-                    <div class="login-form">
-                        <h2>Eamil Here</h2>
-                        <form class="form" method="post" action="/patient/changePassword">
-                            <input name="email" type="hidden" th:value="${token}">
-                            <input name="token" type="hidden" th:value="${email}">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="password" placeholder="Your Password">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="passwordRepeat" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="doctor-calendar-table table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Email</th>
+                            <th>Enabled</th>
+                            <th>Activate</th>
+                            <th>Deactivate</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user: ${users}">
+
+                            <td>
+                                <h3 th:text="${user.id}"></h3>
+                            </td>
+                            <td>
+                                <h3 th:text="${user.name}"></h3>
+                            </td>
+                            <td>
+                                <h3 th:text="${user.surname}"></h3>
+
+                            </td>
+                            <td>
+                                <h3 th:text="${user.email}"></h3>
+
+                            </td>
+                            <td>
+                                <h3 th:text="${user.userType}"></h3>
+
+                            </td>
+
+                            <td>
+                                <a th:href="@{/doctor/update(id = ${doctor.id})}"><h3>Activate</h3></a>
+
+                            </td>
+                            <td>
+                                <a th:href="@{/doctor/remove(id = ${doctor.id})}"><h3>Deactivate</h3></a>
+
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+<!--<section class="newsletter section">-->
+<!--    <div class="container">-->
+<!--        <div class="row ">-->
+<!--            <div class="col-lg-6  col-12">-->
+
+<!--                <div class="subscribe-text ">-->
+<!--                    <h6>Sign up for newsletter</h6>-->
+<!--                    <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--            <div class="col-lg-6  col-12">-->
+
+<!--                <div class="subscribe-form ">-->
+<!--                    <a th:href="@{/doctor/add}" class="btn">Register Doctor</a>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 
 <footer id="footer" class="footer ">
@@ -274,7 +317,7 @@
 <script src="/js/main.js"></script>
 <script defer="" src="/js/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
         integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7d055790fe8d3362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
+        data-cf-beacon='{"rayId":"7d055780f9e43362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
         crossorigin="anonymous"></script>
 </body>
 </html>

@@ -6,13 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
-
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/department")
+@RequestMapping("/departments")
 public class DepartmentController {
 
     private final DepartmentService departmentService;
@@ -29,12 +27,12 @@ public class DepartmentController {
         return "department";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/page-to-add")
     public String addDepartmentPage() {
         return "addDepartment";
     }
 
-    @GetMapping("/update")
+    @GetMapping("/edit-page")
     public String updateDepartmentPage(ModelMap modelMap, @ModelAttribute Department department) {
         modelMap.addAttribute("departments", department);
         return "updateDepartment";
@@ -43,18 +41,18 @@ public class DepartmentController {
     @PostMapping("/add")
     public String addDepartment(@ModelAttribute Department department) {
         departmentService.addDepartment(department);
-        return "redirect:/department/open-page";
+        return "redirect:/departments/open-page";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/modify")
     public String updateDepartment(@ModelAttribute Department department) {
         departmentService.update(department);
-        return "redirect:/department/open-page";
+        return "redirect:/departments/open-page";
     }
 
     @GetMapping("/remove")
     public String deleteDepartment(int id) {
         departmentService.deleteDepartment(id);
-        return "redirect:/department/open-page";
+        return "redirect:/departments/open-page";
     }
 }
