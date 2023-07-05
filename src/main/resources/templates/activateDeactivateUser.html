@@ -109,6 +109,7 @@
                             <th>Surname</th>
                             <th>Email</th>
                             <th>Enabled</th>
+                            <th>UserType</th>
                             <th>Activate</th>
                             <th>Deactivate</th>
                         </tr>
@@ -131,16 +132,20 @@
 
                             </td>
                             <td>
+                                <h3 th:text="${user.enabled}"></h3>
+
+                            </td>
+ <td>
                                 <h3 th:text="${user.userType}"></h3>
 
                             </td>
 
                             <td>
-                                <a th:href="@{/doctor/update(id = ${doctor.id})}"><h3>Activate</h3></a>
+                                <a th:href="@{/user/update(id = ${user.id})}"><h3>Activate</h3></a>
 
                             </td>
                             <td>
-                                <a th:href="@{/doctor/remove(id = ${doctor.id})}"><h3>Deactivate</h3></a>
+                                <a th:href="@{/user/remove(id = ${user.id})}"><h3>Deactivate</h3></a>
 
                             </td>
 
