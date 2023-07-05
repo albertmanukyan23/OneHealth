@@ -147,7 +147,7 @@
                     <div class="pagination">
                         <div th:if="${departments.totalPages> 0}"
                              th:each="pageNumber : ${pageNumbers}">
-                            <a th:href="@{/department/open-page(size=${departments.size}, page=${pageNumber})}"
+                            <a th:href="@{/departments/open-page(size=${departments.size}, page=${pageNumber})}"
                                th:text="${pageNumber}"
                                th:class="${pageNumber==departments.number + 1} ? active"></a>
                         </div>

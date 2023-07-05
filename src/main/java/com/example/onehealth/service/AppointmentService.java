@@ -28,5 +28,6 @@ public interface AppointmentService {
 
 
     void cancellAppointmentById(int id, CurrentUser currentUser);
-     void applicationByLetterToDoDoctorZoomData(Patient patient,Doctor doctor);
+
+    void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor);
 }

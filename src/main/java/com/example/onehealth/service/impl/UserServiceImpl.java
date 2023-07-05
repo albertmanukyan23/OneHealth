@@ -45,10 +45,12 @@ public class UserServiceImpl implements UserService {
             verifyAccountWithEmail(user.getId());
         }
     }
+
     @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
     @Override
     public void deleteUser(int id) throws IOException {
         Optional<User> byId = userRepository.findById(id);
@@ -80,6 +82,24 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public void activateDeactivateUser(User user) {
+        Optional<User> byId = userRepository.findById(user.getId());
+        if (byId.isPresent() && byId.get().isEnabled()) {
+            User userDb = byId.get();
+            userDb.setEnabled(false);
+            userRepository.save(userDb);
+            deactivateUser(user.getId());
+        } else if (!byId.get().isEnabled()) {
+            User userAct= byId.get();
+            userAct.setEnabled(true);
+            userRepository.save(userAct);
+            activateUser(user.getId());
+        }
+
+    }
+
+
     public void verifyAccount(String email, String token) {
         Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent()) {
@@ -88,14 +108,17 @@ public class UserServiceImpl implements UserService {
                 user.setEnabled(true);
                 user.setToken(null);
                 userRepository.save(user);
-            }}
+            }
+        }
     }
+
     @Override
     public void confirmationMessage(String email) {
         Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent()) {
             User user = byEmail.get();
-            UUID token = UUID.randomUUID();user.setToken(token.toString());
+            UUID token = UUID.randomUUID();
+            user.setToken(token.toString());
             userRepository.save(user);
             verifyAccountMessageEmail(user.getId());
         }
@@ -125,6 +148,30 @@ public class UserServiceImpl implements UserService {
                     "Welcome", "Hi" + user.getName() +
                             "\n" + "Confirm to rest password " +
                             siteUrl + "/user/password-change-page?email=" + user.getEmail() + "&token=" + user.getToken());
+        }
+    }
+
+    @Async
+    public void activateUser(int id) {
+        Optional<User> byId = userRepository.findById(id);
+        if (byId.isPresent()) {
+            User user = byId.get();
+            emailSenderService.sendSimpleEmail(user.getEmail(),
+                    "Welcome", "Hi" + user.getName() +
+                            "\n" + "You are activated"
+            );
+        }
+    }
+
+    @Async
+    public void deactivateUser(int id) {
+        Optional<User> byId = userRepository.findById(id);
+        if (byId.isPresent()) {
+            User user = byId.get();
+            emailSenderService.sendSimpleEmail(user.getEmail(),
+                    "Welcome", "Hi" + user.getName() +
+                            "\n" + "You are deactivated"
+            );
         }
     }
 

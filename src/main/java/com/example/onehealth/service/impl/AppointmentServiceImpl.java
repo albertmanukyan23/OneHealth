@@ -1,5 +1,4 @@
 package com.example.onehealth.service.impl;
-
 import com.example.onehealth.entity.*;
 import com.example.onehealth.repository.AppointmentRepository;
 import com.example.onehealth.repository.DoctorRepository;
@@ -104,7 +103,6 @@ public class AppointmentServiceImpl implements AppointmentService {
             if (user.getUserType() == UserType.DOCTOR) {
                 Appointment appointment = byAppointmentId.get();
                 sendAppointmentCancellMessageToPatient(appointment.getPatient().getId());
-
             }
         }
     }
@@ -118,7 +116,6 @@ public class AppointmentServiceImpl implements AppointmentService {
                     "Your appointment has been canceled by the doctor," +
                             " we ask for your forgiveness, try to book a consultation again for another day.");
         }
-
     }
 
     @Async

@@ -24,4 +24,7 @@ public interface UserService {
     Optional<User> findById(int id);
 
     List<User> findAll();
+
+    void activateDeactivateUser(User user);
+
 }
