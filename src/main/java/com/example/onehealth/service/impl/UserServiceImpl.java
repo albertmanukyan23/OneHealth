@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void passwordChangePage(String email, String token) {
+    public void passwordChange(String email, String token) {
         Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent()) {
             if (byEmail.get().getToken().equals(token)) {
@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
             userRepository.save(userDb);
             deactivateUser(user.getId());
         } else if (!byId.get().isEnabled()) {
-            User userAct= byId.get();
+            User userAct = byId.get();
             userAct.setEnabled(true);
             userRepository.save(userAct);
             activateUser(user.getId());
@@ -135,6 +135,7 @@ public class UserServiceImpl implements UserService {
                 user.setPassword(passwordEncoder.encode(password));
                 userRepository.save(user);
             }
+
         }
     }
 

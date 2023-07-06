@@ -19,7 +19,7 @@ public interface UserService {
 
     Optional<User> findByEmail(String email);
 
-    void passwordChangePage(String email, String token);
+    void passwordChange(String email, String token);
 
     Optional<User> findById(int id);
 

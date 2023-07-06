@@ -47,7 +47,7 @@ public class UserController {
     @GetMapping("/password-change-page")
     public String changePasswordPage(ModelMap modelMap, @RequestParam("token") String token,
                                      @RequestParam("email") String email) {
-        userService.passwordChangePage(email, token);
+        userService.passwordChange(email, token);
         modelMap.addAttribute("email", email);
         modelMap.addAttribute("token", token);
         return "passwordChangePage";
