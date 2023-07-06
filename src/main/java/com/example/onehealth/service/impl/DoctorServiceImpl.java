@@ -8,11 +8,9 @@ import com.example.onehealth.service.EmailSenderService;
 import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.ImageDownloader;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +20,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -36,8 +33,6 @@ public class DoctorServiceImpl implements DoctorService {
     private final ImageDownloader imageDownloader;
     private final EmailSenderService emailSenderService;
 
-    @Value("${site.url}")
-    private String siteUrl;
 
     @Override
     public List<Doctor> getDoctors() {
@@ -84,9 +79,8 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setRegisDate(new Date());
         doctor.setUserType(UserType.DOCTOR);
         imageDownloader.saveProfilePicture(multipartFile, doctor);
+        sendDoctorRegistrationMessage(doctor);
         userService.registerUser(doctor);
-        sendDoctorRegistrationMessage(doctor.getId());
-
     }
 
     @Override
@@ -108,16 +102,20 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public Optional<Doctor> findByEmail(String email) {
-        return doctorRepository.findByEmail(email);
-    }
-    @Async
-    public void sendDoctorRegistrationMessage(int id) {
-        Optional<Doctor> doctorFromDb = doctorRepository.findById(id);
-        if (doctorFromDb.isPresent()) {
-            Doctor doctor = doctorFromDb.get();
-            emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",
-                    "password: " + doctor.getPassword() + "\n Please don't lose it.");
+    public List<Doctor> searchDoctorsByKey(String searchText) {
+        List<Doctor> doctors;
+        if (searchText.equals("") || searchText.equalsIgnoreCase("null")) {
+            doctors = doctorRepository.findAll();
+        } else {
+            doctors = doctorRepository.findBySurnameContaining(searchText);
         }
+        return doctors;
     }
+
+    public void sendDoctorRegistrationMessage(Doctor doctor) {
+        emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",
+                "password: " + doctor.getPassword() + "\n Please don't lose it.");
+
+    }
+    
 }

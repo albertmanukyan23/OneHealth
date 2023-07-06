@@ -1,13 +1,8 @@
 package com.example.onehealth.controller;
-import com.example.onehealth.entity.Appointment;
-import com.example.onehealth.entity.Department;
-import com.example.onehealth.entity.Doctor;
-import com.example.onehealth.entity.User;
+
+import com.example.onehealth.entity.*;
 import com.example.onehealth.security.CurrentUser;
-import com.example.onehealth.service.AppointmentService;
-import com.example.onehealth.service.DepartmentService;
-import com.example.onehealth.service.DoctorService;
-import com.example.onehealth.service.UserService;
+import com.example.onehealth.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,12 +21,15 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/doctor")
+//todo doctors
 public class DoctorController {
 
     private final UserService userService;
     private final DoctorService doctorService;
     private final AppointmentService appointmentService;
     private final DepartmentService departmentService;
+    private final CommentService commentService;
+
 
 
     @GetMapping
@@ -49,9 +47,11 @@ public class DoctorController {
     }
 
     @GetMapping("/singlePage")
+    //todo single-page
     public String singlePage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
         modelMap.addAttribute("doctor", currentUser.getUser());
         return "doctorSinglePage";
+
     }
 
     @GetMapping("/appointments")
@@ -105,4 +105,23 @@ public class DoctorController {
         userService.deleteUser(id);
         return "redirect:/doctor";
     }
+
+    @GetMapping("/search")
+    public String doctorSearch(@RequestParam("searchText") String searchText, ModelMap modelMap) {
+        List<Doctor> doctors = doctorService.searchDoctorsByKey(searchText);
+        modelMap.addAttribute("doctors", doctors);
+        return "searchDoctors";
+    }
+
+    @GetMapping("/details/{id}")
+    public String doctorDetails(@PathVariable("id") int doctorId, ModelMap modelMap,
+                                @AuthenticationPrincipal CurrentUser currentUser) {
+        List<Comment> comments = commentService.findCommentByDoctorId(doctorId);
+        Optional<Doctor> doctorById = doctorService.findDoctorById(doctorId);
+        doctorById.ifPresent(doctor -> modelMap.addAttribute("doctor", doctor));
+        modelMap.addAttribute("comments",comments);
+        modelMap.addAttribute("currentUser",currentUser.getUser());
+        return "doctorDetails";
+    }
+
 }

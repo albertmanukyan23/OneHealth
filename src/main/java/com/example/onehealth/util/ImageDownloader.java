@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Component
+//todo component package
 public class ImageDownloader {
     @Value("${hospital.upload.image.path}")
     private String imageUploadPath;

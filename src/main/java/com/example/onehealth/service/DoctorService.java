@@ -26,7 +26,6 @@ public interface DoctorService {
 
     List<Integer> getNumbersPage(int totalPages);
 
-    Optional<Doctor> findByEmail(String email);
+    List<Doctor> searchDoctorsByKey(String searchText);
 
 }
-

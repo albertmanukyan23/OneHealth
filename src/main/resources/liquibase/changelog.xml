@@ -1,117 +1,138 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet id="createTables" author="almanukyan">
-        <sql>
-            create table if not exists department
-            (
-                id          int auto_increment
-                primary key,
-                departments varchar(255) null
-                );
-
-            create table if not exists medical_services
-            (
-                id    int auto_increment
-                primary key,
-                name  varchar(255) not null,
-                price int          not null
-                );
-
-            create table if not exists user
-            (
-                id         int auto_increment
-                primary key,
-                name       varchar(255)                        null,
-                surname    varchar(255)                        null,
-                email      varchar(255)                        not null,
-                password   varchar(255)                        not null,
-                regis_date datetime(6)                         null,
-                birth_date datetime(6)                         not null,
-                pic_name   varchar(255)                        null,
-                user_type  enum ('ADMIN', 'DOCTOR', 'PATIENT') null
-                );
-
-            create table if not exists doctor
-            (
-                id            int          not null
-                primary key,
-                speciality    varchar(255) null,
-                phone_number  varchar(255) null,
-                department_id int          null,
-                constraint FK75x47tyyeco3xj4cmlhj8v6ta
-                foreign key (department_id) references department (id),
-                constraint doctor_user_id_fk
-                foreign key (id) references user (id)
-                );
-
-            create table if not exists patient
-            (
-                id      int          not null
-                primary key,
-                region  varchar(255) null,
-                address varchar(255) null,
-                nation  varchar(255) null,
-                constraint patient_user_id_fk
-                foreign key (id) references user (id)
-                );
-
-            create table if not exists appointment
-            (
-                id            int auto_increment
-                primary key,
-                doctor_id     int          not null,
-                patient_id    int          not null,
-                description   varchar(255) null,
-                end_time      datetime(6)  null,
-                start_time    datetime(6)  null,
-                department_id int          null,
-                constraint FKncums1tsqu7qx1qw5o2g4nj78
-                foreign key (department_id) references department (id),
-                constraint appointment_doctor_user_id_fk
-                foreign key (doctor_id) references doctor (id),
-                constraint appointment_patient_user_id_fk
-                foreign key (patient_id) references patient (id)
-                );
-
-            create table if not exists user_seq
-            (
-                next_val bigint null
+<changeSet id="createTables" author="almanukyan">
+    <sql>
+        create table if not exists department
+        (
+            id          int auto_increment
+            primary key,
+            departments varchar(255) null
             );
 
+        create table if not exists medical_services
+        (
+            id    int auto_increment
+            primary key,
+            name  varchar(255) not null,
+            price int          not null
+            );
 
-        </sql>
+        create table if not exists user
+        (
+            id         int auto_increment
+            primary key,
+            name       varchar(255)                        null,
+            surname    varchar(255)                        null,
+            email      varchar(255)                        not null,
+            password   varchar(255)                        not null,
+            regis_date datetime(6)                         null,
+            birth_date datetime(6)                         not null,
+            pic_name   varchar(255)                        null,
+            user_type  enum ('ADMIN', 'DOCTOR', 'PATIENT') null
+            );
 
-    </changeSet>
-    <changeSet id="modifyAppointment" author="almanukyan">
-        <sql>
-            alter table appointment
-            drop foreign key appointment_doctor_user_id_fk;
+        create table if not exists doctor
+        (
+            id            int          not null
+            primary key,
+            speciality    varchar(255) null,
+            phone_number  varchar(255) null,
+            department_id int          null,
+            constraint FK75x47tyyeco3xj4cmlhj8v6ta
+            foreign key (department_id) references department (id),
+            constraint doctor_user_id_fk
+            foreign key (id) references user (id)
+            );
 
-            alter table appointment
-                add constraint appointment_doctor_user_id_fk
-                    foreign key (doctor_id) references doctor (id)
-                        on delete cascade;
+        create table if not exists patient
+        (
+            id      int          not null
+            primary key,
+            region  varchar(255) null,
+            address varchar(255) null,
+            nation  varchar(255) null,
+            constraint patient_user_id_fk
+            foreign key (id) references user (id)
+            );
 
-            alter table appointment
-            drop foreign key appointment_patient_user_id_fk;
+        create table if not exists appointment
+        (
+            id            int auto_increment
+            primary key,
+            doctor_id     int          not null,
+            patient_id    int          not null,
+            description   varchar(255) null,
+            end_time      datetime(6)  null,
+            start_time    datetime(6)  null,
+            department_id int          null,
+            constraint FKncums1tsqu7qx1qw5o2g4nj78
+            foreign key (department_id) references department (id),
+            constraint appointment_doctor_user_id_fk
+            foreign key (doctor_id) references doctor (id),
+            constraint appointment_patient_user_id_fk
+            foreign key (patient_id) references patient (id)
+            );
 
-            alter table appointment
-                add constraint appointment_patient_user_id_fk
-                    foreign key (patient_id) references patient (id)
-                        on delete cascade;
-        </sql>
-    </changeSet>
+        create table if not exists user_seq
+        (
+            next_val bigint null
+        );
+
+
+    </sql>
+
+</changeSet>
+<changeSet id="modifyAppointment" author="almanukyan">
+    <sql>
+    alter table appointment
+    drop foreign key appointment_doctor_user_id_fk;
+
+    alter table appointment
+    add constraint appointment_doctor_user_id_fk
+    foreign key (doctor_id) references doctor (id)
+    on delete cascade;
+
+    alter table appointment
+    drop foreign key appointment_patient_user_id_fk;
+
+    alter table appointment
+    add constraint appointment_patient_user_id_fk
+    foreign key (patient_id) references patient (id)
+    on delete cascade;
+    </sql>
+</changeSet>
     <changeSet id="modifyDepartment" author="almanukyan">
         <sql>
-            alter table doctor
-            drop foreign key FK75x47tyyeco3xj4cmlhj8v6ta;
+             alter table doctor
+             drop foreign key FK75x47tyyeco3xj4cmlhj8v6ta;
 
-            alter table doctor
-                add constraint FK75x47tyyeco3xj4cmlhj8v6ta
-                    foreign key (department_id) references department (id)
-                        on delete cascade;
+             alter table doctor
+                 add constraint FK75x47tyyeco3xj4cmlhj8v6ta
+                     foreign key (department_id) references department (id)
+                         on delete cascade;
         </sql>
+    </changeSet>
+    <changeSet id="addCommentTable" author="almanukyan">
+        <createTable tableName="comment">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false" foreignKeyName="fk_comment_user" references="user(id)"/>
+            </column>
+            <column name="doctor_id" type="int" >
+                <constraints nullable="false" foreignKeyName="fk_comment_doctor" references="doctor(id)"/>
+            </column>
+            <column name="opinion" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="addDateToCommentTable" author="almanukyan">
+        <addColumn tableName="comment">
+            <column name="date" type="datetime(6)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
     </changeSet>
     <changeSet id="doctorZoomData" author="Amanukyan">
         <addColumn tableName="doctor">
@@ -143,28 +164,3 @@
 
 
 </databaseChangeLog>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,397 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:temporals="http://www.thymeleaf.org/extras/temporals">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name="copyright" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Medikit - Medical and Doctor HTML Template.</title>
+
+    <link rel="icon" href="/img/favicon.png">
+
+    <link href="/css/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/nice-select.css">
+
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/icofont.css">
+
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+
+    <link rel="stylesheet" href="/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="/css/datepicker.css">
+
+    <link rel="stylesheet" href="/css/animate.min.css">
+
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet" href="/css/color/color1.css">
+
+
+    <link rel="stylesheet" href="#" id="colors">
+</head>
+<body>
+
+<div class="preloader">
+    <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+        <div class="indicator">
+            <svg width="16px" height="12px">
+                <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+<div class="color-plate">
+    <a class="color-plate-icon"><i class="fa fa-cog fa-spin"></i></a>
+    <h4>Medikit</h4>
+    <p>Here is some awesome color's available on Medikit Template.</p>
+    <span class="color1"></span>
+    <span class="color2"></span>
+    <span class="color3"></span>
+    <span class="color4"></span>
+    <span class="color5"></span>
+    <span class="color6"></span>
+    <span class="color7"></span>
+    <span class="color8"></span>
+    <span class="color9"></span>
+    <span class="color10"></span>
+    <span class="color11"></span>
+    <span class="color12"></span>
+</div>
+
+
+<header class="header">
+
+    <div class="header-inner">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+
+                        <div class="logo">
+                            <img src="/img/logo.png" alt="#">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="bread-inner">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Doctor Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="doctor-details-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="doctor-details-item doctor-details-left">
+                    <img th:if="${doctor.picName != null}"
+                         th:src="@{/getImage(imageName=${doctor.getPicName()})}"/>
+                    <img th:if="${doctor.picName == null or doctor.picName.equalsIgnoreCase('null')}"
+                         th:src="@{/img.png}">
+                    <div class="doctor-details-contact">
+                        <h3>Contact info</h3>
+                        <ul class="basic-info">
+                            <li>
+                                <i class="icofont-ui-call"></i>
+                                Call : <span th:text="${doctor.getPhoneNumber()}"></span>
+                            </li>
+                            <li>
+                                <i class="icofont-ui-message"></i>
+                                <span th:text="${doctor.getEmail()}"></span>
+                            </li>
+                        </ul>
+
+                        <ul class="social">
+                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="#"><i class="icofont-google-plus"></i></a></li>
+                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="#"><i class="icofont-vimeo"></i></a></li>
+                            <li><a href="#"><i class="icofont-pinterest"></i></a></li>
+                        </ul>
+
+                        <div class="doctor-details-work">
+                            <h3>Working hours</h3>
+                            <ul class="time-sidual">
+                                <li class="day">Monday - Friday <span>8.00 - 18.00</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="doctor-details-item">
+                    <div class="doctor-details-right">
+                        <div class="doctor-name">
+                            <h3 class="name" th:text="${doctor.name} + ' ' + ${doctor.surname}"></h3>
+                            <p class="deg" th:text="${doctor.getSpeciality()}"></p>
+                            <p class="degree" th:if="${doctor.getDepartment() != null}"
+                               th:text="${doctor.getDepartment().getDepartments()}">.</p>
+                        </div><br>
+                        <div class="doctor-details-biography">
+                            <h3>Biography</h3>
+                            <p style="font-size: 20px" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed do eiusmod tempor incididunt.</p><br>
+                            <p style="font-size: 20px" >Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                        </div><br><br>
+                        <div class="doctor-details-biography">
+                            <h3>Education</h3>
+                            <ul>
+                                <li style="font-size: 20px" >PHD degree in Neorology at University of Mediserv (2006)</li>
+                                <li style="font-size: 20px" >Master of Neoro Surgery at University of Mediserv (2002)</li>
+                                <li style="font-size: 20px" >MBBS degree in Neurosciences at University of Mediserv (2002)</li>
+                                <li style="font-size: 20px" >Higher Secondary Certificate at Mediserv collage (1991)</li>
+                            </ul>
+                        </div><br><br>
+                        <div class="doctor-details-biography">
+                            <h3>Biography</h3>
+                            <p style="font-size: 20px" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                viverra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="news-single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-comments">
+                            <h2>All Comments</h2>
+                            <div class="comments-body">
+                                <div th:each="comment:${comments}" class="single-comments">
+                                    <div class="main">
+                                        <div class="head">
+                                            <img th:if="${comment.user.getPicName() != null}"
+                                                 th:src="@{/getImage(imageName=${comment.user.getPicName()})}"/>
+                                            <img th:if="${comment.user.picName == null or comment.user.picName.equalsIgnoreCase('null')}"
+                                                 th:src="@{/img.png}">
+                                        </div>
+                                        <div class="body">
+                                            <h4 th:text="${comment.user.getName()}"></h4>
+                                            <h6 th:text="${comment.getOpinion()}"></h6>
+                                            <div class="comment-meta"><span class="meta"><i
+                                                    class="fa fa-calendar"></i><span></span></span><span
+                                                class="meta"><i
+                                                    th:text="${#temporals.format(comment.date, 'dd')} + ' / ' + ${#temporals.format(comment.date, 'E')} + ' / ' + ${#temporals.format(comment.date, 'yyyy')} + ' ' + ${#temporals.format(comment.date, 'HH')} + ':' + ${#temporals.format(comment.date, 'mm')}"></i></span></div>
+                                            <a th:if="${currentUser.id == comment.user.id} or ${currentUser.userType.name().equals('ADMIN')}"
+                                               th:href="@{/comment/delete/{id}(id = ${comment.id})}"><i
+                                                    class="fa fa-reply"></i>Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="comments-form">
+                            <h2>Leave Comments</h2>
+
+                            <form class="form" method="post" action="/comment/create">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="hidden" name="user.id" th:value="${currentUser.id}">
+                                        <input type="hidden" name="doctor.id" th:value="${doctor.id}">
+                                        <div class="form-group message">
+                                            <i class="fa fa-pencil"></i>
+                                            <textarea name="opinion" rows="7"
+                                                      placeholder="Type Your Message Here"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group button">
+                                            <button type="submit" class="btn primary"><i class="fa fa-send"></i>Submit
+                                                Comment
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer id="footer" class="footer ">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="single-footer">
+                        <h2>About Us</h2>
+                        <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore
+                            dolore magna.</p>
+
+                        <ul class="social">
+                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="#"><i class="icofont-google-plus"></i></a></li>
+                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="#"><i class="icofont-vimeo"></i></a></li>
+                            <li><a href="#"><i class="icofont-pinterest"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="single-footer f-link">
+                        <h2>Quick Links</h2>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Cases</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Other Links</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Consuling</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Finance</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="single-footer">
+                        <h2>Open Hours</h2>
+                        <p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
+                        <ul class="time-sidual">
+                            <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
+                            <li class="day">Saturday <span>9.00-18.30</span></li>
+                            <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="single-footer">
+                        <h2>Newsletter</h2>
+                        <p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit,</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="copyright-content">
+                        <p>© Copyright 2018 | All Rights Reserved by <a href="https://www.wpthemesgrid.com"
+                                                                        target="_blank">wpthemesgrid.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+
+<script data-cfasync="false" src="/js/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery-migrate-3.0.0.js"></script>
+
+<script src="/js/jquery-ui.min.js"></script>
+
+<script src="/js/easing.js"></script>
+
+<script src="/js/colors.js"></script>
+
+<script src="/js/popper.min.js"></script>
+
+<script src="/js/bootstrap-datepicker.js"></script>
+
+<script src="/js/jquery.nav.js"></script>
+
+<script src="/js/slicknav.min.js"></script>
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+<script src="/js/niceselect.js"></script>
+
+<script src="/js/tilt.jquery.min.js"></script>
+
+<script src="/js/owl-carousel.js"></script>
+
+<script src="/js/jquery.counterup.min.js"></script>
+
+<script src="/js/steller.js"></script>
+
+<script src="/js/wow.min.js"></script>
+
+<script src="/js/jquery.magnific-popup.min.js"></script>
+
+<script src="/js/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script defer="" src="/js/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
+        integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
+        data-cf-beacon='{"rayId":"7d05576a7a523362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
+        crossorigin="anonymous"></script>
+</body>
+</html>

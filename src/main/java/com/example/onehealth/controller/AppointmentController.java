@@ -10,7 +10,6 @@ import com.example.onehealth.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,10 +33,10 @@ public class AppointmentController {
     }
 
     @GetMapping("/make")
-    public String addAppointmentPage(ModelMap modelMap,Appointment appointment) {
+    //todo to-make
+    public String addAppointmentPage(ModelMap modelMap) {
         modelMap.addAttribute("doctors", doctorService.getDoctors());
         modelMap.addAttribute("departments", departmentService.getDepartmentList());
-        modelMap.addAttribute("appointment",appointment);
         return "addAppointment";
     }
 
@@ -56,7 +55,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/cancell")
-    @Transactional
+    //todo cancel
     public String cancelAppointment(@RequestParam("id") int id,
                                     @AuthenticationPrincipal CurrentUser currentUser) {
         appointmentService.cancellAppointmentById(id, currentUser);

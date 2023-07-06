@@ -7,7 +7,6 @@ import com.example.onehealth.security.CurrentUser;
 import com.example.onehealth.service.AppointmentService;
 import com.example.onehealth.service.EmailSenderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -72,6 +71,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    @Transactional
     public boolean createAppointment(Optional<Patient> patientById, Appointment appointment) {
         //   TODO handle null pointer exception;
         boolean isAppointmentCreated = false;
@@ -107,7 +107,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
-    @Async
+
     public void sendAppointmentCancellMessageToPatient(int id) {
         Optional<Patient> patientFromDb = patientRepository.findById(id);
         if (patientFromDb.isPresent()) {
@@ -118,7 +118,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
-    @Async
+
     public void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor) {
         emailSenderService.sendSimpleEmail(patient.getEmail(), "Hello,you have registered for an online consultation" +
                         "You are registered" + doctor.getName() + "to the doctor",
