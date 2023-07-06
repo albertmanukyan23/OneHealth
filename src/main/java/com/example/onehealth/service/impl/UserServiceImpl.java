@@ -1,8 +1,6 @@
 package com.example.onehealth.service.impl;
 
-import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.User;
-import com.example.onehealth.repository.PatientRepository;
 import com.example.onehealth.repository.UserRepository;
 import com.example.onehealth.service.EmailSenderService;
 import com.example.onehealth.service.UserService;
@@ -23,7 +21,6 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final ImageDownloader imageDownloader;
-    private final PatientRepository patientRepository;
     private final EmailSenderService emailSenderService;
     private final UserRepository userRepository;
 

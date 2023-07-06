@@ -30,7 +30,7 @@ public class PatientServiceImpl implements PatientService {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final ImageDownloader imageDownloader;
-    private final EmailSenderService emailSenderService;
+
 
     @Value("${site.url}")
     private String siteUrl;

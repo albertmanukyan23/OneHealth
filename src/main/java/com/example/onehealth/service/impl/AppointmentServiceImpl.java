@@ -118,7 +118,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
-    @Async
+
     public void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor) {
         emailSenderService.sendSimpleEmail(patient.getEmail(), "Hello,you have registered for an online consultation" +
                         "You are registered" + doctor.getName() + "to the doctor",

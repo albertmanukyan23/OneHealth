@@ -28,6 +28,4 @@ public interface DoctorService {
 
     List<Doctor> searchDoctorsByKey(String searchText);
 
-    Optional<Doctor> findByEmail(String email);
-
 }
