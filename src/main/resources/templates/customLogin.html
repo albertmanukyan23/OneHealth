@@ -214,10 +214,10 @@
                 <div class="col-lg-6">
                     <div class="login-form">
                         <h2>Login Here</h2>
-                        <div>
-                            <a href="/patient/confirmation-page">Forgot Patient password/ </a>
-                            <a href="/doctor/confirmation-page">Forgot Doctor password?</a>
-                        </div>
+
+                            <a href="/user/email-confirmation-page">Forgot  password ? </a>
+
+
                         <form class="form" method="post" action="/login">
                             <p th:if="${errorMessage != null}" th:text="${errorMessage}"
                                style="color: red; margin-bottom: 0"></p>

@@ -84,12 +84,9 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setRegisDate(new Date());
         doctor.setUserType(UserType.DOCTOR);
         imageDownloader.saveProfilePicture(multipartFile, doctor);
-        UUID token = UUID.randomUUID();
-        doctor.setToken(token.toString());
-        doctor.setEnabled(false);
         userService.registerUser(doctor);
         sendDoctorRegistrationMessage(doctor.getId());
-        verifyAccountWithEmail(doctor.getId());
+
     }
 
     @Override
@@ -114,54 +111,6 @@ public class DoctorServiceImpl implements DoctorService {
     public Optional<Doctor> findByEmail(String email) {
         return doctorRepository.findByEmail(email);
     }
-
-    @Override
-    public void verifyAccount(String email, String token) {
-        Optional<Doctor> byEmail = doctorRepository.findByEmail(email);
-        if (byEmail.get().getToken().equals(token)) {
-            Doctor doctorDb = byEmail.get();
-            doctorDb.setEnabled(true);
-            doctorDb.setToken(null);
-            doctorRepository.save(doctorDb);
-        }
-    }
-
-    @Override
-    public void confirmationMessage(String email) {
-        Optional<Doctor> byEmail = doctorRepository.findByEmail(email);
-        if (byEmail.isPresent()) {
-            Doctor doctor = byEmail.get();
-            UUID token = UUID.randomUUID();
-            doctor.setToken(token.toString());
-            doctorRepository.save(doctor);
-            emailSenderService.sendSimpleEmail(doctor.getEmail(),
-                    "Welcome", "Hi" + doctor.getName() +
-                            "\n" + "Confirm to rest password " +
-                            siteUrl + "/doctor/change-password-page?email=" + doctor.getEmail() + "&token=" + doctor.getToken());
-        }
-    }
-
-    @Override
-    public void changePassword(String email, String token) {
-        Optional<Doctor> byEmail = doctorRepository.findByEmail(email);
-        if (byEmail.get().getToken().equals(token)) {
-            Doctor doctor = byEmail.get();
-            doctor.setToken(null);
-            doctorRepository.save(doctor);
-        }
-    }
-    @Override
-    public void updatePassword(String email, String token, String password, String passwordRepeat) {
-        Optional<Doctor> byEmail = doctorRepository.findByEmail(email);
-        if (byEmail.isPresent() && byEmail.get().isEnabled()) {
-            if (password.equals(passwordRepeat) && byEmail.get().getToken() == null) {
-                Doctor doctor = byEmail.get();
-                doctor.setPassword(passwordEncoder.encode(password));
-                doctorRepository.save(doctor);
-            }
-        }
-    }
-
     @Async
     public void sendDoctorRegistrationMessage(int id) {
         Optional<Doctor> doctorFromDb = doctorRepository.findById(id);
@@ -169,18 +118,6 @@ public class DoctorServiceImpl implements DoctorService {
             Doctor doctor = doctorFromDb.get();
             emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",
                     "password: " + doctor.getPassword() + "\n Please don't lose it.");
-        }
-    }
-
-    @Async
-    public void verifyAccountWithEmail(int id) {
-        Optional<Doctor> byId = doctorRepository.findById(id);
-        if (byId.isPresent()) {
-            Doctor doctor = byId.get();
-            emailSenderService.sendSimpleEmail(doctor.getEmail(),
-                    "Welcome", "Hi" + doctor.getName() +
-                            "\n" + "Please verify your email by clicking on this url " +
-                            siteUrl + "/doctor/verify?email=" + doctor.getEmail() + "&token=" + doctor.getToken());
         }
     }
 }

@@ -14,7 +14,6 @@ public interface PatientService {
 
     Page<Patient> getPatientPag(Pageable pageable);
 
-
     void update(Patient patient, MultipartFile multipartFile) throws IOException;
 
     Optional<Patient> findPatientById(int id);
@@ -27,12 +26,4 @@ public interface PatientService {
 
     Optional<Patient> findByEmail(String email);
 
-
-    void verifyAccount(String email, String token);
-
-    void confirmationMessage(String email);
-
-    void changePassword(String email, String token);
-
-    void updatePassword(String email,String token,String password,String passwordRepeat);
 }

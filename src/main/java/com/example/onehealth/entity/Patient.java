@@ -1,11 +1,7 @@
 package com.example.onehealth.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
-
-import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity

@@ -122,12 +122,31 @@
                     </div>
                 </div>
 
+                <div class="col-lg-4 col-12 ">
+                    <div class="single-info" onclick="activateDeactivateUser()">
+                        <i class="icofont icofont-wall-clock"></i>
+                        <div class="content">
+                            <h3>Activate Deactivate User</h3>
+                            <p><a href="/doctor"></a></p>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="col-lg-4 col-12">
                     <div class="single-info" onclick="redirectToPatient()">
                         <i class="icofont icofont-wall-clock"></i>
                         <div class="content">
                             <h3>Patients</h3>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="single-info" onclick="redirectToDepartment()">
+                        <i class="icofont icofont-wall-clock"></i>
+                        <div class="content">
+                            <h3>Departments</h3>
                         </div>
                     </div>
                 </div>
@@ -260,10 +279,16 @@
 <script src="/js/map-active.js"></script>
 <script>
     function redirectToPatient() {
-        window.location.href = "/patient";
+        window.location.href = "/patients";
+    }
+    function activateDeactivateUser(){
+        window.location.href = "/user/activate-deactivate-page";
     }
     function redirectToDoctor() {
         window.location.href = "/doctor";
+    }
+    function redirectToDepartment() {
+        window.location.href = "/departments/open-page";
     }
 
     function redirectToMedicalServices() {
