@@ -79,8 +79,6 @@
 </div>
 
 
-
-
 <div class="breadcrumbs overlay">
     <div class="container">
         <div class="bread-inner">
@@ -107,7 +105,7 @@
                     <div class="title">
                         <h3>Book your appointment</h3>
                     </div>
-                    <form  action="/appointments/make" method="post">
+                    <form action="/appointments/make" method="post">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
@@ -117,10 +115,16 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <p style="margin-bottom: 0">Choose Doctor</p>
+
                                 <select name="doctor.id">
-                                <option th:each="doctor: ${doctors}"
-                                        th:text="${doctor.name}" th:value="${doctor.id}"></option>
-                            </select>
+                                    <option th:each="doctor: ${doctors}"
+                                            th:text="${doctor.name}" th:value="${doctor.getId()}"></option>
+                                </select>
+
+                               <select name="registerType">
+                                   <option th:value="ONLINE">ONLINE</option>
+                                   <option th:value="OFFLINE">OFFLINE</option>
+                               </select>
                             </div>
                             <div style="margin-left: 2px" class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
@@ -129,16 +133,16 @@
                                         <input name="description" type="text" placeholder="Description">
                                     </div>
                                 </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div style="margin-top: 30px; margin-right: 100px" class="button">
-                                        <button type="submit" class="btn">Book  Appointment</button>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div style="margin-top: 30px; margin-right: 100px" class="button">
+                                                <button type="submit" class="btn">Book Appointment</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
                         </div>
                     </form>
                 </div>

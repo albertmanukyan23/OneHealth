@@ -121,6 +121,8 @@
                             <th>surname</th>
                             <th>speciality</th>
                             <th>email</th>
+                            <th>zoom_ID</th>
+                            <th>zoom_Password</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -153,6 +155,14 @@
 
                             </td>
                             <td>
+                                <h3 th:text="${doctor.zoomId}"></h3>
+
+                            </td>
+                            <td>
+                                <h3 th:text="${doctor.zoomPassword}"></h3>
+
+                            </td>
+                            <td>
                                 <a th:href="@{/doctor/update(id = ${doctor.id})}"><h3>Update</h3></a>
 
                             </td>
@@ -160,6 +170,7 @@
                                 <a th:href="@{/doctor/remove(id = ${doctor.id})}"><h3>Remove</h3></a>
 
                             </td>
+
                         </tr>
                         </tbody>
                     </table>

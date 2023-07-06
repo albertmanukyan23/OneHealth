@@ -61,6 +61,8 @@ public class DoctorServiceImpl implements DoctorService {
                 doctorFromDb.setPicName(doctor.getPicName());
                 doctorFromDb.setSpeciality(doctor.getSpeciality());
                 doctorFromDb.setPhoneNumber(doctor.getPhoneNumber());
+                doctorFromDb.setZoomId(doctor.getZoomId());
+                doctorFromDb.setZoomPassword(doctor.getZoomPassword());
                 imageDownloader.saveProfilePicture(multipartFile, doctorFromDb);
                 doctorRepository.save(doctorFromDb);
             }

@@ -125,7 +125,7 @@
                 <div class="col-lg-6">
                     <div class="register-form">
                         <h2>Update Department</h2>
-                        <form action="/department/update" method="post" th:object="${departments}">
+                        <form action="/departments/modify" method="post" th:object="${departments}">
                             <input name="id" type="hidden" th:value="${departments.getId()}">
                             <div class="row">
                                 <div class="col-lg-6">

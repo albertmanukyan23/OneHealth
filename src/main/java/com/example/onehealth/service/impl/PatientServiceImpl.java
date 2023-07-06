@@ -1,13 +1,13 @@
 package com.example.onehealth.service.impl;
-
 import com.example.onehealth.entity.Patient;
-import com.example.onehealth.entity.User;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.repository.PatientRepository;
+import com.example.onehealth.service.EmailSenderService;
 import com.example.onehealth.service.PatientService;
 import com.example.onehealth.service.UserService;
 import com.example.onehealth.util.ImageDownloader;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,10 @@ public class PatientServiceImpl implements PatientService {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final ImageDownloader imageDownloader;
+    private final EmailSenderService emailSenderService;
+
+    @Value("${site.url}")
+    private String siteUrl;
 
     @Override
     public List<Patient> getPatient() {
@@ -40,10 +45,6 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findAll(pageable);
     }
 
-    @Override
-    public Optional<User> findByEmail(String email) {
-        return Optional.empty();
-    }
 
     @Override
     @Transactional
@@ -90,7 +91,6 @@ public class PatientServiceImpl implements PatientService {
         }
         return null;
     }
-
     @Override
     @Transactional
     public void save(MultipartFile multipartFile, Patient patient) throws IOException {
@@ -99,4 +99,12 @@ public class PatientServiceImpl implements PatientService {
         patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);
     }
+
+    @Override
+    public Optional<Patient> findByEmail(String email) {
+        return patientRepository.findByEmail(email);
+    }
+
+
+
 }

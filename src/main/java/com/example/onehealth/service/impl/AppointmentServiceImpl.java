@@ -1,10 +1,7 @@
 package com.example.onehealth.service.impl;
-
-import com.example.onehealth.entity.Appointment;
-import com.example.onehealth.entity.Patient;
-import com.example.onehealth.entity.User;
-import com.example.onehealth.entity.UserType;
+import com.example.onehealth.entity.*;
 import com.example.onehealth.repository.AppointmentRepository;
+import com.example.onehealth.repository.DoctorRepository;
 import com.example.onehealth.repository.PatientRepository;
 import com.example.onehealth.security.CurrentUser;
 import com.example.onehealth.service.AppointmentService;
@@ -17,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements AppointmentService {
@@ -24,7 +22,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final PatientRepository patientRepository;
     private final EmailSenderService emailSenderService;
-
+    private final DoctorRepository doctorRepository;
 
     @Override
     public List<Appointment> getAppointment() {
@@ -36,7 +34,6 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void delete(int id) {
         appointmentRepository.deleteById(id);
     }
-
 
     @Override
     public List<Appointment> getDoctorAppointments(int id) {
@@ -68,17 +65,25 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         return isDoctorAvailable;
     }
-    private boolean isAppointmentBetweenWorkingHours(Appointment appointment){
+
+    private boolean isAppointmentBetweenWorkingHours(Appointment appointment) {
         return appointment.getStartTime().getHour() >= 8 && appointment.getStartTime().getHour() < 18;
     }
 
     @Override
     @Transactional
     public boolean createAppointment(Optional<Patient> patientById, Appointment appointment) {
-       //TODO handle null pointer exception;
+        //   TODO handle null pointer exception;
         boolean isAppointmentCreated = false;
         if (patientById.isPresent() && isDoctorAvailableForAppointment(appointment)
-                                    && isAppointmentBetweenWorkingHours(appointment)) {
+                && isAppointmentBetweenWorkingHours(appointment)) {
+            if (appointment.getRegisterType() == RegisterType.ONLINE) {
+                Optional<Doctor> doctorOptional = doctorRepository.findById(appointment.getDoctor().getId());
+                Optional<Patient> patientOptional = patientRepository.findById(patientById.get().getId());
+                if (patientOptional.isPresent() && doctorOptional.isPresent()){
+                    applicationByLetterToDoDoctorZoomData(patientOptional.get(),doctorOptional.get());
+                }
+            }
             appointment.setPatient(patientById.get());
             LocalDateTime appointmentEndTime = appointment.getStartTime().plusMinutes(30);
             appointment.setEndTime(appointmentEndTime);
@@ -87,6 +92,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         return isAppointmentCreated;
     }
+
     @Override
     @Transactional
     public void cancellAppointmentById(int id, CurrentUser currentUser) {
@@ -97,7 +103,6 @@ public class AppointmentServiceImpl implements AppointmentService {
             if (user.getUserType() == UserType.DOCTOR) {
                 Appointment appointment = byAppointmentId.get();
                 sendAppointmentCancellMessageToPatient(appointment.getPatient().getId());
-
             }
         }
     }
@@ -111,6 +116,14 @@ public class AppointmentServiceImpl implements AppointmentService {
                     "Your appointment has been canceled by the doctor," +
                             " we ask for your forgiveness, try to book a consultation again for another day.");
         }
+    }
+
+    @Async
+    public void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor) {
+        emailSenderService.sendSimpleEmail(patient.getEmail(), "Hello,you have registered for an online consultation" +
+                        "You are registered" + doctor.getName() + "to the doctor",
+                "doctor data zoom:" +doctor.getPassword()+ "password"
+                        + doctor.getZoomId() + "id");
 
     }
 }

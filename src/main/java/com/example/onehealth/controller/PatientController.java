@@ -17,14 +17,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/patient")
+@RequestMapping("/patients")
 public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
@@ -60,7 +58,7 @@ public class PatientController {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        patientService.save(multipartFile,patient);
+        patientService.save(multipartFile, patient);
         return "redirect:/";
     }
 
@@ -87,7 +85,7 @@ public class PatientController {
         if (bindingResult.hasErrors()) {
             return "updatePatient";
         }
-        patientService.update(patient,multipartFile);
+        patientService.update(patient, multipartFile);
         return "redirect:/patient";
     }
 

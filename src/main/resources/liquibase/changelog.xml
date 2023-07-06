@@ -134,4 +134,33 @@
             </column>
         </addColumn>
     </changeSet>
+    <changeSet id="doctorZoomData" author="Amanukyan">
+        <addColumn tableName="doctor">
+            <column name="zoom_id" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zoom_password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="appointmentRegisterOnlineAndOffline" author="Amanukyan">
+        <addColumn tableName="appointment">
+            <column name="register_type" type="enum('ONLINE','OFFLINE')">
+            <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+<changeSet id="userVerifyAccount" author="Amanukyan">
+    <sql>
+        alter table user
+            add enabled boolean default true not null;
+
+        alter table user
+            add token varchar(255) null;
+    </sql>
+</changeSet>
+
+
+
 </databaseChangeLog>

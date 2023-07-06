@@ -43,7 +43,6 @@ public class AppointmentController {
     @PostMapping("/make")
     public String addAppointment(@ModelAttribute Appointment appointment,
                                  @AuthenticationPrincipal CurrentUser currentUser) {
-        //todo make optional out of method
         if (appointmentService.createAppointment(patientService.findPatientById(currentUser.getUser().getId()), appointment)) {
             return "redirect:/patient/appointments";
         }
