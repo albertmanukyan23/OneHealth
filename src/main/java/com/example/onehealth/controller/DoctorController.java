@@ -21,6 +21,7 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/doctor")
+//todo doctors
 public class DoctorController {
 
     private final UserService userService;
@@ -46,9 +47,11 @@ public class DoctorController {
     }
 
     @GetMapping("/singlePage")
+    //todo single-page
     public String singlePage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
         modelMap.addAttribute("doctor", currentUser.getUser());
         return "doctorSinglePage";
+
     }
 
     @GetMapping("/appointments")

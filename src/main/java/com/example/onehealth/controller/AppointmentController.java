@@ -33,6 +33,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/make")
+    //todo to-make
     public String addAppointmentPage(ModelMap modelMap) {
         modelMap.addAttribute("doctors", doctorService.getDoctors());
         modelMap.addAttribute("departments", departmentService.getDepartmentList());
@@ -42,6 +43,7 @@ public class AppointmentController {
     @PostMapping("/make")
     public String addAppointment(@ModelAttribute Appointment appointment,
                                  @AuthenticationPrincipal CurrentUser currentUser) {
+        //todo make optional out of method
         if (appointmentService.createAppointment(patientService.findPatientById(currentUser.getUser().getId()), appointment)) {
             return "redirect:/patient/appointments";
         }
@@ -54,6 +56,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/cancell")
+    //todo cancel
     public String cancelAppointment(@RequestParam("id") int id,
                                     @AuthenticationPrincipal CurrentUser currentUser) {
         appointmentService.cancellAppointmentById(id, currentUser);

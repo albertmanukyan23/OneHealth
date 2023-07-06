@@ -31,6 +31,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/add")
+    //todo to-add-page
     public String addDepartmentPage() {
         return "addDepartment";
     }
@@ -45,6 +46,7 @@ public class DepartmentController {
     public String addDepartment(@ModelAttribute Department department) {
         departmentService.addDepartment(department);
         return "redirect:/department/open-page";
+
     }
 
     @PostMapping("/update")

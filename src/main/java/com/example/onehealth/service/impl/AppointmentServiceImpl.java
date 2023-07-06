@@ -10,7 +10,6 @@ import com.example.onehealth.security.CurrentUser;
 import com.example.onehealth.service.AppointmentService;
 import com.example.onehealth.service.EmailSenderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

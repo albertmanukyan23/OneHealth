@@ -42,7 +42,7 @@ public class SpringSecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/customLogin").permitAll()
-                .defaultSuccessUrl("/customSuccessLogIn")
+                .defaultSuccessUrl("/customSuccessLogIn",true)
                 .loginProcessingUrl("/login").permitAll()
                 .failureUrl("/customLogin?error=true")
                 .and()

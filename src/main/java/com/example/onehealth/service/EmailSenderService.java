@@ -20,5 +20,6 @@ public class EmailSenderService {
         message.setSubject(subject);
         javaMailSender.send(message);
 
+
     }
 }
