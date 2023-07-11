@@ -1,6 +1,7 @@
 package com.example.onehealth.service.impl;
 
 import com.example.onehealth.entity.Doctor;
+import com.example.onehealth.entity.Patient;
 import com.example.onehealth.entity.UserType;
 import com.example.onehealth.repository.DoctorRepository;
 import com.example.onehealth.service.DoctorService;
@@ -111,6 +112,7 @@ public class DoctorServiceImpl implements DoctorService {
         }
         return doctors;
     }
+
 
     public void sendDoctorRegistrationMessage(Doctor doctor) {
         emailSenderService.sendSimpleEmail(doctor.getEmail(), "You password for Log in OneHealth",

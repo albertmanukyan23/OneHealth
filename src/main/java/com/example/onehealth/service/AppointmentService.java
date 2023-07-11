@@ -27,7 +27,9 @@ public interface AppointmentService {
     boolean createAppointment(Optional<Patient> patientById, Appointment appointment);
 
 
-    void cancellAppointmentById(int id, CurrentUser currentUser);
+    void cancelAppointmentById(int id, CurrentUser currentUser);
 
     void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor);
+
+    List<Patient> findDoctorPatientsFromAppointments(int id, String searchText);
 }

@@ -1,4 +1,5 @@
 package com.example.onehealth.service.impl;
+
 import com.example.onehealth.entity.*;
 import com.example.onehealth.repository.AppointmentRepository;
 import com.example.onehealth.repository.DoctorRepository;
@@ -11,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -80,8 +83,8 @@ public class AppointmentServiceImpl implements AppointmentService {
             if (appointment.getRegisterType() == RegisterType.ONLINE) {
                 Optional<Doctor> doctorOptional = doctorRepository.findById(appointment.getDoctor().getId());
                 Optional<Patient> patientOptional = patientRepository.findById(patientById.get().getId());
-                if (patientOptional.isPresent() && doctorOptional.isPresent()){
-                    applicationByLetterToDoDoctorZoomData(patientOptional.get(),doctorOptional.get());
+                if (patientOptional.isPresent() && doctorOptional.isPresent()) {
+                    applicationByLetterToDoDoctorZoomData(patientOptional.get(), doctorOptional.get());
                 }
             }
             appointment.setPatient(patientById.get());
@@ -95,20 +98,20 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     @Transactional
-    public void cancellAppointmentById(int id, CurrentUser currentUser) {
+    public void cancelAppointmentById(int id, CurrentUser currentUser) {
         Optional<Appointment> byAppointmentId = appointmentRepository.findById(id);
         if (byAppointmentId.isPresent()) {
             User user = currentUser.getUser();
             appointmentRepository.deleteById(id);
             if (user.getUserType() == UserType.DOCTOR) {
                 Appointment appointment = byAppointmentId.get();
-                sendAppointmentCancellMessageToPatient(appointment.getPatient().getId());
+                sendAppointmentCancelMessageToPatient(appointment.getPatient().getId());
             }
         }
     }
 
 
-    public void sendAppointmentCancellMessageToPatient(int id) {
+    public void sendAppointmentCancelMessageToPatient(int id) {
         Optional<Patient> patientFromDb = patientRepository.findById(id);
         if (patientFromDb.isPresent()) {
             Patient patient = patientFromDb.get();
@@ -122,8 +125,27 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor) {
         emailSenderService.sendSimpleEmail(patient.getEmail(), "Hello,you have registered for an online consultation" +
                         "You are registered" + doctor.getName() + "to the doctor",
-                "doctor data zoom:" +doctor.getPassword()+ "password"
+                "doctor data zoom:" + doctor.getPassword() + "password"
                         + doctor.getZoomId() + "id");
+
+    }
+
+    @Override
+    public List<Patient> findDoctorPatientsFromAppointments(int id, String searchText) {
+        List<Appointment> doctorAppointments = appointmentRepository.findAllByDoctorId(id);
+        List<Patient> patients = getPatientsFromAppointments(doctorAppointments);
+        if (!searchText.equals("") && !searchText.equalsIgnoreCase("null")) {
+            patients = patients.stream()
+                    .filter(patient -> patient.getSurname().contains(searchText))
+                    .toList();
+        }
+        return patients;
+    }
+
+    private List<Patient> getPatientsFromAppointments(List<Appointment> doctorAppointments) {
+        return doctorAppointments.stream()
+                .map(Appointment::getPatient)
+                .toList();
 
     }
 }
