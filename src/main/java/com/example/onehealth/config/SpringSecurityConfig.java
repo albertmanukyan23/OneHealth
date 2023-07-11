@@ -35,6 +35,7 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.GET,"/patient/singlePage","/patient/appointments").hasAnyAuthority("PATIENT")
                 .requestMatchers("/patient/update","/patient/delete","/patient").hasAnyAuthority("ADMIN")
                 .requestMatchers(HttpMethod.GET,"/doctor/search" ,"/doctor/details/{id}").hasAnyAuthority("PATIENT","ADMIN")
+                .requestMatchers("/doctor/search/patients-for-doctor").hasAuthority("DOCTOR")
                 .requestMatchers("/doctor/appointments").hasAuthority("DOCTOR")
                 .requestMatchers("/patients/update","/patients/delete","/patients").hasAnyAuthority("ADMIN")
                 .requestMatchers("/doctor/reject","/doctor/appointments").hasAuthority("DOCTOR")

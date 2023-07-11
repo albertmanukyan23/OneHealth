@@ -1,6 +1,7 @@
 package com.example.onehealth.service;
 
 import com.example.onehealth.entity.Doctor;
+import com.example.onehealth.entity.Patient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;

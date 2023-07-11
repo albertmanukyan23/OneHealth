@@ -120,6 +120,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-12 ">
+                    <div class="single-info" onclick="redirectToDoctorPatients()">
+                        <i class="icofont icofont-wall-clock"></i>
+                        <div class="content">
+                            <h3>My Patients</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -239,6 +247,10 @@
 <script>
     function redirectToDoctorAppointments() {
         window.location.href = "/doctor/appointments";
+    }
+
+    function redirectToDoctorPatients() {
+        window.location.href = "/doctor/search/patients-for-doctor?searchText=null";
     }
 
 </script>

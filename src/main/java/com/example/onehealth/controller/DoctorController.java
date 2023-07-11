@@ -106,6 +106,15 @@ public class DoctorController {
         return "redirect:/doctor";
     }
 
+    @GetMapping("/search/patients-for-doctor")
+    public String getPatientsForDoctor(@RequestParam("searchText") String searchText,
+                                       @AuthenticationPrincipal CurrentUser currentUser,
+                                       ModelMap modelMap) {
+        List<Patient> doctorPatients =  appointmentService.findDoctorPatientsFromAppointments(currentUser.getUser().getId(),searchText);
+        modelMap.addAttribute("patients",doctorPatients);
+        return "searchPatients";
+    }
+
     @GetMapping("/search")
     public String doctorSearch(@RequestParam("searchText") String searchText, ModelMap modelMap) {
         List<Doctor> doctors = doctorService.searchDoctorsByKey(searchText);

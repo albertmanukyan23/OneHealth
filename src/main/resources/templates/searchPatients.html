@@ -79,36 +79,6 @@
 
 
 <header class="header">
-
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-5 col-12">
-
-                    <ul class="top-link">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Doctors</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-
-                </div>
-                <div class="col-lg-6 col-md-7 col-12">
-
-                    <ul class="top-contact">
-                        <li><i class="fa fa-phone"></i>+880 1234 56789</li>
-                        <li><i class="fa fa-envelope"></i><a
-                                href="/js/cdn-cgi/l/email-protection#6e1d1b1e1e011c1a2e17011b1c030f0702400d0103"><span
-                                class="__cf_email__" data-cfemail="9cefe9ececf3eee8dce5f3e9eef1fdf5f0b2fff3f1">[email&#160;protected]</span></a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="header-inner">
         <div class="container">
             <div class="inner">
@@ -119,63 +89,11 @@
                             <a href="index.html"><img src="/img/logo.png" alt="#"></a>
                         </div>
 
-
-                        <div class="mobile-nav"></div>
-
                     </div>
                     <div class="col-lg-7 col-md-9 col-12">
-
-                        <div class="main-menu">
-                            <nav class="navigation">
-                                <ul class="nav menu">
-                                    <li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Default Homepage</a></li>
-                                            <li><a href="index2.html">Animation Homepage</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Doctos <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="doctors.html">Doctor</a></li>
-                                            <li><a href="doctor-details.html">Doctor Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="service-details.html">Service Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="appointment.html">Appointment</a></li>
-                                            <li><a href="time-table.html">Time Table</a></li>
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                            <li><a href="pricing.html">Our Pricing</a></li>
-                                            <li><a href="register.html">Sign Up</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="mail-success.html">Mail Success</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-single.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-
                     </div>
                     <div class="col-lg-2 col-12">
-                        <div class="get-quote">
-                            <a href="appointment.html" class="btn">Appointment</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -190,12 +108,7 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Login</h2>
-                    <ul class="bread-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Login</li>
-                    </ul>
+                    <h2>Your Patients</h2>
                 </div>
             </div>
         </div>
@@ -203,47 +116,57 @@
 </div>
 
 
-<section class="login section">
-    <div class="container">
-        <div class="inner">
+<section id="team" class="team section single-page">
+    <section  class="error-page section">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="login-left">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="login-form">
-                        <h2>Login Here</h2>
-
-                            <a href="/user/email-confirmation-page">Forgot  password ? </a>
-
-
-                        <form class="form" method="post" action="/login">
-                            <p th:if="${errorMessage != null}" th:text="${errorMessage}"
-                               style="color: red; margin-bottom: 0"></p>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="username" placeholder="Your Email">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="password" name="password" placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-
-                                    <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Login</button>
-                                    </div>
-                                    <a href="/patients/register">Register</a>
-                                </div>
-                            </div>
+                <div class="col-lg-6 offset-lg-3 col-12">
+                    <div class="error-inner">
+                        <form class="search-form" action="/doctor/search/patients-for-doctor" method="get">
+                            <input placeholder="Search Patients From Here" type="text" name="searchText">
+                            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                         </form>
-
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div th:each="patient: ${patients}" class="col-lg-4 col-md-6 col-12">
+
+                <div class="single-team">
+                    <div class="t-head">
+                        <img th:if="${patient.picName != null}"
+                             th:src="@{/getImage(imageName=${patient.getPicName()})}"/>
+                        <img th:if="${patient.picName == null or patient.picName.equalsIgnoreCase('null')}"
+                             th:src="@{/img.png}">
+                        <div class="t-icon">
+                            <a th:href="@{/doctor/details/{id}(id = ${patient.getId()})}" class="btn">See Details</a>
+                        </div>
+                    </div>
+                    <div class="t-bottom">
+                        <p th:text="${patient.name}"></p>
+                        <h2 th:text="${patient.surname}"></h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="newsletter section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-6  col-12">
+
+                <div class="subscribe-text ">
+                    <h6>Sign up for newsletter</h6>
+                    <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -319,12 +242,6 @@
                         <h2>Newsletter</h2>
                         <p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit amet,
                             consectetur adipisicing elit,</p>
-                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                            <input name="email" placeholder="Email Address" class="common-input"
-                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'"
-                                   required="" type="email">
-                            <button class="button"><i class="icofont icofont-paper-plane"></i></button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -390,7 +307,7 @@
 <script src="/js/main.js"></script>
 <script defer="" src="/js/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
         integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7d055790fe8d3362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
+        data-cf-beacon='{"rayId":"7d055766b97f3362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
         crossorigin="anonymous"></script>
 </body>
 </html>

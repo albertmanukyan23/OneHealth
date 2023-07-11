@@ -44,7 +44,7 @@ public class AppointmentController {
     public String addAppointment(@ModelAttribute Appointment appointment,
                                  @AuthenticationPrincipal CurrentUser currentUser) {
         if (appointmentService.createAppointment(patientService.findPatientById(currentUser.getUser().getId()), appointment)) {
-            return "redirect:/patient/appointments";
+            return "redirect:/patients/appointments";
         }
         return "redirect:/appointments/failed";
     }
@@ -58,11 +58,11 @@ public class AppointmentController {
     //todo cancel
     public String cancelAppointment(@RequestParam("id") int id,
                                     @AuthenticationPrincipal CurrentUser currentUser) {
-        appointmentService.cancellAppointmentById(id, currentUser);
+        appointmentService.cancelAppointmentById(id, currentUser);
         if (currentUser.getUser().getUserType() == UserType.DOCTOR) {
             return "redirect:/doctor/appointments";
         } else if (currentUser.getUser().getUserType() == UserType.PATIENT) {
-            return "redirect:/patient/appointments";
+            return "redirect:/patients/appointments";
         } else {
             return "redirect:/admin";
         }
