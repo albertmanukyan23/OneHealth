@@ -16,10 +16,26 @@
     <properties>
         <java.version>17</java.version>
     </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <module>OneHealth-Rest</module>
+        <module>one-health-mvc</module>
+        <module>OneHealth-common</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
