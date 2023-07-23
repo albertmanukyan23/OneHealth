@@ -122,6 +122,15 @@
                     </div>
                 </div>
 
+                <div class="col-lg-4 col-12 ">
+                    <div class="single-info" onclick="onlinePayments()">
+                        <i class="icofont icofont-wall-clock"></i>
+                        <div class="content">
+                            <h3>Online Payments</h3>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="col-lg-4 col-12">
                     <div class="single-info" onclick="redirectToHistory()">
@@ -262,6 +271,9 @@
     }
     function redirectToHistory() {
         window.location.href = "/patients/appointments";
+    }
+    function onlinePayments() {
+        window.location.href = "/cart/online-payments-page";
     }
 
     function redirectToSearchDoctor() {

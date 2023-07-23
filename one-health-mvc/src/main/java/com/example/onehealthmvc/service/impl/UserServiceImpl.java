@@ -86,11 +86,16 @@ public class UserServiceImpl implements UserService {
             userDb.setEnabled(false);
             userRepository.save(userDb);
             deactivateUser(user.getId());
-        } else if (!byId.get().isEnabled()) {
-            User userAct = byId.get();
-            userAct.setEnabled(true);
-            userRepository.save(userAct);
-            activateUser(user.getId());
+        } else {
+            if (byId.isPresent()) {
+                if (!byId.get().isEnabled()) {
+                    User userAct = byId.get();
+                    userAct.setEnabled(true);
+                    userRepository.save(userAct);
+                    activateUser(user.getId());
+                }
+
+            }
         }
 
     }
