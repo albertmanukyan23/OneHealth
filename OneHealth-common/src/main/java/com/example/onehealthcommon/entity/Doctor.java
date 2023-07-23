@@ -3,13 +3,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Doctor extends User {

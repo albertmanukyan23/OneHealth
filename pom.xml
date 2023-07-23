@@ -8,20 +8,22 @@
         <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.example</groupId>
     <artifactId>OneHealth</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>one-health-rest</module>
+        <module>one-health-mvc</module>
+        <module>OneHealth-common</module>
+    </modules>
     <name>OneHealth</name>
     <description>OneHealth</description>
     <properties>
         <java.version>17</java.version>
     </properties>
     <packaging>pom</packaging>
-    <modules>
-        <module>OneHealth-Rest</module>
-        <module>one-health-mvc</module>
-        <module>OneHealth-common</module>
-    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -42,14 +44,6 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
@@ -64,11 +58,6 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -100,10 +89,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>6.0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>

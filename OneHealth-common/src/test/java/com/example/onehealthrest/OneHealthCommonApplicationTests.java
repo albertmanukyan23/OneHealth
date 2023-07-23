@@ -1,13 +1,15 @@
-package com.example.onehealthcommon;
+package com.example.onehealthrest;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+public
 class OneHealthCommonApplicationTests {
 
     @Test
-    void contextLoads() {
+   public void contextLoads() {
     }
 
 }
