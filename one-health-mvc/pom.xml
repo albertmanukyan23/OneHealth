@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>OneHealth-common</artifactId>
+            <artifactId>one-health-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

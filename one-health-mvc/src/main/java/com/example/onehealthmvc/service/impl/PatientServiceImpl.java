@@ -24,6 +24,7 @@ import java.util.stream.IntStream;
 @Service
 @RequiredArgsConstructor
 public class PatientServiceImpl implements PatientService {
+
     private final PatientRepository patientRepository;
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
