@@ -27,6 +27,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/patients")
 public class PatientController {
+
     private final UserService userService;
     private final PatientService patientService;
     private final AppointmentService appointmentService;

@@ -6,15 +6,21 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.UUID;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class User {
     @Id
@@ -42,4 +48,11 @@ public class User {
     private String token;
 
 
+//    public User(String name, String surname, String email, String password,Date birthDate) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.email = email;
+//        this.password = password;
+//        this.birthDate = birthDate;
+//    }
 }

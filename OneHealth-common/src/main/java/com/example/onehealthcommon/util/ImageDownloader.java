@@ -1,6 +1,5 @@
 package com.example.onehealthcommon.util;
 
-import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
