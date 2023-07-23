@@ -1,11 +1,12 @@
 package com.example.onehealthcommon.repository;
 
 import com.example.onehealthcommon.entity.Cart;
-import com.example.onehealthcommon.entity.User;
+import com.example.onehealthcommon.entity.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
-    Optional<User> findByEmail(String username);
+public interface CartRepository extends JpaRepository<Cart, Integer> {
+    Optional<Cart> findCartByUserId(int id);
+
 }

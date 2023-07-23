@@ -160,7 +160,65 @@
             add token varchar(255) null;
     </sql>
 </changeSet>
+    <changeSet id="cart" author="Amanukyan">
+        <sql>
+            create table cart
+            (
+                id      int auto_increment,
+                user_id int not null,
+                constraint cart_pk
+                    primary key (id),
+                constraint cart_user_id_fk
+                    foreign key (user_id) references user (id)
+            );
+
+        </sql>
+    </changeSet>
+    <changeSet id="cart_medical" author="Amanukyan">
+        <sql>
+            create table cart_medical
+            (
+                cart_id    int not null,
+                medical_id int not null,
+                constraint cart_medical_pk
+                    primary key (cart_id, medical_id),
+                constraint cart_medical_cart_id_fk
+                    foreign key (cart_id) references cart (id),
+                constraint cart_medical_medical_services_id_fk
+                    foreign key (medical_id) references medical_services (id)
+            );
+        </sql>
+    </changeSet>
+<changeSet id="orders" author="Amanukyan">
+    <sql>
+        create table orders
+        (
+            user_id   int  not null,
+            id        int auto_increment,
+            date_time date not null,
+            constraint orders_pk
+                primary key (id),
+            constraint orders_user_id_fk
+                foreign key (user_id) references user (id)
+        );
 
 
+    </sql>
+</changeSet>
+    <changeSet id="order_medical" author="Amanukyan">
+        <sql>
+            create table order_medical
+            (
+                order_id   int not null,
+                medical_id int not null,
+                constraint order_medical_pk
+                    primary key (order_id, medical_id),
+                constraint order_medical_medical_services_id_fk
+                    foreign key (medical_id) references medical_services (id),
+                constraint order_medical_orders_id_fk
+                    foreign key (order_id) references orders (id)
+            );
 
-</databaseChangeLog>
+        </sql>
+    </changeSet>
+ </databaseChangeLog>

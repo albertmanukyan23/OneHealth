@@ -28,6 +28,7 @@ public class SpringSecurityConfig {
                 .requestMatchers("/js/**").permitAll()
                 .requestMatchers("/fonts/**").permitAll()
                 .requestMatchers("/patients/register").permitAll()
+                .requestMatchers("/cart/**").hasAuthority("PATIENT")
                 .requestMatchers("/user/**").permitAll()
                 .requestMatchers("/user/activate-deactivate-page").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.GET,"/medicalServices").permitAll()

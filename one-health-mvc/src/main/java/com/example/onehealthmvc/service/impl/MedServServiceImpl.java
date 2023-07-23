@@ -8,11 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class MedServServiceImpl implements MedServService {
-    private  final MedServRepository medServRepository;
+    private final MedServRepository medServRepository;
 
     @Override
     public List<MedServ> getPriceList() {
@@ -27,5 +28,15 @@ public class MedServServiceImpl implements MedServService {
     @Override
     public void delete(int id) {
         medServRepository.deleteById(id);
+    }
+
+    @Override
+    public List<MedServ> findAll() {
+        return medServRepository.findAll();
+    }
+
+    @Override
+    public Optional<MedServ> findById(int id) {
+        return medServRepository.findById(id);
     }
 }

@@ -1,7 +1,9 @@
-
+<!--<!DOCTYPE html>-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!doctype html>
 <html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="Site keywords here">
@@ -39,17 +41,9 @@
     <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/color/color1.css">
+
+
     <link rel="stylesheet" href="#" id="colors">
-    <style>
-        .active{
-            color: red;
-            font-size: 20px;
-        }
-        .pagination{
-            display: flex;
-            flex-direction: row;
-        }
-    </style>
 </head>
 <body>
 
@@ -86,95 +80,149 @@
 </div>
 
 
-<div class="breadcrumbs overlay">
-    <div class="container">
-        <div class="bread-inner">
+<header class="header">
+
+    <div class="topbar">
+        <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h2>Department</h2>
-                    <ul class="bread-list">
-                        <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Department</li>
+                <div class="col-lg-6 col-md-5 col-12">
+
+                    <ul class="top-link">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
                     </ul>
+
+                </div>
+                <div class="col-lg-6 col-md-7 col-12">
+
+                    <ul class="top-contact">
+                        <li><i class="fa fa-phone"></i>+880 1234 56789</li>
+                        <li><i class="fa fa-envelope"></i><a
+                                href="/cdn-cgi/l/email-protection#b5c6c0c5c5dac7c1f5ccdac0c7d8d4dcd99bd6dad8"><span
+                                class="__cf_email__" data-cfemail="3b484e4b4b54494f7b42544e49565a525715585456">[email&#160;protected]</span></a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
     </div>
-</div>
-<section class="doctor-calendar-area section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Our Department</h2>
-                    <img src="/img/section-img.png" alt="#">
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="doctor-calendar-table table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>department</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="department: ${departments.content}">
-                            <td>
-                                <h3 th:text="${department.id}"></h3>
-                            </td>
-                            <td>
-                                <h3 th:text="${department.departments}"></h3>
-                            </td>
 
-                            <td>
-                                <a th:href="@{/departments/edit-page(id = ${department.id})}"><h3>Update</h3></a>
 
-                            </td>
-                            <td>
-                                <a th:href="@{/departments/remove(id = ${department.id})}"><h3>Remove</h3></a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="pagination">
-                        <div th:if="${departments.totalPages> 0}"
-                             th:each="pageNumber : ${pageNumbers}">
-                            <a th:href="@{/departments/open-page(size=${departments.size}, page=${pageNumber})}"
-                               th:text="${pageNumber}"
-                               th:class="${pageNumber==departments.number + 1} ? active"></a>
+    <div class="header-inner">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+
+                        <div class="logo">
+                            <a href="index.html"><img src="img/logo.png" alt="#"></a>
+                        </div>
+
+
+                        <div class="mobile-nav"></div>
+
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Default Homepage</a></li>
+                                            <li><a href="index2.html">Animation Homepage</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Doctos <i class="icofont-rounded-down"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a href="doctors.html">Doctor</a></li>
+                                            <li><a href="doctor-details.html">Doctor Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a href="service.html">Service</a></li>
+                                            <li><a href="service-details.html">Service Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="appointment.html">Appointment</a></li>
+                                            <li><a href="time-table.html">Time Table</a></li>
+                                            <li><a href="testimonials.html">Testimonials</a></li>
+                                            <li><a href="pricing.html">Our Pricing</a></li>
+                                            <li><a href="register.html">Sign Up</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="faq.html">Faq</a></li>
+                                            <li><a href="mail-success.html">Mail Success</a></li>
+                                            <li><a href="404.html">404 Error</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a href="blog-grid.html">Blog Grid</a></li>
+                                            <li><a href="blog-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <div class="get-quote">
+                            <a href="appointment.html" class="btn">Appointment</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<section class="newsletter section">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-6  col-12">
 
-                <div class="subscribe-text ">
-                    <h6>Sign up for newsletter</h6>
-                    <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>
-                </div>
-            </div>
-            <div class="col-lg-6  col-12">
+</header>
 
-                <div class="subscribe-form ">
-                    <a th:href="@{/departments/page-to-add}" class="btn">Add Department</a>
+<section class="appointment single-page">
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="bread-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Our Pricing</h2>
+                        <ul class="bread-list">
+                            <li><a href="index.html">Pages</a></li>
+                            <li><i class="icofont-simple-right"></i></li>
+                            <li class="active">Our Pricing</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div style="margin-left: 450px;margin-top: 50px" class="col-lg-5 col-md-12 ">
+        <div class="work-hour">
+            <h3>Our Pricing</h3><br>
+            <h3>Total Amount</h3>
+            <h3 th:text="${totalSum}"></h3>
+            <ul th:each="medServ:${medServList}" class="time-sidual">
+                <li class="day" th:text="${medServ.name + ' ' + medServ.price + '$'}"
+                    style="padding-right: 200px;"></li>
+                <h3><a th:href="@{/cart/do/order}">Order</a></h3>
+                    <form th:action="@{/cart/remove/{medServId}(medServId=${medServ.id})}" method="post">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-dark mt-auto">Remove</button>
+                        </div>
+                    </form>
+
+            </ul>
+        </div>
+    </div>
 </section>
+</div>
 <footer id="footer" class="footer ">
     <div class="footer-top">
         <div class="container">
@@ -192,6 +240,7 @@
                             <li><a href="#"><i class="icofont-vimeo"></i></a></li>
                             <li><a href="#"><i class="icofont-pinterest"></i></a></li>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
@@ -313,7 +362,7 @@
 <script src="/js/main.js"></script>
 <script defer="" src="/js/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
         integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7d055780f9e43362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
+        data-cf-beacon='{"rayId":"7d05577b2ff73362","version":"2023.4.0","r":1,"b":1,"token":"3248e93e0d6447329c4d6bcc351d5700","si":100}'
         crossorigin="anonymous"></script>
 </body>
 </html>

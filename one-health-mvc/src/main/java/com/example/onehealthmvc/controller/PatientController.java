@@ -1,10 +1,12 @@
 package com.example.onehealthmvc.controller;
+
 import com.example.onehealthcommon.entity.Appointment;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.util.ImageDownloader;
 import com.example.onehealthmvc.security.CurrentUser;
 import com.example.onehealthmvc.service.AppointmentService;
+import com.example.onehealthmvc.service.MedServService;
 import com.example.onehealthmvc.service.PatientService;
 import com.example.onehealthmvc.service.UserService;
 import jakarta.validation.Valid;
@@ -20,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/patients")
@@ -27,7 +30,6 @@ public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
     private final AppointmentService appointmentService;
-
     @GetMapping()
     public String getPatient(ModelMap modelMap,
                              @RequestParam("page") Optional<Integer> page,
@@ -88,6 +90,8 @@ public class PatientController {
         patientService.update(patient, multipartFile);
         return "redirect:/patient";
     }
+
+
 
     @GetMapping("/delete")
     public String removeUser(@RequestParam("id") int id) throws IOException {
