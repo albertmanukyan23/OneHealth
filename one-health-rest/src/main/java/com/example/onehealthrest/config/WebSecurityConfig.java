@@ -1,5 +1,4 @@
 package com.example.onehealthrest.config;
-
 import com.example.onehealthrest.filter.JWTAuthenticationTokenFilter;
 import com.example.onehealthrest.security.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +43,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/patients/update","/patients/delete","/patients").hasAnyAuthority("ADMIN")
                 .requestMatchers("/doctor/reject","/doctor/appointments").hasAuthority("DOCTOR")
                 .requestMatchers("/doctor/singlePage").hasAuthority("DOCTOR")
-                .requestMatchers("/doctor/**").hasAuthority("ADMIN")
+                .requestMatchers("/doctors/**").hasAuthority("ADMIN")
                 .requestMatchers("/comment/create" ,"/comment/delete").hasAnyAuthority("PATIENT","ADMIN")
                 .requestMatchers("/admin").hasAuthority("ADMIN")
                 .requestMatchers("/departments/**").hasAuthority("ADMIN")

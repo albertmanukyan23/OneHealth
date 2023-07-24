@@ -16,7 +16,6 @@ import java.nio.file.Paths;
 public class ImageDownloader {
     @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
-
     public void saveProfilePicture(MultipartFile multipartFile, User user) throws IOException {
         if (multipartFile != null && !multipartFile.isEmpty()) {
             String fileName = System.nanoTime() + "_" + multipartFile.getOriginalFilename();

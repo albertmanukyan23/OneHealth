@@ -1,5 +1,4 @@
 package com.example.onehealthrest.service.impl;
-
 import com.example.onehealthcommon.EmailSenderService;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.repository.UserRepository;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 import java.util.UUID;
 
