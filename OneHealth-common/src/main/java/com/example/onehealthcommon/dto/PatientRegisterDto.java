@@ -11,7 +11,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class PatientRegisterDto {
-
     private String name;
     private String surname;
     private String email;

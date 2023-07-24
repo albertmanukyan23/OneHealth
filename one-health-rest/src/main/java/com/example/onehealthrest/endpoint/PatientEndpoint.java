@@ -33,7 +33,6 @@ public class PatientEndpoint {
             bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorBuilder.toString());
         }
-
         return ResponseEntity.ok(patientService.save(patientMapper.map(patientRegisterDto)));
 
     }
