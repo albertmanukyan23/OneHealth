@@ -31,6 +31,7 @@ public class PatientController {
     private final UserService userService;
     private final PatientService patientService;
     private final AppointmentService appointmentService;
+
     @GetMapping()
     public String getPatient(ModelMap modelMap,
                              @RequestParam("page") Optional<Integer> page,
@@ -73,14 +74,6 @@ public class PatientController {
         return "updatePatient";
     }
 
-    @GetMapping("/appointments")
-    public String getDoctorPersonalAppointments(@AuthenticationPrincipal CurrentUser currentUser,
-                                                ModelMap modelMap) {
-        User user = currentUser.getUser();
-        List<Appointment> patientAppointments = appointmentService.getPatientAppointments(user.getId());
-        modelMap.addAttribute("appointments", patientAppointments);
-        return "patientAppointments";
-    }
 
     @PostMapping("/update")
     public String updatePatient(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
@@ -92,6 +85,14 @@ public class PatientController {
         return "redirect:/patient";
     }
 
+    @GetMapping("/appointments")
+    public String getPatientPersonalAppointments(@AuthenticationPrincipal CurrentUser currentUser,
+                                                ModelMap modelMap) {
+        User user = currentUser.getUser();
+        List<Appointment> patientAppointments = appointmentService.getPatientAppointments(user.getId());
+        modelMap.addAttribute("appointments", patientAppointments);
+        return "patientAppointments";
+    }
 
 
     @GetMapping("/delete")

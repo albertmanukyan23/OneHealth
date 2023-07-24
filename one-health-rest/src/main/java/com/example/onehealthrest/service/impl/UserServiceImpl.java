@@ -55,13 +55,14 @@ public class UserServiceImpl implements UserService {
                             siteUrl + "/user/verify-account?email=" + user.getEmail() + "&token=" + user.getToken());
         }
     }
-    public void verifyAccount(String email, String token) {
+    public User verifyAccount(String email, String token) {
         Optional<User> byEmail = userRepository.findByEmail(email);
-        if (byEmail.isPresent() && (byEmail.get().getToken().equals(token))) {
+        if (byEmail.isPresent() && (byEmail.get().getToken().equals(token)) && !byEmail.get().isEnabled()) {
                 User user = byEmail.get();
                 user.setEnabled(true);
                 user.setToken(null);
-                userRepository.save(user);
+                return userRepository.save(user);
         }
+        return null;
     }
 }
