@@ -10,5 +10,5 @@ public interface UserService {
 
     void registerUser(User user);
 
-    void verifyAccount(String email, String token);
+    User verifyAccount(String email, String token);
 }

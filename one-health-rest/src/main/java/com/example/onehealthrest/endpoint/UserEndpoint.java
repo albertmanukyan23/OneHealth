@@ -2,7 +2,9 @@ package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.UserAuthRequestDto;
 import com.example.onehealthcommon.dto.UserAuthResponseDto;
+import com.example.onehealthcommon.dto.UserVerifyDto;
 import com.example.onehealthcommon.entity.User;
+import com.example.onehealthcommon.mapper.UserMapper;
 import com.example.onehealthrest.service.UserService;
 import com.example.onehealthrest.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +20,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserEndpoint {
+
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenUtil tokenUtil;
+    private final UserMapper userMapper;
 
     @PostMapping("/auth")
     public ResponseEntity<UserAuthResponseDto> auth(@RequestBody UserAuthRequestDto userAuthRequestDto) {
@@ -37,13 +41,13 @@ public class UserEndpoint {
     }
 
     @GetMapping("/verify-account")
-    public void verifyUser(@RequestParam("email") String email,
-                             @RequestParam("token") String token) {
-        Optional<User> byEmail = userService.findByEmail(email);
-        if (byEmail.isEmpty() || byEmail.get().isEnabled()) {
-            return;
+    public ResponseEntity<UserVerifyDto> verifyUser(@RequestParam("email") String email,
+                                                    @RequestParam("token") String token) {
+        User user = userService.verifyAccount(email, token);
+        if (user != null){
+            return ResponseEntity.ok(userMapper.map(user));
         }
-        userService.verifyAccount(email, token);
+        return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 
 }
