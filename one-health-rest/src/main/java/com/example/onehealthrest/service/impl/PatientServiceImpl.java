@@ -2,7 +2,6 @@ package com.example.onehealthrest.service.impl;
 
 import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
-import com.example.onehealthcommon.entity.MedServ;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.mapper.PatientMapper;
@@ -12,12 +11,14 @@ import com.example.onehealthrest.service.PatientService;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
 import java.io.IOException;
 import java.util.Date;
@@ -54,7 +55,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public Patient update(PatientRegisterDto patientRegisterDto, int id) {
+    public Optional<Patient>  update(PatientRegisterDto patientRegisterDto, int id) {
         Optional<Patient> byId = patientRepository.findById(id);
         if (byId.isPresent()) {
             Patient patientDbData = byId.get();
@@ -67,10 +68,10 @@ public class PatientServiceImpl implements PatientService {
                 patientDbData.setRegion(patientRegisterDto.getRegion());
                 patientDbData.setNation(patientRegisterDto.getNation());
                 patientDbData.setAddress(patientRegisterDto.getAddress());
-               return patientRepository.save(patientDbData);
+               return Optional.of(patientRepository.save(patientDbData));
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
@@ -87,5 +88,14 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Optional<Patient> findPatientById(int id) {
         return patientRepository.findById(id);
+    }
+
+    @Override
+    public StringBuilder checkValidation(BindingResult bindingResult) {
+        StringBuilder errorBuilder = new StringBuilder();
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
+        }
+        return errorBuilder;
     }
 }

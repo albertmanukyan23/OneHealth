@@ -3,6 +3,7 @@ package com.example.onehealthrest.service;
 import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
 import com.example.onehealthcommon.entity.Patient;
+import org.springframework.validation.BindingResult;
 
 
 import java.io.IOException;
@@ -14,9 +15,12 @@ public interface PatientService {
 
     List<PatientDto> getPatientsDtoList(int page, int size);
 
-    Patient update(PatientRegisterDto patientRegisterDto, int id);
+    Optional<Patient> update(PatientRegisterDto patientRegisterDto, int id);
 
     boolean delete(int id);
 
     Optional<Patient> findPatientById(int id);
+
+    StringBuilder checkValidation(BindingResult bindingResult);
+
 }

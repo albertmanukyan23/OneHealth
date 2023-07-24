@@ -36,10 +36,9 @@ public class PatientEndpoint {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult) throws IOException {
-        if (bindingResult.hasErrors()) {
-            StringBuilder errorBuilder = new StringBuilder();
-            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorBuilder.toString());
+        StringBuilder stringBuilder = patientService.checkValidation(bindingResult);
+        if (!stringBuilder.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
         return ResponseEntity.ok(patientService.save(patientMapper.map(patientRegisterDto)));
 
@@ -60,7 +59,7 @@ public class PatientEndpoint {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable("id") int id) {
+    public ResponseEntity<Patient> getPatient(@PathVariable("id") int id) {
         Optional<Patient> patientById = patientService.findPatientById(id);
         return patientById.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
@@ -69,28 +68,24 @@ public class PatientEndpoint {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updatePatient(@PathVariable("id") int id,
                                            @RequestBody @Valid PatientRegisterDto patientRegisterDto,
-                                           BindingResult bindingResult)  {
-        if (bindingResult.hasErrors()) {
-            StringBuilder errorBuilder = new StringBuilder();
-            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorBuilder.toString());
+                                           BindingResult bindingResult) {
+        StringBuilder stringBuilder = patientService.checkValidation(bindingResult);
+        if (!stringBuilder.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
-        Patient updated = patientService.update(patientRegisterDto, id);
-        if (updated != null) {
-            return ResponseEntity.ok(updated);
-        }
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        Optional<Patient> update = patientService.update(patientRegisterDto, id);
+        return update.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
 
     }
 
     @GetMapping("/appointments")
     public ResponseEntity<List<PatientAppointmentDto>> getPatientAppointments(@AuthenticationPrincipal CurrentUser currentUser) {
 
-       return ResponseEntity.ok (appointmentService.getPatientAppointments(currentUser.getUser()));
+        return ResponseEntity.ok(appointmentService.getPatientAppointments(currentUser.getUser()));
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<?> removePatient(@RequestParam("id") int id)  {
+    public ResponseEntity<?> removePatient(@RequestParam("id") int id) {
         if (patientService.delete(id)) {
             return ResponseEntity.noContent().build();
         }
