@@ -1,6 +1,7 @@
 package com.example.onehealthcommon.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
