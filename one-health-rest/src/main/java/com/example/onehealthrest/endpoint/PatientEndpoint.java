@@ -10,7 +10,6 @@ import com.example.onehealthcommon.mapper.UserMapper;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.AppointmentService;
 import com.example.onehealthrest.service.PatientService;
-import com.example.onehealthrest.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,7 +27,6 @@ import java.util.Optional;
 @RequestMapping("/patients")
 public class PatientEndpoint {
 
-    private final UserService userService;
     private final PatientService patientService;
     private final AppointmentService appointmentService;
     private final PatientMapper patientMapper;
@@ -59,9 +57,9 @@ public class PatientEndpoint {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> getPatient(@PathVariable("id") int id) {
+    public ResponseEntity<PatientDto> getPatient(@PathVariable("id") int id) {
         Optional<Patient> patientById = patientService.findPatientById(id);
-        return patientById.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
+        return patientById.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
 
 
@@ -74,7 +72,7 @@ public class PatientEndpoint {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
         Optional<Patient> update = patientService.update(patientRegisterDto, id);
-        return update.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
+        return update.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
 
     }
 
@@ -86,10 +84,8 @@ public class PatientEndpoint {
 
     @DeleteMapping("/remove")
     public ResponseEntity<?> removePatient(@RequestParam("id") int id) {
-        if (patientService.delete(id)) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+
+        return patientService.delete(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
 }
