@@ -130,13 +130,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updatePassword(String email, String token, String password, String passwordRepeat) {
         Optional<User> byEmail = userRepository.findByEmail(email);
-        if (byEmail.isPresent() && byEmail.get().isEnabled()) {
-            if (password.equals(passwordRepeat) && byEmail.get().getToken() == null) {
+        if (byEmail.isPresent() && byEmail.get().isEnabled() &&
+                (password.equals(passwordRepeat) && byEmail.get().getToken() == null)) {
                 User user = byEmail.get();
                 user.setPassword(passwordEncoder.encode(password));
                 userRepository.save(user);
-            }
-
         }
     }
 
@@ -153,7 +151,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Async
     public void activateUser(int id) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
@@ -165,7 +162,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Async
     public void deactivateUser(int id) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
@@ -177,7 +173,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Async
     public void verifyAccountWithEmail(int id) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
