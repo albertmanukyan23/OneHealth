@@ -11,6 +11,7 @@ import com.example.onehealthcommon.repository.DoctorRepository;
 import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
@@ -53,8 +55,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         if (isValidAppointment(patientOptional, doctorOptional, appointment)) {
             notifyOnlineRegistration(appointment);
             saveAppointment(appointment);
+            log.info("Appointment has been created for the user with " + currentUser.getId() + "id");
             return Optional.of(appointmentMapper.mapToDto(appointment));
         }
+        log.info("Appointment creating failed for user with " + currentUser.getId() + "id");
         return Optional.empty();
     }
 
@@ -67,6 +71,7 @@ public class AppointmentServiceImpl implements AppointmentService {
             LocalDateTime existedAppointmentStartDate = existingAppointment.getStartTime().minusMinutes(30);
             if (newAppointmentStartDate.isAfter(existedAppointmentStartDate) &&
                     newAppointmentStartDate.isBefore(existingAppointment.getEndTime())) {
+                log.info("isDoctorAvailableForAppointment() inside AppointmentServiceImpl has returned false for user by " + appointment.getPatient().getId() + " id");
                 isDoctorAvailable = false;
                 break;
             }
@@ -84,8 +89,11 @@ public class AppointmentServiceImpl implements AppointmentService {
             if (currentUser.getUserType() == UserType.DOCTOR) {
                 sendAppointmentCancelMessageToPatient(optional.get().getPatient());
             }
+            log.info("Appointment has been canceled by the user with " + currentUser.getId() + " id");
             isAppointmentCanceled = true;
         }
+        log.info("Appointment canceling failed ");
+
         return isAppointmentCanceled;
     }
 
@@ -125,6 +133,8 @@ public class AppointmentServiceImpl implements AppointmentService {
                 "Your appointment has been canceled by the doctor," +
                         " we ask for your forgiveness, try to book a consultation again for another day.");
 
+        log.info("Appointment canceling message has been send to the user with " + patient.getId() + " id");
+
     }
 
 
@@ -134,5 +144,6 @@ public class AppointmentServiceImpl implements AppointmentService {
                 "doctor data zoom:" + doctor.getPassword() + "password"
                         + doctor.getZoomId() + "id");
 
+        log.info("Online Registration message  has been send to the user with " + patient.getId() + " id");
     }
 }

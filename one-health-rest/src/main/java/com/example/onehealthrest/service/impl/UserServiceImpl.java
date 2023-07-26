@@ -10,6 +10,9 @@ import com.example.onehealthcommon.util.ImageDownloader;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +27,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     @Value("${site.url}")
@@ -51,6 +55,7 @@ public class UserServiceImpl implements UserService {
             user.setToken(token.toString());
             user.setEnabled(false);
             userRepository.save(user);
+            log.info("User has successfully registered  ");
             verifyAccountWithEmail(user.getId());
         }
     }
@@ -64,6 +69,7 @@ public class UserServiceImpl implements UserService {
                     "Welcome", "Hi" + user.getName() +
                             "\n" + "Please verify your email by clicking on this url " +
                             siteUrl + "/users/verify-account?email=" + user.getEmail() + "&token=" + user.getToken());
+            log.info("User's verification message has been send to the user with the  " + id + " id");
         }
     }
 
@@ -73,6 +79,7 @@ public class UserServiceImpl implements UserService {
             User user = byEmail.get();
             user.setEnabled(true);
             user.setToken(null);
+            log.info("User  with the  " + user.getId() + " id has verified his account");
             return userRepository.save(user);
         }
         return null;
@@ -88,16 +95,19 @@ public class UserServiceImpl implements UserService {
                 imageDownloader.saveProfilePicture(multipartFile, userOptional.get());
                 userRepository.save(user);
                 UserDto userDto = userMapper.mapToDto(user);
+                log.info("uploadImageForUser() in UserServiceImpl has successfully worked");
                 return Optional.of(userDto);
             }
         }
         return Optional.empty();
     }
+
     @Override
     public StringBuilder checkValidation(BindingResult bindingResult) {
         StringBuilder errorBuilder = new StringBuilder();
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
+            log.info("checkValidation() in UserServiceImpl found errors");
         }
         return errorBuilder;
     }
@@ -110,15 +120,21 @@ public class UserServiceImpl implements UserService {
         Optional<User> byEmail = userRepository.findByEmail(dto.getEmail());
         if (byEmail.isPresent() && currentUser.getId() == byEmail.get().getId()) {
             User user = byEmail.get();
-            if (user.isEnabled() &&
-                    passwordEncoder.matches(dto.getOldPassword(), user.getPassword()) &&
-                    user.getToken() == null) {
+            if (passwordCanBeUpdated(dto, user)) {
                 user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
                 isPasswordUpdated = true;
                 userRepository.save(user);
+                log.info("updatePassword() in UserServiceImpl has successfully worked");
+
             }
         }
         return isPasswordUpdated;
+    }
+
+    private boolean passwordCanBeUpdated(UserPasswordUpdaterDto dto, User user) {
+        return user.isEnabled() &&
+                passwordEncoder.matches(dto.getOldPassword(), user.getPassword()) &&
+                user.getToken() == null;
     }
 
     @Override
@@ -127,25 +143,31 @@ public class UserServiceImpl implements UserService {
         boolean isProcessDone = false;
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
-            isProcessDone = true;
             User user = optionalUser.get();
-            if (user.isEnabled()) {
-                user.setEnabled(false);
-                sendBlockMessage(user);
-            } else {
-                user.setEnabled(true);
-                user.setToken(null);
-                sendActivationMessage(user);
-            }
+            updateUserStatus(user);
             userRepository.save(user);
+            isProcessDone = true;
+            log.info("activateDeactivateUser() in UserServiceImpl has successfully worked");
         }
         return isProcessDone;
+    }
+
+    private void updateUserStatus(User user) {
+        if (user.isEnabled()) {
+            user.setEnabled(false);
+            sendBlockMessage(user);
+        } else {
+            user.setEnabled(true);
+            user.setToken(null);
+            sendActivationMessage(user);
+        }
     }
 
     public void sendActivationMessage(User user) {
         emailSenderService.sendSimpleEmail(user.getEmail(),
                 "You are unblocked", "Hi" + user.getName() +
                         "\n" + "You are active again");
+        log.info("Activation message  was send to the user with " + user.getId() + " id");
     }
 
 
@@ -153,6 +175,7 @@ public class UserServiceImpl implements UserService {
         emailSenderService.sendSimpleEmail(user.getEmail(),
                 "You are blocked ", "Hi" + user.getName() +
                         "\n" + "You are deactivated by Admin");
+        log.info("Deactivation message  was send to the user with " + user.getId() + " id");
     }
 }
 

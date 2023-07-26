@@ -1,5 +1,6 @@
 package com.example.onehealthrest.service;
 
+import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
 import com.example.onehealthcommon.entity.MedServ;
 
@@ -10,12 +11,12 @@ public interface MedServService {
 
     List<MedServ> getPriceList();
 
-    MedServ save(MedServ medServ);
+    MedServDto save(MedServ medServ);
 
     boolean delete(int id);
 
     Optional<MedServ> findById(int id);
 
-    MedServ update(int id, MedServDto requestDto);
+    MedServ update(int id, CreateMedServDto requestDto);
 
 }

@@ -13,6 +13,7 @@ import com.example.onehealthrest.service.PatientService;
 import com.example.onehealthrest.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,6 +26,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/patients")
 public class PatientEndpoint {
 
@@ -32,34 +34,29 @@ public class PatientEndpoint {
     private final AppointmentService appointmentService;
     private final UserService userService;
     private final PatientMapper patientMapper;
-    private final UserMapper userMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult) throws IOException {
+    public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult) throws IOException
+    {
+        log.info(" register() method inside PatientEndpoint has worked ");
         StringBuilder stringBuilder = userService.checkValidation(bindingResult);
-        if (!stringBuilder.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
-        }
-        return ResponseEntity.ok(patientService.save(patientMapper.map(patientRegisterDto)));
+        return !stringBuilder.isEmpty()?ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString())
+                : ResponseEntity.ok(patientService.save(patientMapper.map(patientRegisterDto)));
 
     }
 
     @GetMapping()
     public ResponseEntity<List<PatientDto>> getPatients(@RequestParam(defaultValue = "1") int page,
-                                                        @RequestParam(defaultValue = "5") int size) {
-
+                                                        @RequestParam(defaultValue = "5") int size)
+    {
+        log.info("register() method inside PatientEndpoint has worked ");
         return ResponseEntity.ok(patientService.getPatientsDtoList(page - 1, size));
-    }
-
-    @GetMapping("/single-page")
-    public ResponseEntity<UserPageDto> singlePage(@AuthenticationPrincipal CurrentUser currentUser) {
-
-        return ResponseEntity.ok(userMapper.mapToUserPageDto(currentUser.getUser()));
     }
 
 
     @GetMapping("/{id}")
     public ResponseEntity<PatientDto> getPatient(@PathVariable("id") int id) {
+        log.info("getPatient() method inside PatientEndpoint has worked ");
         Optional<Patient> patientById = patientService.findPatientById(id);
         return patientById.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
@@ -73,6 +70,7 @@ public class PatientEndpoint {
         if (!stringBuilder.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
+        log.info("updatePassword() method inside PatientEndpoint has worked ");
         Optional<Patient> update = patientService.update(patientRegisterDto, id);
         return update.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
 
@@ -80,13 +78,14 @@ public class PatientEndpoint {
 
     @GetMapping("/appointments")
     public ResponseEntity<List<PatientAppointmentDto>> getPatientAppointments(@AuthenticationPrincipal CurrentUser currentUser) {
-
+        log.info("getPatientAppointments() method inside PatientEndpoint has worked ");
         return ResponseEntity.ok(appointmentService.getPatientAppointments(currentUser.getUser()));
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<?> removePatient(@RequestParam("id") int id) {
-
+    public ResponseEntity<?> removePatient(@RequestParam("id") int id)
+    {
+        log.info("removePatient() method inside PatientEndpoint has worked ");
         return patientService.delete(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
