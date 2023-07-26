@@ -47,8 +47,6 @@ public abstract class AppointmentMapper {
 
     @Named("getDoctorFromDb")
     protected Doctor getDoctorFromDb(int doctorId) {
-        DoctorRepository doctorRepository = Mappers.getMapper(DoctorRepository.class);
-
         return doctorRepository.findById(doctorId).orElse(null);
     }
 

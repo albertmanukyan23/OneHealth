@@ -8,6 +8,7 @@ import com.example.onehealthrest.service.UserService;
 import com.example.onehealthrest.util.JwtTokenUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/users")
 public class UserEndpoint {
 
@@ -54,6 +56,7 @@ public class UserEndpoint {
     @GetMapping("/verify-account")
     public ResponseEntity<UserVerifyDto> verifyUser(@RequestParam("email") String email,
                                                     @RequestParam("token") String token) {
+        log.info("verifyUser() method inside UserEndpoint has worked ");
         User user = userService.verifyAccount(email, token);
         return user != null ? ResponseEntity.ok(userMapper.map(user)) : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
@@ -61,9 +64,8 @@ public class UserEndpoint {
     @PostMapping("/{id}/image")
     public ResponseEntity<UserDto> uploadImage(@PathVariable("id") int id,
                                                @RequestParam("image") MultipartFile multipartFile,
-                                               @AuthenticationPrincipal CurrentUser currentUser
-    ) throws IOException {
-
+                                               @AuthenticationPrincipal CurrentUser currentUser) throws IOException {
+        log.info("uploadImage() method inside UserEndpoint has worked ");
         Optional<UserDto> userDtoOptional = userService.uploadImageForUser(id, multipartFile, currentUser);
         return userDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
     }
@@ -80,20 +82,26 @@ public class UserEndpoint {
         return null;
     }
 
+    @GetMapping("/single-page")
+    public ResponseEntity<UserPageDto> singlePage(@AuthenticationPrincipal CurrentUser currentUser) {
+        return ResponseEntity.ok(userMapper.mapToUserPageDto(currentUser.getUser()));
+    }
+
     @PutMapping("/update-password")
-    public ResponseEntity<?> changePasswordPage(@RequestBody @Valid UserPasswordUpdaterDto passwordUpdaterDto,
-                                                @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult
-                                                ) {
+    public ResponseEntity<?> changePassword(@RequestBody @Valid UserPasswordUpdaterDto passwordUpdaterDto,
+                                            @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult) {
         StringBuilder stringBuilder = userService.checkValidation(bindingResult);
         if (!stringBuilder.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
-        return userService.updatePassword(passwordUpdaterDto,currentUser.getUser()) ? ResponseEntity.status(HttpStatus.ACCEPTED).build()
+        log.info("changePasswordPage() method inside UserEndpoint has worked ");
+        return userService.updatePassword(passwordUpdaterDto, currentUser.getUser()) ? ResponseEntity.status(HttpStatus.ACCEPTED).build()
                 : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
 
     @PostMapping("/activate-deactivate/{id}")
     public ResponseEntity<?> activateDeactivate(@PathVariable("id") int id) {
+        log.info("activateDeactivate() method inside UserEndpoint has worked ");
         return userService.activateDeactivateUser(id) ? ResponseEntity.status(HttpStatus.ACCEPTED).build() : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 

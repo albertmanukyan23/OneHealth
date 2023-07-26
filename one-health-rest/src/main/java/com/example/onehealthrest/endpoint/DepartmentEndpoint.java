@@ -17,6 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/departments")
 public class DepartmentEndpoint {
+
     private final DepartmentService departmentService;
     private final DepartmentMapper departmentMapper;
 

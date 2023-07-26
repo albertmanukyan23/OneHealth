@@ -9,6 +9,7 @@ import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.PatientService;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PatientServiceImpl implements PatientService {
 
     @Value("${site.url}")
@@ -50,7 +52,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public Optional<Patient>  update(PatientRegisterDto patientRegisterDto, int id) {
+    public Optional<Patient> update(PatientRegisterDto patientRegisterDto, int id) {
         Optional<Patient> byId = patientRepository.findById(id);
         if (byId.isPresent()) {
             Patient patientDbData = byId.get();
@@ -63,9 +65,11 @@ public class PatientServiceImpl implements PatientService {
                 patientDbData.setRegion(patientRegisterDto.getRegion());
                 patientDbData.setNation(patientRegisterDto.getNation());
                 patientDbData.setAddress(patientRegisterDto.getAddress());
-               return Optional.of(patientRepository.save(patientDbData));
+                log.info("Patient with the " + patientDbData.getId() + " id was updated");
+                return Optional.of(patientRepository.save(patientDbData));
             }
         }
+        log.info("Patient can not be updated");
         return Optional.empty();
     }
 
@@ -75,8 +79,10 @@ public class PatientServiceImpl implements PatientService {
         Optional<Patient> optionalPatient = patientRepository.findById(id);
         if (optionalPatient.isPresent()) {
             patientRepository.deleteById(id);
+            log.info("Patient with the " + id + " id was deleted");
             isDeleted = true;
         }
+        log.info("Patient with the " + id + " id can not be deleted");
         return isDeleted;
     }
 

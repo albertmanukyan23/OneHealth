@@ -1,15 +1,14 @@
 package com.example.onehealthrest.service.impl;
 
 
+import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
 import com.example.onehealthcommon.entity.MedServ;
 import com.example.onehealthcommon.mapper.MedServMapper;
 import com.example.onehealthcommon.repository.MedServRepository;
-
 import com.example.onehealthrest.service.MedServService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +16,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MedServServiceImpl implements MedServService {
 
     private final MedServRepository medServRepository;
@@ -24,12 +24,12 @@ public class MedServServiceImpl implements MedServService {
 
     @Override
     public List<MedServ> getPriceList() {
-        return medServRepository.findAll();
+        return  medServRepository.findAll();
     }
 
     @Override
-    public MedServ save(MedServ medServ) {
-        return medServRepository.save(medServ);
+    public MedServDto save(MedServ medServ) {
+        return medServMapper.mapTo(medServRepository.save(medServ));
     }
 
     @Override
@@ -38,6 +38,7 @@ public class MedServServiceImpl implements MedServService {
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);
         if (optionalMedServ.isPresent()) {
             medServRepository.deleteById(id);
+            log.info("Medical Service with the id " + id + " id has been successfully deleted " );
             isDeleted = true;
         }
         return isDeleted;
@@ -49,11 +50,12 @@ public class MedServServiceImpl implements MedServService {
     }
 
     @Override
-    public MedServ update(int id, MedServDto requestDto) {
+    public MedServ update(int id, CreateMedServDto requestDto) {
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);
         if (optionalMedServ.isPresent()) {
             MedServ medServ = medServMapper.map(requestDto);
             medServ.setId(id);
+            log.info("Medical Service with the id " + id + " id has been successfully updated " );
             return medServ;
         }
         return null;
