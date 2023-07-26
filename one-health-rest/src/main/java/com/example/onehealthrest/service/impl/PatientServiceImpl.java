@@ -6,19 +6,15 @@ import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.mapper.PatientMapper;
 import com.example.onehealthcommon.repository.PatientRepository;
-import com.example.onehealthcommon.util.ImageDownloader;
 import com.example.onehealthrest.service.PatientService;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
 
 import java.io.IOException;
 import java.util.Date;
@@ -34,7 +30,6 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
     private final UserService userService;
-    private final ImageDownloader imageDownloader;
     private final PatientMapper patientMapper;
     private final PasswordEncoder passwordEncoder;
 
@@ -90,12 +85,5 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findById(id);
     }
 
-    @Override
-    public StringBuilder checkValidation(BindingResult bindingResult) {
-        StringBuilder errorBuilder = new StringBuilder();
-        if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
-        }
-        return errorBuilder;
-    }
+
 }

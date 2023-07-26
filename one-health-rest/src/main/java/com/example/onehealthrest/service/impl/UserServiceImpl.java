@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
             emailSenderService.sendSimpleEmail(user.getEmail(),
                     "Welcome", "Hi" + user.getName() +
                             "\n" + "Please verify your email by clicking on this url " +
-                            siteUrl + "/user/verify-account?email=" + user.getEmail() + "&token=" + user.getToken());
+                            siteUrl + "/users/verify-account?email=" + user.getEmail() + "&token=" + user.getToken());
         }
     }
 
@@ -91,6 +92,14 @@ public class UserServiceImpl implements UserService {
             }
         }
         return Optional.empty();
+    }
+    @Override
+    public StringBuilder checkValidation(BindingResult bindingResult) {
+        StringBuilder errorBuilder = new StringBuilder();
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
+        }
+        return errorBuilder;
     }
 
 

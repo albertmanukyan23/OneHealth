@@ -1,7 +1,6 @@
 package com.example.onehealthcommon.dto;
 
 import com.example.onehealthcommon.entity.Department;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -41,7 +40,7 @@ public class  CreatDoctorRequestDto {
     @NotNull(message = "Birthday Date should not be empty")
     private Date birthDate;
 
-   // private String picName;
+    private String picName;
     private String phoneNumber;
 
     @OneToMany

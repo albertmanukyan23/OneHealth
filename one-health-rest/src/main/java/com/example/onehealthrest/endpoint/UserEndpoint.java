@@ -6,6 +6,7 @@ import com.example.onehealthcommon.mapper.UserMapper;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import com.example.onehealthrest.util.JwtTokenUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -79,10 +81,13 @@ public class UserEndpoint {
     }
 
     @PutMapping("/update-password")
-    public ResponseEntity<?> changePasswordPage(@RequestBody UserPasswordUpdaterDto passwordUpdaterDto,
-                                                @AuthenticationPrincipal CurrentUser currentUser
-    ) {
-
+    public ResponseEntity<?> changePasswordPage(@RequestBody @Valid UserPasswordUpdaterDto passwordUpdaterDto,
+                                                @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult
+                                                ) {
+        StringBuilder stringBuilder = userService.checkValidation(bindingResult);
+        if (!stringBuilder.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
+        }
         return userService.updatePassword(passwordUpdaterDto,currentUser.getUser()) ? ResponseEntity.status(HttpStatus.ACCEPTED).build()
                 : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
