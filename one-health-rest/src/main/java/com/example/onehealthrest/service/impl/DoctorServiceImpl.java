@@ -1,18 +1,24 @@
 package com.example.onehealthrest.service.impl;
 
+import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
 import com.example.onehealthcommon.dto.UpdateDoctor;
 import com.example.onehealthcommon.entity.Doctor;
+import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthcommon.repository.DoctorRepository;
 import com.example.onehealthrest.service.DoctorService;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,42 +44,64 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public Optional<Doctor> update(CreatDoctorRequestDto creatDoctorRequestDto, int id) {
+        Optional<Doctor> byId = doctorRepository.findById(id);
+        if (byId.isPresent()) {
+            Doctor doctorDb = byId.get();
+            if (doctorRepository.findByEmail(creatDoctorRequestDto.getEmail()).isEmpty()
+                    || creatDoctorRequestDto.getEmail().equals(doctorDb.getEmail())) {
+                doctorDb.setName(creatDoctorRequestDto.getName());
+                doctorDb.setSurname(creatDoctorRequestDto.getSurname());
+                doctorDb.setEmail(creatDoctorRequestDto.getEmail());
+                doctorDb.setPassword(passwordEncoder.encode(creatDoctorRequestDto.getPassword()));
+                doctorDb.setSpeciality(creatDoctorRequestDto.getSpeciality());
+                doctorDb.setBirthDate(creatDoctorRequestDto.getBirthDate());
+                doctorDb.setPhoneNumber(creatDoctorRequestDto.getPhoneNumber());
+                doctorDb.setDepartment(creatDoctorRequestDto.getDepartment());
+                doctorDb.setZoomId(creatDoctorRequestDto.getZoomId());
+                doctorDb.setPassword(creatDoctorRequestDto.getZoomPassword());
+                return Optional.of(doctorRepository.save(doctorDb));
+            }
+
+        }
+        return Optional.empty();
+    }
+
+
+    @Override
+    public StringBuilder checkValidation(BindingResult bindingResult) {
+        StringBuilder errorBuilder = new StringBuilder();
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
+        }
+        return errorBuilder;
+    }
+
+    @Override
     public Optional<Doctor> findById(int id) {
         return doctorRepository.findById(id);
     }
 
     @Override
-    public Doctor update(Doctor doctor, UpdateDoctor userFromDb) {
-        Optional<Doctor> byEmail = doctorRepository.findByEmail(doctor.getEmail());
-        Doctor doctorDb = byEmail.get();
-        if (doctor.getEmail().isEmpty() ||
-                doctor.getEmail().equals(doctorDb.getEmail())) {
-            if (doctor.getName() != null && !doctor.getName().isEmpty()) {
-                doctorDb.setName(doctor.getName());
-            }
-            if (doctor.getSurname() != null && !doctor.getSurname().isEmpty()) {
-                doctorDb.setName(doctor.getSurname());
-            }
-            if (doctor.getEmail() != null && !doctor.getEmail().isEmpty()) {
-                doctorDb.setName(doctor.getEmail());
-            }
-            if (doctor.getPassword() != null && !doctor.getPassword().isEmpty()) {
-                doctorDb.setPassword(passwordEncoder.encode(doctor.getPassword()));
-            }
-            if (doctor.getSpeciality() != null && !doctor.getSpeciality().isEmpty()) {
-                doctorDb.setSpeciality(doctor.getSpeciality());
-            }
-            if (doctor.getBirthDate() != null) {
-                doctorDb.setBirthDate(doctor.getBirthDate());
-            }
-            if (doctor.getPhoneNumber() != null && !doctor.getPhoneNumber().isEmpty()) {
-                doctorDb.setPhoneNumber(doctor.getPhoneNumber());
-            }
-            if (doctor.getZoomPassword() != null && !doctor.getZoomPassword().isEmpty()) {
-                doctorDb.setName(doctor.getName());
-            }
-            return doctorDb;
+    public Optional<Doctor> getDoctorById(int id) {
+        return doctorRepository.findById(id);
+    }
+
+    @Override
+    public List<DoctorDtoResponse> getDoctorList(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Doctor> content = doctorRepository.findAll(pageable).getContent();
+        return doctorMapper.mapListDto(content);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        boolean delete = false;
+        Optional<Doctor> byId = doctorRepository.findById(id);
+        if (byId.isPresent()) {
+            doctorRepository.findById(id);
+            delete = true;
         }
-        return null;
+        return delete;
     }
 }
