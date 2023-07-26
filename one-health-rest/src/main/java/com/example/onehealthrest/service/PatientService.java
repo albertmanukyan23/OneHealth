@@ -21,6 +21,4 @@ public interface PatientService {
 
     Optional<Patient> findPatientById(int id);
 
-    StringBuilder checkValidation(BindingResult bindingResult);
-
 }

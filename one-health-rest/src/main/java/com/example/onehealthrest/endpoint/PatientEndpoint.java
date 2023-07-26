@@ -10,6 +10,7 @@ import com.example.onehealthcommon.mapper.UserMapper;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.AppointmentService;
 import com.example.onehealthrest.service.PatientService;
+import com.example.onehealthrest.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,12 +30,13 @@ public class PatientEndpoint {
 
     private final PatientService patientService;
     private final AppointmentService appointmentService;
+    private final UserService userService;
     private final PatientMapper patientMapper;
     private final UserMapper userMapper;
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult) throws IOException {
-        StringBuilder stringBuilder = patientService.checkValidation(bindingResult);
+        StringBuilder stringBuilder = userService.checkValidation(bindingResult);
         if (!stringBuilder.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
@@ -67,7 +69,7 @@ public class PatientEndpoint {
     public ResponseEntity<?> updatePatient(@PathVariable("id") int id,
                                            @RequestBody @Valid PatientRegisterDto patientRegisterDto,
                                            BindingResult bindingResult) {
-        StringBuilder stringBuilder = patientService.checkValidation(bindingResult);
+        StringBuilder stringBuilder = userService.checkValidation(bindingResult);
         if (!stringBuilder.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
