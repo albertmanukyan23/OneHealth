@@ -1,26 +1,34 @@
 package com.example.onehealthrest.endpoint;
 
-import com.example.onehealthcommon.dto.UserAuthRequestDto;
-import com.example.onehealthcommon.dto.UserAuthResponseDto;
-import com.example.onehealthcommon.dto.UserVerifyDto;
+import com.example.onehealthcommon.dto.*;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.mapper.UserMapper;
+import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import com.example.onehealthrest.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserEndpoint {
 
+    @Value("${hospital.upload.image.path}")
+    private String imageUploadPath;
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenUtil tokenUtil;
@@ -28,6 +36,7 @@ public class UserEndpoint {
 
     @PostMapping("/auth")
     public ResponseEntity<UserAuthResponseDto> auth(@RequestBody UserAuthRequestDto userAuthRequestDto) {
+        //todo remove method body to service
         Optional<User> byEmail = userService.findByEmail(userAuthRequestDto.getEmail());
         if (byEmail.isEmpty()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -44,10 +53,43 @@ public class UserEndpoint {
     public ResponseEntity<UserVerifyDto> verifyUser(@RequestParam("email") String email,
                                                     @RequestParam("token") String token) {
         User user = userService.verifyAccount(email, token);
-        if (user != null){
-            return ResponseEntity.ok(userMapper.map(user));
+        return user != null ? ResponseEntity.ok(userMapper.map(user)) : ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+
+    @PostMapping("/{id}/image")
+    public ResponseEntity<UserDto> uploadImage(@PathVariable("id") int id,
+                                               @RequestParam("image") MultipartFile multipartFile,
+                                               @AuthenticationPrincipal CurrentUser currentUser
+    ) throws IOException {
+
+        Optional<UserDto> userDtoOptional = userService.uploadImageForUser(id, multipartFile, currentUser);
+        return userDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+    }
+
+    @GetMapping(value = "/getImage",
+            produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getImage(@RequestParam("picName") String picName) throws IOException {
+        File file = new File(imageUploadPath + picName);
+        if (file.exists()) {
+            try (FileInputStream fis = new FileInputStream(file)) {
+                return IOUtils.toByteArray(fis);
+            }
         }
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        return null;
+    }
+
+    @PutMapping("/update-password")
+    public ResponseEntity<?> changePasswordPage(@RequestBody UserPasswordUpdaterDto passwordUpdaterDto,
+                                                @AuthenticationPrincipal CurrentUser currentUser
+    ) {
+
+        return userService.updatePassword(passwordUpdaterDto,currentUser.getUser()) ? ResponseEntity.status(HttpStatus.ACCEPTED).build()
+                : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    @PostMapping("/activate-deactivate/{id}")
+    public ResponseEntity<?> activateDeactivate(@PathVariable("id") int id) {
+        return userService.activateDeactivateUser(id) ? ResponseEntity.status(HttpStatus.ACCEPTED).build() : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 
 }
