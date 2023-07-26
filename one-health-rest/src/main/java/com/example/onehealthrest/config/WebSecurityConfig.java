@@ -44,14 +44,14 @@ public class WebSecurityConfig {
                 .requestMatchers("/doctor/search/patients-for-doctor").hasAuthority("DOCTOR")
                 .requestMatchers("/doctor/appointments").hasAuthority("DOCTOR")
                 .requestMatchers("/patients/update","/patients/delete","/patients").hasAnyAuthority("ADMIN")
-                .requestMatchers("/doctor/reject","/doctor/appointments").hasAuthority("DOCTOR")
+                .requestMatchers("/doctors/reject","/doctor/appointments").hasAuthority("DOCTOR")
                 .requestMatchers("/doctor/singlePage").hasAuthority("DOCTOR")
-                .requestMatchers("/doctors/**").hasAuthority("ADMIN")
+                .requestMatchers("/doctors").hasAuthority("ADMIN")
+              //  .requestMatchers("/doctors/**").hasAuthority("ADMIN")
                 .requestMatchers("/comment/create" ,"/comment/delete").hasAnyAuthority("PATIENT","ADMIN")
                 .requestMatchers("/admin").hasAuthority("ADMIN")
                 .requestMatchers("/departments/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
-
         httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
 

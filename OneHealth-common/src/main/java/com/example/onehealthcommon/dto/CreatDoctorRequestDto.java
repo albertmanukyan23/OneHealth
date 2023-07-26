@@ -19,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreatDoctorRequestDto {
+public class  CreatDoctorRequestDto {
 
     @NotBlank(message = "Name should not be empty")
     private String name;
