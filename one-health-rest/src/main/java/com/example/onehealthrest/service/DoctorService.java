@@ -23,7 +23,7 @@ public interface DoctorService {
 
     Optional<Doctor> getDoctorById(int id);
 
-    List<DoctorDtoResponse> getDoctorList(int size, int page);
+    List<DoctorDtoResponse> getDoctorList(int page, int size);
 
     boolean deleteById(int id);
 }

@@ -88,7 +88,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public List<DoctorDtoResponse> getDoctorList(int page, int size) {
+    public List<DoctorDtoResponse> getDoctorList(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
         List<Doctor> content = doctorRepository.findAll(pageable).getContent();
         return doctorMapper.mapListDto(content);
