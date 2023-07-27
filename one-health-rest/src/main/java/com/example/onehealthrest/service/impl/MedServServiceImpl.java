@@ -50,14 +50,15 @@ public class MedServServiceImpl implements MedServService {
     }
 
     @Override
-    public MedServ update(int id, CreateMedServDto requestDto) {
+    public Optional<MedServDto> update(int id, CreateMedServDto requestDto) {
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);
         if (optionalMedServ.isPresent()) {
             MedServ medServ = medServMapper.map(requestDto);
             medServ.setId(id);
+            medServRepository.save(medServ);
             log.info("Medical Service with the id " + id + " id has been successfully updated " );
-            return medServ;
+            return  Optional.of(medServMapper.mapTo(medServ));
         }
-        return null;
+        return Optional.empty();
     }
 }
