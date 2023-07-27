@@ -17,6 +17,6 @@ public interface MedServService {
 
     Optional<MedServ> findById(int id);
 
-    MedServ update(int id, CreateMedServDto requestDto);
+    Optional<MedServDto> update(int id, CreateMedServDto requestDto);
 
 }
