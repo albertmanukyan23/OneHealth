@@ -8,17 +8,11 @@ import java.util.Optional;
 
 public interface DepartmentService {
 
-    Optional<Department> findById(int id);
+    DepartmentDto save(Department department);
+    DepartmentDto update(Department department);
 
-    Optional<Department> findByDepartments(String name);
-
-    Department save(Department department);
-
-    List<DepartmentDto> fromDepartmentToDepartmentDto(List<Department> departments);
-
-    boolean existsById(int id);
-
-    void deleteById(int id);
+    List<Department> departmentList();
+    boolean deleteById(int id);
 
     List<Department> findAll();
 

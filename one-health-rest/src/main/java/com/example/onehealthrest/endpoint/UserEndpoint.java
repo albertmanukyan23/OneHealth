@@ -30,7 +30,6 @@ import java.util.Optional;
 @Slf4j
 @RequestMapping("/users")
 public class UserEndpoint {
-
     @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
     private final UserService userService;

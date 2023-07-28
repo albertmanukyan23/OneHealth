@@ -5,62 +5,51 @@ import com.example.onehealthcommon.entity.Department;
 import com.example.onehealthcommon.mapper.DepartmentMapper;
 import com.example.onehealthrest.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/departments")
+@Slf4j
 public class DepartmentEndpoint {
 
     private final DepartmentService departmentService;
     private final DepartmentMapper departmentMapper;
 
-    @PostMapping()
-    public ResponseEntity<DepartmentDto> addDepartment(@RequestBody DepartmentDto departmentDto) {
-        Optional<Department> byId = departmentService.findById(departmentDto.getId());
-        if (byId.isEmpty()) {
-            Department department = departmentMapper.mapDto(departmentDto);
-            departmentService.save(department);
-            return ResponseEntity.ok(departmentMapper.map(department));
-        }
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    @PostMapping
+    public ResponseEntity<DepartmentDto> addDepartment(@RequestBody
+                                                       DepartmentDto departmentDto) {
+        log.info(" method save() to add worked DepartmentEndpoint ");
+        return ResponseEntity.ok(departmentService.save(departmentMapper.mapDto(departmentDto)));
     }
 
-    @PutMapping()
+    @PutMapping("/update{id}")
     public ResponseEntity<DepartmentDto> updateDepartments(
-            @RequestBody DepartmentDto departmentDto) {
-        Optional<Department> byId = departmentService.findById(departmentDto.getId());
-        if (byId.isPresent()) {
-            Department department = byId.get();
-            department.setDepartments(departmentDto.getDepartments());
-            return ResponseEntity.ok(departmentMapper.map(departmentService.save(department)));
-        }
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            @RequestBody DepartmentDto departmentDto, @PathVariable("id") int id) {
+        log.info(" method update() to update worked DepartmentEndpoint ");
+        return ResponseEntity.ok(departmentService.update(departmentMapper.mapDto(departmentDto)));
     }
 
     @GetMapping
-    public ResponseEntity<List<DepartmentDto>> getAllDepartments() {
-        List<Department> all = departmentService.findAll();
-        if (all.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        List<DepartmentDto> departmentDto = departmentService.fromDepartmentToDepartmentDto(all);
-        return ResponseEntity.ok(departmentDto);
+    public ResponseEntity<List<DepartmentDto>> getAllDepartment() {
+        List<DepartmentDto> departments = departmentService.departmentList()
+                .stream()
+                .map(departmentMapper::map)
+                .toList();
+        log.info(" method get() worked DepartmentEndpoint ");
+        return ResponseEntity.ok(departments);
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
-        if (departmentService.existsById(id)) {
-            departmentService.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        log.info(" method deleteById()  worked DepartmentEndpoint ");
+        return departmentService.deleteById(id) ?
+                ResponseEntity.noContent().build() :
+                ResponseEntity.notFound().build();
     }
 }

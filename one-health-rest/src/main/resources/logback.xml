@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="LOGS" value="C:\Users\Albert\IdeaProjects\OneHealth\restlogs" />
+    <property name="LOGS" value="C:\Users\PC\IdeaProjects\OneHealth\one-health-rest\restlogging" />
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">

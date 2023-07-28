@@ -1,16 +1,14 @@
 package com.example.onehealthrest.service.impl;
-
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
-import com.example.onehealthcommon.dto.UpdateDoctor;
 import com.example.onehealthcommon.entity.Doctor;
-import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthcommon.repository.DoctorRepository;
 import com.example.onehealthrest.service.DoctorService;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +21,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DoctorServiceImpl implements DoctorService {
     private final DoctorRepository doctorRepository;
     private final DoctorMapper doctorMapper;
@@ -40,6 +39,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setUserType(UserType.DOCTOR);
         userService.registerUser(doctor);
         DoctorDtoResponse doctorDto = doctorMapper.map(doctor);
+        log.info("failed to register");
         return doctorDto;
     }
 
@@ -60,10 +60,11 @@ public class DoctorServiceImpl implements DoctorService {
                 doctorDb.setDepartment(creatDoctorRequestDto.getDepartment());
                 doctorDb.setZoomId(creatDoctorRequestDto.getZoomId());
                 doctorDb.setPassword(creatDoctorRequestDto.getZoomPassword());
+                log.info("Doctor with the " + doctorDb.getId() + " id was updated");
                 return Optional.of(doctorRepository.save(doctorDb));
             }
-
         }
+        log.info("Doctor can not be updated");
         return Optional.empty();
     }
 
@@ -99,9 +100,11 @@ public class DoctorServiceImpl implements DoctorService {
         boolean delete = false;
         Optional<Doctor> byId = doctorRepository.findById(id);
         if (byId.isPresent()) {
-            doctorRepository.findById(id);
+            doctorRepository.deleteById(id);
+            log.info("Doctor with the " + id + " id was deleted");
             delete = true;
         }
+        log.info("Doctor with the " + id + " id can not be deleted");
         return delete;
     }
 }
