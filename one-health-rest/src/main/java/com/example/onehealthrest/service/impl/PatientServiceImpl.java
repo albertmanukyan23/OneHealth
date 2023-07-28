@@ -36,7 +36,7 @@ public class PatientServiceImpl implements PatientService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public PatientDto save(Patient patient) throws IOException {
+    public PatientDto save(Patient patient)  {
         patient.setRegisDate(new Date());
         patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);
@@ -45,8 +45,8 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientDto> getPatientsDtoList(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        List<Patient> content = patientRepository.findAll(pageable).getContent();
+        PageRequest pageRequest = PageRequest.of(page, size);
+        List<Patient> content = patientRepository.findAll(pageRequest).getContent();
         return patientMapper.mapListToDtos(content);
     }
 

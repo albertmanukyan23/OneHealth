@@ -20,10 +20,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/doctors")
 public class DoctorEndpoint {
+
     private final DoctorService doctorService;
     private final DoctorMapper doctorMapper;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> register(@RequestBody @Valid CreatDoctorRequestDto requestDto, BindingResult bindingResult) {
         StringBuilder stringBuilder = doctorService.checkValidation(bindingResult);
         if (!stringBuilder.isEmpty()) {

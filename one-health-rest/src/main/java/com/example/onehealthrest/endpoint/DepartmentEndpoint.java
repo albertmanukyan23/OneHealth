@@ -24,8 +24,7 @@ public class DepartmentEndpoint {
     @PostMapping()
     public ResponseEntity<DepartmentDto> addDepartment(@RequestBody DepartmentDto departmentDto) {
         Optional<Department> byId = departmentService.findById(departmentDto.getId());
-        Optional<Department> byDepartments = departmentService.findByDepartments(departmentDto.getDepartments());
-        if (byId.isEmpty() && byDepartments.isEmpty()) {
+        if (byId.isEmpty()) {
             Department department = departmentMapper.mapDto(departmentDto);
             departmentService.save(department);
             return ResponseEntity.ok(departmentMapper.map(department));
@@ -46,7 +45,7 @@ public class DepartmentEndpoint {
     }
 
     @GetMapping
-    public ResponseEntity<List<DepartmentDto>> getAllDepartment() {
+    public ResponseEntity<List<DepartmentDto>> getAllDepartments() {
         List<Department> all = departmentService.findAll();
         if (all.isEmpty()) {
             return ResponseEntity.notFound().build();

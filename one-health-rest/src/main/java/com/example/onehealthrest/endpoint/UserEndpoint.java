@@ -64,14 +64,16 @@ public class UserEndpoint {
     @PostMapping("/{id}/image")
     public ResponseEntity<UserDto> uploadImage(@PathVariable("id") int id,
                                                @RequestParam("image") MultipartFile multipartFile,
-                                               @AuthenticationPrincipal CurrentUser currentUser) throws IOException {
+                                               @AuthenticationPrincipal CurrentUser currentUser)  {
         log.info("uploadImage() method inside UserEndpoint has worked ");
+
         Optional<UserDto> userDtoOptional = userService.uploadImageForUser(id, multipartFile, currentUser);
         return userDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
     @GetMapping(value = "/getImage",
             produces = MediaType.IMAGE_JPEG_VALUE)
+    //todo exception handling
     public @ResponseBody byte[] getImage(@RequestParam("picName") String picName) throws IOException {
         File file = new File(imageUploadPath + picName);
         if (file.exists()) {
@@ -90,9 +92,9 @@ public class UserEndpoint {
     @PutMapping("/update-password")
     public ResponseEntity<?> changePassword(@RequestBody @Valid UserPasswordUpdaterDto passwordUpdaterDto,
                                             @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult) {
-        StringBuilder stringBuilder = userService.checkValidation(bindingResult);
-        if (!stringBuilder.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
+        StringBuilder validationResult = userService.checkValidation(bindingResult);
+        if (!validationResult.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationResult.toString());
         }
         log.info("changePasswordPage() method inside UserEndpoint has worked ");
         return userService.updatePassword(passwordUpdaterDto, currentUser.getUser()) ? ResponseEntity.status(HttpStatus.ACCEPTED).build()

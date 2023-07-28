@@ -20,6 +20,7 @@ import java.util.List;
 @Component
 @Mapper(componentModel = "spring", uses = {DoctorMapper.class, PatientMapper.class, DepartmentMapper.class})
 public abstract class AppointmentMapper {
+
     @Autowired
     private DoctorRepository doctorRepository;
     @Autowired
