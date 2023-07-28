@@ -2,7 +2,6 @@ package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
-import com.example.onehealthcommon.entity.MedServ;
 import com.example.onehealthcommon.mapper.MedServMapper;
 import com.example.onehealthrest.service.MedServService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -39,10 +39,9 @@ public class MedServEndpoint {
     @PutMapping("/update/{id}")
     public ResponseEntity<MedServDto> updateMedicalService(@PathVariable("id") int id, @RequestBody CreateMedServDto requestDto)
     {
-        MedServ medServ = medServService.update(id, requestDto);
+        Optional<MedServDto> medServDtoOptional = medServService.update(id, requestDto);
         log.info("updateMedicalService() method inside MedServEndpoint has worked ");
-        return medServ != null ? ResponseEntity.ok(medServService.save(medServ))
-                : ResponseEntity.status(HttpStatus.CONFLICT).build();
+        return medServDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
 
     @DeleteMapping("/remove")

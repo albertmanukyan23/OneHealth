@@ -24,6 +24,7 @@ public class CartServiceImpl implements CartService {
     private final CartRepository cartRepository;
     private final OrderRepository orderRepository;
     private final MedServRepository medServRepository;
+
     @Override
     public Optional<Cart> findCartByUserId(int id) {
         return cartRepository.findCartByUserId(id);
@@ -31,33 +32,33 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addOrderByMedical(CurrentUser currentUser) {
-            User user = currentUser.getUser();
-            Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
-            if (cartByUserId.isPresent()) {
-                Cart cart = cartByUserId.get();
-                Order order = Order.builder()
-                        .user(user)
-                        .dateTime(new Date())
-                        .medServSet(new HashSet<>(cart.getMedServSet()))
-                        .build();
-                orderRepository.save(order);
-                cartRepository.save(cart);
-            }
+        User user = currentUser.getUser();
+        Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
+        if (cartByUserId.isPresent()) {
+            Cart cart = cartByUserId.get();
+            Order order = Order.builder()
+                    .user(user)
+                    .dateTime(new Date())
+                    .medServSet(new HashSet<>(cart.getMedServSet()))
+                    .build();
+            orderRepository.save(order);
+            cartRepository.save(cart);
         }
+    }
 
 
     @Override
     public double countPrice(Set<MedServ> medServSet) {
         int sum = 0;
         for (MedServ medServ : medServSet) {
-              sum+=medServ.getPrice();
+            sum += medServ.getPrice();
         }
         return sum;
     }
 
     @Override
-    public Set<MedServ> deleteById(Set<MedServ> medServSet,int id) {
-        medServSet.removeIf(medServ -> medServ.getId()== id);
+    public Set<MedServ> deleteById(Set<MedServ> medServSet, int id) {
+        medServSet.removeIf(medServ -> medServ.getId() == id);
         return medServSet;
     }
 
@@ -65,9 +66,9 @@ public class CartServiceImpl implements CartService {
     public void deleteByIdMedServ(CurrentUser currentUser, int medServId) {
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
-        if (cartByUserId.isPresent()){
+        if (cartByUserId.isPresent()) {
             Cart cart = cartByUserId.get();
-            Set<MedServ> updateMedSer = deleteById(cart.getMedServSet(),medServId);
+            Set<MedServ> updateMedSer = deleteById(cart.getMedServSet(), medServId);
             cart.setMedServSet(updateMedSer);
             cartRepository.save(cart);
         }
@@ -75,16 +76,18 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addCartByMedical(CurrentUser currentUser, int medicalId) {
+        Cart cart;
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
         Optional<MedServ> byId = medServRepository.findById(medicalId);
         if (cartByUserId.isEmpty()) {
-            Cart cart = Cart.builder()
+            cart = Cart.builder()
                     .user(user)
                     .build();
             cartRepository.save(cart);
+        } else {
+            cart = cartByUserId.get();
         }
-        Cart cart = cartByUserId.get();
         cart.getMedServSet().add(byId.get());
         cartRepository.save(cart);
     }

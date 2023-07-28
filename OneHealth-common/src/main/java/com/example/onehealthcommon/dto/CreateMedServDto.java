@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class CreateMedServDto {
 
     private String name;
-    private String price;
+    private int price;
 }

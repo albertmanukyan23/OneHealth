@@ -13,13 +13,12 @@ import com.example.onehealthcommon.repository.PatientRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Mapper(componentModel = "spring", uses = {DoctorMapper.class, PatientMapper.class, DepartmentMapper.class})
 @Component
+@Mapper(componentModel = "spring", uses = {DoctorMapper.class, PatientMapper.class, DepartmentMapper.class})
 public abstract class AppointmentMapper {
     @Autowired
     private DoctorRepository doctorRepository;
