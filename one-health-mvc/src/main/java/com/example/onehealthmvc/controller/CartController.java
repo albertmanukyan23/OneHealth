@@ -49,8 +49,6 @@ public class CartController {
         cartService.addCartByMedical(currentUser, medicalId);
         return "redirect:/cart/see/context";
     }
-
-
     @PostMapping("/remove/{medServId}")
     public String delete(@PathVariable("medServId") int medServId,
                          @AuthenticationPrincipal CurrentUser currentUser) {

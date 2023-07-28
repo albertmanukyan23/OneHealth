@@ -2,7 +2,6 @@ package com.example.onehealthrest.service;
 
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
-import com.example.onehealthcommon.dto.UpdateDoctor;
 import com.example.onehealthcommon.entity.Doctor;
 import org.springframework.validation.BindingResult;
 
