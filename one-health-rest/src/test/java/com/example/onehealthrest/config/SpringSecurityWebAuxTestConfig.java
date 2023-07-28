@@ -1,5 +1,6 @@
 package com.example.onehealthrest.config;
 
+import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthrest.security.CurrentUser;
@@ -17,7 +18,7 @@ public class SpringSecurityWebAuxTestConfig {
     @Bean
     @Primary
     public UserDetailsService userDetailsService() {
-       User basicUser= User.builder()
+        User basicUser1 = User.builder()
                 .id(1)
                 .email("albertmanukyan@mail.com")
                 .name("poxos")
@@ -28,10 +29,10 @@ public class SpringSecurityWebAuxTestConfig {
                 .enabled(true)
                 .userType(UserType.ADMIN).build();
 
-        CurrentUser currentUser = new CurrentUser(basicUser);
+        CurrentUser currentUser1 = new CurrentUser(basicUser1);
 
         return new InMemoryUserDetailsManager(Arrays.asList(
-                currentUser
+                currentUser1
         ));
     }
 }
