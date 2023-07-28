@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class DepartmentServiceImpl implements DepartmentService {
+
     private final DepartmentRepository departmentRepository;
     private final DepartmentMapper departmentMapper;
 
@@ -38,8 +38,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             Department departmentDb = byId.get();
             departmentDb.setDepartments(departmentDb.getDepartments());
             departmentRepository.save(departmentDb);
-            DepartmentDto departmentDto = departmentMapper.map(departmentDb);
-            return departmentDto;
+            return departmentMapper.map(departmentDb);
         }
         log.info(" method update() did not work ");
         return null;

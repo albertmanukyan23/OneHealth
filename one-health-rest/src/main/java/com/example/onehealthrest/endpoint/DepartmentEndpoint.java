@@ -1,7 +1,6 @@
 package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.DepartmentDto;
-import com.example.onehealthcommon.entity.Department;
 import com.example.onehealthcommon.mapper.DepartmentMapper;
 import com.example.onehealthrest.service.DepartmentService;
 import lombok.RequiredArgsConstructor;

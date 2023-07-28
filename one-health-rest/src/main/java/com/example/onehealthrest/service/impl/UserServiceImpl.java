@@ -12,8 +12,6 @@ import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -45,6 +43,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
+    /**
+     * Registers a new user.
+     * If the user with the given email does not already exist in the database,
+     * the user is saved to the database after password encoding and generating a verification token.
+     *
+     * @param user The user to be registered.
+     */
     @Override
     public void registerUser(User user) {
         Optional<User> userFromDB = userRepository.findByEmail(user.getEmail());
@@ -57,12 +62,12 @@ public class UserServiceImpl implements UserService {
             user.setEnabled(false);
             userRepository.save(user);
             log.info("User has successfully registered  ");
-            verifyAccountWithEmail(user.getId());
+            sendEmailVerificationMessage(user.getId());
         }
     }
 
     @Async
-    public void verifyAccountWithEmail(int id) {
+    public void sendEmailVerificationMessage(int id) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             User user = byId.get();
@@ -74,6 +79,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    // Verifies a user account using the verification token
     public User verifyAccount(String email, String token) {
         Optional<User> byEmail = userRepository.findByEmail(email);
         if (byEmail.isPresent() && (byEmail.get().getToken().equals(token)) && !byEmail.get().isEnabled()) {
@@ -86,9 +92,20 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    /**
+     * Uploads a profile image for the specified user.
+     *
+     * @param id            The ID of the user for whom the profile image is to be uploaded.
+     * @param multipartFile The multipart file containing the profile image data.
+     * @param currentUser   The authenticated current user.
+     * @return An optional containing the updated user DTO with the profile image URL if the upload is successful,
+     * or an empty optional if the user with the given ID does not exist or the current user is not authorized to upload for that user.
+     * @throws ImageProcessingException If there is an error processing the uploaded image.
+     */
+
     @Override
     @Transactional
-    public Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser)  {
+    public Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser) {
         try {
             if (currentUser.getUser().getId() == id) {
                 Optional<User> userOptional = userRepository.findById(id);
@@ -120,6 +137,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    //Updates the password of the current user based on the provided UserPasswordUpdaterDto
     @Override
     @Transactional
     public boolean updatePassword(UserPasswordUpdaterDto dto, User currentUser) {
@@ -144,6 +162,7 @@ public class UserServiceImpl implements UserService {
                 user.getToken() == null;
     }
 
+    // Activates or deactivates a user account based on the provided user ID.
     @Override
     @Transactional
     public boolean activateDeactivateUser(int id) {
@@ -159,6 +178,7 @@ public class UserServiceImpl implements UserService {
         return isProcessDone;
     }
 
+    //Updates the status (activation/deactivation) of a user account and sends appropriate notification messages.
     private void updateUserStatus(User user) {
         if (user.isEnabled()) {
             user.setEnabled(false);
