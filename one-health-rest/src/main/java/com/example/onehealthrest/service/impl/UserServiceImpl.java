@@ -7,6 +7,7 @@ import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.mapper.UserMapper;
 import com.example.onehealthcommon.repository.UserRepository;
 import com.example.onehealthcommon.util.ImageDownloader;
+import com.example.onehealthrest.exception.ImageProcessingException;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -87,19 +88,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser) throws IOException {
-        if (currentUser.getUser().getId() == id) {
-            Optional<User> userOptional = userRepository.findById(id);
-            if (userOptional.isPresent()) {
-                User user = userOptional.get();
-                imageDownloader.saveProfilePicture(multipartFile, userOptional.get());
-                userRepository.save(user);
-                UserDto userDto = userMapper.mapToDto(user);
-                log.info("uploadImageForUser() in UserServiceImpl has successfully worked");
-                return Optional.of(userDto);
+    public Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser)  {
+        try {
+            if (currentUser.getUser().getId() == id) {
+                Optional<User> userOptional = userRepository.findById(id);
+                if (userOptional.isPresent()) {
+                    User user = userOptional.get();
+                    imageDownloader.saveProfilePicture(multipartFile, userOptional.get());
+                    userRepository.save(user);
+                    UserDto userDto = userMapper.mapToDto(user);
+                    log.info("uploadImageForUser() in UserServiceImpl has successfully worked");
+                    return Optional.of(userDto);
+                }
             }
+            return Optional.empty();
+
+        } catch (IOException e) {
+            throw new ImageProcessingException("Image uploading failed");
         }
-        return Optional.empty();
+
     }
 
     @Override
@@ -163,7 +170,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void sendActivationMessage(User user) {
+    private void sendActivationMessage(User user) {
         emailSenderService.sendSimpleEmail(user.getEmail(),
                 "You are unblocked", "Hi" + user.getName() +
                         "\n" + "You are active again");
@@ -171,7 +178,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public void sendBlockMessage(User user) {
+    private void sendBlockMessage(User user) {
         emailSenderService.sendSimpleEmail(user.getEmail(),
                 "You are blocked ", "Hi" + user.getName() +
                         "\n" + "You are deactivated by Admin");

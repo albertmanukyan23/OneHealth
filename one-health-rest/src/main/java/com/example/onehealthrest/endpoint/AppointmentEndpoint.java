@@ -44,7 +44,7 @@ public class AppointmentEndpoint {
     public ResponseEntity<?> cancelAppointment(@RequestParam("id") int id,
                                                @AuthenticationPrincipal CurrentUser currentUser)
     {
-        log.info("makeAppointment() has worked inside AppointmentEndpoint");
+        log.info("cancelAppointment() has worked inside AppointmentEndpoint");
         return appointmentService.cancelAppointmentById(id, currentUser.getUser()) ? ResponseEntity.noContent().build()
                 : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }

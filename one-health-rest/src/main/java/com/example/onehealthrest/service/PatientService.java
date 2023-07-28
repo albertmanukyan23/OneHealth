@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
-    PatientDto save(Patient patient) throws IOException;
+    PatientDto save(Patient patient) ;
 
     List<PatientDto> getPatientsDtoList(int page, int size);
 

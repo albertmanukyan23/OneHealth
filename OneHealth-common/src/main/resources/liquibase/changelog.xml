@@ -221,4 +221,9 @@
 
         </sql>
     </changeSet>
+    <changeSet id="alterTableName" author="almanukyan">
+        <renameTable  catalogName="onehealth"
+                      newTableName="users"
+                      oldTableName="user"/>
+    </changeSet>
  </databaseChangeLog>

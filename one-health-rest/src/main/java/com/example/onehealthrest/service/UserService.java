@@ -7,7 +7,6 @@ import com.example.onehealthrest.security.CurrentUser;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.Optional;
 
 public interface UserService {
@@ -18,7 +17,7 @@ public interface UserService {
 
     User verifyAccount(String email, String token);
 
-    Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser) throws IOException;
+    Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser);
 
     StringBuilder checkValidation(BindingResult bindingResult);
 
