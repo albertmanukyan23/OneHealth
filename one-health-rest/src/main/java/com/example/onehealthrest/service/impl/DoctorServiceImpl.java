@@ -1,9 +1,14 @@
 package com.example.onehealthrest.service.impl;
+
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
+import com.example.onehealthcommon.entity.Department;
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.entity.UserType;
+import com.example.onehealthcommon.exception.EntityConflictException;
+import com.example.onehealthcommon.exception.EntityNotFoundException;
 import com.example.onehealthcommon.mapper.DoctorMapper;
+import com.example.onehealthcommon.repository.DepartmentRepository;
 import com.example.onehealthcommon.repository.DoctorRepository;
 import com.example.onehealthrest.service.DoctorService;
 import com.example.onehealthrest.service.UserService;
@@ -24,14 +29,10 @@ import java.util.Optional;
 @Slf4j
 public class DoctorServiceImpl implements DoctorService {
     private final DoctorRepository doctorRepository;
+    private final DepartmentRepository departmentRepository;
     private final DoctorMapper doctorMapper;
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
-
-    @Override
-    public Optional<Doctor> findByEmail(String email) {
-        return doctorRepository.findByEmail(email);
-    }
 
     @Override
     public DoctorDtoResponse save(Doctor doctor) {
@@ -46,10 +47,16 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public Optional<Doctor> update(CreatDoctorRequestDto creatDoctorRequestDto, int id) {
         Optional<Doctor> byId = doctorRepository.findById(id);
-        if (byId.isPresent()) {
+        if (byId.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("ById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
             Doctor doctorDb = byId.get();
             if (doctorRepository.findByEmail(creatDoctorRequestDto.getEmail()).isEmpty()
-                    || creatDoctorRequestDto.getEmail().equals(doctorDb.getEmail())) {
+                    || !creatDoctorRequestDto.getEmail().equals(doctorDb.getEmail())) {
                 doctorDb.setName(creatDoctorRequestDto.getName());
                 doctorDb.setSurname(creatDoctorRequestDto.getSurname());
                 doctorDb.setEmail(creatDoctorRequestDto.getEmail());
@@ -57,15 +64,15 @@ public class DoctorServiceImpl implements DoctorService {
                 doctorDb.setSpeciality(creatDoctorRequestDto.getSpeciality());
                 doctorDb.setBirthDate(creatDoctorRequestDto.getBirthDate());
                 doctorDb.setPhoneNumber(creatDoctorRequestDto.getPhoneNumber());
-                doctorDb.setDepartment(creatDoctorRequestDto.getDepartment());
+                Optional<Department> departmentById = departmentRepository.findById(creatDoctorRequestDto.getDepartmentId());
+                departmentById.ifPresentOrElse(department -> doctorDb.setDepartment(department), null);
                 doctorDb.setZoomId(creatDoctorRequestDto.getZoomId());
                 doctorDb.setPassword(creatDoctorRequestDto.getZoomPassword());
                 log.info("Doctor with the " + doctorDb.getId() + " id was updated");
                 return Optional.of(doctorRepository.save(doctorDb));
             }
+            return Optional.empty();
         }
-        log.info("Doctor can not be updated");
-        return Optional.empty();
     }
 
 
@@ -79,19 +86,16 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public Optional<Doctor> findById(int id) {
-        return doctorRepository.findById(id);
-    }
-
-    @Override
-    public Optional<Doctor> getDoctorById(int id) {
-        return doctorRepository.findById(id);
-    }
-
-    @Override
     public List<DoctorDtoResponse> getDoctorList(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
         List<Doctor> content = doctorRepository.findAll(pageable).getContent();
+        if (content.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("Doctor List IsEmpty");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return doctorMapper.mapListDto(content);
     }
 
@@ -99,12 +103,34 @@ public class DoctorServiceImpl implements DoctorService {
     public boolean deleteById(int id) {
         boolean delete = false;
         Optional<Doctor> byId = doctorRepository.findById(id);
-        if (byId.isPresent()) {
+        if (byId.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("ById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
             doctorRepository.deleteById(id);
             log.info("Doctor with the " + id + " id was deleted");
-            delete = true;
+            return delete = true;
         }
-        log.info("Doctor with the " + id + " id can not be deleted");
-        return delete;
+    }
+
+    @Override
+    public Optional<Doctor> getDoctorById(int id) {
+        Optional<Doctor> byId = doctorRepository.findById(id);
+        if (byId.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("ById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return byId;
+    }
+
+    @Override
+    public Optional<Doctor> findByEmail(String email) {
+        return doctorRepository.findByEmail(email);
     }
 }

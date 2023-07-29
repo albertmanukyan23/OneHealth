@@ -25,8 +25,7 @@ public class DoctorDtoResponse {
     private String picName;
     private String speciality;
     private String phoneNumber;
-    @ManyToOne
-    private Department department;
+    private DepartmentDto departmentDto;
     private int zoomId;
     private String zoomPassword;
     @Enumerated(EnumType.STRING)

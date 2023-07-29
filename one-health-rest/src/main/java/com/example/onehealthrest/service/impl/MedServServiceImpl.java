@@ -4,6 +4,7 @@ package com.example.onehealthrest.service.impl;
 import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
 import com.example.onehealthcommon.entity.MedServ;
+import com.example.onehealthcommon.exception.EntityNotFoundException;
 import com.example.onehealthcommon.mapper.MedServMapper;
 import com.example.onehealthcommon.repository.MedServRepository;
 import com.example.onehealthrest.service.MedServService;
@@ -18,13 +19,20 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class MedServServiceImpl implements MedServService {
-
     private final MedServRepository medServRepository;
     private final MedServMapper medServMapper;
 
     @Override
     public List<MedServ> getPriceList() {
-        return  medServRepository.findAll();
+        List<MedServ> all = medServRepository.findAll();
+        if (all.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("Is Empty" + all);
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return all;
     }
 
     @Override
@@ -36,29 +44,36 @@ public class MedServServiceImpl implements MedServService {
     public boolean delete(int id) {
         boolean isDeleted = false;
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);
-        if (optionalMedServ.isPresent()) {
+        if (optionalMedServ.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("DeleteById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            log.info("Medical Service with the id " + id + " id has been successfully deleted ");
             medServRepository.deleteById(id);
-            log.info("Medical Service with the id " + id + " id has been successfully deleted " );
-            isDeleted = true;
+            return isDeleted = true;
         }
-        return isDeleted;
     }
 
-    @Override
-    public Optional<MedServ> findById(int id) {
-        return medServRepository.findById(id);
-    }
 
     @Override
     public Optional<MedServDto> update(int id, CreateMedServDto requestDto) {
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);
-        if (optionalMedServ.isPresent()) {
+        if (optionalMedServ.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("MedServ with " + id + " there exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        }else {
             MedServ medServ = medServMapper.map(requestDto);
             medServ.setId(id);
             medServRepository.save(medServ);
-            log.info("Medical Service with the id " + id + " id has been successfully updated " );
-            return  Optional.of(medServMapper.mapTo(medServ));
+            log.info("Medical Service with the id " + id + " id has been successfully updated ");
+            return Optional.of(medServMapper.mapTo(medServ));
         }
-        return Optional.empty();
     }
 }

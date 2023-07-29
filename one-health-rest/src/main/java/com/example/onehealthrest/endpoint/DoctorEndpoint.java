@@ -69,10 +69,10 @@ public class DoctorEndpoint {
         return ResponseEntity.ok(doctorService.getDoctorList(size, page - 1));
     }
 
-    @DeleteMapping("/remove")
-    public ResponseEntity<?> deleteDoctor(@RequestParam("id") int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDoctor(@PathVariable("id") int id) {
         log.info("deleteById() doctor method worked");
-        return doctorService.deleteById(id) ? ResponseEntity.noContent().build() :
-                ResponseEntity.notFound().build();
+        boolean delete = doctorService.deleteById(id);
+        return ResponseEntity.ok(delete);
     }
 }

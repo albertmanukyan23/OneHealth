@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class CreateMedServDto {
-    private String name;
-    private int price;
+public class RestErrorDto {
+    private int statusCod;
+    private String errorMessage;
 }

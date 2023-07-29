@@ -52,7 +52,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/appointments/to-make").hasAuthority("PATIENT")
                 .requestMatchers("/appointments/cancel").hasAnyAuthority("ADMIN","PATIENT","DOCTOR")
                 .requestMatchers("/doctors").hasAuthority("ADMIN")
-                .requestMatchers("/comment/create" ,"/comment/delete").hasAnyAuthority("PATIENT","ADMIN")
+                .requestMatchers("/comment" ,"/comment/delete").hasAnyAuthority("PATIENT","ADMIN")
                 .requestMatchers("/admin").hasAuthority("ADMIN")
                 .requestMatchers("/departments/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated();

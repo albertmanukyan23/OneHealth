@@ -1,8 +1,6 @@
 package com.example.onehealthrest.endpoint;
-
 import com.example.onehealthcommon.dto.CommentDto;
 import com.example.onehealthcommon.dto.CreatCommentDto;
-import com.example.onehealthcommon.dto.DoctorDtoResponse;
 import com.example.onehealthcommon.mapper.CommentMapper;
 import com.example.onehealthrest.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -25,15 +22,15 @@ public class CommentEndpoint {
         log.info("for the comment,the method for add worked");
         return ResponseEntity.ok(commentService.save(commentMapper.mapDto(dto)));
     }
-    @DeleteMapping("/remove")
-    public ResponseEntity<?> deleteComment(@RequestParam ("id") int id){
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteComment(@RequestParam ("deleteId") int deleteId ){
         log.info("deleteById() comment method worked");
-        return commentService.deleteByIdComment(id)
-                ? ResponseEntity.noContent().build() :
-                ResponseEntity.notFound().build();
+        boolean delete = commentService.deleteByIdComment(deleteId);
+        return ResponseEntity.ok(delete);
+
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<CommentDto>> getCommentList(@RequestParam(defaultValue = "5") int size,
                                                                  @RequestParam(defaultValue = "1") int page) {
         log.info("see comment getCommentList() method worked ");
