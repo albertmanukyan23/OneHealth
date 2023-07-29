@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -22,11 +23,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentDto save(Department department) {
         Optional<Department> byId = departmentRepository.findById(department.getId());
         if (byId.isPresent()) {
-            try {
-                throw new EntityConflictException("Department with " + department.getId() + " there exist");
-            } catch (EntityConflictException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityConflictException("Department with " + department.getId() + " there exist");
         } else {
             departmentRepository.save(department);
             return departmentMapper.map(departmentRepository.save(department));
@@ -37,11 +34,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Optional<DepartmentDto> update(DepartmentDto departmentDto) {
         Optional<Department> byId = departmentRepository.findById(departmentDto.getId());
         if (byId.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("Department wi0th " + departmentDto.getId() + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("Department with " + departmentDto.getId() + " does not exist");
         } else {
             Department department = byId.get();
             department.setDepartments(departmentDto.getDepartments());
@@ -56,12 +49,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     public List<Department> departmentList() {
         List<Department> all = departmentRepository.findAll();
         if (all.isEmpty()) {
-            try {
-                throw new EntityNotFoundException ("Is Empty " + all);
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        }else {
+            throw new EntityNotFoundException("Is Empty " + all);
+        } else {
             return all;
         }
     }
@@ -69,17 +58,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public boolean deleteById(int id) {
-        boolean isDeleted = false;
         Optional<Department> byId = departmentRepository.findById(id);
         if (byId.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("DeleteById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("DeleteById with " + id + " does not exist");
         } else {
             departmentRepository.deleteById(id);
-            return isDeleted = true;
+            return true;
         }
     }
 
