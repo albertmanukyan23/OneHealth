@@ -10,10 +10,6 @@ import java.util.Optional;
 public interface CommentService {
     CommentDto save(Comment comment);
 
-
-
-    Optional<Comment> findById(int id);
-
     boolean deleteByIdComment(int id);
 
     List<CommentDto> getDoctorList(int page, int size);

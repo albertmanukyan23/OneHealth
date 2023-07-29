@@ -35,7 +35,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<PatientAppointmentDto> getPatientAppointments(User user) {
-
         return appointmentMapper.map(appointmentRepository.findAllByPatientId(user.getId()));
     }
 

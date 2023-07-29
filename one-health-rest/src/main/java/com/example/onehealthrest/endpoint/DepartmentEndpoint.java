@@ -10,28 +10,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/departments")
 @Slf4j
 public class DepartmentEndpoint {
-
     private final DepartmentService departmentService;
     private final DepartmentMapper departmentMapper;
 
     @PostMapping
     public ResponseEntity<DepartmentDto> addDepartment(@RequestBody
                                                        DepartmentDto departmentDto) {
-        log.info(" method save() to add worked DepartmentEndpoint ");
         return ResponseEntity.ok(departmentService.save(departmentMapper.mapDto(departmentDto)));
     }
 
-    @PutMapping("/update{id}")
-    public ResponseEntity<DepartmentDto> updateDepartments(
-            @RequestBody DepartmentDto departmentDto, @PathVariable("id") int id) {
-        log.info(" method update() to update worked DepartmentEndpoint ");
-        return ResponseEntity.ok(departmentService.update(departmentMapper.mapDto(departmentDto)));
+    @PutMapping("/update")
+    public ResponseEntity<Optional<DepartmentDto>> updateDepartments(
+            @RequestBody DepartmentDto departmentDto) {
+       return ResponseEntity.ok(departmentService.update(departmentDto));
     }
 
     @GetMapping
@@ -47,8 +45,7 @@ public class DepartmentEndpoint {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
         log.info(" method deleteById()  worked DepartmentEndpoint ");
-        return departmentService.deleteById(id) ?
-                ResponseEntity.noContent().build() :
-                ResponseEntity.notFound().build();
+        boolean delete = departmentService.deleteById(id);
+        return ResponseEntity.ok(delete);
     }
 }

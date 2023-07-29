@@ -43,8 +43,7 @@ public class  CreatDoctorRequestDto {
     private String picName;
     private String phoneNumber;
 
-    @OneToMany
-    private Department department;
+    private int departmentId;
 
     private int zoomId;
     private String zoomPassword;

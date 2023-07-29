@@ -4,6 +4,7 @@ import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
+import com.example.onehealthcommon.exception.EntityNotFoundException;
 import com.example.onehealthcommon.mapper.PatientMapper;
 import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.PatientService;
@@ -34,7 +35,7 @@ public class PatientServiceImpl implements PatientService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public PatientDto save(Patient patient)  {
+    public PatientDto save(Patient patient) throws IOException {
         patient.setRegisDate(new Date());
         patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);
@@ -43,8 +44,15 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientDto> getPatientsDtoList(int page, int size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        List<Patient> content = patientRepository.findAll(pageRequest).getContent();
+        Pageable pageable = PageRequest.of(page, size);
+        List<Patient> content = patientRepository.findAll(pageable).getContent();
+        if (content.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("Patient List IsEmpty");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return patientMapper.mapListToDtos(content);
     }
 
@@ -62,6 +70,12 @@ public class PatientServiceImpl implements PatientService {
     public Optional<Patient> update(PatientRegisterDto patientRegisterDto, int id) {
         Optional<Patient> byId = patientRepository.findById(id);
         if (byId.isPresent()) {
+            try {
+                throw new EntityNotFoundException("ById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
             Patient patientDbData = byId.get();
             if (patientRepository.findByEmail(patientRegisterDto.getEmail()).isEmpty() || patientRegisterDto.getEmail().equals(patientDbData.getEmail())) {
                 patientDbData.setName(patientRegisterDto.getName());
@@ -75,9 +89,9 @@ public class PatientServiceImpl implements PatientService {
                 log.info("Patient with the " + patientDbData.getId() + " id was updated");
                 return Optional.of(patientRepository.save(patientDbData));
             }
+            log.info("Patient can not be updated");
+            return Optional.empty();
         }
-        log.info("Patient can not be updated");
-        return Optional.empty();
     }
 
     /**
@@ -91,19 +105,32 @@ public class PatientServiceImpl implements PatientService {
     public boolean delete(int id) {
         boolean isDeleted = false;
         Optional<Patient> optionalPatient = patientRepository.findById(id);
-        if (optionalPatient.isPresent()) {
+        if (optionalPatient.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("ById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
             patientRepository.deleteById(id);
             log.info("Patient with the " + id + " id was deleted");
-            isDeleted = true;
+           return isDeleted = true;
         }
-        log.info("Patient with the " + id + " id can not be deleted");
-        return isDeleted;
-    }
-
-    @Override
-    public Optional<Patient> findPatientById(int id) {
-        return patientRepository.findById(id);
     }
 
 
-}
+        @Override
+        public Optional<Patient> findPatientById ( int id){
+            Optional<Patient> byId = patientRepository.findById(id);
+            if (byId.isEmpty()){
+                try {
+                    throw new EntityNotFoundException("ById with " + id + " does not exist");
+                } catch (EntityNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return byId;
+        }
+
+
+    }

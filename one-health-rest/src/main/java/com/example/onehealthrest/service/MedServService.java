@@ -15,8 +15,6 @@ public interface MedServService {
 
     boolean delete(int id);
 
-    Optional<MedServ> findById(int id);
-
     Optional<MedServDto> update(int id, CreateMedServDto requestDto);
 
 }
