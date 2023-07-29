@@ -37,7 +37,7 @@ public class PatientServiceImpl implements PatientService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public PatientDto save(Patient patient) throws IOException {
+    public PatientDto save(Patient patient) {
         patient.setRegisDate(new Date());
         patient.setUserType(UserType.PATIENT);
         userService.registerUser(patient);

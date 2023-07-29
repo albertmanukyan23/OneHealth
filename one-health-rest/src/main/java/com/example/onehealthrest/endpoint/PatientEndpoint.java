@@ -34,7 +34,7 @@ public class PatientEndpoint {
     private final PatientMapper patientMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult) throws IOException {
+    public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult)  {
         log.info(" register() method inside PatientEndpoint has worked ");
         StringBuilder validationResult = userService.checkValidation(bindingResult);
         return !validationResult.isEmpty() ? ResponseEntity.status(HttpStatus.BAD_REQUEST)
