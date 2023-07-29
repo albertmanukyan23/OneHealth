@@ -22,5 +22,6 @@ public abstract class PatientMapper {
     public abstract PatientDto map(Patient patient);
 
     public abstract List<PatientDto> mapListToDtos(List<Patient> books);
+    public abstract  PatientRegisterDto mapToPatient(Patient patient);
 
 }

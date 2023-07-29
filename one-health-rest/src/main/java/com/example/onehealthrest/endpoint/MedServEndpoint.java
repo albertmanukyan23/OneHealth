@@ -1,4 +1,10 @@
+/*
+*
+*  //todo medical servieces description
+*
+* */
 package com.example.onehealthrest.endpoint;
+
 
 import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
@@ -25,7 +31,11 @@ public class MedServEndpoint {
     @GetMapping
     public ResponseEntity<List<MedServDto>> getPriceList()
     {
-        List<MedServDto> priceList = medServService.getPriceList().stream().map(medServMapper::mapTo).toList();
+        List<MedServDto> priceList = medServService
+                .getPriceList()
+                .stream()
+                .map(medServMapper::mapTo)
+                .toList();
         return ResponseEntity.ok(priceList);
     }
 

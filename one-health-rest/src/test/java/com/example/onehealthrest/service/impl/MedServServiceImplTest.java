@@ -45,11 +45,15 @@ class MedServServiceImplTest {
     @Test
     @DisplayName("MedService Save Test")
     void medServiceSaveTest() {
+        // given
         MedServ medServ = new MedServ(1, "service-one", 100);
         MedServDto medServDto = new MedServDto(1, "service-one", 100);
+        // when
         when(repository.save(medServ)).thenReturn(medServ);
         when(mapper.mapTo(medServ)).thenReturn(medServDto);
+        // act
         MedServDto result = medServService.save(medServ);
+        // assert
         assertEquals(medServDto, result);
         verify(repository, times(1)).save(medServ);
     }

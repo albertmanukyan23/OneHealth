@@ -22,10 +22,11 @@ import java.util.Optional;
 @RequestMapping("/doctors")
 @Slf4j
 public class DoctorEndpoint {
+
     private final DoctorService doctorService;
     private final DoctorMapper doctorMapper;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> register(@RequestBody @Valid CreatDoctorRequestDto requestDto, BindingResult bindingResult) {
         log.info("for the doctor,the method for registration worked");
         StringBuilder stringBuilder = doctorService.checkValidation(bindingResult);

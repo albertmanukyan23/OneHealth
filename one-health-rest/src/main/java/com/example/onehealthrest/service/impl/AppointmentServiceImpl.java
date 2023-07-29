@@ -45,6 +45,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentMapper.mapToAppointmentDtoList(content);
     }
 
+    // todo add comment
     @Override
     @Transactional
     public Optional<AppointmentDto> createAppointment(User currentUser, CreateAppointmentDto appointmentDto) {
@@ -61,7 +62,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return Optional.empty();
     }
 
-
+    // todo comment
     public boolean isDoctorAvailableForAppointment(Appointment appointment) {
         boolean isDoctorAvailable = true;
         List<Appointment> doctorAppointments = appointmentRepository.findAllByDoctorId(appointment.getDoctor().getId());
@@ -77,6 +78,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         return isDoctorAvailable;
     }
+    //todo comment
 
     @Override
     @Transactional
@@ -138,10 +140,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
     public void sendOnlineRegistrationMessage(Patient patient, Doctor doctor) {
-        emailSenderService.sendSimpleEmail(patient.getEmail(), "Hello,you have registered for an online consultation" +
-                        "You are registered" + doctor.getName() + "to the doctor",
-                "doctor data zoom:" + doctor.getPassword() + "password"
-                        + doctor.getZoomId() + "id");
+        emailSenderService.sendSimpleEmail(patient.getEmail(), doctor.doctorEmailSubject(), doctor.getEmailBody());
 
         log.info("Online Registration message  has been send to the user with " + patient.getId() + " id");
     }
