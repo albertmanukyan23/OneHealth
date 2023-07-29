@@ -50,18 +50,14 @@ public class DoctorServiceImpl implements DoctorService {
      * @param creatDoctorRequestDto The DTO containing the updated details for the doctor.
      * @param id                    The ID of the doctor to be updated.
      * @return An optional containing the updated doctor entity if found and updated successfully,
-     *         or an empty optional if the doctor does not exist or the update is not allowed due to email conflict.
+     * or an empty optional if the doctor does not exist or the update is not allowed due to email conflict.
      */
 
     @Override
     public Optional<Doctor> update(CreatDoctorRequestDto creatDoctorRequestDto, int id) {
         Optional<Doctor> byId = doctorRepository.findById(id);
         if (byId.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("ById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("ById with " + id + " does not exist");
         } else {
             Doctor doctorDb = byId.get();
             if (doctorRepository.findByEmail(creatDoctorRequestDto.getEmail()).isEmpty()
@@ -99,29 +95,21 @@ public class DoctorServiceImpl implements DoctorService {
         Pageable pageable = PageRequest.of(page, size);
         List<Doctor> content = doctorRepository.findAll(pageable).getContent();
         if (content.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("Doctor List IsEmpty");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("Doctor List IsEmpty");
+        }else {
+            return doctorMapper.mapListDto(content);
         }
-        return doctorMapper.mapListDto(content);
     }
 
     @Override
     public boolean deleteById(int id) {
-        boolean delete = false;
         Optional<Doctor> byId = doctorRepository.findById(id);
         if (byId.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("ById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("ById with " + id + " does not exist");
         } else {
             doctorRepository.deleteById(id);
             log.info("Doctor with the " + id + " id was deleted");
-            return delete = true;
+            return true;
         }
     }
 
@@ -129,11 +117,7 @@ public class DoctorServiceImpl implements DoctorService {
     public Optional<Doctor> getDoctorById(int id) {
         Optional<Doctor> byId = doctorRepository.findById(id);
         if (byId.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("ById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("ById with " + id + " does not exist");
         }
         return byId;
     }

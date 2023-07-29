@@ -17,7 +17,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -48,13 +47,11 @@ public class PatientServiceImpl implements PatientService {
         Pageable pageable = PageRequest.of(page, size);
         List<Patient> content = patientRepository.findAll(pageable).getContent();
         if (content.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("Patient List IsEmpty");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("Patient List IsEmpty");
+        } else {
+            return patientMapper.mapListToDtos(content);
+
         }
-        return patientMapper.mapListToDtos(content);
     }
 
     /**
@@ -63,22 +60,19 @@ public class PatientServiceImpl implements PatientService {
      * @param patientRegisterDto The DTO containing the updated details for the patient.
      * @param id                 The ID of the patient to be updated.
      * @return An optional containing the updated patient entity if found and updated successfully,
-     *         or an empty optional if the patient with the given ID does not exist or the email is already taken.
+     * or an empty optional if the patient with the given ID does not exist or the email is already taken.
      */
 
     @Override
     @Transactional
     public Optional<Patient> update(PatientRegisterDto patientRegisterDto, int id) {
         Optional<Patient> byId = patientRepository.findById(id);
-        if (byId.isPresent()) {
-            try {
-                throw new EntityNotFoundException("ById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+        if (byId.isEmpty()) {
+            throw new EntityNotFoundException("ById with " + id + " does not exist");
         } else {
             Patient patientDbData = byId.get();
-            if (patientRepository.findByEmail(patientRegisterDto.getEmail()).isEmpty() || patientRegisterDto.getEmail().equals(patientDbData.getEmail())) {
+            if (patientRepository.findByEmail(patientRegisterDto.getEmail()).isEmpty()
+                    || patientRegisterDto.getEmail().equals(patientDbData.getEmail())) {
                 patientDbData.setName(patientRegisterDto.getName());
                 patientDbData.setSurname(patientRegisterDto.getSurname());
                 patientDbData.setEmail(patientRegisterDto.getEmail());
@@ -104,34 +98,26 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public boolean delete(int id) {
-        boolean isDeleted = false;
         Optional<Patient> optionalPatient = patientRepository.findById(id);
         if (optionalPatient.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("ById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("ById with " + id + " does not exist");
         } else {
             patientRepository.deleteById(id);
             log.info("Patient with the " + id + " id was deleted");
-           return isDeleted = true;
+            return true;
         }
     }
 
 
-        @Override
-        public Optional<Patient> findPatientById ( int id){
-            Optional<Patient> byId = patientRepository.findById(id);
-            if (byId.isEmpty()){
-                try {
-                    throw new EntityNotFoundException("ById with " + id + " does not exist");
-                } catch (EntityNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+    @Override
+    public Optional<Patient> findPatientById(int id) {
+        Optional<Patient> byId = patientRepository.findById(id);
+        if (byId.isEmpty()) {
+            throw new EntityNotFoundException("ById with " + id + " does not exist");
+        } else {
             return byId;
         }
-
-
     }
+
+
+}
