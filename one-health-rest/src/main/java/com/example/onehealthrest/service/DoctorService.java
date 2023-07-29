@@ -13,7 +13,7 @@ public interface DoctorService {
 
     Optional<Doctor> update(CreatDoctorRequestDto creatDoctorRequestDto, int id);
 
-    StringBuilder checkValidation(BindingResult bindingResult);
+
 
     List<DoctorDtoResponse> getDoctorList(int page, int size);
 

@@ -3,6 +3,7 @@ package com.example.onehealthrest.endpoint;
 import com.example.onehealthcommon.dto.*;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.mapper.UserMapper;
+import com.example.onehealthcommon.validation.ValidationChecker;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import com.example.onehealthrest.util.JwtTokenUtil;
@@ -30,6 +31,7 @@ import java.util.Optional;
 @Slf4j
 @RequestMapping("/users")
 public class UserEndpoint {
+
     @Value("${hospital.upload.image.path}")
     private String imageUploadPath;
     private final UserService userService;
@@ -39,7 +41,6 @@ public class UserEndpoint {
 
     @PostMapping("/auth")
     public ResponseEntity<UserAuthResponseDto> auth(@RequestBody UserAuthRequestDto userAuthRequestDto) {
-        //todo remove method body to service
         Optional<User> byEmail = userService.findByEmail(userAuthRequestDto.getEmail());
         if (byEmail.isEmpty()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -89,7 +90,7 @@ public class UserEndpoint {
     @PutMapping("/update-password")
     public ResponseEntity<?> changePassword(@RequestBody @Valid UserPasswordUpdaterDto passwordUpdaterDto,
                                             @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult) {
-        StringBuilder validationResult = userService.checkValidation(bindingResult);
+        StringBuilder validationResult = ValidationChecker.checkValidation(bindingResult);
         if (!validationResult.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationResult.toString());
         }

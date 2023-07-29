@@ -2,11 +2,9 @@ package com.example.onehealthrest.service;
 
 import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
+import com.example.onehealthcommon.dto.PatientSearchDto;
 import com.example.onehealthcommon.entity.Patient;
-import org.springframework.validation.BindingResult;
 
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,4 +19,5 @@ public interface PatientService {
 
     Optional<Patient> findPatientById(int id);
 
+    List<PatientDto> search(int page, int size, PatientSearchDto bookSearchDto);
 }

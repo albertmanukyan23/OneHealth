@@ -1,13 +1,11 @@
 package com.example.onehealthcommon.dto;
 
-import com.example.onehealthcommon.entity.Department;
-import com.example.onehealthcommon.entity.Doctor;
-import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.RegisterType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,8 +22,12 @@ public class CreateAppointmentDto {
     private String description;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @NotNull(message = "startTime Date should not be empty")
     private LocalDateTime startTime;
+
+    @Positive(message = "Field should be greater than zero")
     private int doctorId;
+    @Positive(message = "Field should be greater than zero")
     private int patientId;
     private int departmentId;
 

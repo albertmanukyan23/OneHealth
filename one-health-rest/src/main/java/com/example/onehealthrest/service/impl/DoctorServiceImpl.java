@@ -86,15 +86,6 @@ public class DoctorServiceImpl implements DoctorService {
 
 
     @Override
-    public StringBuilder checkValidation(BindingResult bindingResult) {
-        StringBuilder errorBuilder = new StringBuilder();
-        if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
-        }
-        return errorBuilder;
-    }
-
-    @Override
     public List<DoctorDtoResponse> getDoctorList(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
         List<Doctor> content = doctorRepository.findAll(pageable).getContent();

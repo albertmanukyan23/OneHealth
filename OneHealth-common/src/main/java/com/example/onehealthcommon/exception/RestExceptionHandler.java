@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -24,6 +23,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleResourceConflictException(Exception ex, WebRequest request) {
         RestErrorDto restErrorDto = RestErrorDto.builder()
                 .statusCod(HttpStatus.CONFLICT.value())
+                .errorMessage(ex.getMessage())
+                .build();
+        return handleExceptionInternal(ex, restErrorDto, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(value = {ImageProcessingException.class})
+    public ResponseEntity<Object> handleImageProcessingException(Exception ex, WebRequest request) {
+        RestErrorDto restErrorDto = RestErrorDto.builder()
+                .statusCod(HttpStatus.BAD_REQUEST.value())
                 .errorMessage(ex.getMessage())
                 .build();
         return handleExceptionInternal(ex, restErrorDto, new HttpHeaders(), HttpStatus.NOT_FOUND, request);

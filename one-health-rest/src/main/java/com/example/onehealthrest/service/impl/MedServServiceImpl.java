@@ -89,4 +89,9 @@ public class MedServServiceImpl implements MedServService {
             return Optional.of(medServMapper.mapTo(medServ));
         }
     }
+
+    @Override
+    public Optional<MedServ> findById(int id) {
+        return medServRepository.findById(id);
+    }
 }

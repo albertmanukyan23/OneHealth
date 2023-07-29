@@ -1,8 +1,4 @@
-/*
-*
-*  //todo medical servieces description
-*
-* */
+
 package com.example.onehealthrest.endpoint;
 
 

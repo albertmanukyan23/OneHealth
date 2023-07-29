@@ -2,13 +2,16 @@ package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.AppointmentDto;
 import com.example.onehealthcommon.dto.CreateAppointmentDto;
+import com.example.onehealthcommon.validation.ValidationChecker;
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.AppointmentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,9 +32,13 @@ public class AppointmentEndpoint {
     }
 
     @PostMapping("/to-make")
-    public ResponseEntity<AppointmentDto> makeAppointment(@RequestBody CreateAppointmentDto dto,
-                                                          @AuthenticationPrincipal CurrentUser currentUser)
+    public ResponseEntity<?> makeAppointment(@RequestBody @Valid CreateAppointmentDto dto,
+                                                          @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult)
     {
+        StringBuilder validationResult = ValidationChecker.checkValidation(bindingResult);
+        if (!validationResult.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationResult.toString());
+        }
         Optional<AppointmentDto> optionalAppointmentDto = appointmentService.createAppointment(currentUser.getUser(), dto);
         return optionalAppointmentDto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }

@@ -2,9 +2,11 @@ package com.example.onehealthrest.service.impl;
 
 import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
+import com.example.onehealthcommon.dto.PatientSearchDto;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.exception.EntityNotFoundException;
+import com.example.onehealthcommon.manager.PatientFilterManager;
 import com.example.onehealthcommon.mapper.PatientMapper;
 import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.PatientService;
@@ -34,6 +36,8 @@ public class PatientServiceImpl implements PatientService {
     private final UserService userService;
     private final PatientMapper patientMapper;
     private final PasswordEncoder passwordEncoder;
+    private final PatientFilterManager patientFilterManager;
+
 
     @Override
     public PatientDto save(Patient patient) {
@@ -63,7 +67,7 @@ public class PatientServiceImpl implements PatientService {
      * @param patientRegisterDto The DTO containing the updated details for the patient.
      * @param id                 The ID of the patient to be updated.
      * @return An optional containing the updated patient entity if found and updated successfully,
-     *         or an empty optional if the patient with the given ID does not exist or the email is already taken.
+     * or an empty optional if the patient with the given ID does not exist or the email is already taken.
      */
 
     @Override
@@ -115,23 +119,29 @@ public class PatientServiceImpl implements PatientService {
         } else {
             patientRepository.deleteById(id);
             log.info("Patient with the " + id + " id was deleted");
-           return isDeleted = true;
+            return isDeleted = true;
         }
     }
 
 
-        @Override
-        public Optional<Patient> findPatientById ( int id){
-            Optional<Patient> byId = patientRepository.findById(id);
-            if (byId.isEmpty()){
-                try {
-                    throw new EntityNotFoundException("ById with " + id + " does not exist");
-                } catch (EntityNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
+    @Override
+    public Optional<Patient> findPatientById(int id) {
+        Optional<Patient> byId = patientRepository.findById(id);
+        if (byId.isEmpty()) {
+            try {
+                throw new EntityNotFoundException("ById with " + id + " does not exist");
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
             }
-            return byId;
         }
-
-
+        return byId;
     }
+
+    @Override
+    public List<PatientDto> search(int page, int size, PatientSearchDto bookSearchDto)
+    {
+        List<Patient> all = patientFilterManager.searchPatientsByFilter(page, size, bookSearchDto);
+        return patientMapper.mapListToDtos(all);
+    }
+
+}
