@@ -141,9 +141,7 @@
                              th:src="@{/getImage(imageName=${patient.getPicName()})}"/>
                         <img th:if="${patient.picName == null or patient.picName.equalsIgnoreCase('null')}"
                              th:src="@{/img.png}">
-                        <div class="t-icon">
-                            <a th:href="@{/doctor/details/{id}(id = ${patient.getId()})}" class="btn">See Details</a>
-                        </div>
+
                     </div>
                     <div class="t-bottom">
                         <p th:text="${patient.name}"></p>

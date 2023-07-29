@@ -15,12 +15,12 @@ public interface DoctorService {
 
     Optional<Doctor> findDoctorById(int id);
 
-    void update(Doctor doctor, MultipartFile multipartFile) throws IOException;
+    void update(Doctor doctor, MultipartFile multipartFile) ;
 
     Page<Doctor> getDoctorPage(Pageable pageable);
 
 
-    void registerDoctor(Doctor doctor, MultipartFile multipartFile) throws IOException;
+    void registerDoctor(Doctor doctor, MultipartFile multipartFile) ;
 
     Page<Doctor> getDoctorPageData(Optional<Integer> page, Optional<Integer> size);
 

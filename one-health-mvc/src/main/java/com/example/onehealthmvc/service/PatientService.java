@@ -13,7 +13,7 @@ public interface PatientService {
 
     Page<Patient> getPatientPag(Pageable pageable);
 
-    void update(Patient patient, MultipartFile multipartFile) throws IOException;
+    void update(Patient patient, MultipartFile multipartFile) ;
 
     Optional<Patient> findPatientById(int id);
 
@@ -21,7 +21,7 @@ public interface PatientService {
 
     List<Integer> getPageNumbers(int totalPages);
 
-    void save(MultipartFile multipartFile, Patient patient) throws IOException;
+    void save(MultipartFile multipartFile, Patient patient) ;
 
     Optional<Patient> findByEmail(String email);
 

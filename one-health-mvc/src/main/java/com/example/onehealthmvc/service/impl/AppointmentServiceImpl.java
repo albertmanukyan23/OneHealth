@@ -1,4 +1,5 @@
 package com.example.onehealthmvc.service.impl;
+
 import com.example.onehealthcommon.EmailSenderService;
 import com.example.onehealthcommon.entity.*;
 import com.example.onehealthcommon.repository.AppointmentRepository;
@@ -7,6 +8,7 @@ import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthmvc.security.CurrentUser;
 import com.example.onehealthmvc.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +19,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
@@ -50,6 +53,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.findAllByPatientId(id);
     }
 
+
+    //Checks if the doctor is available for a new appointment at the specified time.
     @Override
     public boolean isDoctorAvailableForAppointment(Appointment appointment) {
         boolean isDoctorAvailable = true;
@@ -70,10 +75,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointment.getStartTime().getHour() >= 8 && appointment.getStartTime().getHour() < 18;
     }
 
+    //"Creates an appointment for the patient if conditions are met."
     @Override
     @Transactional
     public boolean createAppointment(Optional<Patient> patientById, Appointment appointment) {
-        //   TODO handle null pointer exception;
         boolean isAppointmentCreated = false;
         if (patientById.isPresent() && isDoctorAvailableForAppointment(appointment)
                 && isAppointmentBetweenWorkingHours(appointment)) {
@@ -89,10 +94,13 @@ public class AppointmentServiceImpl implements AppointmentService {
             appointment.setEndTime(appointmentEndTime);
             appointmentRepository.save(appointment);
             isAppointmentCreated = true;
+            log.info("Appointment can be created");
         }
+        log.info("Appointment can not be created");
         return isAppointmentCreated;
     }
 
+    //Cancels the appointment with the given ID and notifies the patient if canceled by a doctor.
     @Override
     @Transactional
     public void cancelAppointmentById(int id, CurrentUser currentUser) {
@@ -104,9 +112,9 @@ public class AppointmentServiceImpl implements AppointmentService {
                 Appointment appointment = byAppointmentId.get();
                 sendAppointmentCancelMessageToPatient(appointment.getPatient().getId());
             }
+            log.info("Appointment has been canceled by user with "  +user.getId() + " id");
         }
     }
-
 
     public void sendAppointmentCancelMessageToPatient(int id) {
         Optional<Patient> patientFromDb = patientRepository.findById(id);
@@ -118,7 +126,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
-
+    //Sends an email to the patient with doctor and Zoom details after online consultation registration
     public void applicationByLetterToDoDoctorZoomData(Patient patient, Doctor doctor) {
         emailSenderService.sendSimpleEmail(patient.getEmail(), "Hello,you have registered for an online consultation" +
                         "You are registered" + doctor.getName() + "to the doctor",
@@ -127,6 +135,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     }
 
+    //"Retrieves a list of patients associated with the doctor's ID and filters by surname if search text is provided
     @Override
     public List<Patient> findDoctorPatientsFromAppointments(int id, String searchText) {
         List<Appointment> doctorAppointments = appointmentRepository.findAllByDoctorId(id);

@@ -3,10 +3,8 @@ package com.example.onehealthmvc.controller;
 import com.example.onehealthcommon.entity.Appointment;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.User;
-import com.example.onehealthcommon.util.ImageDownloader;
 import com.example.onehealthmvc.security.CurrentUser;
 import com.example.onehealthmvc.service.AppointmentService;
-import com.example.onehealthmvc.service.MedServService;
 import com.example.onehealthmvc.service.PatientService;
 import com.example.onehealthmvc.service.UserService;
 import jakarta.validation.Valid;
@@ -57,8 +55,8 @@ public class PatientController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
-                           @RequestParam("image") MultipartFile multipartFile,
-                           ImageDownloader userUtil) throws IOException {
+                           @RequestParam("image") MultipartFile multipartFile)
+    {
         if (bindingResult.hasErrors()) {
             return "register";
         }
@@ -77,7 +75,7 @@ public class PatientController {
 
     @PostMapping("/update")
     public String updatePatient(@ModelAttribute("patient") @Valid Patient patient, BindingResult bindingResult,
-                                @RequestParam("image") MultipartFile multipartFile) throws IOException {
+                                @RequestParam("image") MultipartFile multipartFile)  {
         if (bindingResult.hasErrors()) {
             return "updatePatient";
         }

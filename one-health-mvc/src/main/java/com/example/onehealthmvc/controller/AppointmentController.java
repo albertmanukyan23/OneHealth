@@ -32,7 +32,6 @@ public class AppointmentController {
     }
 
     @GetMapping("/make")
-    //todo to-make
     public String addAppointmentPage(ModelMap modelMap) {
         modelMap.addAttribute("doctors", doctorService.getDoctors());
         modelMap.addAttribute("departments", departmentService.getDepartmentList());
@@ -54,7 +53,6 @@ public class AppointmentController {
     }
 
     @GetMapping("/cancell")
-    //todo cancel
     public String cancelAppointment(@RequestParam("id") int id,
                                     @AuthenticationPrincipal CurrentUser currentUser) {
         appointmentService.cancelAppointmentById(id, currentUser);

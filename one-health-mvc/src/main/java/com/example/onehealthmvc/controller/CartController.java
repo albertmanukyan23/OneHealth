@@ -16,6 +16,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @RequestMapping("/cart")
 public class CartController {
+
     private final CartService cartService;
     private final MedServService medServService;
 
@@ -39,14 +40,14 @@ public class CartController {
 
     @GetMapping("do/order")
     public String order(@AuthenticationPrincipal CurrentUser currentUser) {
-        cartService.addOrderByMedical(currentUser);
+        cartService.addOrder(currentUser);
         return "redirect:/cart/online-payments-page";
     }
 
     @GetMapping("/add")
     public String addMedicalByCart(@AuthenticationPrincipal CurrentUser currentUser,
                                    @RequestParam("medicalId") int medicalId) {
-        cartService.addCartByMedical(currentUser, medicalId);
+        cartService.addCartByMedicalId(currentUser, medicalId);
         return "redirect:/cart/see/context";
     }
     @PostMapping("/remove/{medServId}")

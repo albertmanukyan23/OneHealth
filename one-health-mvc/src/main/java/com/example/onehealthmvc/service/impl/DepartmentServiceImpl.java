@@ -49,6 +49,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         departmentRepository.deleteById(id);
     }
 
+    //Retrieves a paginated list of Department objects based on the page number and size
     @Override
     public Page<Department> getDepartmentPageData(Optional<Integer> page, Optional<Integer> size) {
         int currentPage = page.orElse(1);
@@ -57,6 +58,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.findAll(pageable);
     }
 
+    //Generates a list of page numbers for paginated results.
     @Override
     public List<Integer> getPageNumbers(int totalPages) {
         if (totalPages > 0) {

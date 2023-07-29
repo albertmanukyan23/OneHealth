@@ -1,25 +1,26 @@
 package com.example.onehealthmvc.service.impl;
 
-import com.example.onehealthcommon.entity.*;
+import com.example.onehealthcommon.entity.Cart;
+import com.example.onehealthcommon.entity.MedServ;
+import com.example.onehealthcommon.entity.Order;
+import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.repository.CartRepository;
-import com.example.onehealthcommon.repository.DepartmentRepository;
 import com.example.onehealthcommon.repository.MedServRepository;
 import com.example.onehealthcommon.repository.OrderRepository;
 import com.example.onehealthmvc.security.CurrentUser;
 import com.example.onehealthmvc.service.CartService;
-import com.example.onehealthmvc.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CartServiceImpl implements CartService {
     private final CartRepository cartRepository;
     private final OrderRepository orderRepository;
@@ -30,8 +31,9 @@ public class CartServiceImpl implements CartService {
         return cartRepository.findCartByUserId(id);
     }
 
+    //Creates an order for the current user based on the items in their cart.
     @Override
-    public void addOrderByMedical(CurrentUser currentUser) {
+    public void addOrder(CurrentUser currentUser) {
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
         if (cartByUserId.isPresent()) {
@@ -43,6 +45,7 @@ public class CartServiceImpl implements CartService {
                     .build();
             orderRepository.save(order);
             cartRepository.save(cart);
+            log.info("Cart and Order have been created for user " + currentUser.getUser().getId());
         }
     }
 
@@ -71,11 +74,14 @@ public class CartServiceImpl implements CartService {
             Set<MedServ> updateMedSer = deleteById(cart.getMedServSet(), medServId);
             cart.setMedServSet(updateMedSer);
             cartRepository.save(cart);
+            log.info("deleteByIdMedServ() method has been worked successfully for user" + currentUser.getUser().getId());
         }
     }
 
+    //Adds a medical service to the cart for the current user
+
     @Override
-    public void addCartByMedical(CurrentUser currentUser, int medicalId) {
+    public void addCartByMedicalId(CurrentUser currentUser, int medicalId) {
         Cart cart;
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());

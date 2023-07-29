@@ -63,7 +63,7 @@ public class UserController {
     }
 
     @GetMapping("/activate-deactivate-page")
-    public String userActivateDeactivatePage(ModelMap modelMap, User user) {
+    public String userActivateDeactivatePage(ModelMap modelMap) {
         List<User> userList = userService.findAll();
         modelMap.addAttribute("users", userList);
         return "activateDeactivateUser";

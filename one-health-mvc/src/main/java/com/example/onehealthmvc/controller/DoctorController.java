@@ -21,7 +21,6 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/doctor")
-//todo doctors
 public class DoctorController {
 
     private final UserService userService;
@@ -47,7 +46,6 @@ public class DoctorController {
     }
 
     @GetMapping("/singlePage")
-    //todo single-page
     public String singlePage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
         modelMap.addAttribute("doctor", currentUser.getUser());
         return "doctorSinglePage";
@@ -73,7 +71,7 @@ public class DoctorController {
 
     @PostMapping("/add")
     public String addDoctor(@ModelAttribute("doctor") @Valid Doctor doctor, BindingResult bindingResult,
-                            @RequestParam("image") MultipartFile multipartFile) throws IOException {
+                            @RequestParam("image") MultipartFile multipartFile)  {
         if (bindingResult.hasErrors()) {
             return "addDoctor";
         }
