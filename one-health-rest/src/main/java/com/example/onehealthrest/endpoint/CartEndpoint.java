@@ -35,7 +35,6 @@ public class CartEndpoint {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
 
     }
-
     @PostMapping
     public ResponseEntity<OrderDto> addMedicalByOrder(@AuthenticationPrincipal CurrentUser currentUser,
                                                       @RequestBody OrderDto orderDto) {

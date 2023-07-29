@@ -1,6 +1,6 @@
 package com.example.onehealthcommon.exception;
 
-public class EntityConflictException extends Exception{
+public class EntityConflictException extends RuntimeException{
     public EntityConflictException() {
         super();
     }

@@ -37,18 +37,13 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public boolean deleteByIdComment(int id) {
-        boolean delete = false;
         Optional<Comment> byId = commentRepository.findById(id);
-        if (byId.isPresent()) {
-            try {
-                throw new EntityNotFoundException("DeleteById with " + id + " does not exist");
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+        if (byId.isEmpty()) {
+            throw new EntityNotFoundException("DeleteById with " + id + " does not exist");
         } else {
             commentRepository.deleteById(id);
             log.info("Comment with the " + id + " id was deleted");
-            return delete = true;
+            return true;
         }
     }
 
@@ -57,11 +52,7 @@ public class CommentServiceImpl implements CommentService {
         Pageable pageable = PageRequest.of(page, size);
         List<Comment> content = commentRepository.findAll(pageable).getContent();
         if (content.isEmpty()) {
-            try {
-                throw new EntityNotFoundException("Is Empty " + content);
-            } catch (EntityNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            throw new EntityNotFoundException("Is Empty " + content);
         } else {
             return commentMapper.mapListDto(content);
 
