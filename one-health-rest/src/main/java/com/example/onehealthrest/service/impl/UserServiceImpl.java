@@ -8,7 +8,6 @@ import com.example.onehealthcommon.exception.ImageProcessingException;
 import com.example.onehealthcommon.mapper.UserMapper;
 import com.example.onehealthcommon.repository.UserRepository;
 import com.example.onehealthcommon.util.ImageDownloader;
-
 import com.example.onehealthrest.security.CurrentUser;
 import com.example.onehealthrest.service.UserService;
 import lombok.RequiredArgsConstructor;
