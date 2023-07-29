@@ -31,8 +31,6 @@ public class DepartmentServiceImpl implements DepartmentService {
             departmentRepository.save(department);
             return departmentMapper.map(departmentRepository.save(department));
         }
-        log.info("add method save() did not work ");
-        return null;
     }
 
     @Override
@@ -84,6 +82,5 @@ public class DepartmentServiceImpl implements DepartmentService {
             return isDeleted = true;
         }
     }
-
 
 }
