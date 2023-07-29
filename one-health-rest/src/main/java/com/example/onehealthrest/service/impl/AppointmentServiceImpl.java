@@ -45,7 +45,18 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentMapper.mapToAppointmentDtoList(content);
     }
 
-    // todo add comment
+    /**
+     * Creates a new appointment for the current user with the details provided in the {@code appointmentDto}.
+     * The method checks if the provided patient and doctor exist in the repository, and if the appointment is valid
+     * based on certain criteria. If the appointment is valid, it will be saved to the repository, and the patient will
+     * be notified about the online registration.
+     *
+     * @param currentUser   The current user creating the appointment.
+     * @param appointmentDto The data transfer object containing the details of the new appointment.
+     * @return An optional containing the DTO representation of the created appointment if successful, or an empty optional
+     *         if the appointment creation failed due to invalid data or other reasons.
+     */
+
     @Override
     @Transactional
     public Optional<AppointmentDto> createAppointment(User currentUser, CreateAppointmentDto appointmentDto) {
@@ -62,7 +73,16 @@ public class AppointmentServiceImpl implements AppointmentService {
         return Optional.empty();
     }
 
-    // todo comment
+    /**
+     * Checks if the specified doctor is available for a new appointment at the provided start time.
+     * The method retrieves all existing appointments for the doctor and checks for any scheduling conflicts
+     * with the new appointment's start time. If there is a scheduling conflict, the doctor is considered
+     * unavailable for the new appointment.
+     *
+     * @param appointment The new appointment to be checked for doctor availability.
+     * @return {@code true} if the doctor is available for the new appointment, {@code false} otherwise.
+     */
+
     public boolean isDoctorAvailableForAppointment(Appointment appointment) {
         boolean isDoctorAvailable = true;
         List<Appointment> doctorAppointments = appointmentRepository.findAllByDoctorId(appointment.getDoctor().getId());
@@ -78,7 +98,16 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         return isDoctorAvailable;
     }
-    //todo comment
+
+    /**
+     * Cancels an appointment with the specified appointment ID, performed by the given user.
+     * The method checks if the appointment is able to be canceled, and if so, deletes the appointment
+     * from the repository. If the user is a doctor, a notification message will be sent to the patient.
+     *
+     * @param appointmentId The ID of the appointment to be canceled.
+     * @param currentUser   The user performing the cancellation.
+     * @return {@code true} if the appointment was successfully canceled, {@code false} otherwise.
+     */
 
     @Override
     @Transactional
@@ -104,6 +133,14 @@ public class AppointmentServiceImpl implements AppointmentService {
         return optional.isPresent() && (currentUserId == optional.get().getPatient().getId() || currentUserId == optional.get().getDoctor().getId());
     }
 
+    /**
+     * Checks if the start time of the appointment falls within the working hours.
+     * The working hours are considered between 8:00 AM (inclusive) and 6:00 PM (exclusive).
+     *
+     * @param appointment The appointment to check.
+     * @return {@code true} if the appointment's start time is within the working hours, {@code false} otherwise.
+     */
+
     private boolean isAppointmentBetweenWorkingHours(Appointment appointment) {
         return appointment.getStartTime().getHour() >= 8 && appointment.getStartTime().getHour() < 18;
     }
@@ -121,6 +158,13 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointmentRepository.save(appointment);
     }
 
+    /**
+     * Notifies the patient and doctor about an online registration for the given appointment.
+     * If the appointment's registration type is set to {@link RegisterType#ONLINE},
+     * a notification message will be sent to the patient and the doctor.
+     *
+     * @param appointment The appointment for which to notify about online registration.
+     */
 
     private void notifyOnlineRegistration(Appointment appointment) {
         if (appointment.getRegisterType() == RegisterType.ONLINE) {

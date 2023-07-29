@@ -1,5 +1,10 @@
-package com.example.onehealthrest.service.impl;
+/**
+ * Service implementation for managing medical services.
+ * This class provides methods to perform CRUD (Create, Read, Update, Delete) operations
+ * on medical services and interact with the underlying database using the MedServRepository.
+ */
 
+package com.example.onehealthrest.service.impl;
 
 import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
@@ -58,6 +63,14 @@ public class MedServServiceImpl implements MedServService {
     }
 
 
+    /**
+     * Updates the details of a medical service with the specified ID.
+     *
+     * @param id          The ID of the medical service to be updated.
+     * @param requestDto  The DTO containing the updated details for the medical service.
+     * @return An optional containing the updated medical service DTO if found and updated successfully,
+     *         or an empty optional if the medical service with the given ID does not exist.
+     */
     @Override
     public Optional<MedServDto> update(int id, CreateMedServDto requestDto) {
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);

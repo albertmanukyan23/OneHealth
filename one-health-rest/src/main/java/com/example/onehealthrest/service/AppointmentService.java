@@ -4,8 +4,6 @@ import com.example.onehealthcommon.dto.AppointmentDto;
 import com.example.onehealthcommon.dto.CreateAppointmentDto;
 import com.example.onehealthcommon.dto.PatientAppointmentDto;
 import com.example.onehealthcommon.entity.User;
-import com.example.onehealthrest.security.CurrentUser;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

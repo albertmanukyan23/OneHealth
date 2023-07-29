@@ -55,7 +55,7 @@ public class UserEndpoint {
     @GetMapping("/verify-account")
     public ResponseEntity<UserVerifyDto> verifyUser(@RequestParam("email") String email,
                                                     @RequestParam("token") String token) {
-        log.info("verifyUser() method inside UserEndpoint has worked ");
+
         User user = userService.verifyAccount(email, token);
         return user != null ? ResponseEntity.ok(userMapper.map(user)) : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
@@ -64,7 +64,6 @@ public class UserEndpoint {
     public ResponseEntity<UserDto> uploadImage(@PathVariable("id") int id,
                                                @RequestParam("image") MultipartFile multipartFile,
                                                @AuthenticationPrincipal CurrentUser currentUser)  {
-        log.info("uploadImage() method inside UserEndpoint has worked ");
 
         Optional<UserDto> userDtoOptional = userService.uploadImageForUser(id, multipartFile, currentUser);
         return userDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
@@ -72,7 +71,6 @@ public class UserEndpoint {
 
     @GetMapping(value = "/getImage",
             produces = MediaType.IMAGE_JPEG_VALUE)
-    //todo exception handling
     public @ResponseBody byte[] getImage(@RequestParam("picName") String picName) throws IOException {
         File file = new File(imageUploadPath + picName);
         if (file.exists()) {
@@ -95,14 +93,12 @@ public class UserEndpoint {
         if (!validationResult.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationResult.toString());
         }
-        log.info("changePasswordPage() method inside UserEndpoint has worked ");
         return userService.updatePassword(passwordUpdaterDto, currentUser.getUser()) ? ResponseEntity.status(HttpStatus.ACCEPTED).build()
                 : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
 
     @PostMapping("/activate-deactivate/{id}")
     public ResponseEntity<?> activateDeactivate(@PathVariable("id") int id) {
-        log.info("activateDeactivate() method inside UserEndpoint has worked ");
         return userService.activateDeactivateUser(id) ? ResponseEntity.status(HttpStatus.ACCEPTED).build() : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 

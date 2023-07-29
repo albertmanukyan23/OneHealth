@@ -34,8 +34,11 @@ public class PatientEndpoint {
     private final PatientMapper patientMapper;
 
     @PostMapping("/register")
+
+  
+
     public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult)  {
-        log.info(" register() method inside PatientEndpoint has worked ");
+      
         StringBuilder validationResult = userService.checkValidation(bindingResult);
         return !validationResult.isEmpty() ? ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(validationResult.toString())
@@ -47,14 +50,12 @@ public class PatientEndpoint {
     @GetMapping
     public ResponseEntity<List<PatientDto>> getPatients(@RequestParam(defaultValue = "1") int page,
                                                         @RequestParam(defaultValue = "5") int size) {
-        log.info("register() method inside PatientEndpoint has worked ");
         return ResponseEntity.ok(patientService.getPatientsDtoList(page - 1, size));
     }
 
 
     @GetMapping("/{id}")
     public ResponseEntity<PatientDto> getPatient(@PathVariable("id") int id) {
-        log.info("getPatient() method inside PatientEndpoint has worked ");
         Optional<Patient> patientById = patientService.findPatientById(id);
         return patientById.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
@@ -68,7 +69,6 @@ public class PatientEndpoint {
         if (!validationResult.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationResult.toString());
         }
-        log.info("updatePassword() method inside PatientEndpoint has worked ");
         Optional<Patient> update = patientService.update(patientRegisterDto, id);
         return update.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
 
@@ -76,7 +76,6 @@ public class PatientEndpoint {
 
     @GetMapping("/appointments")
     public ResponseEntity<List<PatientAppointmentDto>> getPatientAppointments(@AuthenticationPrincipal CurrentUser currentUser) {
-        log.info("getPatientAppointments() method inside PatientEndpoint has worked ");
         return ResponseEntity.ok(appointmentService.getPatientAppointments(currentUser.getUser()));
 
     }

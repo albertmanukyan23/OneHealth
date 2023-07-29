@@ -3,12 +3,14 @@ package com.example.onehealthmvc.service.impl;
 import com.example.onehealthcommon.EmailSenderService;
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.entity.UserType;
+import com.example.onehealthcommon.exception.ImageProcessingException;
 import com.example.onehealthcommon.repository.DoctorRepository;
 import com.example.onehealthcommon.util.ImageDownloader;
 import com.example.onehealthmvc.service.DoctorService;
 import com.example.onehealthmvc.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +27,7 @@ import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorRepository doctorRepository;
@@ -44,28 +47,36 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.findById(id);
     }
 
+    //Updates the doctor's information and profile picture if the email is unique or remains unchanged.
     @Override
     @Transactional
-    public void update(Doctor doctor, MultipartFile multipartFile) throws IOException {
-        Optional<Doctor> byId = doctorRepository.findById(doctor.getId());
-        if (byId.isPresent()) {
-            Doctor doctorFromDb = byId.get();
-            if (doctorRepository.findByEmail(doctor.getEmail()).isEmpty() || doctor.getEmail().equals(doctorFromDb.getEmail())) {
-                doctorFromDb.setName(doctor.getName());
-                doctorFromDb.setSurname(doctor.getSurname());
-                doctorFromDb.setEmail(doctor.getEmail());
-                doctorFromDb.setPassword(passwordEncoder.encode(doctor.getPassword()));
-                doctorFromDb.setBirthDate(doctor.getBirthDate());
-                doctorFromDb.setDepartment(doctor.getDepartment());
-                doctorFromDb.setPicName(doctor.getPicName());
-                doctorFromDb.setSpeciality(doctor.getSpeciality());
-                doctorFromDb.setPhoneNumber(doctor.getPhoneNumber());
-                doctorFromDb.setZoomId(doctor.getZoomId());
-                doctorFromDb.setZoomPassword(doctor.getZoomPassword());
-                imageDownloader.saveProfilePicture(multipartFile, doctorFromDb);
-                doctorRepository.save(doctorFromDb);
+    public void update(Doctor doctor, MultipartFile multipartFile) {
+        try {
+            Optional<Doctor> byId = doctorRepository.findById(doctor.getId());
+            if (byId.isPresent()) {
+                Doctor doctorFromDb = byId.get();
+                if (doctorRepository.findByEmail(doctor.getEmail()).isEmpty() || doctor.getEmail().equals(doctorFromDb.getEmail())) {
+                    doctorFromDb.setName(doctor.getName());
+                    doctorFromDb.setSurname(doctor.getSurname());
+                    doctorFromDb.setEmail(doctor.getEmail());
+                    doctorFromDb.setPassword(passwordEncoder.encode(doctor.getPassword()));
+                    doctorFromDb.setBirthDate(doctor.getBirthDate());
+                    doctorFromDb.setDepartment(doctor.getDepartment());
+                    doctorFromDb.setPicName(doctor.getPicName());
+                    doctorFromDb.setSpeciality(doctor.getSpeciality());
+                    doctorFromDb.setPhoneNumber(doctor.getPhoneNumber());
+                    imageDownloader.saveProfilePicture(multipartFile, doctorFromDb);
+                    doctorRepository.save(doctorFromDb);
+                    log.info("Doctor has been updated");
+                }
+                log.info("Doctor update()  failed");
             }
+        } catch (IOException e) {
+
+            log.info("Catch ImageProcessingException() exception during the updating doctor with id " + doctor.getId());
+            throw new ImageProcessingException("Image uploading failed");
         }
+
     }
 
     @Override
@@ -75,12 +86,20 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public void registerDoctor(Doctor doctor, MultipartFile multipartFile) throws IOException {
-        doctor.setRegisDate(new Date());
-        doctor.setUserType(UserType.DOCTOR);
-        imageDownloader.saveProfilePicture(multipartFile, doctor);
-        sendDoctorRegistrationMessage(doctor);
-        userService.registerUser(doctor);
+    public void registerDoctor(Doctor doctor, MultipartFile multipartFile) {
+        try {
+            doctor.setRegisDate(new Date());
+            doctor.setUserType(UserType.DOCTOR);
+            doctor.setEnabled(true);
+            doctor.setToken(null);
+            imageDownloader.saveProfilePicture(multipartFile, doctor);
+            sendDoctorRegistrationMessage(doctor);
+            userService.registerUser(doctor);
+        } catch (IOException e) {
+            log.info("Catch ImageProcessingException() exception during the registration doctor with id " + doctor.getId());
+            throw new ImageProcessingException("Image uploading failed");
+        }
+
     }
 
     @Override
@@ -91,6 +110,7 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.findAll(pageable);
     }
 
+    //Generates a list of page numbers for pagination
     @Override
     public List<Integer> getNumbersPage(int totalPages) {
         if (totalPages > 0) {
@@ -118,5 +138,4 @@ public class DoctorServiceImpl implements DoctorService {
                 "password: " + doctor.getPassword() + "\n Please don't lose it.");
 
     }
-    
 }

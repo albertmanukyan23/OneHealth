@@ -31,7 +31,6 @@ public class CartEndpoint {
                                                          @PathVariable("medicalId") int medicalId,
                                                          @RequestBody CreatCartDto dtoCart) {
         Optional<CreatCartDto> creatCartDto = cartService.addCartByMedical(currentUser, dtoCart, medicalId);
-        log.info(" method save() to save worked DepartmentEndpoint ");
         return creatCartDto.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
 
@@ -41,7 +40,6 @@ public class CartEndpoint {
     public ResponseEntity<OrderDto> addMedicalByOrder(@AuthenticationPrincipal CurrentUser currentUser,
                                                       @RequestBody OrderDto orderDto) {
         Optional<OrderDto> dto = cartService.addOrderByMedical(currentUser, orderDto);
-        log.info(" method save() to save order worked DepartmentEndpoint ");
         return dto.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
@@ -49,7 +47,6 @@ public class CartEndpoint {
     @PostMapping("/remove/{medServId}")
     public ResponseEntity<CreatCartDto> delete(@PathVariable("medServId") int medServId,
                                                @AuthenticationPrincipal CurrentUser currentUser) {
-        log.info(" method delete() to save order worked DepartmentEndpoint ");
         return cartService.deleteByIdMedServ(currentUser, medServId) ?
                 ResponseEntity.noContent().build()
                 : ResponseEntity.notFound().build();

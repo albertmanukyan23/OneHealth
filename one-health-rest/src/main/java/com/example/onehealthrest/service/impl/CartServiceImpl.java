@@ -25,6 +25,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Slf4j
 public class CartServiceImpl implements CartService {
+
     private final CartRepository cartRepository;
     private final OrderRepository orderRepository;
     private final MedServRepository medServRepository;
@@ -55,6 +56,16 @@ public class CartServiceImpl implements CartService {
         return medServSet;
     }
 
+    /**
+     * Deletes a medical service with the specified ID from the user's cart.
+     * The method fetches the user's cart and removes the medical service with the given {@code medServId}.
+     * If the cart and medical service exist, the cart will be updated and saved to the repository.
+     *
+     * @param currentUser The current user performing the action.
+     * @param medServId   The ID of the medical service to be deleted from the cart.
+     * @return {@code true} if the medical service was successfully deleted from the cart, {@code false} otherwise.
+     */
+
     @Override
     public boolean deleteByIdMedServ(CurrentUser currentUser, int medServId) {
         boolean isDeleted = false;
@@ -70,6 +81,14 @@ public class CartServiceImpl implements CartService {
         log.info("add method delete() did not work ");
         return isDeleted;
     }
+
+    /**
+     * Adds a medical service to the user's cart and returns the updated cart information as a DTO.
+     * If the user's cart does not exist, a new cart will be created and associated with the user.
+     * The method fetches the medical service based on the provided {@code medicalId} and adds it to the cart's set of
+     * medical services. If the cart already exists, it will be updated and saved to the repository.
+     *
+     */
 
     @Override
     public Optional<CreatCartDto> addCartByMedical(CurrentUser currentUser, CreatCartDto dtoCart, int medicalId) {

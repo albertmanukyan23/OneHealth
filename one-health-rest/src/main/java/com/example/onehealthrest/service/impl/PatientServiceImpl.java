@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -58,6 +57,15 @@ public class PatientServiceImpl implements PatientService {
         return patientMapper.mapListToDtos(content);
     }
 
+    /**
+     * Updates the details of a patient with the specified ID.
+     *
+     * @param patientRegisterDto The DTO containing the updated details for the patient.
+     * @param id                 The ID of the patient to be updated.
+     * @return An optional containing the updated patient entity if found and updated successfully,
+     *         or an empty optional if the patient with the given ID does not exist or the email is already taken.
+     */
+
     @Override
     @Transactional
     public Optional<Patient> update(PatientRegisterDto patientRegisterDto, int id) {
@@ -86,6 +94,13 @@ public class PatientServiceImpl implements PatientService {
             return Optional.empty();
         }
     }
+
+    /**
+     * Deletes a patient with the specified ID.
+     *
+     * @param id The ID of the patient to be deleted.
+     * @return A boolean indicating whether the patient was successfully deleted or not.
+     */
 
     @Override
     public boolean delete(int id) {

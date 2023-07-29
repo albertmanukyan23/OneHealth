@@ -42,7 +42,6 @@ public class MedServEndpoint {
     @PostMapping("/create")
     public ResponseEntity<MedServDto> createMedicalService(@RequestBody CreateMedServDto requestDto)
     {
-        log.info("createMedicalService() method inside MedServEndpoint has worked ");
         return ResponseEntity.ok(medServService.save(medServMapper.map(requestDto)));
     }
 
@@ -51,7 +50,6 @@ public class MedServEndpoint {
                                                            @RequestBody CreateMedServDto requestDto)
     {
         Optional<MedServDto> medServDtoOptional = medServService.update(id, requestDto);
-        log.info("updateMedicalService() method inside MedServEndpoint has worked ");
         return medServDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
 

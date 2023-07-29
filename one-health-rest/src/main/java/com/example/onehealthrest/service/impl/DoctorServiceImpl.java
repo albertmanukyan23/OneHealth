@@ -44,6 +44,15 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorDto;
     }
 
+    /**
+     * Updates the details of a doctor with the specified ID.
+     *
+     * @param creatDoctorRequestDto The DTO containing the updated details for the doctor.
+     * @param id                    The ID of the doctor to be updated.
+     * @return An optional containing the updated doctor entity if found and updated successfully,
+     *         or an empty optional if the doctor does not exist or the update is not allowed due to email conflict.
+     */
+
     @Override
     public Optional<Doctor> update(CreatDoctorRequestDto creatDoctorRequestDto, int id) {
         Optional<Doctor> byId = doctorRepository.findById(id);
