@@ -37,17 +37,19 @@ public class MedServEndpoint {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<MedServDto> updateMedicalService(@PathVariable("id") int id, @RequestBody CreateMedServDto requestDto)
+    public ResponseEntity<MedServDto> updateMedicalService(@PathVariable("id") int id,
+                                                           @RequestBody CreateMedServDto requestDto)
     {
         Optional<MedServDto> medServDtoOptional = medServService.update(id, requestDto);
         log.info("updateMedicalService() method inside MedServEndpoint has worked ");
         return medServDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
     }
 
-    @DeleteMapping("/remove")
-    public ResponseEntity<?> deleteMedicalService(@RequestParam("id") int id)
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteMedicalService(@PathVariable("id") int id)
     {
         log.info("deleteMedicalService() method inside MedServEndpoint has worked ");
-        return medServService.delete(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+        boolean delete = medServService.delete(id);
+        return ResponseEntity.ok(delete);
     }
 }

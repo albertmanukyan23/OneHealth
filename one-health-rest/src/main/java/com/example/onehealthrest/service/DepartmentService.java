@@ -9,11 +9,11 @@ import java.util.Optional;
 public interface DepartmentService {
 
     DepartmentDto save(Department department);
-    DepartmentDto update(Department department);
+    Optional<DepartmentDto> update(DepartmentDto departmentDto);
 
     List<Department> departmentList();
     boolean deleteById(int id);
 
-    List<Department> findAll();
+
 
 }

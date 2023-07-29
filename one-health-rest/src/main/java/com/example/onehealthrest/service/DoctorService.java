@@ -9,21 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DoctorService {
-    Optional<Doctor> findByEmail(String email);
-
     DoctorDtoResponse save(Doctor doctor);
 
     Optional<Doctor> update(CreatDoctorRequestDto creatDoctorRequestDto, int id);
 
     StringBuilder checkValidation(BindingResult bindingResult);
 
-    Optional<Doctor> findById(int id);
-
-
-    Optional<Doctor> getDoctorById(int id);
-
     List<DoctorDtoResponse> getDoctorList(int page, int size);
 
     boolean deleteById(int id);
+
+    Optional<Doctor> getDoctorById(int id);
+
+    Optional<Doctor> findByEmail(String email);
 }
 

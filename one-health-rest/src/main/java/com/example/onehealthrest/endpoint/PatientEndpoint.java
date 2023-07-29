@@ -86,7 +86,8 @@ public class PatientEndpoint {
     public ResponseEntity<?> removePatient(@RequestParam("id") int id)
     {
         log.info("removePatient() method inside PatientEndpoint has worked ");
-        return patientService.delete(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+        boolean delete = patientService.delete(id);
+        return ResponseEntity.ok(delete);
     }
 
 }
