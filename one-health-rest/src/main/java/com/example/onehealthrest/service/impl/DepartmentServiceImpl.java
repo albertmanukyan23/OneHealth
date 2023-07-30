@@ -16,13 +16,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class DepartmentServiceImpl implements DepartmentService {
+
     private final DepartmentRepository departmentRepository;
     private final DepartmentMapper departmentMapper;
 
     @Override
     public DepartmentDto save(Department department) {
         Optional<Department> byId = departmentRepository.findById(department.getId());
-        if (byId.isPresent()) {
+        if (byId.isEmpty()) {
             throw new EntityConflictException("Department with " + department.getId() + " there exist");
         } else {
             departmentRepository.save(department);

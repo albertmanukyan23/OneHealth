@@ -3,6 +3,7 @@ package com.example.onehealthrest.endpoint;
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
 
+import com.example.onehealthcommon.dto.DoctorSearchDto;
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthcommon.validation.ValidationChecker;
