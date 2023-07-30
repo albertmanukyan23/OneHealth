@@ -1,0 +1,36 @@
+2023-07-26T17:49:36.067+04:00  INFO 1552 --- [restartedMain] c.e.o.OneHealthRestApplication           : Starting OneHealthRestApplication using Java 17.0.6 with PID 1552 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-26T17:49:36.073+04:00  INFO 1552 --- [restartedMain] c.e.o.OneHealthRestApplication           : The following 1 profile is active: "local"
+2023-07-26T17:49:36.210+04:00  INFO 1552 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-26T17:49:36.211+04:00  INFO 1552 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-26T17:49:37.978+04:00  INFO 1552 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-26T17:49:38.135+04:00  INFO 1552 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 139 ms. Found 9 JPA repository interfaces.
+2023-07-26T17:49:39.813+04:00  INFO 1552 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-26T17:49:39.832+04:00  INFO 1552 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-26T17:49:39.832+04:00  INFO 1552 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-26T17:49:39.960+04:00  INFO 1552 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-26T17:49:39.960+04:00  INFO 1552 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3748 ms
+2023-07-26T17:49:40.188+04:00  INFO 1552 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-26T17:49:40.897+04:00  INFO 1552 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e46d500
+2023-07-26T17:49:40.901+04:00  INFO 1552 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-26T17:49:42.005+04:00  INFO 1552 --- [restartedMain] liquibase.changelog                      : Reading from onehealth.DATABASECHANGELOG
+2023-07-26T17:49:42.021+04:00  INFO 1552 --- [restartedMain] liquibase.executor                       : Changelog query completed.
+2023-07-26T17:49:42.198+04:00  INFO 1552 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-26T17:49:42.344+04:00  INFO 1552 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-26T17:49:42.350+04:00  INFO 1552 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-07-26T17:49:42.663+04:00  INFO 1552 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-07-26T17:49:42.944+04:00  INFO 1552 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-26T17:49:43.063+04:00  INFO 1552 --- [restartedMain] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-26T17:49:43.599+04:00  INFO 1552 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-07-26T17:49:45.311+04:00  INFO 1552 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-26T17:49:46.111+04:00  INFO 1552 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-26T17:49:47.178+04:00  WARN 1552 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-26T17:49:47.733+04:00  INFO 1552 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4bf39c71, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5eaa0832, org.springframework.security.web.context.SecurityContextHolderFilter@2d34b85b, org.springframework.security.web.header.HeaderWriterFilter@e1ea98, org.springframework.security.web.authentication.logout.LogoutFilter@746dc052, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@63c6f8be, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@50c1f964, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d985d5f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66980cdf, org.springframework.security.web.session.SessionManagementFilter@5015b3ce, org.springframework.security.web.access.ExceptionTranslationFilter@27d8e43b, org.springframework.security.web.access.intercept.AuthorizationFilter@2c47316c]
+2023-07-26T17:49:48.049+04:00  WARN 1552 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-26T17:49:48.302+04:00  INFO 1552 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-26T17:49:48.383+04:00  INFO 1552 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-26T17:49:48.405+04:00  INFO 1552 --- [restartedMain] c.e.o.OneHealthRestApplication           : Started OneHealthRestApplication in 13.399 seconds (process running for 15.596)
+2023-07-26T18:20:48.083+04:00  WARN 1552 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m6s846ms115µs900ns).
+2023-07-26T19:00:41.100+04:00  WARN 1552 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m22s707ms378µs).
+2023-07-26T19:13:37.684+04:00  INFO 1552 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-26T19:13:37.751+04:00  INFO 1552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-26T19:13:37.814+04:00  INFO 1552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

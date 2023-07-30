@@ -1,0 +1,1020 @@
+2023-07-29 15:29:00,616 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 15:29:00,655 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 11164 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 15:29:00,655 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 15:29:00,656 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 15:29:00,703 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 15:29:00,703 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 15:29:01,574 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 15:29:01,634 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 49 ms. Found 9 JPA repository interfaces.
+2023-07-29 15:29:02,508 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 15:29:02,515 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 15:29:02,516 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 15:29:02,516 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 15:29:02,571 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 15:29:02,571 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1867 ms
+2023-07-29 15:29:02,692 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 15:29:03,058 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@490e26b8
+2023-07-29 15:29:03,060 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 15:29:03,722 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 15:29:03,730 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 15:29:03,854 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 15:29:03,945 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 15:29:03,950 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 15:29:04,143 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 15:29:04,385 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 15:29:04,459 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 15:29:04,940 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 15:29:06,119 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 15:29:06,454 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 15:29:06,822 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 15:29:07,271 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 15:29:08,079 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@57c6bf6b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@b3231de, org.springframework.security.web.context.SecurityContextHolderFilter@57eda84b, org.springframework.security.web.header.HeaderWriterFilter@3167d96b, org.springframework.security.web.authentication.logout.LogoutFilter@274253bb, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@40b5d3b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64335da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55f1d1ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e740972, org.springframework.security.web.session.SessionManagementFilter@442a2b85, org.springframework.security.web.access.ExceptionTranslationFilter@4fe1d5de, org.springframework.security.web.access.intercept.AuthorizationFilter@3bb3ca00]
+2023-07-29 15:29:08,256 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 15:29:08,600 WARN o.s.b.d.a.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
+2023-07-29 15:29:08,637 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 15:29:08,675 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 15:29:08,696 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 8.37 seconds (process running for 9.779)
+2023-07-29 15:29:40,913 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 15:29:40,914 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-07-29 15:29:40,920 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 6 ms
+2023-07-29 15:38:03,264 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-9] Init duration for springdoc-openapi is: 1174 ms
+2023-07-29 16:55:13,238 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=59m9s602ms402µs500ns).
+2023-07-29 17:09:28,788 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 17:09:28,907 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 17:09:28,997 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:11:12,173 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:11:12,293 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 1284 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:11:12,294 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:11:12,294 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:11:12,351 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:11:12,352 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:11:13,274 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:11:13,335 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 53 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:11:14,297 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:11:14,305 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:11:14,305 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:11:14,305 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:11:14,367 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:11:14,367 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2015 ms
+2023-07-29 19:11:14,497 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:11:14,865 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c65f187
+2023-07-29 19:11:14,868 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:11:15,320 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:11:15,327 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:11:15,423 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:11:15,495 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:11:15,499 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:11:15,674 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:11:15,859 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:11:15,912 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:11:16,156 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:11:16,907 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:11:17,119 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:11:17,439 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:11:17,910 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:11:18,771 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@72215433, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@79a404a5, org.springframework.security.web.context.SecurityContextHolderFilter@210fa4e1, org.springframework.security.web.header.HeaderWriterFilter@4b48416a, org.springframework.security.web.authentication.logout.LogoutFilter@2be7f665, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@38a598b7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@444a1b0b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3af2ddf4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4952748e, org.springframework.security.web.session.SessionManagementFilter@fc2bc9c, org.springframework.security.web.access.ExceptionTranslationFilter@68e63ac6, org.springframework.security.web.access.intercept.AuthorizationFilter@680b19b6]
+2023-07-29 19:11:18,959 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:11:19,200 WARN o.s.b.d.a.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
+2023-07-29 19:11:19,220 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:11:19,247 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:11:19,257 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.379 seconds (process running for 8.58)
+2023-07-29 19:14:18,206 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-07-29 19:14:18,272 INFO o.a.j.l.DirectJDKLog [Thread-1] Pausing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:18,272 INFO o.a.j.l.DirectJDKLog [Thread-1] Stopping service [Tomcat]
+2023-07-29 19:14:18,290 WARN o.a.j.l.DirectJDKLog [Thread-1] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.6/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.6/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.6/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
+2023-07-29 19:14:18,293 INFO o.a.j.l.DirectJDKLog [Thread-1] Stopping ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:18,297 INFO o.a.j.l.DirectJDKLog [Thread-1] Destroying ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:18,323 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:14:18,348 INFO c.z.h.HikariDataSource [Thread-1] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:14:18,386 INFO c.z.h.HikariDataSource [Thread-1] HikariPool-1 - Shutdown completed.
+2023-07-29 19:14:18,622 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 1284 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:14:18,623 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:14:18,623 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:14:18,990 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:14:19,022 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 31 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:14:19,409 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:14:19,410 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:19,410 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:14:19,410 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:14:19,436 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:14:19,436 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 809 ms
+2023-07-29 19:14:19,489 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2023-07-29 19:14:19,507 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1082a6a1
+2023-07-29 19:14:19,508 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2023-07-29 19:14:19,535 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:14:19,538 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:14:19,579 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:14:19,594 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:14:19,595 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:14:19,597 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:14:19,635 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:14:19,764 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:14:19,977 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:14:20,103 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:14:20,499 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:14:20,922 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@33142b9e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a3f74fa, org.springframework.security.web.context.SecurityContextHolderFilter@4d6eeea4, org.springframework.security.web.header.HeaderWriterFilter@4b1e13b8, org.springframework.security.web.authentication.logout.LogoutFilter@27efc3ad, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@73f36a0d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3171796d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a492f28, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c577b8d, org.springframework.security.web.session.SessionManagementFilter@7fcd0bb4, org.springframework.security.web.access.ExceptionTranslationFilter@5cf3599, org.springframework.security.web.access.intercept.AuthorizationFilter@5e1c20d6]
+2023-07-29 19:14:20,985 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:14:21,143 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:14:21,154 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:21,157 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:14:21,160 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 2.581 seconds (process running for 190.483)
+2023-07-29 19:14:21,163 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-07-29 19:14:21,877 INFO c.e.o.s.i.MedServServiceImpl [main] Medical Service with the id 1 id has been successfully deleted 
+2023-07-29 19:14:21,898 INFO c.e.o.s.i.MedServServiceImpl [main] Medical Service with the id 1 id has been successfully updated 
+2023-07-29 19:14:22,617 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (2 additions, 0 deletions, 0 modifications)
+2023-07-29 19:14:22,631 INFO o.a.j.l.DirectJDKLog [Thread-9] Pausing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:22,631 INFO o.a.j.l.DirectJDKLog [Thread-9] Stopping service [Tomcat]
+2023-07-29 19:14:22,634 WARN o.a.j.l.DirectJDKLog [Thread-9] The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.6/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.6/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.6/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
+2023-07-29 19:14:22,635 WARN o.a.j.l.DirectJDKLog [Thread-9] The web application [ROOT] appears to have started a thread named [HikariPool-2 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.6/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.6/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
+2023-07-29 19:14:22,635 INFO o.a.j.l.DirectJDKLog [Thread-9] Stopping ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:22,636 INFO o.a.j.l.DirectJDKLog [Thread-9] Destroying ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:22,639 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-9] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:14:22,640 INFO c.z.h.HikariDataSource [Thread-9] HikariPool-2 - Shutdown initiated...
+2023-07-29 19:14:22,643 INFO c.z.h.HikariDataSource [Thread-9] HikariPool-2 - Shutdown completed.
+2023-07-29 19:14:22,737 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 1284 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:14:22,737 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:14:22,737 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:14:22,980 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:14:23,001 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 21 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:14:23,178 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:14:23,179 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:23,179 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:14:23,179 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:14:23,200 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:14:23,200 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 459 ms
+2023-07-29 19:14:23,247 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2023-07-29 19:14:23,255 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a0b59f3
+2023-07-29 19:14:23,256 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2023-07-29 19:14:23,270 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:14:23,272 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:14:23,304 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:14:23,315 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:14:23,316 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:14:23,319 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:14:23,347 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:14:23,427 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:14:23,560 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:14:23,632 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:14:23,929 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:14:24,280 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6d5b78c6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39ea3597, org.springframework.security.web.context.SecurityContextHolderFilter@70b65726, org.springframework.security.web.header.HeaderWriterFilter@7990ca77, org.springframework.security.web.authentication.logout.LogoutFilter@a8bdddf, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@342eb938, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21851a24, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5eb9af11, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f1ec218, org.springframework.security.web.session.SessionManagementFilter@11a0f931, org.springframework.security.web.access.ExceptionTranslationFilter@2d2f99a5, org.springframework.security.web.access.intercept.AuthorizationFilter@100454dc]
+2023-07-29 19:14:24,335 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:14:24,442 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:14:24,451 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:14:24,453 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:14:24,456 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 1.753 seconds (process running for 193.779)
+2023-07-29 19:14:24,457 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-07-29 19:14:59,418 INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils [main] Could not detect default configuration classes for test class [com.example.onehealthrest.endpoint.MedServEndpointTest]: MedServEndpointTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-07-29 19:14:59,568 INFO o.s.b.t.c.SpringBootTestContextBootstrapper [main] Found @SpringBootConfiguration com.example.onehealthrest.OneHealthRestApplication for test class com.example.onehealthrest.endpoint.MedServEndpointTest
+2023-07-29 19:14:59,925 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:14:59,961 INFO o.s.b.StartupInfoLogger [main] Starting MedServEndpointTest using Java 17.0.6 with PID 3292 (started by Albert in C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest)
+2023-07-29 19:14:59,962 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:14:59,963 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-07-29 19:15:00,633 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:15:00,729 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 85 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:15:01,642 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:15:01,719 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:15:01,722 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:15:01,933 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:02,095 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:15:02,118 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-07-29 19:15:02,333 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:test user=SA
+2023-07-29 19:15:02,335 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-07-29 19:15:02,362 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH035001: Using dialect: org.hibernate.dialect.H2Dialect, version: 2.2.220
+2023-07-29 19:15:02,655 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:03,488 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:15:03,559 INFO o.h.t.s.i.e.GenerationTargetToDatabase [main] HHH000476: Executing script '[injected ScriptSourceInputNonExistentImpl script]'
+2023-07-29 19:15:03,561 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:04,418 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:15:05,423 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1b513ce8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17596317, org.springframework.security.web.context.SecurityContextHolderFilter@109a462e, org.springframework.security.web.header.HeaderWriterFilter@233bfc46, org.springframework.security.web.authentication.logout.LogoutFilter@27115d45, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@9fc125b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58a06477, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@529b8e41, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@375f276e, org.springframework.security.web.session.SessionManagementFilter@7f794b0f, org.springframework.security.web.access.ExceptionTranslationFilter@45aa02de, org.springframework.security.web.access.intercept.AuthorizationFilter@b257072]
+2023-07-29 19:15:05,715 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:15:05,923 INFO o.s.m.w.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2023-07-29 19:15:05,924 INFO o.s.w.s.FrameworkServlet [main] Initializing Servlet ''
+2023-07-29 19:15:05,925 INFO o.s.w.s.FrameworkServlet [main] Completed initialization in 1 ms
+2023-07-29 19:15:05,944 INFO o.s.b.StartupInfoLogger [main] Started MedServEndpointTest in 6.223 seconds (process running for 7.481)
+2023-07-29 19:15:06,692 INFO c.e.o.a.EndpointLoggingAspect [main] Calling endpoint: updateMedicalService
+2023-07-29 19:15:06,712 INFO c.e.o.s.i.MedServServiceImpl [main] Medical Service with the id 1 id has been successfully updated 
+2023-07-29 19:15:06,719 INFO c.e.o.a.EndpointLoggingAspect [main] Endpoint updateMedicalService executed successfully. Result: <200 OK OK,MedServDto(id=1, name=test, price=1000),[]>
+2023-07-29 19:15:06,868 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:06,870 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:15:06,872 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2023-07-29 19:15:06,914 INFO o.s.b.StartupInfoLogger [main] Starting MedServEndpointTest using Java 17.0.6 with PID 3292 (started by Albert in C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest)
+2023-07-29 19:15:06,914 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:15:06,914 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-07-29 19:15:07,131 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:15:07,144 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 12 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:15:07,258 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:15:07,267 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:07,268 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:15:07,269 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Starting...
+2023-07-29 19:15:07,271 INFO c.z.h.p.HikariPool [main] HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:test user=SA
+2023-07-29 19:15:07,271 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Start completed.
+2023-07-29 19:15:07,271 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH035001: Using dialect: org.hibernate.dialect.H2Dialect, version: 2.2.220
+2023-07-29 19:15:07,290 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:07,382 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:15:07,403 INFO o.h.t.s.i.e.GenerationTargetToDatabase [main] HHH000476: Executing script '[injected ScriptSourceInputNonExistentImpl script]'
+2023-07-29 19:15:07,404 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:07,688 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:15:08,258 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6f1f1a7d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6824c2e6, org.springframework.security.web.context.SecurityContextHolderFilter@a3a54d6, org.springframework.security.web.header.HeaderWriterFilter@335d6f94, org.springframework.security.web.authentication.logout.LogoutFilter@4306191, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@195c5803, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a794780, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7200ac94, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@27e037c1, org.springframework.security.web.session.SessionManagementFilter@7d4a6213, org.springframework.security.web.access.ExceptionTranslationFilter@43ec61f0, org.springframework.security.web.access.intercept.AuthorizationFilter@138617da]
+2023-07-29 19:15:08,339 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:15:08,451 INFO o.s.m.w.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2023-07-29 19:15:08,452 INFO o.s.w.s.FrameworkServlet [main] Initializing Servlet ''
+2023-07-29 19:15:08,453 INFO o.s.w.s.FrameworkServlet [main] Completed initialization in 1 ms
+2023-07-29 19:15:08,468 INFO o.s.b.StartupInfoLogger [main] Started MedServEndpointTest in 1.588 seconds (process running for 10.005)
+2023-07-29 19:15:08,522 INFO c.e.o.a.EndpointLoggingAspect [main] Calling endpoint: getPriceList
+2023-07-29 19:15:08,525 INFO c.e.o.a.EndpointLoggingAspect [main] Endpoint getPriceList executed successfully. Result: <200 OK OK,[MedServDto(id=1, name=one, price=1000), MedServDto(id=2, name=two, price=1000), MedServDto(id=3, name=tree, price=1000)],[]>
+2023-07-29 19:15:08,546 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:08,547 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Shutdown initiated...
+2023-07-29 19:15:08,548 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Shutdown completed.
+2023-07-29 19:15:08,591 INFO o.s.b.StartupInfoLogger [main] Starting MedServEndpointTest using Java 17.0.6 with PID 3292 (started by Albert in C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest)
+2023-07-29 19:15:08,591 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:15:08,591 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-07-29 19:15:08,781 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:15:08,795 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 13 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:15:08,893 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:15:08,903 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:08,905 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:15:08,906 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Starting...
+2023-07-29 19:15:08,908 INFO c.z.h.p.HikariPool [main] HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:test user=SA
+2023-07-29 19:15:08,908 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Start completed.
+2023-07-29 19:15:08,910 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH035001: Using dialect: org.hibernate.dialect.H2Dialect, version: 2.2.220
+2023-07-29 19:15:08,929 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:09,007 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:15:09,023 INFO o.h.t.s.i.e.GenerationTargetToDatabase [main] HHH000476: Executing script '[injected ScriptSourceInputNonExistentImpl script]'
+2023-07-29 19:15:09,023 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:09,235 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:15:09,588 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7aff1fa3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@28790ede, org.springframework.security.web.context.SecurityContextHolderFilter@4a9e4be7, org.springframework.security.web.header.HeaderWriterFilter@7b29d791, org.springframework.security.web.authentication.logout.LogoutFilter@6e879a78, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@2d7c93e0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75f27234, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@40d2a644, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31d07dd9, org.springframework.security.web.session.SessionManagementFilter@754c6edb, org.springframework.security.web.access.ExceptionTranslationFilter@7808fb63, org.springframework.security.web.access.intercept.AuthorizationFilter@5db7419c]
+2023-07-29 19:15:09,644 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:15:09,707 INFO o.s.m.w.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2023-07-29 19:15:09,707 INFO o.s.w.s.FrameworkServlet [main] Initializing Servlet ''
+2023-07-29 19:15:09,707 INFO o.s.w.s.FrameworkServlet [main] Completed initialization in 0 ms
+2023-07-29 19:15:09,713 INFO o.s.b.StartupInfoLogger [main] Started MedServEndpointTest in 1.161 seconds (process running for 11.25)
+2023-07-29 19:15:09,727 INFO c.e.o.a.EndpointLoggingAspect [main] Calling endpoint: createMedicalService
+2023-07-29 19:15:09,731 INFO c.e.o.a.EndpointLoggingAspect [main] Endpoint createMedicalService executed successfully. Result: <200 OK OK,MedServDto(id=1, name=test, price=1000),[]>
+2023-07-29 19:15:09,742 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:09,742 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Shutdown initiated...
+2023-07-29 19:15:09,743 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Shutdown completed.
+2023-07-29 19:15:09,775 INFO o.s.b.StartupInfoLogger [main] Starting MedServEndpointTest using Java 17.0.6 with PID 3292 (started by Albert in C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest)
+2023-07-29 19:15:09,775 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:15:09,775 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-07-29 19:15:09,932 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:15:09,945 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 11 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:15:10,029 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:15:10,038 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:10,038 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:15:10,039 INFO c.z.h.HikariDataSource [main] HikariPool-4 - Starting...
+2023-07-29 19:15:10,040 INFO c.z.h.p.HikariPool [main] HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:test user=SA
+2023-07-29 19:15:10,041 INFO c.z.h.HikariDataSource [main] HikariPool-4 - Start completed.
+2023-07-29 19:15:10,041 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH035001: Using dialect: org.hibernate.dialect.H2Dialect, version: 2.2.220
+2023-07-29 19:15:10,056 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:15:10,123 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:15:10,137 INFO o.h.t.s.i.e.GenerationTargetToDatabase [main] HHH000476: Executing script '[injected ScriptSourceInputNonExistentImpl script]'
+2023-07-29 19:15:10,138 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:10,342 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:15:10,908 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1aeedc01, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a082f8a, org.springframework.security.web.context.SecurityContextHolderFilter@3cebe931, org.springframework.security.web.header.HeaderWriterFilter@46a7b47, org.springframework.security.web.authentication.logout.LogoutFilter@7fb3e6b0, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@3fcd5561, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6852f1d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5162ccc9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24abee74, org.springframework.security.web.session.SessionManagementFilter@6d340d36, org.springframework.security.web.access.ExceptionTranslationFilter@737935a4, org.springframework.security.web.access.intercept.AuthorizationFilter@172249cd]
+2023-07-29 19:15:10,978 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:15:11,043 INFO o.s.m.w.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2023-07-29 19:15:11,043 INFO o.s.w.s.FrameworkServlet [main] Initializing Servlet ''
+2023-07-29 19:15:11,044 INFO o.s.w.s.FrameworkServlet [main] Completed initialization in 0 ms
+2023-07-29 19:15:11,055 INFO o.s.b.StartupInfoLogger [main] Started MedServEndpointTest in 1.308 seconds (process running for 12.592)
+2023-07-29 19:15:11,176 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:15:11,178 INFO c.z.h.HikariDataSource [main] HikariPool-4 - Shutdown initiated...
+2023-07-29 19:15:11,181 INFO c.z.h.HikariDataSource [main] HikariPool-4 - Shutdown completed.
+2023-07-29 19:23:33,499 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:23:33,518 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-3 - Shutdown initiated...
+2023-07-29 19:23:33,535 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-3 - Shutdown completed.
+2023-07-29 19:23:36,376 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:23:36,414 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 19080 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:23:36,415 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:23:36,415 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:23:36,469 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:23:36,469 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:23:37,458 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:23:37,521 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 55 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:23:38,455 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:23:38,463 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:23:38,464 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:23:38,464 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:23:38,520 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:23:38,521 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2051 ms
+2023-07-29 19:23:38,643 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:23:38,987 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ff72359
+2023-07-29 19:23:38,989 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:23:39,479 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:23:39,486 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:23:39,595 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:23:39,675 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:23:39,678 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:23:39,840 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:23:39,986 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:23:40,043 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:23:40,323 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:23:41,183 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:23:41,547 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:23:41,926 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:23:42,613 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:23:43,732 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d3f03f8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12f2601c, org.springframework.security.web.context.SecurityContextHolderFilter@5e385a01, org.springframework.security.web.header.HeaderWriterFilter@45c4383e, org.springframework.security.web.authentication.logout.LogoutFilter@55c1479b, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@4d4b8040, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76879e31, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ff877ff, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4abe80c4, org.springframework.security.web.session.SessionManagementFilter@387e52fa, org.springframework.security.web.access.ExceptionTranslationFilter@7c2e6e0f, org.springframework.security.web.access.intercept.AuthorizationFilter@63a77670]
+2023-07-29 19:23:43,923 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:23:44,222 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:23:44,252 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:23:44,286 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:23:44,296 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 8.196 seconds (process running for 9.127)
+2023-07-29 19:24:22,529 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:24:22,530 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:24:22,531 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2023-07-29 19:24:22,631 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Calling endpoint: auth
+2023-07-29 19:24:22,755 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Endpoint auth executed successfully. Result: <401 UNAUTHORIZED Unauthorized,[]>
+2023-07-29 19:25:56,927 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:25:56,939 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:25:56,954 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:26:01,016 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:26:01,059 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 10184 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:26:01,059 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:26:01,060 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:26:01,113 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:26:01,114 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:26:01,787 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:26:01,857 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 60 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:26:02,819 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:26:02,827 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:26:02,828 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:26:02,828 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:26:02,896 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:26:02,896 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1782 ms
+2023-07-29 19:26:03,028 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:26:03,368 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ea6fe3
+2023-07-29 19:26:03,370 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:26:03,853 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:26:03,860 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:26:03,968 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:26:04,037 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:26:04,040 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:26:04,218 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:26:04,367 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:26:04,425 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:26:04,695 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:26:05,512 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:26:05,784 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:26:06,153 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:26:06,669 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:26:07,698 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4c366f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5832199a, org.springframework.security.web.context.SecurityContextHolderFilter@341505c1, org.springframework.security.web.header.HeaderWriterFilter@7b7006a5, org.springframework.security.web.authentication.logout.LogoutFilter@1a574e1e, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@2fb42ca5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7ed642f0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5919dfab, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@671db5a0, org.springframework.security.web.session.SessionManagementFilter@183fe2df, org.springframework.security.web.access.ExceptionTranslationFilter@d338e2e, org.springframework.security.web.access.intercept.AuthorizationFilter@7868ff1b]
+2023-07-29 19:26:08,081 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:26:08,793 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:26:08,825 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:26:08,867 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:26:08,879 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 8.19 seconds (process running for 9.821)
+2023-07-29 19:26:24,738 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:26:24,738 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:26:24,739 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 1 ms
+2023-07-29 19:26:24,858 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: auth
+2023-07-29 19:26:59,617 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint auth executed successfully. Result: <401 UNAUTHORIZED Unauthorized,[]>
+2023-07-29 19:26:59,719 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:26:59,732 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:26:59,745 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:27:15,601 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:27:15,631 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 20284 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:27:15,631 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:27:15,632 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:27:15,674 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:27:15,674 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:27:16,249 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:27:16,303 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 47 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:27:17,131 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:27:17,139 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:27:17,140 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:27:17,140 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:27:17,196 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:27:17,196 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1521 ms
+2023-07-29 19:27:17,313 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:27:17,593 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35f0617b
+2023-07-29 19:27:17,595 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:27:18,001 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:27:18,007 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:27:18,114 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:27:18,180 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:27:18,183 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:27:18,332 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:27:18,456 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:27:18,503 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:27:18,746 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:27:19,451 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:27:19,644 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:27:19,954 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:27:20,386 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:27:21,092 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2627e431, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b01e503, org.springframework.security.web.context.SecurityContextHolderFilter@15402353, org.springframework.security.web.header.HeaderWriterFilter@2cd795c5, org.springframework.security.web.authentication.logout.LogoutFilter@4c51b58e, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@64ad3583, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70d11709, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7db7bf17, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@216bffe8, org.springframework.security.web.session.SessionManagementFilter@49d33934, org.springframework.security.web.access.ExceptionTranslationFilter@3684dc7c, org.springframework.security.web.access.intercept.AuthorizationFilter@1099453e]
+2023-07-29 19:27:21,229 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:27:21,466 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:27:21,481 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:27:21,500 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:27:21,508 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 6.185 seconds (process running for 7.257)
+2023-07-29 19:27:27,631 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:27:27,632 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:27:27,633 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Completed initialization in 1 ms
+2023-07-29 19:27:27,765 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: register
+2023-07-29 19:27:27,987 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-4] User has successfully registered  
+2023-07-29 19:27:27,998 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-4] User's verification message has been send to the user with the  8 id
+2023-07-29 19:27:28,004 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=8, name=albert, surname=manukyan, email=amanukayn03@gmail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 19:27:59,360 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-5] Calling endpoint: verifyUser
+2023-07-29 19:27:59,373 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-5] User  with the  8 id has verified his account
+2023-07-29 19:27:59,421 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-5] Endpoint verifyUser executed successfully. Result: <200 OK OK,UserVerifyDto(name=albert, surname=manukyan, enabled=true),[]>
+2023-07-29 19:28:06,859 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Calling endpoint: auth
+2023-07-29 19:28:06,963 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDQ0ODYsImV4cCI6MTY5MTI0NDQ4Nn0.DKlKF6N7AfGKVWFbxLbU9xt2aszwhsnlK7x33h7pRQprmhAOX-IZndAm-VV6rf2zVaZ0yyCECZ1KUTyH21MgsQ),[]>
+2023-07-29 19:29:14,934 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Calling endpoint: makeAppointment
+2023-07-29 19:29:14,959 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-9] Appointment creating failed for user with 8id
+2023-07-29 19:29:14,961 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Endpoint makeAppointment executed successfully. Result: <409 CONFLICT Conflict,[]>
+2023-07-29 19:32:04,413 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: makeAppointment
+2023-07-29 19:32:04,429 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-4] Appointment creating failed for user with 8id
+2023-07-29 19:32:04,431 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint makeAppointment executed successfully. Result: <409 CONFLICT Conflict,[]>
+2023-07-29 19:32:47,848 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:32:47,878 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:32:47,910 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:32:51,278 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:32:51,320 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 21360 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:32:51,321 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:32:51,321 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:32:51,390 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:32:51,390 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:32:52,046 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:32:52,110 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 56 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:32:53,038 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:32:53,047 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:32:53,047 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:32:53,047 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:32:53,117 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:32:53,117 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1726 ms
+2023-07-29 19:32:53,255 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:32:53,566 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ea54f90
+2023-07-29 19:32:53,568 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:32:54,058 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:32:54,065 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:32:54,174 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:32:54,248 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:32:54,252 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:32:54,418 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:32:54,560 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:32:54,614 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:32:54,876 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:32:55,678 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:32:55,999 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:32:56,348 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:32:56,825 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:32:57,613 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@45cea24, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ddeedc9, org.springframework.security.web.context.SecurityContextHolderFilter@14e109b9, org.springframework.security.web.header.HeaderWriterFilter@5cabfb9d, org.springframework.security.web.authentication.logout.LogoutFilter@431066b4, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@6eeca83c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c295d87, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5134be80, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@517ff177, org.springframework.security.web.session.SessionManagementFilter@36da8988, org.springframework.security.web.access.ExceptionTranslationFilter@604122b3, org.springframework.security.web.access.intercept.AuthorizationFilter@5e3850bd]
+2023-07-29 19:32:57,894 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:32:58,353 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:32:58,381 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:32:58,411 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:32:58,420 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.47 seconds (process running for 8.521)
+2023-07-29 19:33:25,841 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:33:25,842 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:33:25,843 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2023-07-29 19:33:25,962 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Calling endpoint: auth
+2023-07-29 19:33:40,241 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDQ4MjAsImV4cCI6MTY5MTI0NDgyMH0.gsA-5b3gb70ImC6zZNTDGan0xOArr36sDIYyoQOmr6Nvovv8hLiZRSoX43uUlQAMCCZ1KmLhi3QiP9jCOQy7Mg),[]>
+2023-07-29 19:33:43,739 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: auth
+2023-07-29 19:33:43,811 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDQ4MjMsImV4cCI6MTY5MTI0NDgyM30.znQWrJn5_3xWT1gJVptfEQzUJMWFmRcf0kgdDfFH5589zmew_-kSdn6BtEUH4u3KGab7H3239z6a8ZzzgyZgZQ),[]>
+2023-07-29 19:33:59,743 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: makeAppointment
+2023-07-29 19:33:59,772 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-4] Appointment creating failed for user with 8id
+2023-07-29 19:33:59,789 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint makeAppointment executed successfully. Result: <409 CONFLICT Conflict,[]>
+2023-07-29 19:34:22,589 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:34:22,595 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:34:22,624 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:34:26,215 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:34:26,294 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 2176 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:34:26,295 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:34:26,297 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:34:26,379 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:34:26,380 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:34:27,088 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:34:27,148 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 53 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:34:28,048 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:34:28,057 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:34:28,058 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:34:28,058 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:34:28,124 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:34:28,125 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1744 ms
+2023-07-29 19:34:28,239 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:34:28,545 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@13eb9969
+2023-07-29 19:34:28,547 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:34:29,029 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:34:29,036 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:34:29,146 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:34:29,218 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:34:29,221 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:34:29,382 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:34:29,538 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:34:29,591 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:34:29,852 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:34:30,793 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:34:31,009 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:34:31,382 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:34:31,914 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:34:32,792 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@e25dc15, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b8840fb, org.springframework.security.web.context.SecurityContextHolderFilter@2e6c9543, org.springframework.security.web.header.HeaderWriterFilter@242ca94d, org.springframework.security.web.authentication.logout.LogoutFilter@4b5b1b45, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@69dd4f96, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7d41e35a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@288b614d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7055ad4e, org.springframework.security.web.session.SessionManagementFilter@423348b9, org.springframework.security.web.access.ExceptionTranslationFilter@7d61d71f, org.springframework.security.web.access.intercept.AuthorizationFilter@2e70b0d4]
+2023-07-29 19:34:32,976 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:34:33,554 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:34:33,582 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:34:33,617 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:34:33,626 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.874 seconds (process running for 9.189)
+2023-07-29 19:35:52,667 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:35:52,668 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:35:52,670 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2023-07-29 19:35:52,835 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Calling endpoint: auth
+2023-07-29 19:35:53,144 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDQ5NTMsImV4cCI6MTY5MTI0NDk1M30.bUy88udtJWxg0UILQKOsPcnLcDiF2kCxg0xQYXERMHxrWnsn3d4i7UOxfOubkHcl50kxmKdbaXw7TYt8ljLMEA),[]>
+2023-07-29 19:36:51,864 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: makeAppointment
+2023-07-29 19:39:44,872 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m16s177ms821µs800ns).
+2023-07-29 19:39:45,103 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-3] Appointment creating failed for user with 8id
+2023-07-29 19:39:45,143 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint makeAppointment executed successfully. Result: <409 CONFLICT Conflict,[]>
+2023-07-29 19:39:45,306 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:39:45,340 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:39:45,392 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:39:51,663 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:39:51,718 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 21428 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:39:51,719 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:39:51,719 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:39:51,776 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:39:51,776 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:39:52,534 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:39:52,605 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 62 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:39:53,647 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:39:53,656 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:39:53,657 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:39:53,657 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:39:53,731 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:39:53,731 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1954 ms
+2023-07-29 19:39:53,870 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:39:54,238 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@784e55d7
+2023-07-29 19:39:54,241 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:39:54,796 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:39:54,803 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:39:54,923 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:39:55,010 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:39:55,014 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:39:55,198 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:39:55,359 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:39:55,424 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:39:55,716 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:39:56,628 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:39:56,981 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:39:57,390 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:39:57,941 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:39:58,803 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@44900782, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3cdc128e, org.springframework.security.web.context.SecurityContextHolderFilter@3ed787c6, org.springframework.security.web.header.HeaderWriterFilter@63f640f9, org.springframework.security.web.authentication.logout.LogoutFilter@7254726c, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@1c46b486, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8b20954, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@527fbb38, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cd89aee, org.springframework.security.web.session.SessionManagementFilter@1f2a2299, org.springframework.security.web.access.ExceptionTranslationFilter@1d349d5, org.springframework.security.web.access.intercept.AuthorizationFilter@65eaabd0]
+2023-07-29 19:39:58,981 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:39:59,257 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:39:59,275 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:39:59,303 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:39:59,312 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 8.005 seconds (process running for 9.199)
+2023-07-29 19:40:20,844 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:40:20,845 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:40:20,846 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2023-07-29 19:40:20,984 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: auth
+2023-07-29 19:40:21,290 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDUyMjEsImV4cCI6MTY5MTI0NTIyMX0.aOOtDCFX1F9YTMEVjMRe2ZDBRTU3OzRWqkYsDS_fdwc5bsR7I7QOrcmjB4dkwH3Q1cybVPAVlnLl36DSo2dQJA),[]>
+2023-07-29 19:40:34,804 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [patientId should be greater than zero]] ]
+2023-07-29 19:41:23,135 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [patientId should be greater than zero]] ]
+2023-07-29 19:41:50,351 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [patientId should be greater than zero]] ]
+2023-07-29 19:42:18,989 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:42:19,001 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:42:19,019 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:42:21,850 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:42:21,884 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 18912 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:42:21,885 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:42:21,885 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:42:21,937 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:42:21,937 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:42:22,549 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:42:22,616 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 60 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:42:23,571 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:42:23,580 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:42:23,581 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:42:23,581 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:42:23,646 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:42:23,647 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1710 ms
+2023-07-29 19:42:23,771 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:42:24,069 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@145238c4
+2023-07-29 19:42:24,071 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:42:24,526 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:42:24,532 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:42:24,640 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:42:24,708 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:42:24,711 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:42:24,874 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:42:25,009 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:42:25,066 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:42:25,350 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:42:26,228 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:42:26,467 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:42:26,841 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:42:27,308 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:42:28,104 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ec6affc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31aef6f3, org.springframework.security.web.context.SecurityContextHolderFilter@bfe8577, org.springframework.security.web.header.HeaderWriterFilter@61db8c6c, org.springframework.security.web.authentication.logout.LogoutFilter@49d6526e, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@35081653, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29d09217, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@628f15eb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c5431e0, org.springframework.security.web.session.SessionManagementFilter@1fd95d28, org.springframework.security.web.access.ExceptionTranslationFilter@5134be80, org.springframework.security.web.access.intercept.AuthorizationFilter@4201e6c0]
+2023-07-29 19:42:28,256 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:42:28,526 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:42:28,546 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:42:28,581 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:42:28,590 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.007 seconds (process running for 7.911)
+2023-07-29 19:42:34,535 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:42:34,535 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:42:34,536 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2023-07-29 19:42:34,646 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: auth
+2023-07-29 19:42:34,899 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDUzNTQsImV4cCI6MTY5MTI0NTM1NH0.iuKWSd0x3aIK5wgo1ldv6xz035RKZFlB4DQw3OW8fuVmDr5Rt_PDcHxeH6Sa5TzcyBRNeRN6h8qOHD4eFr4dUg),[]>
+2023-07-29 19:42:53,477 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [patientId should be greater than zero]] ]
+2023-07-29 19:44:25,982 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:44:25,988 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:44:25,997 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:44:29,065 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:44:29,098 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 9044 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:44:29,098 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:44:29,098 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:44:29,147 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:44:29,147 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:44:29,800 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:44:29,862 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 55 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:44:30,779 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:44:30,787 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:44:30,788 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:44:30,788 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:44:30,856 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:44:30,857 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1709 ms
+2023-07-29 19:44:30,980 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:44:31,285 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ea6fe3
+2023-07-29 19:44:31,287 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:44:31,886 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:44:31,898 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:44:32,055 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:44:32,179 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:44:32,185 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:44:32,448 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:44:32,627 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:44:32,693 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:44:33,014 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:44:33,890 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:44:34,082 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:44:34,458 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:44:34,976 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:44:35,797 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c7fd5db, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c785ff4, org.springframework.security.web.context.SecurityContextHolderFilter@46222bdc, org.springframework.security.web.header.HeaderWriterFilter@680270ee, org.springframework.security.web.authentication.logout.LogoutFilter@20b04abf, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@2fb42ca5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56ae02a7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ea27045, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7db378b5, org.springframework.security.web.session.SessionManagementFilter@536b38c2, org.springframework.security.web.access.ExceptionTranslationFilter@72a93b58, org.springframework.security.web.access.intercept.AuthorizationFilter@2ddd9af4]
+2023-07-29 19:44:35,989 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:44:36,253 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:44:36,271 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:44:36,300 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:44:36,310 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.511 seconds (process running for 8.563)
+2023-07-29 19:45:05,076 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:45:05,077 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:45:05,079 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2023-07-29 19:45:05,565 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [patientId should be greater than zero]] ]
+2023-07-29 19:46:49,944 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: auth
+2023-07-29 19:46:50,079 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDU2MTAsImV4cCI6MTY5MTI0NTYxMH0.gM6DAKi7846ctkFMICmQ9yik_h_PqEPgFv82gaj59dPbZrCL0CceSftfMuRRKo2aQ5Qt9N9ZEg7cC0oP96zGGQ),[]>
+2023-07-29 19:47:44,012 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:47:44,021 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 19:47:44,045 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 19:47:48,795 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 19:47:48,830 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 18168 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 19:47:48,831 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 19:47:48,832 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 19:47:48,892 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 19:47:48,893 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 19:47:49,598 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 19:47:49,660 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2023-07-29 19:47:50,576 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 19:47:50,584 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:47:50,585 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 19:47:50,585 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 19:47:50,654 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 19:47:50,654 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1761 ms
+2023-07-29 19:47:50,783 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 19:47:51,125 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@286cd8f0
+2023-07-29 19:47:51,128 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 19:47:51,600 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 19:47:51,607 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 19:47:51,716 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 19:47:51,788 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 19:47:51,791 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 19:47:51,956 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:47:52,105 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 19:47:52,156 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 19:47:52,419 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 19:47:53,230 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 19:47:53,536 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 19:47:53,880 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 19:47:54,351 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 19:47:55,105 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36f78535, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c7d9687, org.springframework.security.web.context.SecurityContextHolderFilter@4bddc7ff, org.springframework.security.web.header.HeaderWriterFilter@25eb036f, org.springframework.security.web.authentication.logout.LogoutFilter@63901564, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@e24e311, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5134be80, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@156ffe69, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22a72a36, org.springframework.security.web.session.SessionManagementFilter@76155464, org.springframework.security.web.access.ExceptionTranslationFilter@35160e01, org.springframework.security.web.access.intercept.AuthorizationFilter@517ff177]
+2023-07-29 19:47:55,255 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 19:47:55,494 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 19:47:55,510 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 19:47:55,532 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 19:47:55,540 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.051 seconds (process running for 8.042)
+2023-07-29 19:48:05,811 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 19:48:05,812 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-07-29 19:48:05,813 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2023-07-29 19:48:05,937 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: auth
+2023-07-29 19:48:06,209 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDU2ODYsImV4cCI6MTY5MTI0NTY4Nn0.q0TnU-wkVs7mD_5ltiz2xSNel8voQWrPSsJQbuFuRvnvkpcrAvIZ_5T3oIjZWvkccWIESfxfGq9-2jDkBhZK5g),[]>
+2023-07-29 19:48:23,926 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'patientId': rejected value [0]; codes [Positive.createAppointmentDto.patientId,Positive.patientId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.patientId,patientId]; arguments []; default message [patientId]]; default message [Field should be greater than zero]] ]
+2023-07-29 19:48:59,611 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [Field should be greater than zero]] ]
+2023-07-29 19:49:48,639 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Calling endpoint: auth
+2023-07-29 19:49:48,738 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDU3ODgsImV4cCI6MTY5MTI0NTc4OH0.POb5VZIwyqDeJzS5kI92eQQLyS2NmYZHmK8cet8K-pv8MiOzTXDOETbUxeP1f0XpLHMmzVDh65hSSdwpvHPK6w),[]>
+2023-07-29 19:50:11,422 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-8] Calling endpoint: register
+2023-07-29 19:50:11,594 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-8] User has successfully registered  
+2023-07-29 19:50:11,610 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-8] User's verification message has been send to the user with the  9 id
+2023-07-29 19:50:11,617 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-8] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=9, name=albert, surname=manukyan, email=anukayn03@gmail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 19:51:48,821 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-10] Calling endpoint: register
+2023-07-29 19:51:48,899 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-10] User has successfully registered  
+2023-07-29 19:51:48,901 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-10] User's verification message has been send to the user with the  10 id
+2023-07-29 19:51:48,902 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-10] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=10, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 19:52:13,145 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: auth
+2023-07-29 19:52:13,224 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnVERGtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDU5MzMsImV4cCI6MTY5MTI0NTkzM30.e-5qPmq5xx0emLVrzxgF_Yvmk-aJ0_OOuMLrQTOecQq0gUcUS-3CZCXLJia8a5fdFF3knzHiMTlxZlbCRdp14w),[]>
+2023-07-29 19:53:01,636 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: makeAppointment
+2023-07-29 19:53:16,409 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-3] Online Registration message  has been send to the user with 10 id
+2023-07-29 19:53:16,452 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-3] Appointment has been created for the user with 10id
+2023-07-29 19:53:16,470 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint makeAppointment executed successfully. Result: <200 OK OK,AppointmentDto(id=2, description=Your appointment description, startTime=2023-07-29T14:30, endTime=2023-07-29T15:00, doctorDto=DoctorDtoResponse(id=9, name=albert, surname=manukyan, email=anukayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, picName=null, speciality=UTYU, phoneNumber=UYUYTUU, departmentDto=null, zoomId=1, zoomPassword=IUKIU, userType=DOCTOR), patientDto=PatientDto(id=10, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), departmentDto=null, registerType=ONLINE),[]>
+2023-07-29 19:53:46,678 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult): [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [-1]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [Field should be greater than zero]] ]
+2023-07-29 19:56:35,415 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.example.onehealthrest.endpoint.AppointmentEndpoint.makeAppointment(com.example.onehealthcommon.dto.CreateAppointmentDto,com.example.onehealthrest.security.CurrentUser,org.springframework.validation.BindingResult) with 2 errors: [Field error in object 'createAppointmentDto' on field 'patientId': rejected value [0]; codes [Positive.createAppointmentDto.patientId,Positive.patientId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.patientId,patientId]; arguments []; default message [patientId]]; default message [Field should be greater than zero]] [Field error in object 'createAppointmentDto' on field 'doctorId': rejected value [0]; codes [Positive.createAppointmentDto.doctorId,Positive.doctorId,Positive.int,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createAppointmentDto.doctorId,doctorId]; arguments []; default message [doctorId]]; default message [Field should be greater than zero]] ]
+2023-07-29 19:59:57,344 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-8] Calling endpoint: register
+2023-07-29 19:59:57,360 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-8] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=0, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 20:00:11,866 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Calling endpoint: register
+2023-07-29 20:00:11,873 INFO c.e.o.v.ValidationChecker [http-nio-8080-exec-9] checkValidation() in UserServiceImpl found errors
+2023-07-29 20:00:11,874 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Endpoint register executed successfully. Result: <400 BAD_REQUEST Bad Request,Email should be valid
+,[]>
+2023-07-29 20:05:22,096 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Calling endpoint: makeAppointment
+2023-07-29 20:05:43,133 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-1] Appointment creating failed for user with 10id
+2023-07-29 20:05:43,139 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Endpoint makeAppointment executed successfully. Result: <409 CONFLICT Conflict,[]>
+2023-07-29 20:15:35,235 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: auth
+2023-07-29 20:15:35,466 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NDczMzUsImV4cCI6MTY5MTI0NzMzNX0.acbXqfpxcy0RHEfj8gAqkOKLZlvZK_YqguUSe0apVGrxP-r9nvuR1pmzKYfP5onWp1PgJAcr3Qyjw9Ve4sbxnQ),[]>
+2023-07-29 20:15:51,957 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-6] Calling endpoint: getAppointments
+2023-07-29 20:15:52,144 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-6] Endpoint getAppointments executed successfully. Result: <200 OK OK,[AppointmentDto(id=2, description=Your appointment description, startTime=2023-07-29T14:30, endTime=2023-07-29T15:00, doctorDto=DoctorDtoResponse(id=9, name=albert, surname=manukyan, email=anukayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, picName=null, speciality=UTYU, phoneNumber=UYUYTUU, departmentDto=null, zoomId=1, zoomPassword=IUKIU, userType=DOCTOR), patientDto=PatientDto(id=10, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), departmentDto=null, registerType=ONLINE)],[]>
+2023-07-29 20:17:07,199 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-8] Calling endpoint: cancelAppointment
+2023-07-29 20:17:07,216 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-8] Appointment canceling failed 
+2023-07-29 20:17:07,225 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-8] Endpoint cancelAppointment executed successfully. Result: <409 CONFLICT Conflict,[]>
+2023-07-29 20:18:51,832 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 20:18:51,888 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 20:18:51,902 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 20:18:57,763 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 20:18:57,801 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 20724 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 20:18:57,801 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 20:18:57,802 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 20:18:57,855 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 20:18:57,855 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 20:18:58,600 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 20:18:58,657 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 49 ms. Found 9 JPA repository interfaces.
+2023-07-29 20:18:59,560 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 20:18:59,568 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 20:18:59,569 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 20:18:59,569 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 20:18:59,626 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 20:18:59,627 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1771 ms
+2023-07-29 20:18:59,752 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 20:19:00,065 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53c3163a
+2023-07-29 20:19:00,067 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 20:19:00,522 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 20:19:00,529 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 20:19:00,625 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 20:19:00,696 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 20:19:00,699 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 20:19:00,861 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 20:19:00,996 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 20:19:01,045 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 20:19:01,293 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 20:19:02,079 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 20:19:02,395 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 20:19:02,717 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 20:19:03,194 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 20:19:03,982 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@19abafdd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55d64049, org.springframework.security.web.context.SecurityContextHolderFilter@1aa531aa, org.springframework.security.web.header.HeaderWriterFilter@54711041, org.springframework.security.web.authentication.logout.LogoutFilter@1e184743, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@7a40ae3d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@10b3d347, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5807ab28, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@160e7da6, org.springframework.security.web.session.SessionManagementFilter@55a84d, org.springframework.security.web.access.ExceptionTranslationFilter@78129e21, org.springframework.security.web.access.intercept.AuthorizationFilter@b87469]
+2023-07-29 20:19:04,234 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 20:19:04,456 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 20:19:04,476 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 20:19:04,505 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 20:19:04,514 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.038 seconds (process running for 7.976)
+2023-07-29 20:19:24,189 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 20:19:24,190 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-07-29 20:19:24,191 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2023-07-29 20:19:24,297 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: auth
+2023-07-29 20:19:24,563 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnVrYXluMDNAZ21haWwuY29tIiwiaWF0IjoxNjkwNjQ3NTY0LCJleHAiOjE2OTEyNDc1NjR9.gTeUt7UqDUIsTERFt2JX4Pi-qEszm5AOrAx5yaIVxa_khrjEy3TARz232eB-A7b0zFyPy4jHCC8QYTfoKNtn3w),[]>
+2023-07-29 20:19:48,289 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: cancelAppointment
+2023-07-29 20:19:48,324 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-3] Appointment canceling message has been send to the user with 10 id
+2023-07-29 20:19:48,324 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-3] Appointment has been canceled by the user with 9 id
+2023-07-29 20:19:48,324 INFO c.e.o.s.i.AppointmentServiceImpl [http-nio-8080-exec-3] Appointment canceling failed 
+2023-07-29 20:19:48,356 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint cancelAppointment executed successfully. Result: <204 NO_CONTENT No Content,[]>
+2023-07-29 20:52:55,167 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 35 class path changes (0 additions, 35 deletions, 0 modifications)
+2023-07-29 20:52:55,332 INFO o.a.j.l.DirectJDKLog [Thread-5] Pausing ProtocolHandler ["http-nio-8080"]
+2023-07-29 20:52:55,334 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping service [Tomcat]
+2023-07-29 20:52:55,348 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-29 20:52:55,374 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.6/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.6/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.6/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
+2023-07-29 20:52:55,387 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
+2023-07-29 20:52:55,399 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying ProtocolHandler ["http-nio-8080"]
+2023-07-29 20:52:55,420 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 20:52:55,467 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2023-07-29 20:52:55,515 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2023-07-29 22:32:40,150 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 22:32:40,185 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 13032 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 22:32:40,186 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 22:32:40,186 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 22:32:40,234 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 22:32:40,234 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 22:32:41,197 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 22:32:41,258 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 51 ms. Found 9 JPA repository interfaces.
+2023-07-29 22:32:42,185 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 22:32:42,195 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 22:32:42,196 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 22:32:42,196 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 22:32:42,253 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 22:32:42,254 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2020 ms
+2023-07-29 22:32:42,370 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 22:32:42,655 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@329d5ba8
+2023-07-29 22:32:42,657 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 22:32:43,152 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 22:32:43,159 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 22:32:43,260 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 22:32:43,333 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 22:32:43,336 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 22:32:43,495 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 22:32:43,636 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 22:32:43,687 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 22:32:43,935 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 22:32:44,697 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 22:32:45,077 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 22:32:45,283 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.UserRepository
+2023-07-29 22:32:45,407 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 22:32:45,457 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.AppointmentRepository
+2023-07-29 22:32:45,500 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.DoctorRepository
+2023-07-29 22:32:45,618 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.PatientRepository
+2023-07-29 22:32:45,654 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.DepartmentRepository
+2023-07-29 22:32:45,742 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.CartRepository
+2023-07-29 22:32:45,819 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.CommentRepository
+2023-07-29 22:32:45,999 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 22:32:46,803 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ce3de01, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@567be355, org.springframework.security.web.context.SecurityContextHolderFilter@7ebe7e6, org.springframework.security.web.header.HeaderWriterFilter@288f9e89, org.springframework.security.web.authentication.logout.LogoutFilter@b432f3a, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@ff0ae1d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@eb4da82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7827a86b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1dd4fcf0, org.springframework.security.web.session.SessionManagementFilter@70a91ce5, org.springframework.security.web.access.ExceptionTranslationFilter@797038d5, org.springframework.security.web.access.intercept.AuthorizationFilter@e28b98b]
+2023-07-29 22:32:46,967 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 22:32:47,214 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 22:32:47,231 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 22:32:47,257 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 22:32:47,265 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.409 seconds (process running for 8.384)
+2023-07-29 22:33:08,938 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 22:33:08,939 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-07-29 22:33:08,940 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2023-07-29 22:33:09,096 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: register
+2023-07-29 22:33:09,098 INFO c.e.o.v.ValidationChecker [http-nio-8080-exec-2] checkValidation() in UserServiceImpl found errors
+2023-07-29 22:33:09,100 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint register executed successfully. Result: <400 BAD_REQUEST Bad Request,Email should be valid
+,[]>
+2023-07-29 22:33:23,872 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: register
+2023-07-29 22:33:24,295 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-4] User has successfully registered  
+2023-07-29 22:33:24,312 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-4] User's verification message has been send to the user with the  11 id
+2023-07-29 22:33:24,319 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=11, name=albert, surname=manukyan, email=biljogjh@mail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 22:33:28,439 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-6] Calling endpoint: register
+2023-07-29 22:33:28,521 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-6] User has successfully registered  
+2023-07-29 22:33:28,522 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-6] User's verification message has been send to the user with the  12 id
+2023-07-29 22:33:28,523 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-6] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=12, name=albert, surname=manukyan, email=ciljogjh@mail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 22:33:35,235 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-5] Calling endpoint: register
+2023-07-29 22:33:35,309 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-5] User has successfully registered  
+2023-07-29 22:33:35,312 INFO c.e.o.s.i.UserServiceImpl [http-nio-8080-exec-5] User's verification message has been send to the user with the  13 id
+2023-07-29 22:33:35,312 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-5] Endpoint register executed successfully. Result: <200 OK OK,PatientDto(id=13, name=albert, surname=manukyan, email=jiljogjh@mail.com, birthDate=Sat Jan 01 04:00:00 AMT 2000, enabled=false, picName=null, region=California, address=123 Main St, nation=USA),[]>
+2023-07-29 22:34:01,210 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Calling endpoint: auth
+2023-07-29 22:34:01,327 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnVrYXluMDNAZ21haWwuY29tIiwiaWF0IjoxNjkwNjU1NjQxLCJleHAiOjE2OTEyNTU2NDF9.WIHGR1UhYlcqIFnfzrsuPvrrG2CntNU6_nZsc-BB-4TWbAPSUIASE3CvLpmJYKT7Hdc77-I85KFexYwQfHqv0w),[]>
+2023-07-29 22:38:19,594 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 22:38:19,611 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 22:38:19,637 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 22:38:23,756 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 22:38:23,791 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 19152 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 22:38:23,792 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 22:38:23,792 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 22:38:23,843 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 22:38:23,844 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 22:38:24,501 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 22:38:24,559 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 51 ms. Found 9 JPA repository interfaces.
+2023-07-29 22:38:25,408 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 22:38:25,420 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 22:38:25,421 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 22:38:25,421 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 22:38:25,482 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 22:38:25,482 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1638 ms
+2023-07-29 22:38:25,589 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 22:38:25,871 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a5ac4f4
+2023-07-29 22:38:25,873 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 22:38:26,294 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 22:38:26,301 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 22:38:26,420 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 22:38:26,487 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 22:38:26,490 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 22:38:26,642 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 22:38:26,769 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 22:38:26,818 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 22:38:27,096 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 22:38:27,855 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 22:38:28,149 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 22:38:28,345 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.UserRepository
+2023-07-29 22:38:28,476 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 22:38:28,515 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.AppointmentRepository
+2023-07-29 22:38:28,544 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.DoctorRepository
+2023-07-29 22:38:28,643 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.PatientRepository
+2023-07-29 22:38:28,672 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.DepartmentRepository
+2023-07-29 22:38:28,748 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.CartRepository
+2023-07-29 22:38:28,833 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.CommentRepository
+2023-07-29 22:38:29,012 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 22:38:29,748 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b2edf5a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53a4e727, org.springframework.security.web.context.SecurityContextHolderFilter@65b94a1f, org.springframework.security.web.header.HeaderWriterFilter@1425f84f, org.springframework.security.web.authentication.logout.LogoutFilter@73529dff, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@442d2691, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@394c2fc4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b73d267, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c5248b0, org.springframework.security.web.session.SessionManagementFilter@3576f3d1, org.springframework.security.web.access.ExceptionTranslationFilter@641a3c63, org.springframework.security.web.access.intercept.AuthorizationFilter@6e5c34af]
+2023-07-29 22:38:29,929 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 22:38:30,207 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 22:38:30,224 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 22:38:30,244 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 22:38:30,252 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 6.788 seconds (process running for 7.573)
+2023-07-29 22:39:21,202 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 22:39:21,202 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
+2023-07-29 22:39:21,204 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 2 ms
+2023-07-29 22:39:21,315 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Calling endpoint: auth
+2023-07-29 22:39:21,599 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-3] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NTU5NjEsImV4cCI6MTY5MTI1NTk2MX0.O9ixNZg_yeccf0RK7h6H9d7F1zJU7E9zsNlSvEYVqLJz80xoKmrbyFXiEoa-1p031jydxmT3wMUtl_3tMxyZTQ),[]>
+2023-07-29 22:39:37,323 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: getAll
+2023-07-29 22:39:37,530 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=10, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=11, name=albert, surname=manukyan, email=biljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=12, name=albert, surname=manukyan, email=ciljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=13, name=albert, surname=manukyan, email=jiljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 22:39:55,420 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: getAll
+2023-07-29 22:39:55,426 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=13, name=albert, surname=manukyan, email=jiljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=12, name=albert, surname=manukyan, email=ciljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=11, name=albert, surname=manukyan, email=biljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=10, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 22:40:17,390 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Calling endpoint: getAll
+2023-07-29 22:40:17,395 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-7] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=10, name=albert, surname=manukyan, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=11, name=albert, surname=manukyan, email=biljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=12, name=albert, surname=manukyan, email=ciljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=13, name=albert, surname=manukyan, email=jiljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 22:40:44,079 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-6] Calling endpoint: getAll
+2023-07-29 22:40:44,106 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-6] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=11, name=albert, surname=manukyan, email=biljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=12, name=albert, surname=manukyan, email=ciljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=13, name=albert, surname=manukyan, email=jiljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 22:41:57,562 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Calling endpoint: getAll
+2023-07-29 22:41:57,568 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=10, name=albert, surname=faaa, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=13, name=albert, surname=asss, email=jiljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 23:14:46,891 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m50s683ms257µs500ns).
+2023-07-29 23:28:40,292 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 23:28:40,407 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-07-29 23:28:40,448 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-07-29 23:28:48,207 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-07-29 23:28:48,250 INFO o.s.b.StartupInfoLogger [restartedMain] Starting OneHealthRestApplication using Java 17.0.6 with PID 7128 (C:\Users\Albert\IdeaProjects\OneHealth\one-health-rest\target\classes started by Albert in C:\Users\Albert\IdeaProjects\OneHealth)
+2023-07-29 23:28:48,250 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-29 23:28:48,251 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "local"
+2023-07-29 23:28:48,310 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-29 23:28:48,310 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-29 23:28:49,078 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-29 23:28:49,142 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2023-07-29 23:28:50,202 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-07-29 23:28:50,216 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-29 23:28:50,216 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-07-29 23:28:50,216 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-29 23:28:50,278 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-29 23:28:50,279 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1968 ms
+2023-07-29 23:28:50,401 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-07-29 23:28:50,742 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@661b2b73
+2023-07-29 23:28:50,745 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-07-29 23:28:51,278 INFO l.l.c.JavaLogger [restartedMain] Reading from onehealth.DATABASECHANGELOG
+2023-07-29 23:28:51,286 INFO l.l.c.JavaLogger [restartedMain] Changelog query completed.
+2023-07-29 23:28:51,384 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-29 23:28:51,449 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-29 23:28:51,452 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-07-29 23:28:51,614 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 23:28:51,754 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-29 23:28:51,806 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-07-29 23:28:52,064 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-07-29 23:28:52,819 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-29 23:28:53,324 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-29 23:28:53,530 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.UserRepository
+2023-07-29 23:28:53,651 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'JWTAuthenticationTokenFilter' configured for use
+2023-07-29 23:28:53,702 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.AppointmentRepository
+2023-07-29 23:28:53,735 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.DoctorRepository
+2023-07-29 23:28:53,862 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.PatientRepository
+2023-07-29 23:28:53,898 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.DepartmentRepository
+2023-07-29 23:28:53,985 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.CartRepository
+2023-07-29 23:28:54,073 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [restartedMain] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.example.onehealthcommon.repository.CommentRepository
+2023-07-29 23:28:54,257 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-29 23:28:54,991 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@14a1d39c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ab7253c, org.springframework.security.web.context.SecurityContextHolderFilter@1cd43cf, org.springframework.security.web.header.HeaderWriterFilter@6a9ebb8b, org.springframework.security.web.authentication.logout.LogoutFilter@59f02868, com.example.onehealthrest.filter.JWTAuthenticationTokenFilter@74500dc2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2b4fc3cf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2699f5eb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@300ac8e4, org.springframework.security.web.session.SessionManagementFilter@40ac44fe, org.springframework.security.web.access.ExceptionTranslationFilter@7abb6efa, org.springframework.security.web.access.intercept.AuthorizationFilter@589c5375]
+2023-07-29 23:28:55,158 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-07-29 23:28:55,388 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-07-29 23:28:55,405 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-07-29 23:28:55,430 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-29 23:28:55,439 INFO o.s.b.StartupInfoLogger [restartedMain] Started OneHealthRestApplication in 7.582 seconds (process running for 8.67)
+2023-07-29 23:30:34,688 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-29 23:30:34,695 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-07-29 23:30:34,724 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 28 ms
+2023-07-29 23:30:34,971 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Calling endpoint: auth
+2023-07-29 23:30:35,372 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-1] Endpoint auth executed successfully. Result: <200 OK OK,UserAuthResponseDto(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWFudWtheW4wM0BnbWFpbC5jb20iLCJpYXQiOjE2OTA2NTkwMzUsImV4cCI6MTY5MTI1OTAzNX0.q1LYfTXxm8seu7DSgSxetjloIBVYciWxSbiyRVJKE-WLlflFVJofxlkwKDNTbBBWt86kKarDeF-kPvzyQBVhgQ),[]>
+2023-07-29 23:31:02,153 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Calling endpoint: getAll
+2023-07-29 23:31:02,428 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-2] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=10, name=albert, surname=faaa, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA), PatientDto(id=13, name=albert, surname=asss, email=jiljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 23:31:10,707 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Calling endpoint: getAll
+2023-07-29 23:31:10,710 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-4] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=10, name=albert, surname=faaa, email=anuDDkayn03@gmail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 23:32:18,407 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Calling endpoint: getAll
+2023-07-29 23:32:18,416 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-9] Endpoint getAll executed successfully. Result: <200 OK OK,[],[]>
+2023-07-29 23:32:24,588 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-10] Calling endpoint: getAll
+2023-07-29 23:32:24,592 INFO c.e.o.a.EndpointLoggingAspect [http-nio-8080-exec-10] Endpoint getAll executed successfully. Result: <200 OK OK,[PatientDto(id=11, name=ssss, surname=rrrrr, email=biljogjh@mail.com, birthDate=2000-01-01 04:00:00.0, enabled=false, picName=null, region=California, address=123 Main St, nation=USA)],[]>
+2023-07-29 23:52:55,650 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m4s466ms873µs700ns).
