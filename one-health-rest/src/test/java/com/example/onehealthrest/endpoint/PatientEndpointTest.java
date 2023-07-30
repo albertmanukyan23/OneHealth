@@ -29,6 +29,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -123,7 +124,7 @@ class PatientEndpointTest {
         int id = 8;
         mvc.perform(MockMvcRequestBuilders.get("/patients/" + id)
                         .accept(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isConflict());
+                        .andExpect(status().isNotFound());
     }
 
 
@@ -180,7 +181,8 @@ class PatientEndpointTest {
         Optional<Patient> beforeDeletePatientOptional = patientRepository.findById(deletedPatientId);
         assertTrue(beforeDeletePatientOptional.isPresent());
         mvc.perform(MockMvcRequestBuilders.delete("/patients/remove?id=" + deletedPatientId))
-                .andExpect(status().is(204));
+                .andExpect(status().is(200))
+                .andExpect(content().string("true"));
         assertTrue(patientRepository.findById(deletedPatientId).isEmpty());
 
     }

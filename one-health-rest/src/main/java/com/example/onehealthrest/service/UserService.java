@@ -19,7 +19,6 @@ public interface UserService {
     Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser);
 
 
-
     boolean updatePassword(UserPasswordUpdaterDto passwordUpdaterDto, User currentUser);
 
     boolean activateDeactivateUser(int id);

@@ -1,10 +1,8 @@
 package com.example.onehealthcommon.dto;
 
-import com.example.onehealthcommon.entity.Department;
 import com.example.onehealthcommon.entity.UserType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

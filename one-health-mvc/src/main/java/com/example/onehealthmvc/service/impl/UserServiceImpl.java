@@ -1,6 +1,6 @@
 package com.example.onehealthmvc.service.impl;
 
-import com.example.onehealthcommon.EmailSenderService;
+import com.example.onehealthcommon.component.EmailSenderService;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.exception.ImageProcessingException;

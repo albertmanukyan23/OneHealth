@@ -1,5 +1,6 @@
 package com.example.onehealthrest.service.impl;
 
+import com.example.onehealthcommon.component.DoctorFilterManager;
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
 import com.example.onehealthcommon.dto.DoctorSearchDto;
@@ -7,7 +8,6 @@ import com.example.onehealthcommon.entity.Department;
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.exception.EntityNotFoundException;
-import com.example.onehealthcommon.manager.DoctorFilterManager;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthcommon.repository.DepartmentRepository;
 import com.example.onehealthcommon.repository.DoctorRepository;
@@ -26,6 +26,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class DoctorServiceImpl implements DoctorService {
+
     private final DoctorRepository doctorRepository;
     private final DepartmentRepository departmentRepository;
     private final DoctorMapper doctorMapper;
@@ -44,12 +45,14 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     /**
-     * Updates the details of a doctor with the specified ID.
+     * Updates an existing Doctor entity in the system with the provided information.
      *
-     * @param creatDoctorRequestDto The DTO containing the updated details for the doctor.
-     * @param id                    The ID of the doctor to be updated.
-     * @return An optional containing the updated doctor entity if found and updated successfully,
-     * or an empty optional if the doctor does not exist or the update is not allowed due to email conflict.
+     * @param creatDoctorRequestDto The DTO containing the new details for updating the Doctor.
+     * @param id                    The unique identifier of the Doctor to be updated.
+     * @return Optional<Doctor>     An Optional containing the updated Doctor entity if the update is successful,
+     * or an empty Optional if the Doctor with the given id does not exist or the email
+     * provided in the DTO is already in use by another Doctor.
+     * @throws EntityNotFoundException If no Doctor is found with the given id in the database.
      */
 
     @Override
@@ -69,7 +72,7 @@ public class DoctorServiceImpl implements DoctorService {
                 doctorDb.setBirthDate(creatDoctorRequestDto.getBirthDate());
                 doctorDb.setPhoneNumber(creatDoctorRequestDto.getPhoneNumber());
                 Optional<Department> departmentById = departmentRepository.findById(creatDoctorRequestDto.getDepartmentId());
-                departmentById.ifPresentOrElse(department -> doctorDb.setDepartment(department), null);
+                departmentById.ifPresentOrElse(doctorDb::setDepartment, null);
                 doctorDb.setZoomId(creatDoctorRequestDto.getZoomId());
                 doctorDb.setPassword(creatDoctorRequestDto.getZoomPassword());
                 log.info("Doctor with the " + doctorDb.getId() + " id was updated");
@@ -78,7 +81,6 @@ public class DoctorServiceImpl implements DoctorService {
             return Optional.empty();
         }
     }
-
 
 
     @Override

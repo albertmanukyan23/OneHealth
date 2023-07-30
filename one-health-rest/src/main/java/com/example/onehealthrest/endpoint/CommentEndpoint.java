@@ -19,12 +19,10 @@ public class CommentEndpoint {
     private final CommentMapper commentMapper;
     @PostMapping
     public ResponseEntity <CommentDto> addComment(@RequestBody CreatCommentDto dto) {
-        log.info("for the comment,the method for add worked");
         return ResponseEntity.ok(commentService.save(commentMapper.mapDto(dto)));
     }
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteComment(@RequestParam ("deleteId") int deleteId ){
-        log.info("deleteById() comment method worked");
         boolean delete = commentService.deleteByIdComment(deleteId);
         return ResponseEntity.ok(delete);
 
@@ -33,7 +31,6 @@ public class CommentEndpoint {
     @GetMapping
     public ResponseEntity<List<CommentDto>> getCommentList(@RequestParam(defaultValue = "5") int size,
                                                                  @RequestParam(defaultValue = "1") int page) {
-        log.info("see comment getCommentList() method worked ");
         return ResponseEntity.ok(commentService.getDoctorList(size, page - 1));
     }
 }

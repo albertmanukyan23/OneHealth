@@ -71,7 +71,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public boolean deleteByIdMedServ(CurrentUser currentUser, int medServId) {
-        boolean isDeleted = false;
+
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
         if (cartByUserId.isEmpty()) {
@@ -82,7 +82,7 @@ public class CartServiceImpl implements CartService {
             cart.setMedServSet(updateMedSer);
             cartRepository.save(cart);
             log.info("add method delete() did not work ");
-            return isDeleted = true;
+            return  true;
         }
 
     }

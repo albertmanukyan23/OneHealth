@@ -39,6 +39,18 @@ public class UserEndpoint {
     private final JwtTokenUtil tokenUtil;
     private final UserMapper userMapper;
 
+    /**
+     * Handles user authentication by validating the provided email and password.
+     * If the provided email is found in the system and the corresponding user's password matches
+     * the hashed password stored in the database, and the user is enabled, a JWT token is generated
+     * and returned in the response.
+     *
+     * @param userAuthRequestDto The request data containing the user's email and password for authentication.
+     * @return ResponseEntity<UserAuthResponseDto> An HTTP response containing the generated JWT token
+     *         if authentication is successful, or an unauthorized response if authentication fails.
+     *         The response entity wraps a UserAuthResponseDto object containing the token.
+     */
+
     @PostMapping("/auth")
     public ResponseEntity<UserAuthResponseDto> auth(@RequestBody UserAuthRequestDto userAuthRequestDto) {
         Optional<User> byEmail = userService.findByEmail(userAuthRequestDto.getEmail());
@@ -46,7 +58,7 @@ public class UserEndpoint {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         User user = byEmail.get();
-        if (!passwordEncoder.matches(userAuthRequestDto.getPassword(), user.getPassword())) {
+        if (!passwordEncoder.matches(userAuthRequestDto.getPassword(), user.getPassword()) || !user.isEnabled()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         String token = tokenUtil.generateToken(userAuthRequestDto.getEmail());

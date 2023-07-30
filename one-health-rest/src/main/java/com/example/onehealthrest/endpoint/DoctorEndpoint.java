@@ -56,7 +56,6 @@ public class DoctorEndpoint {
 
     @GetMapping("/{id}")
     public ResponseEntity<Doctor> getDoctor(@PathVariable("id") int id) {
-        log.info("see a doctor getDoctorId() method worked");
         Optional<Doctor> doctorById = doctorService.getDoctorById(id);
         return doctorById.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.
@@ -68,13 +67,11 @@ public class DoctorEndpoint {
                                                                  @RequestParam(defaultValue = "1") int page,
                                                                  @RequestBody DoctorSearchDto doctorSearchDto)
     {
-        log.info("see doctor getDoctor() method worked ");
         return ResponseEntity.ok(doctorService.searchDoctor(size, page - 1, doctorSearchDto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDoctor(@PathVariable("id") int id) {
-        log.info("deleteById() doctor method worked");
         boolean delete = doctorService.deleteById(id);
         return ResponseEntity.ok(delete);
     }

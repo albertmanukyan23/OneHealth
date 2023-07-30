@@ -42,14 +42,14 @@ public class MedServServiceImpl implements MedServService {
 
     @Override
     public boolean delete(int id) {
-        boolean isDeleted = false;
+
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);
         if (optionalMedServ.isEmpty()) {
             throw new EntityNotFoundException("DeleteById with " + id + " does not exist");
         } else {
             log.info("Medical Service with the id " + id + " id has been successfully deleted ");
             medServRepository.deleteById(id);
-            return isDeleted = true;
+            return  true;
         }
     }
 
@@ -62,6 +62,7 @@ public class MedServServiceImpl implements MedServService {
      * @return An optional containing the updated medical service DTO if found and updated successfully,
      * or an empty optional if the medical service with the given ID does not exist.
      */
+
     @Override
     public Optional<MedServDto> update(int id, CreateMedServDto requestDto) {
         Optional<MedServ> optionalMedServ = medServRepository.findById(id);

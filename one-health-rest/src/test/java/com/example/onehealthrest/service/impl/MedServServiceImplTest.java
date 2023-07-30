@@ -3,6 +3,7 @@ package com.example.onehealthrest.service.impl;
 import com.example.onehealthcommon.dto.CreateMedServDto;
 import com.example.onehealthcommon.dto.MedServDto;
 import com.example.onehealthcommon.entity.MedServ;
+import com.example.onehealthcommon.exception.EntityNotFoundException;
 import com.example.onehealthcommon.mapper.MedServMapper;
 import com.example.onehealthcommon.repository.MedServRepository;
 import com.example.onehealthrest.service.MedServService;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,14 @@ class MedServServiceImplTest {
         List<MedServ> result = medServService.getPriceList();
         assertEquals(expected, result);
         verify(repository, times(1)).findAll();
+    }
+
+    @Test
+    @DisplayName("MedService Get PriceList with exception Test")
+    void getPriceListWithExceptionTest() {
+
+        when(repository.findAll()).thenReturn(new ArrayList<>());
+        assertThrows(EntityNotFoundException.class, ()-> medServService.getPriceList());
     }
 
     @Test
@@ -72,8 +82,9 @@ class MedServServiceImplTest {
     void deleteMedServiceWithEmptyOptional() {
         int id = 1;
         when(repository.findById(id)).thenReturn(Optional.empty());
-        medServService.delete(id);
-        verify(repository, times(0)).deleteById(id);
+        assertThrows(EntityNotFoundException.class, () -> medServService.delete(id));
+
+
     }
 
     @Test
@@ -115,7 +126,6 @@ class MedServServiceImplTest {
         int id = 1;
         CreateMedServDto createMedServDto = new CreateMedServDto("one-service", 4000);
         when(repository.findById(id)).thenReturn(Optional.empty());
-        medServService.update(id, createMedServDto);
-        verify(repository, times(0)).save(any());
+        assertThrows(EntityNotFoundException.class, () -> medServService.update(id, createMedServDto));
     }
 }

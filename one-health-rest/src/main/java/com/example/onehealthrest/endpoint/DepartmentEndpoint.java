@@ -38,13 +38,11 @@ public class DepartmentEndpoint {
                 .stream()
                 .map(departmentMapper::map)
                 .toList();
-        log.info(" method get() worked DepartmentEndpoint ");
         return ResponseEntity.ok(departments);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
-        log.info(" method deleteById()  worked DepartmentEndpoint ");
         boolean delete = departmentService.deleteById(id);
         return ResponseEntity.ok(delete);
     }

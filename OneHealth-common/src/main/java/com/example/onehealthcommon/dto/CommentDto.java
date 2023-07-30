@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class CommentDto {
+
     private int id;
     private UserDto userDto;
     private DoctorDtoResponse doctorDtoResponse;

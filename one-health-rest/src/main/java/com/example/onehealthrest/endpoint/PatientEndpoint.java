@@ -31,13 +31,9 @@ public class PatientEndpoint {
 
     private final PatientService patientService;
     private final AppointmentService appointmentService;
-    private final UserService userService;
     private final PatientMapper patientMapper;
 
     @PostMapping("/register")
-
-  
-
     public ResponseEntity<?> register(@RequestBody @Valid PatientRegisterDto patientRegisterDto, BindingResult bindingResult)  {
       
         StringBuilder validationResult = ValidationChecker.checkValidation(bindingResult);
@@ -58,7 +54,8 @@ public class PatientEndpoint {
     @GetMapping("/{id}")
     public ResponseEntity<PatientDto> getPatient(@PathVariable("id") int id) {
         Optional<Patient> patientById = patientService.findPatientById(id);
-        return patientById.map(patient -> ResponseEntity.ok(patientMapper.map(patient))).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());
+        return  ResponseEntity.ok(patientMapper.map(patientById.get()));
+
     }
 
 
