@@ -2,9 +2,10 @@ package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
-import com.example.onehealthcommon.dto.DoctorSearchDto;
+
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.mapper.DoctorMapper;
+import com.example.onehealthcommon.validation.ValidationChecker;
 import com.example.onehealthrest.service.DoctorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,7 @@ public class DoctorEndpoint {
 
     @PostMapping
     public ResponseEntity<?> register(@RequestBody @Valid CreatDoctorRequestDto requestDto, BindingResult bindingResult) {
-        log.info("for the doctor,the method for registration worked");
-        StringBuilder stringBuilder = doctorService.checkValidation(bindingResult);
+        StringBuilder stringBuilder = ValidationChecker.checkValidation(bindingResult);
         if (!stringBuilder.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());
         }
@@ -42,8 +42,7 @@ public class DoctorEndpoint {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> modify(@RequestBody @Valid CreatDoctorRequestDto creatDoctorRequestDto,
                                     @PathVariable("id") int id, BindingResult bindingResult) {
-        log.info("for the doctor,the method worked for a change");
-        StringBuilder stringBuilder = doctorService.checkValidation(bindingResult);
+        StringBuilder stringBuilder = ValidationChecker.checkValidation(bindingResult);
         if (!stringBuilder.isEmpty()) {
             return ResponseEntity.
                     status(HttpStatus.BAD_REQUEST).body(stringBuilder.toString());

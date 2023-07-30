@@ -173,7 +173,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
-    public void sendAppointmentCancelMessageToPatient(Patient patient) {
+    private void sendAppointmentCancelMessageToPatient(Patient patient) {
         emailSenderService.sendSimpleEmail(patient.getEmail(), "Appointment was cancelled",
                 "Your appointment has been canceled by the doctor," +
                         " we ask for your forgiveness, try to book a consultation again for another day.");
@@ -183,7 +183,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
-    public void sendOnlineRegistrationMessage(Patient patient, Doctor doctor) {
+    private void sendOnlineRegistrationMessage(Patient patient, Doctor doctor) {
         emailSenderService.sendSimpleEmail(patient.getEmail(), doctor.doctorEmailSubject(), doctor.getEmailBody());
 
         log.info("Online Registration message  has been send to the user with " + patient.getId() + " id");

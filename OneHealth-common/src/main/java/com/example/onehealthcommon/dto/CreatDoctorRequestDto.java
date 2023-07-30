@@ -1,7 +1,5 @@
 package com.example.onehealthcommon.dto;
 
-import com.example.onehealthcommon.entity.Department;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

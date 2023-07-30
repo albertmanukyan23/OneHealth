@@ -25,4 +25,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
         return handleExceptionInternal(ex, restErrorDto, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
+
+    @ExceptionHandler(value = {ImageProcessingException.class})
+    public ResponseEntity<Object> handleImageProcessingException(Exception ex, WebRequest request) {
+        RestErrorDto restErrorDto = RestErrorDto.builder()
+                .statusCod(HttpStatus.BAD_REQUEST.value())
+                .errorMessage(ex.getMessage())
+                .build();
+        return handleExceptionInternal(ex, restErrorDto, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
 }

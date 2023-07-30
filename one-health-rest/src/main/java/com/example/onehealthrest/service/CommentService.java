@@ -5,7 +5,6 @@ import com.example.onehealthcommon.dto.CommentDto;
 import com.example.onehealthcommon.entity.Comment;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CommentService {
     CommentDto save(Comment comment);

@@ -4,7 +4,6 @@ import com.example.onehealthcommon.dto.UserDto;
 import com.example.onehealthcommon.dto.UserPasswordUpdaterDto;
 import com.example.onehealthcommon.entity.User;
 import com.example.onehealthrest.security.CurrentUser;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
@@ -19,7 +18,7 @@ public interface UserService {
 
     Optional<UserDto> uploadImageForUser(int id, MultipartFile multipartFile, CurrentUser currentUser);
 
-    StringBuilder checkValidation(BindingResult bindingResult);
+
 
     boolean updatePassword(UserPasswordUpdaterDto passwordUpdaterDto, User currentUser);
 

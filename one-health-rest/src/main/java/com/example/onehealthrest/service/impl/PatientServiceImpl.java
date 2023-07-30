@@ -2,9 +2,11 @@ package com.example.onehealthrest.service.impl;
 
 import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
+import com.example.onehealthcommon.dto.PatientSearchDto;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.exception.EntityNotFoundException;
+import com.example.onehealthcommon.manager.PatientFilterManager;
 import com.example.onehealthcommon.mapper.PatientMapper;
 import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.PatientService;
@@ -17,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +36,8 @@ public class PatientServiceImpl implements PatientService {
     private final UserService userService;
     private final PatientMapper patientMapper;
     private final PasswordEncoder passwordEncoder;
+    private final PatientFilterManager patientFilterManager;
+
 
     @Override
     public PatientDto save(Patient patient) {
@@ -119,5 +124,11 @@ public class PatientServiceImpl implements PatientService {
         }
     }
 
+    @Override
+    public List<PatientDto> search(int page, int size, PatientSearchDto bookSearchDto)
+    {
+        List<Patient> all = patientFilterManager.searchPatientsByFilter(page, size, bookSearchDto);
+        return patientMapper.mapListToDtos(all);
+    }
 
 }

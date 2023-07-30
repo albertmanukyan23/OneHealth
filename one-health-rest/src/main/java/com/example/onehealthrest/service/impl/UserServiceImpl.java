@@ -126,16 +126,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public StringBuilder checkValidation(BindingResult bindingResult) {
-        StringBuilder errorBuilder = new StringBuilder();
-        if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(error -> errorBuilder.append(error.getDefaultMessage()).append("\n"));
-            log.info("checkValidation() in UserServiceImpl found errors");
-        }
-        return errorBuilder;
-    }
-
 
     //Updates the password of the current user based on the provided UserPasswordUpdaterDto
     @Override
