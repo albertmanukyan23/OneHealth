@@ -2,20 +2,24 @@ package com.example.onehealthrest.service.impl;
 
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
+import com.example.onehealthcommon.dto.DoctorSearchDto;
 import com.example.onehealthcommon.entity.Department;
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.entity.UserType;
-import com.example.onehealthcommon.exception.EntityConflictException;
 import com.example.onehealthcommon.exception.EntityNotFoundException;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthcommon.repository.DepartmentRepository;
 import com.example.onehealthcommon.repository.DoctorRepository;
+import com.example.onehealthrest.manager.DoctorFilterManager;
 import com.example.onehealthrest.service.DoctorService;
 import com.example.onehealthrest.service.UserService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -33,6 +37,7 @@ public class DoctorServiceImpl implements DoctorService {
     private final DoctorMapper doctorMapper;
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
+    private final DoctorFilterManager doctorFilterManager;
 
     @Override
     public DoctorDtoResponse save(Doctor doctor) {
@@ -91,15 +96,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public List<DoctorDtoResponse> getDoctorList(int size, int page) {
-        Pageable pageable = PageRequest.of(page, size);
-        List<Doctor> content = doctorRepository.findAll(pageable).getContent();
-        if (content.isEmpty()) {
-            throw new EntityNotFoundException("Doctor List IsEmpty");
-        }else {
-            return doctorMapper.mapListDto(content);
-        }
+    public List<DoctorDtoResponse> searchDoctor(int size, int page, DoctorSearchDto doctorSearchDto) {
+        List<Doctor> doctors = doctorFilterManager.searchDoctorsByFilter(page, size, doctorSearchDto);
+        return doctorMapper.mapListDto(doctors);
     }
+
 
     @Override
     public boolean deleteById(int id) {
@@ -121,6 +122,7 @@ public class DoctorServiceImpl implements DoctorService {
         }
         return byId;
     }
+
 
     @Override
     public Optional<Doctor> findByEmail(String email) {

@@ -2,6 +2,7 @@ package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
+import com.example.onehealthcommon.dto.DoctorSearchDto;
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthrest.service.DoctorService;
@@ -62,11 +63,13 @@ public class DoctorEndpoint {
                         status(HttpStatus.CONFLICT).build());
     }
 
-    @GetMapping()
+    @PostMapping("/search")
     public ResponseEntity<List<DoctorDtoResponse>> getDoctorList(@RequestParam(defaultValue = "5") int size,
-                                                                 @RequestParam(defaultValue = "1") int page) {
+                                                                 @RequestParam(defaultValue = "1") int page,
+                                                                 @RequestBody DoctorSearchDto doctorSearchDto)
+    {
         log.info("see doctor getDoctor() method worked ");
-        return ResponseEntity.ok(doctorService.getDoctorList(size, page - 1));
+        return ResponseEntity.ok(doctorService.searchDoctor(size, page - 1, doctorSearchDto));
     }
 
     @DeleteMapping("/{id}")
