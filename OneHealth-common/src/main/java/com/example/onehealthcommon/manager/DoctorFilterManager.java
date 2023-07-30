@@ -1,4 +1,4 @@
-package com.example.onehealthrest.manager;
+package com.example.onehealthcommon.manager;
 
 import com.example.onehealthcommon.dto.DoctorSearchDto;
 import com.example.onehealthcommon.entity.Doctor;
