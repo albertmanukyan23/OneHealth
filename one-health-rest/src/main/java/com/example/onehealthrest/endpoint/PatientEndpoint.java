@@ -95,5 +95,4 @@ public class PatientEndpoint {
         return ResponseEntity.ok(patientService.search(page, size, patientSearchDto));
     }
 
-
 }

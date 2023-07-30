@@ -16,6 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Doctor extends User {
+
     @NotBlank(message = "Speciality should be indicated ")
     private String speciality;
     private String phoneNumber;

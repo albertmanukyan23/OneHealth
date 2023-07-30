@@ -128,6 +128,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-12 ">
+                    <div class="single-info" onclick="redirectToChatPage()">
+                        <i class="icofont icofont-wall-clock"></i>
+                        <div class="content">
+                            <h3>Our Chat</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -251,6 +259,8 @@
 
     function redirectToDoctorPatients() {
         window.location.href = "/doctor/search/patients-for-doctor?searchText=null";
+    } function redirectToChatPage() {
+        window.location.href = "/one-health-chat";
     }
 
 </script>
