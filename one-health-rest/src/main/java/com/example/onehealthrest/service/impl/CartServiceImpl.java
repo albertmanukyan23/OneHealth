@@ -1,10 +1,12 @@
 package com.example.onehealthrest.service.impl;
+
 import com.example.onehealthcommon.dto.CreatCartDto;
 import com.example.onehealthcommon.dto.OrderDto;
 import com.example.onehealthcommon.entity.Cart;
 import com.example.onehealthcommon.entity.MedServ;
 import com.example.onehealthcommon.entity.Order;
 import com.example.onehealthcommon.entity.User;
+import com.example.onehealthcommon.exception.EntityNotFoundException;
 import com.example.onehealthcommon.mapper.CartMapper;
 import com.example.onehealthcommon.mapper.OrderMapper;
 import com.example.onehealthcommon.repository.CartRepository;
@@ -36,7 +38,9 @@ public class CartServiceImpl implements CartService {
     public Optional<OrderDto> addOrderByMedical(CurrentUser currentUser, OrderDto orderDto) {
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
-        if (cartByUserId.isPresent()) {
+        if (cartByUserId.isEmpty()) {
+            throw new EntityNotFoundException("ById with " + user.getId() + " does not exist");
+        } else {
             Cart cart = cartByUserId.get();
             Order order = Order.builder()
                     .user(user)
@@ -44,10 +48,9 @@ public class CartServiceImpl implements CartService {
                     .medServSet(new HashSet<>(cart.getMedServSet()))
                     .build();
             orderRepository.save(order);
-           return Optional.of( orderMapper.map(order));
+            log.info("add method save() did not work ");
+            return Optional.of(orderMapper.map(order));
         }
-        log.info("add method save() did not work ");
-        return Optional.empty();
     }
 
     @Override
@@ -71,15 +74,17 @@ public class CartServiceImpl implements CartService {
         boolean isDeleted = false;
         User user = currentUser.getUser();
         Optional<Cart> cartByUserId = cartRepository.findCartByUserId(user.getId());
-        if (cartByUserId.isPresent()) {
+        if (cartByUserId.isEmpty()) {
+            throw new EntityNotFoundException("ById with " + user.getId() + " does not exist");
+        } else {
             Cart cart = cartByUserId.get();
             Set<MedServ> updateMedSer = deleteById(cart.getMedServSet(), medServId);
             cart.setMedServSet(updateMedSer);
             cartRepository.save(cart);
-             isDeleted = true;
+            log.info("add method delete() did not work ");
+            return isDeleted = true;
         }
-        log.info("add method delete() did not work ");
-        return isDeleted;
+
     }
 
     /**
@@ -87,7 +92,6 @@ public class CartServiceImpl implements CartService {
      * If the user's cart does not exist, a new cart will be created and associated with the user.
      * The method fetches the medical service based on the provided {@code medicalId} and adds it to the cart's set of
      * medical services. If the cart already exists, it will be updated and saved to the repository.
-     *
      */
 
     @Override

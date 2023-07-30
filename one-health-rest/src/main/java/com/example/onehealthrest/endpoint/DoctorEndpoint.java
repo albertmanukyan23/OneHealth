@@ -2,6 +2,7 @@ package com.example.onehealthrest.endpoint;
 
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
+
 import com.example.onehealthcommon.entity.Doctor;
 import com.example.onehealthcommon.mapper.DoctorMapper;
 import com.example.onehealthcommon.validation.ValidationChecker;
@@ -54,20 +55,25 @@ public class DoctorEndpoint {
 
     @GetMapping("/{id}")
     public ResponseEntity<Doctor> getDoctor(@PathVariable("id") int id) {
+        log.info("see a doctor getDoctorId() method worked");
         Optional<Doctor> doctorById = doctorService.getDoctorById(id);
         return doctorById.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.
                         status(HttpStatus.CONFLICT).build());
     }
 
-    @GetMapping()
+    @PostMapping("/search")
     public ResponseEntity<List<DoctorDtoResponse>> getDoctorList(@RequestParam(defaultValue = "5") int size,
-                                                                 @RequestParam(defaultValue = "1") int page) {
-        return ResponseEntity.ok(doctorService.getDoctorList(size, page - 1));
+                                                                 @RequestParam(defaultValue = "1") int page,
+                                                                 @RequestBody DoctorSearchDto doctorSearchDto)
+    {
+        log.info("see doctor getDoctor() method worked ");
+        return ResponseEntity.ok(doctorService.searchDoctor(size, page - 1, doctorSearchDto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDoctor(@PathVariable("id") int id) {
+        log.info("deleteById() doctor method worked");
         boolean delete = doctorService.deleteById(id);
         return ResponseEntity.ok(delete);
     }

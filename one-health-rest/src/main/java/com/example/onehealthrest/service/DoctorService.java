@@ -2,6 +2,7 @@ package com.example.onehealthrest.service;
 
 import com.example.onehealthcommon.dto.CreatDoctorRequestDto;
 import com.example.onehealthcommon.dto.DoctorDtoResponse;
+import com.example.onehealthcommon.dto.DoctorSearchDto;
 import com.example.onehealthcommon.entity.Doctor;
 import org.springframework.validation.BindingResult;
 
@@ -15,7 +16,7 @@ public interface DoctorService {
 
 
 
-    List<DoctorDtoResponse> getDoctorList(int page, int size);
+    List<DoctorDtoResponse> searchDoctor(int page, int size, DoctorSearchDto doctorSearchDto);
 
     boolean deleteById(int id);
 
