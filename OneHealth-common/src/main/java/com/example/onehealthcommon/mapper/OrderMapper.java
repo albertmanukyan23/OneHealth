@@ -1,8 +1,6 @@
 package com.example.onehealthcommon.mapper;
 
-import com.example.onehealthcommon.dto.CreatCartDto;
 import com.example.onehealthcommon.dto.OrderDto;
-import com.example.onehealthcommon.entity.Cart;
 import com.example.onehealthcommon.entity.MedServ;
 import com.example.onehealthcommon.entity.Order;
 import com.example.onehealthcommon.entity.User;
@@ -28,6 +26,7 @@ public abstract class OrderMapper {
     @Mapping(target = "medServSet", source = "medServSet", qualifiedByName = "getMedServ")
     @Mapping(target = "user", source = "userId", qualifiedByName = "getUserFromDb")
     public abstract Order mapDto(OrderDto dto);
+
     @Mapping(target = "medServSet", source = "medServSet")
     @Mapping(target = "userId", source = "user.id")
     public abstract OrderDto map(Order entity);
@@ -38,9 +37,9 @@ public abstract class OrderMapper {
     }
 
     @Named("getMedServ")
-    protected Set<MedServ>  getMedServ(Set<MedServ> medServSet) {
+    protected Set<MedServ> getMedServ(Set<MedServ> medServSet) {
         List<MedServ> all = medServRepository.findAll();
         medServSet.addAll(all);
-        return  medServSet;
+        return medServSet;
     }
 }

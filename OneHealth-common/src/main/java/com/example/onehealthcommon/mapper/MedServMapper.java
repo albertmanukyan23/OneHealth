@@ -15,6 +15,7 @@ public interface MedServMapper {
     MedServ map(CreateMedServDto medServ);
 
     MedServDto mapTo(MedServ medServ);
+
     List<MedServDto> map(List<MedServ> medServ);
 
 }

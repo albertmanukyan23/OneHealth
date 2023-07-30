@@ -6,7 +6,7 @@ import com.example.onehealthcommon.dto.PatientSearchDto;
 import com.example.onehealthcommon.entity.Patient;
 import com.example.onehealthcommon.entity.UserType;
 import com.example.onehealthcommon.exception.EntityNotFoundException;
-import com.example.onehealthcommon.manager.PatientFilterManager;
+import com.example.onehealthcommon.component.PatientFilterManager;
 import com.example.onehealthcommon.mapper.PatientMapper;
 import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.PatientService;
@@ -60,12 +60,15 @@ public class PatientServiceImpl implements PatientService {
     }
 
     /**
-     * Updates the details of a patient with the specified ID.
+     * Updates an existing Patient entity in the system with the provided information.
      *
-     * @param patientRegisterDto The DTO containing the updated details for the patient.
-     * @param id                 The ID of the patient to be updated.
-     * @return An optional containing the updated patient entity if found and updated successfully,
-     * or an empty optional if the patient with the given ID does not exist or the email is already taken.
+     * @param patientRegisterDto The DTO containing the new details for updating the Patient.
+     * @param id                 The unique identifier of the Patient to be updated.
+     * @return Optional<Patient> An Optional containing the updated Patient entity if the update is successful,
+     *                          or an empty Optional if the Patient with the given id does not exist or the email
+     *                          provided in the DTO is already in use by another Patient.
+     * @throws EntityNotFoundException If no Patient is found with the given id in the database.
+     *
      */
 
     @Override
@@ -95,10 +98,11 @@ public class PatientServiceImpl implements PatientService {
     }
 
     /**
-     * Deletes a patient with the specified ID.
+     * Deletes a Patient entity from the system with the given id.
      *
-     * @param id The ID of the patient to be deleted.
-     * @return A boolean indicating whether the patient was successfully deleted or not.
+     * @param id The unique identifier of the Patient to be deleted.
+     * @return boolean True if the Patient is successfully deleted, otherwise false.
+     * @throws EntityNotFoundException If no Patient is found with the given id in the database.
      */
 
     @Override

@@ -1,7 +1,5 @@
 package com.example.onehealthcommon.dto;
 
-import com.example.onehealthcommon.entity.Doctor;
-import com.example.onehealthcommon.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

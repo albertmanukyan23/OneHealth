@@ -9,7 +9,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface DepartmentMapper {
     Department mapDto(DepartmentDto departmentDto);
+
     DepartmentDto map(Department department);
+
     List<DepartmentDto> map(List<Department> departmentList);
 
 }

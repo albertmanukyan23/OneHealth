@@ -1,6 +1,5 @@
 package com.example.onehealthcommon.repository;
 
-import com.example.onehealthcommon.entity.Cart;
 import com.example.onehealthcommon.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

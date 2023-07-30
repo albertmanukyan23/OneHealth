@@ -3,6 +3,8 @@ package com.example.onehealthrest.service.impl;
 import com.example.onehealthcommon.dto.PatientDto;
 import com.example.onehealthcommon.dto.PatientRegisterDto;
 import com.example.onehealthcommon.entity.Patient;
+import com.example.onehealthcommon.exception.EntityNotFoundException;
+import com.example.onehealthcommon.component.PatientFilterManager;
 import com.example.onehealthcommon.mapper.PatientMapper;
 import com.example.onehealthcommon.repository.PatientRepository;
 import com.example.onehealthrest.service.PatientService;
@@ -23,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,10 +37,11 @@ class PatientServiceImplTest {
     private final PatientMapper mapper = Mockito.mock(PatientMapper.class);
     private final UserService userService = Mockito.mock(UserService.class);
     private final PasswordEncoder passwordEncoder = Mockito.mock(PasswordEncoder.class);
+    private final  PatientFilterManager patientFilterManager = Mockito.mock(PatientFilterManager.class);
 
     @BeforeEach
     void setUp() {
-        patientService = new PatientServiceImpl(patientRepository, userService, mapper, passwordEncoder);
+        patientService = new PatientServiceImpl(patientRepository, userService, mapper, passwordEncoder,patientFilterManager);
     }
 
     @Test
@@ -117,8 +121,8 @@ class PatientServiceImplTest {
         int id = 1;
         PatientRegisterDto patientRegisterDto = getPatientRegisterDto();
         when(patientRepository.findById(id)).thenReturn(Optional.empty());
-        patientService.update(patientRegisterDto, id);
-        verify(patientRepository, times(0)).save(any());
+        assertThrows(EntityNotFoundException.class, ()-> patientService.update(patientRegisterDto,id));
+
     }
 
     @Test
@@ -126,8 +130,7 @@ class PatientServiceImplTest {
     void deletePatientWithEmptyOptionalTest() {
         int id = 1;
         when(patientRepository.findById(id)).thenReturn(Optional.empty());
-        patientService.delete(id);
-        verify(patientRepository, times(0)).deleteById(id);
+        assertThrows(EntityNotFoundException.class, ()-> patientService.delete(id));
 
     }
 

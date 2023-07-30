@@ -1,6 +1,6 @@
 package com.example.onehealthrest.service.impl;
 
-import com.example.onehealthcommon.EmailSenderService;
+import com.example.onehealthcommon.component.EmailSenderService;
 import com.example.onehealthcommon.dto.AppointmentDto;
 import com.example.onehealthcommon.dto.CreateAppointmentDto;
 import com.example.onehealthcommon.dto.PatientAppointmentDto;
@@ -51,10 +51,10 @@ public class AppointmentServiceImpl implements AppointmentService {
      * based on certain criteria. If the appointment is valid, it will be saved to the repository, and the patient will
      * be notified about the online registration.
      *
-     * @param currentUser   The current user creating the appointment.
+     * @param currentUser    The current user creating the appointment.
      * @param appointmentDto The data transfer object containing the details of the new appointment.
      * @return An optional containing the DTO representation of the created appointment if successful, or an empty optional
-     *         if the appointment creation failed due to invalid data or other reasons.
+     * if the appointment creation failed due to invalid data or other reasons.
      */
 
     @Override

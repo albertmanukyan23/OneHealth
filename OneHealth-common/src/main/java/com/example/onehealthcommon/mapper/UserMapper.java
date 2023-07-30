@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Mapper(componentModel = "spring")
 public abstract class UserMapper {
     @Value("http://localhost:8080")
-    public String siteUrl ;
+    public String siteUrl;
 
     public abstract UserVerifyDto map(User user);
 

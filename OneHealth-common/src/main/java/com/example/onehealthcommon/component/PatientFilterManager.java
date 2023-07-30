@@ -1,4 +1,4 @@
-package com.example.onehealthcommon.manager;
+package com.example.onehealthcommon.component;
 
 import com.example.onehealthcommon.dto.PatientSearchDto;
 import com.example.onehealthcommon.entity.Patient;
@@ -15,9 +15,14 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The PatientFilterManager class is responsible for filtering and retrieving patients
+ * from the database based on the provided search criteria in the PatientSearchDto.
+ */
 @Data
 @Component
 public class PatientFilterManager {
+
     private final QPatient qPatient = QPatient.patient;
     @PersistenceContext
     private EntityManager entityManager;

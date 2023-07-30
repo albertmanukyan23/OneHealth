@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -132,8 +133,9 @@ class MedServEndpointTest {
                 .build());
         Optional<MedServ> byId = medServRepository.findById(medServ.getId());
         Assertions.assertTrue(byId.isPresent());
-        mvc.perform(MockMvcRequestBuilders.delete("/medical-services/remove?id=" + medServ.getId()))
-                .andExpect(status().is(204));
+        mvc.perform(MockMvcRequestBuilders.delete("/medical-services/remove/" + medServ.getId()))
+                .andExpect(status().is(200))
+                .andExpect(content().string("true"));
         Assertions.assertTrue(medServRepository.findById(medServ.getId()).isEmpty());
 
     }

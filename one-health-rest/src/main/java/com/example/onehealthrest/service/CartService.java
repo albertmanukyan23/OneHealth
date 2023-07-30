@@ -11,7 +11,7 @@ import java.util.Set;
 public interface CartService {
     Optional<OrderDto> addOrderByMedical(CurrentUser currentUser, OrderDto orderDto);
 
-    Set<MedServ> deleteById(Set<MedServ> medServSet,int id);
+    Set<MedServ> deleteById(Set<MedServ> medServSet, int id);
 
     boolean deleteByIdMedServ(CurrentUser currentUser, int medServId);
 

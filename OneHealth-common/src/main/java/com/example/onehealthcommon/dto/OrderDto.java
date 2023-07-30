@@ -1,7 +1,6 @@
 package com.example.onehealthcommon.dto;
 
 import com.example.onehealthcommon.entity.MedServ;
-import com.example.onehealthcommon.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
