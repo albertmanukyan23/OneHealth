@@ -1,5 +1,4 @@
 package com.example.onehealthmvc.controller;
-
 import com.example.onehealthcommon.entity.ChatMessage;
 import com.example.onehealthmvc.security.CurrentUser;
 import com.example.onehealthmvc.service.ChatService;
